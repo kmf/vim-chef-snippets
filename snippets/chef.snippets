@@ -1,0 +1,1951 @@
+snippet alternatives
+	alternatives 'name' do
+		link					 String # default value: "/usr/bin/LINK_NAME"
+		link_name			 String # default value: 'name' unless specified
+		path					 String
+		priority			 String, Integer
+		action				 Symbol # defaults to :install if not specified
+	end
+
+snippet apt_package
+	apt_package 'name' do
+		default_release							 String
+		options											 String, Array
+		overwrite_config_files			 true, false # default value: false
+		package_name								 String, Array
+		response_file								 String
+		response_file_variables			 Hash
+		timeout											 String, Integer
+		version											 String, Array
+		action											 Symbol # defaults to :install if not specified
+	end
+
+snippet apt_preference
+	apt_preference 'name' do
+		glob							String
+		package_name			String # default value: 'name' unless specified
+		pin								String
+		pin_priority			String, Integer
+		action						Symbol # defaults to :add if not specified
+	end
+
+snippet apt_repository
+	apt_repository 'name' do
+		arch							 String, false
+		cache_rebuild			 true, false # default value: true
+		components				 Array # default value: `main` if using a PPA repository.
+		cookbook					 String, false
+		deb_src						 true, false # default value: false
+		distribution			 String, false # default value: The LSB codename of the node such as 'focal'.
+		key								 String, Array, false
+		key_proxy					 String, false
+		keyserver					 String, false # default value: "keyserver.ubuntu.com"
+		repo_name					 String # default value: 'name' unless specified
+		trusted						 true, false # default value: false
+		uri								 String
+		action						 Symbol # defaults to :add if not specified
+	end
+
+snippet apt_update
+	apt_update 'name' do
+		frequency			 Integer # default value: 86400
+		action				 Symbol # defaults to :periodic if not specified
+	end
+
+snippet archive_file
+	archive_file 'name' do
+		destination			 String
+		group						 String
+		mode						 String, Integer # default value: "'755'"
+		options					 Array, Symbol
+		overwrite				 true, false, auto # default value: false
+		owner						 String
+		path						 String # default value: 'name' unless specified
+		action					 Symbol # defaults to :extract if not specified
+	end
+
+snippet bash
+	bash 'name' do
+		code											 String
+		creates										 String
+		cwd												 String
+		environment								 Hash
+		flags											 String
+		group											 String, Integer
+		path											 Array
+		returns										 Integer, Array
+		timeout										 Integer, Float
+		user											 String, Integer
+		umask											 String, Integer
+		action										 Symbol # defaults to :run if not specified
+	end
+
+snippet batch
+	batch 'name' do
+		architecture							 Symbol
+		code											 String
+		command										 String, Array
+		creates										 String
+		cwd												 String
+		flags											 String
+		group											 String, Integer
+		guard_interpreter					 Symbol
+		interpreter								 String
+		returns										 Integer, Array
+		timeout										 Integer, Float
+		user											 String
+		password									 String
+		domain										 String
+		action										 Symbol # defaults to :run if not specified
+	end
+
+snippet bff_package
+	bff_package 'name' do
+		options						String, Array
+		package_name			String
+		source						String
+		timeout						String, Integer
+		version						String
+		action						Symbol # defaults to :install if not specified
+	end
+
+snippet breakpoint
+	breakpoint 'name' do
+		action			Symbol # defaults to :break if not specified
+	end
+
+snippet build_essential
+	build_essential 'name' do
+		raise_if_unsupported			true, false # default value: false
+		action										Symbol # defaults to :install if not specified
+	end
+
+snippet cab_package
+	cab_package 'name' do
+		options						String, Array
+		package_name			String
+		source						String # default value: The package name.
+		timeout						String, Integer
+		version						String
+		action						Symbol # defaults to :install if not specified
+	end
+
+snippet chef_client_config
+	chef_client_config 'name' do
+		additional_config							 String
+		chef_license									 String
+		chef_server_url								 String
+		config_directory							 String
+		event_loggers									 Array # default value: []
+		exception_handlers						 Array # default value: []
+		file_backup_path							 String
+		file_cache_path								 String
+		file_staging_uses_destdir			 String
+		formatters										 Array # default value: []
+		ftp_proxy											 String
+		group													 String
+		http_proxy										 String
+		https_proxy										 String
+		log_level											 Symbol
+		log_location									 String, Symbol
+		minimal_ohai									 true, false
+		named_run_list								 String
+		no_proxy											 String, Array # default value: []
+		node_name											 String
+		ohai_disabled_plugins					 Array # default value: []
+		ohai_optional_plugins					 Array # default value: []
+		pid_file											 String
+		policy_group									 String
+		policy_name										 String
+		report_handlers								 Array # default value: []
+		ssl_verify_mode								 Symbol, String
+		start_handlers								 Array # default value: []
+		user													 String
+		action												 Symbol # defaults to :create if not specified
+	end
+
+snippet chef_client_cron
+	chef_client_cron 'name' do
+		accept_chef_license			 true, false # default value: false
+		append_log_file					 true, false # default value: true
+		chef_binary_path				 String # default value: "/opt/chef/bin/chef-client"
+		comment									 String
+		config_directory				 String # default value: "/etc/chef"
+		daemon_options					 Array
+		day											 Integer, String # default value: "*"
+		environment							 Hash
+		hour										 Integer, String # default value: "*"
+		job_name								 String # default value: "chef-client"
+		log_directory						 String
+		log_file_name						 String # default value: "client.log"
+		mailto									 String
+		minute									 Integer, String # default value: "0,30"
+		month										 Integer, String # default value: "*"
+		nice										 Integer, String
+		splay										 Integer, String # default value: 300
+		user										 String # default value: "root"
+		weekday									 Integer, String # default value: "*"
+		action									 Symbol # defaults to :add if not specified
+	end
+
+snippet chef_client_launchd
+	chef_client_launchd 'name' do
+		accept_chef_license			 true, false # default value: false
+		chef_binary_path				 String # default value: "/opt/chef/bin/chef-client"
+		config_directory				 String # default value: "/etc/chef"
+		daemon_options					 Array
+		environment							 Hash
+		interval								 Integer, String # default value: 30
+		log_directory						 String # default value: "/Library/Logs/Chef"
+		log_file_name						 String # default value: "client.log"
+		low_priority_io					 true, false # default value: true
+		nice										 Integer, String
+		splay										 Integer, String # default value: 300
+		user										 String # default value: "root"
+		working_directory				 String # default value: "/var/root"
+		action									 Symbol # defaults to :enable if not specified
+	end
+
+snippet chef_client_scheduled_task
+	chef_client_scheduled_task 'name' do
+		accept_chef_license			 true, false # default value: false
+		chef_binary_path				 String # default value: "C:/opscode/chef/bin/chef-client"
+		config_directory				 String # default value: "/etc/chef"
+		daemon_options					 Array
+		frequency								 String # default value: "minute"
+		frequency_modifier			 Integer, String # default value: "30 if frequency is 'minute', 1 otherwise"
+		log_directory						 String # default value: "CONFIG_DIRECTORY/log"
+		log_file_name						 String # default value: "client.log"
+		password								 String
+		run_on_battery					 true, false # default value: true
+		splay										 Integer, String # default value: 300
+		start_date							 String
+		start_time							 String
+		task_name								 String # default value: "chef-client"
+		user										 String # default value: "System"
+		action									 Symbol # defaults to :add if not specified
+	end
+
+snippet chef_client_systemd_timer
+	chef_client_systemd_timer 'name' do
+		accept_chef_license			 true, false # default value: false
+		chef_binary_path				 String # default value: "/opt/chef/bin/chef-client"
+		config_directory				 String # default value: "/etc/chef"
+		cpu_quota								 Integer, String
+		daemon_options					 Array
+		delay_after_boot				 String # default value: "1min"
+		description							 String # default value: "Chef Infra Client periodic execution"
+		environment							 Hash
+		interval								 String # default value: "30min"
+		job_name								 String # default value: "chef-client"
+		run_on_battery					 true, false # default value: true
+		splay										 String # default value: "5min"
+		user										 String # default value: "root"
+		action									 Symbol # defaults to :add if not specified
+	end
+
+snippet chef_client_trusted_certificate
+	chef_client_trusted_certificate 'name' do
+		cert_name				 String # default value: 'name' unless specified
+		certificate			 String
+		action					 Symbol # defaults to :add if not specified
+	end
+
+snippet chef_gem
+	chef_gem 'name' do
+		clear_sources								true, false
+		gem_binary									String
+		include_default_source			true, false
+		options											String, Hash, Array
+		package_name								String
+		source											String, Array
+		timeout											String, Integer
+		version											String
+		action											Symbol # defaults to :install if not specified
+	end
+
+snippet chef_handler
+	chef_handler 'name' do
+		arguments				Array, Hash
+		class_name			String # default value: 'name' unless specified
+		source					String
+		type						Hash # default value: {"report"=>true, "exception"=>true}
+		action					Symbol # defaults to :enable if not specified
+	end
+
+snippet chef_sleep
+	chef_sleep 'name' do
+		seconds			 String, Integer # default value: 'name' unless specified
+		action			 Symbol # defaults to :sleep if not specified
+	end
+
+snippet chef_vault_secret
+	chef_vault_secret 'name' do
+		admins					 String, Array
+		clients					 String, Array
+		data_bag				 String
+		environment			 String
+		id							 String # default value: 'name' unless specified
+		raw_data				 Hash, ChefUtils::Mash # default value: {}
+		search					 String # default value: "*:*"
+		action					 Symbol # defaults to :create if not specified
+	end
+
+snippet chocolatey_config
+	chocolatey_config 'name' do
+		config_key			String # default value: 'name' unless specified
+		value						String
+		action					Symbol # defaults to :set if not specified
+	end
+
+snippet chocolatey_feature
+	chocolatey_feature 'name' do
+		feature_name			String # default value: 'name' unless specified
+		action						Symbol # defaults to :enable if not specified
+	end
+
+snippet chocolatey_package
+	chocolatey_package 'name' do
+		list_options			String
+		options						String, Array
+		package_name			String, Array
+		password					String
+		returns						Integer, Array # default value: [0, 2]
+		source						String
+		timeout						String, Integer
+		user							String
+		version						String, Array
+		action						Symbol # defaults to :install if not specified
+	end
+
+snippet chocolatey_source
+	chocolatey_source 'name' do
+		admin_only							true, false # default value: false
+		allow_self_service			true, false # default value: false
+		bypass_proxy						true, false # default value: false
+		priority								Integer # default value: 0
+		source									String
+		source_name							String # default value: 'name' unless specified
+		action									Symbol # defaults to :add if not specified
+	end
+
+snippet cookbook_file
+	cookbook_file 'name' do
+		atomic_update							 true, false
+		backup										 Integer, false # default value: 5
+		cookbook									 String
+		force_unlink							 true, false # default value: false
+		group											 String, Integer
+		inherits									 true, false
+		manage_symlink_source			 true, false
+		mode											 String, Integer
+		owner											 String, Integer
+		path											 String # default value: 'name' unless specified
+		rights										 Hash
+		source										 String, Array
+		verify										 String, Block
+		action										 Symbol # defaults to :create if not specified
+	end
+
+snippet cron
+	cron 'name' do
+		command					 String
+		day							 Integer, String # default value: "*"
+		environment			 Hash
+		home						 String
+		hour						 Integer, String # default value: "*"
+		mailto					 String
+		minute					 Integer, String # default value: "*"
+		month						 Integer, String # default value: "*"
+		path						 String
+		shell						 String
+		time						 Symbol
+		time_out				 Hash
+		user						 String # default value: "root"
+		weekday					 Integer, String, Symbol # default value: "*"
+		action					 Symbol # defaults to :create if not specified
+	end
+
+snippet cron_access
+	cron_access 'name' do
+		user			String # default value: 'name' unless specified
+		action		Symbol # defaults to :allow if not specified
+	end
+
+snippet cron_d
+	cron_d 'name' do
+		command								String
+		comment								String
+		cron_name							String # default value: 'name' unless specified
+		day										Integer, String # default value: "*"
+		environment						Hash
+		home									String
+		hour									Integer, String # default value: "*"
+		mailto								String
+		minute								Integer, String # default value: "*"
+		mode									String, Integer # default value: "0600"
+		month									Integer, String # default value: "*"
+		path									String
+		predefined_value			String
+		random_delay					Integer
+		shell									String
+		time_out							Hash
+		user									String # default value: "root"
+		weekday								Integer, String, Symbol # default value: "*"
+		action								Symbol # defaults to :create if not specified
+	end
+
+snippet csh
+	csh 'name' do
+		code											 String
+		creates										 String
+		cwd												 String
+		environment								 Hash
+		flags											 String
+		group											 String, Integer
+		path											 Array
+		returns										 Integer, Array
+		timeout										 Integer, Float
+		user											 String, Integer
+		umask											 String, Integer
+		action										 Symbol # defaults to :run if not specified
+	end
+
+snippet directory
+	directory 'name' do
+		group											 String, Integer
+		inherits									 true, false
+		mode											 String, Integer
+		owner											 String, Integer
+		path											 String # defaults to 'name' if not specified
+		recursive									 true, false
+		rights										 Hash
+		action										 Symbol # defaults to :create if not specified
+	end
+
+snippet dmg_package
+	dmg_package 'name' do
+		accept_eula					 true, false # default value: false
+		allow_untrusted			 true, false # default value: false
+		app									 String # default value: 'name' unless specified
+		checksum						 String
+		destination					 String # default value: "/Applications"
+		dmg_name						 String # default value: The value passed for the application name.
+		dmg_passphrase			 String
+		file								 String
+		headers							 Hash
+		owner								 String, Integer
+		package_id					 String
+		source							 String
+		type								 String # default value: "app"
+		volumes_dir					 String # default value: The value passed for the application name.
+		action							 Symbol # defaults to :install if not specified
+	end
+
+snippet dnf_package
+	dnf_package 'name' do
+		arch							String, Array
+		flush_cache				Hash # default value: {"before"=>false, "after"=>false}
+		options						String, Array
+		package_name			String, Array
+		source						String
+		timeout						String, Integer
+		version						String, Array
+		action						Symbol # defaults to :install if not specified
+	end
+
+snippet dpkg_package
+	dpkg_package 'name' do
+		options											 String, Array
+		package_name								 String, Array
+		response_file								 String
+		response_file_variables			 Hash
+		source											 String, Array
+		timeout											 String, Integer
+		version											 String, Array
+		action											 Symbol # defaults to :install if not specified
+	end
+
+snippet dsc_resource
+	dsc_resource 'name' do
+		module_name								 String
+		module_version						 String
+		property									 Symbol
+		reboot_action							 Symbol # default value: :nothing
+		resource									 Symbol
+		timeout										 Integer
+		action										 Symbol # defaults to :run if not specified
+	end
+
+snippet dsc_script
+	dsc_script 'name' do
+		code											 String
+		command										 String
+		configuration_data				 String
+		configuration_data_script  String
+		configuration_name				 String
+		cwd												 String
+		environment								 Hash
+		flags											 Hash
+		imports										 Array
+		timeout										 Integer
+		action										 Symbol # defaults to :run if not specified
+	end
+
+snippet execute
+	execute 'name' do
+		command					 String, Array # default value: 'name' unless specified
+		creates					 String
+		cwd							 String
+		default_env			 true, false # default value: false
+		domain					 String
+		elevated				 true, false # default value: false
+		environment			 Hash
+		group						 String, Integer
+		input						 String
+		live_stream			 true, false # default value: false
+		password				 String
+		returns					 Integer, Array # default value: 0
+		sensitive				 true, false
+		timeout					 Integer, String, Float # default value: 3600
+		umask						 String, Integer
+		user						 String, Integer
+		action					 Symbol # defaults to :run if not specified
+	end
+
+snippet file
+	file 'name' do
+		atomic_update							 true, false
+		backup										 false, Integer
+		checksum									 String
+		content										 String
+		force_unlink							 true, false
+		group											 String, Integer
+		inherits									 true, false
+		manage_symlink_source			 true, false
+		mode											 String, Integer
+		owner											 String, Integer
+		path											 String # defaults to 'name' if not specified
+		rights										 Hash
+		verify										 String, Block
+		action										 Symbol # defaults to :create if not specified
+	end
+
+snippet freebsd_package
+	freebsd_package 'name' do
+		options						String
+		package_name			String
+		source						String
+		timeout						String, Integer
+		version						String
+		action						Symbol # defaults to :install if not specified
+	end
+
+snippet gem_package
+	gem_package 'name' do
+		clear_sources								true, false
+		gem_binary									String
+		include_default_source			true, false
+		options											String, Hash, Array
+		package_name								String
+		source											String, Array
+		timeout											String, Integer
+		version											String
+		action											Symbol # defaults to :install if not specified
+	end
+
+snippet git
+	git 'name' do
+		additional_remotes			Hash
+		checkout_branch					String
+		depth										Integer
+		destination							String # default value: 'name' unless specified
+		enable_checkout					true, false # default value: true
+		enable_submodules				true, false # default value: false
+		environment							Hash
+		group										String, Integer
+		remote									String # default value: "origin"
+		repository							String
+		revision								String # default value: "HEAD"
+		ssh_wrapper							String
+		timeout									Integer
+		user										String, Integer
+		action									Symbol # defaults to :sync if not specified
+	end
+
+snippet homebrew_cask
+	homebrew_cask 'name' do
+		cask_name					 String # default value: 'name' unless specified
+		homebrew_path			 String # default value: "/usr/local/bin/brew"
+		install_cask			 true, false # default value: true
+		options						 String
+		owner							 String, Integer
+		action						 Symbol # defaults to :install if not specified
+	end
+
+snippet homebrew_package
+	homebrew_package 'name' do
+		homebrew_user			 String, Integer
+		options						 String, Array
+		package_name			 String, Array
+		source						 String
+		timeout						 String, Integer
+		version						 String, Array
+		action						 Symbol # defaults to :install if not specified
+	end
+
+snippet homebrew_tap
+	homebrew_tap 'name' do
+		full							 true, false # default value: false
+		homebrew_path			 String # default value: "/usr/local/bin/brew"
+		owner							 String
+		tap_name					 String # default value: 'name' unless specified
+		url								 String
+		action						 Symbol # defaults to :tap if not specified
+	end
+
+snippet homebrew_update
+	homebrew_update 'name' do
+		frequency			 Integer # default value: 86400
+		action				 Symbol # defaults to :periodic if not specified
+	end
+
+snippet hostname
+	hostname 'name' do
+		aliases							Array
+		compile_time				true, false # default value: true
+		hostname						String # default value: 'name' unless specified
+		ipaddress						String # default value: The node's IP address as determined by Ohai.
+		windows_reboot			true, false # default value: true
+		action							Symbol # defaults to :set if not specified
+	end
+
+snippet http_request
+	http_request 'name' do
+		headers										 Hash
+		message										 Object # defaults to 'name' if not specified
+		url												 String
+		action										 Symbol # defaults to :get if not specified
+	end
+
+snippet ifconfig
+	ifconfig 'name' do
+		bcast							String
+		bonding_opts			String
+		bootproto					String
+		bridge						String
+		device						String
+		ethtool_opts			String
+		family						String # default value: "inet"
+		gateway						String
+		hwaddr						String
+		inet_addr					String
+		mask							String
+		master						String
+		metric						String
+		mtu								String
+		network						String
+		onboot						String
+		onparent					String
+		slave							String
+		target						String # default value: 'name' unless specified
+		vlan							String
+		action						Symbol # defaults to :add if not specified
+	end
+
+snippet ips_package
+	ips_package 'name' do
+		accept_license						 true, false # default value: false
+		options										 String
+		package_name							 String, Array
+		source										 String
+		timeout										 String, Integer
+		version										 String, Array
+		action										 Symbol # defaults to :install if not specified
+	end
+
+snippet kernel_module
+	kernel_module 'name' do
+		load_dir				String # default value: "/etc/modules-load.d"
+		modname					String # default value: 'name' unless specified
+		options					Array
+		unload_dir			String # default value: "/etc/modprobe.d"
+		action					Symbol # defaults to :install if not specified
+	end
+
+snippet ksh
+	ksh 'name' do
+		code											 String
+		creates										 String
+		cwd												 String
+		environment								 Hash
+		flags											 String
+		group											 String, Integer
+		path											 Array
+		returns										 Integer, Array
+		timeout										 Integer, Float
+		user											 String, Integer
+		umask											 String, Integer
+		action										 Symbol # defaults to :run if not specified
+	end
+
+snippet launchd
+	launchd 'name' do
+		abandon_process_group						true, false
+		backup													Integer, false
+		cookbook												String
+		debug														true, false
+		disabled												true, false # default value: false
+		enable_globbing									true, false
+		enable_transactions							true, false
+		environment_variables						Hash
+		exit_timeout										Integer
+		group														String, Integer
+		hard_resource_limits						Hash
+		inetd_compatibility							Hash
+		init_groups											true, false
+		keep_alive											true, false, Hash
+		label														String # default value: 'name' unless specified
+		launch_events										Hash
+		launch_only_once								true, false
+		ld_group												String
+		limit_load_from_hosts						Array
+		limit_load_to_hosts							Array
+		limit_load_to_session_type			Array, String
+		low_priority_io									true, false
+		mach_services										Hash
+		mode														String, Integer
+		nice														Integer
+		on_demand												true, false
+		owner														String, Integer
+		path														String
+		plist_hash											Hash
+		process_type										String
+		program													String
+		program_arguments								Array
+		queue_directories								Array
+		root_directory									String
+		run_at_load											true, false
+		session_type										String
+		sockets													Hash
+		soft_resource_limits						Array
+		source													String
+		standard_error_path							String
+		standard_in_path								String
+		standard_out_path								String
+		start_calendar_interval					Hash, Array
+		start_interval									Integer
+		start_on_mount									true, false
+		throttle_interval								Integer
+		time_out												Integer
+		type														String # default value: "daemon"
+		umask														Integer
+		username												String
+		wait_for_debugger								true, false
+		watch_paths											Array
+		working_directory								String
+		action													Symbol # defaults to :create if not specified
+	end
+
+snippet link
+	link 'name' do
+		group						 String, Integer
+		link_type				 String, Symbol # default value: :symbolic
+		mode						 Integer, String
+		owner						 String, Integer
+		target_file			 String # default value: 'name' unless specified
+		to							 String
+		action					 Symbol # defaults to :create if not specified
+	end
+
+snippet locale
+	locale 'name' do
+		lang				String
+		lc_env			Hash
+		action			Symbol # defaults to :update if not specified
+	end
+
+snippet macos_userdefaults
+	macos_userdefaults 'name' do
+		domain			String # default value: NSGlobalDomain: the global domain.
+		host				String, Symbol
+		key					String
+		sudo				true, false # default value: false
+		type				String
+		user				String
+		value				Integer, Float, String, true, false, Hash, Array
+		action			Symbol # defaults to :write if not specified
+	end
+
+snippet macports_package
+	macports_package 'name' do
+		options						String
+		package_name			String
+		source						String
+		timeout						String, Integer
+		version						String
+		action						Symbol # defaults to :install if not specified
+	end
+
+snippet mdadm
+	mdadm 'name' do
+		bitmap					 String
+		chunk						 Integer # default value: 16
+		devices					 Array # default value: []
+		layout					 String
+		level						 Integer # default value: 1
+		metadata				 String # default value: "0.90"
+		raid_device			 String # default value: 'name' unless specified
+		action					 Symbol # defaults to :create if not specified
+	end
+
+snippet mount
+	mount 'name' do
+		device					 String
+		device_type			 String, Symbol # default value: :device
+		domain					 String
+		dump						 Integer, false # default value: 0
+		enabled					 true, false # default value: false
+		fsck_device			 String # default value: "-"
+		fstype					 String # default value: "auto"
+		mount_point			 String # default value: 'name' unless specified
+		options					 Array, String # default value: ["defaults"]
+		pass						 Integer, false # default value: 2
+		password				 String
+		supports				 Array, Hash # default value: { remount: false }
+		username				 String
+		action					 Symbol # defaults to :mount if not specified
+	end
+
+snippet msu_package
+	msu_package 'name' do
+		checksum					String
+		options						String
+		package_name			String
+		source						String
+		timeout						String, Integer # default value: 3600
+		action						Symbol # defaults to :install if not specified
+	end
+
+snippet notify_group
+	notify_group 'name' do
+		action			Symbol # defaults to :nothing if not specified
+	end
+
+snippet ohai
+	ohai 'name' do
+		plugin			String
+		action			Symbol # defaults to :reload if not specified
+	end
+
+snippet ohai_hint
+	ohai_hint 'name' do
+		compile_time			true, false # default value: true
+		content						Hash
+		hint_name					String # default value: 'name' unless specified
+		action						Symbol # defaults to :create if not specified
+	end
+
+snippet openbsd_package
+	openbsd_package 'name' do
+		options						String
+		package_name			String
+		source						String
+		timeout						String, Integer
+		version						String, Array
+		action						Symbol # defaults to :install if not specified
+	end
+
+snippet openssl_dhparam
+	openssl_dhparam 'name' do
+		generator				Integer # default value: 2
+		group						String, Integer
+		key_length			Integer # default value: 2048
+		mode						Integer, String # default value: "0640"
+		owner						String, Integer
+		path						String # default value: 'name' unless specified
+		action					Symbol # defaults to :create if not specified
+	end
+
+snippet openssl_ec_private_key
+	openssl_ec_private_key 'name' do
+		force						true, false # default value: false
+		group						String, Integer
+		key_cipher			String # default value: "des3"
+		key_curve				String # default value: "prime256v1"
+		key_pass				String
+		mode						Integer, String # default value: "0600"
+		owner						String, Integer
+		path						String # default value: 'name' unless specified
+		action					Symbol # defaults to :create if not specified
+	end
+
+snippet openssl_ec_public_key
+	openssl_ec_public_key 'name' do
+		group										 String, Integer
+		mode										 Integer, String # default value: "0640"
+		owner										 String, Integer
+		path										 String # default value: 'name' unless specified
+		private_key_content			 String
+		private_key_pass				 String
+		private_key_path				 String
+		action									 Symbol # defaults to :create if not specified
+	end
+
+snippet openssl_rsa_private_key
+	openssl_rsa_private_key 'name' do
+		force						true, false # default value: false
+		group						String, Integer
+		key_cipher			String # default value: "des3"
+		key_length			Integer # default value: 2048
+		key_pass				String
+		mode						Integer, String # default value: "0600"
+		owner						String, Integer
+		path						String # default value: 'name' unless specified
+		action					Symbol # defaults to :create if not specified
+	end
+
+snippet openssl_rsa_public_key
+	openssl_rsa_public_key 'name' do
+		group										 String, Integer
+		mode										 Integer, String # default value: "0640"
+		owner										 String, Integer
+		path										 String # default value: 'name' unless specified
+		private_key_content			 String
+		private_key_pass				 String
+		private_key_path				 String
+		action									 Symbol # defaults to :create if not specified
+	end
+
+snippet openssl_x509_certificate
+	openssl_x509_certificate 'name' do
+		ca_cert_file						 String
+		ca_key_file							 String
+		ca_key_pass							 String
+		city										 String
+		common_name							 String
+		country									 String
+		csr_file								 String
+		email										 String
+		expire									 Integer # default value: 365
+		extensions							 Hash # default value: {}
+		group										 String, Integer
+		key_curve								 String # default value: "prime256v1"
+		key_file								 String
+		key_length							 Integer # default value: 2048
+		key_pass								 String
+		key_type								 String # default value: "rsa"
+		mode										 Integer, String
+		org											 String
+		org_unit								 String
+		owner										 String, Integer
+		path										 String # default value: 'name' unless specified
+		renew_before_expiry			 Integer
+		state										 String
+		subject_alt_name				 Array # default value: []
+		action									 Symbol # defaults to :create if not specified
+	end
+
+snippet openssl_x509_crl
+	openssl_x509_crl 'name' do
+		ca_cert_file					 String
+		ca_key_file						 String
+		ca_key_pass						 String
+		expire								 Integer # default value: 8
+		group									 String, Integer
+		mode									 Integer, String
+		owner									 String, Integer
+		path									 String # default value: 'name' unless specified
+		renewal_threshold			 Integer # default value: 1
+		revocation_reason			 Integer # default value: 0
+		serial_to_revoke			 Integer, String
+		action								 Symbol # defaults to :create if not specified
+	end
+
+snippet openssl_x509_request
+	openssl_x509_request 'name' do
+		city						 String
+		common_name			 String
+		country					 String
+		email						 String
+		group						 String, Integer
+		key_curve				 String # default value: "prime256v1"
+		key_file				 String
+		key_length			 Integer # default value: 2048
+		key_pass				 String
+		key_type				 String # default value: "ec"
+		mode						 Integer, String
+		org							 String
+		org_unit				 String
+		owner						 String, Integer
+		path						 String # default value: 'name' unless specified
+		state						 String
+		action					 Symbol # defaults to :create if not specified
+	end
+
+snippet osx_profile
+	osx_profile 'name' do
+		identifier				String
+		profile						String, Hash
+		profile_name			String # default value: 'name' unless specified
+		action						Symbol # defaults to :install if not specified
+	end
+
+snippet package
+	package 'name' do
+		allow_downgrade						 true, false # Yum, RPM packages only
+		arch											 String, Array # Yum packages only
+		default_release						 String # Apt packages only
+		flush_cache								 Array
+		gem_binary								 String
+		homebrew_user							 String, Integer # Homebrew packages only
+		notifies									 # see description
+		options										 String
+		package_name							 String, Array # defaults to 'name' if not specified
+		response_file							 String # Apt packages only
+		response_file_variables		 Hash # Apt packages only
+		source										 String
+		subscribes								 # see description
+		timeout										 String, Integer
+		version										 String, Array
+		action										 Symbol # defaults to :install if not specified
+	end
+
+snippet pacman_package
+	pacman_package 'name' do
+		options						String
+		package_name			String
+		source						String
+		timeout						String, Integer
+		version						String, Array
+		action						Symbol # defaults to :install if not specified
+	end
+
+snippet paludis_package
+	paludis_package 'name' do
+		options						String
+		package_name			String
+		source						String
+		timeout						Integer # default value: 3600
+		version						String
+		action						Symbol # defaults to :install if not specified
+	end
+
+snippet perl
+	perl 'name' do
+		code											 String
+		creates										 String
+		cwd												 String
+		environment								 Hash
+		flags											 String
+		group											 String, Integer
+		notifies									 # see description
+		path											 Array
+		returns										 Integer, Array
+		subscribes								 # see description
+		timeout										 Integer, Float
+		user											 String, Integer
+		umask											 String, Integer
+		action										 Symbol # defaults to :run if not specified
+	end
+
+snippet plist
+	plist 'name' do
+		encoding			String # default value: "binary"
+		entry					String
+		group					String # default value: "wheel"
+		mode					String, Integer
+		owner					String # default value: "root"
+		path					String # default value: 'name' unless specified
+		value					true, false, String, Integer, Float, Hash
+		action				Symbol # defaults to :set if not specified
+	end
+
+snippet portage_package
+	portage_package 'name' do
+		options						String
+		package_name			String
+		source						String
+		timeout						String, Integer # default value: 3600
+		version						String
+		action						Symbol # defaults to :install if not specified
+	end
+
+snippet powershell_package_source
+	powershell_package_source 'name' do
+		provider_name								 String # default value: "NuGet"
+		publish_location						 String
+		script_publish_location			 String
+		script_source_location			 String
+		source_name									 String # default value: 'name' unless specified
+		trusted											 true, false # default value: false
+		url													 String
+		action											 Symbol # defaults to :register if not specified
+	end
+
+snippet powershell_script
+	powershell_script 'name' do
+		code												String
+		command											String, Array # default value: 'name' unless specified
+		convert_boolean_return			true, false # default value: false
+		creates											String
+		cwd													String
+		domain											String
+		elevated										true, false # default value: false
+		environment									Hash
+		flags												String
+		group												String, Integer
+		input												String
+		interpreter									String # default value: "powershell"
+		live_stream									true, false # default value: false
+		password										String
+		returns											Integer, Array # default value: 0
+		sensitive										true, false
+		timeout											Integer, String, Float # default value: 3600
+		user												String, Integer
+		action											Symbol # defaults to :run if not specified
+	end
+
+snippet python
+	python 'name' do
+		code						 String
+		command					 String # default value: 'name' unless specified
+		creates					 String
+		cwd							 String
+		default_env			 true, false # default value: false
+		domain					 String
+		elevated				 true, false # default value: false
+		environment			 Hash
+		flags						 String
+		group						 String, Integer
+		interpreter			 String
+		live_stream			 true, false # default value: false
+		password				 String
+		returns					 Integer, Array # default value: 0
+		sensitive				 true, false # default value: "True if the password property is set. False otherwise."
+		timeout					 Integer, Float
+		umask						 String, Integer
+		user						 String, Integer
+		action					 Symbol # defaults to :run if not specified
+	end
+
+snippet reboot
+	reboot 'name' do
+		delay_mins			Integer # default value: 0
+		reason					String # default value: "Reboot by Chef Infra Client"
+		action					Symbol # defaults to :nothing if not specified
+	end
+
+snippet remote_directory
+	remote_directory 'name' do
+		cookbook									 String
+		files_backup							 Integer, false # default value: 5
+		files_group								 String, Integer
+		files_mode								 String, Integer # default value: 0644 on *nix systems
+		files_owner								 String, Integer
+		group											 String, Integer
+		inherits									 true, false
+		mode											 String, Integer
+		overwrite									 true, false # default value: true
+		owner											 String, Integer
+		path											 String # default value: 'name' unless specified
+		purge											 true, false
+		recursive									 true, false
+		rights										 Hash
+		source										 String
+		action										 Symbol # defaults to :create if not specified
+	end
+
+snippet remote_file
+	remote_file 'name' do
+		atomic_update							 true, false
+		authentication						 # default value: remote
+		backup										 Integer, false # default value: 5
+		checksum									 String
+		content										 String, nil
+		diff											 String, nil
+		force_unlink							 true, false # default value: false
+		ftp_active_mode						 true, false # default value: false
+		group											 String, Integer
+		headers										 Hash
+		inherits									 true, false
+		manage_symlink_source			 true, false
+		mode											 String, Integer
+		notifies									 # see description
+		owner											 String, Integer
+		path											 String # defaults to 'name' if not specified
+		rights										 Hash
+		source										 String, Array
+		subscribes								 # see description
+		use_conditional_get				 true, false
+		verify										 String, Block
+		remote_domain							 String
+		remote_password						 String
+		remote_user								 String
+		show_progress							 true, false # default value: false
+		use_etag									 true, false # default value: true
+		use_last_modified					 true, false # default value: true
+		sensitive									 true, false # default value: false
+		verifications							 Array
+		action										 Symbol # defaults to :create if not specified
+	end
+
+snippet rhsm_errata
+	rhsm_errata 'name' do
+		errata_id			 String # default value: 'name' unless specified
+		action				 Symbol # defaults to :install if not specified
+	end
+
+snippet rhsm_errata_level
+	rhsm_errata_level 'name' do
+		errata_level			String # default value: 'name' unless specified
+		action						Symbol # defaults to :install if not specified
+	end
+
+snippet rhsm_register
+	rhsm_register 'name' do
+		activation_key						 String, Array
+		auto_attach								 true, false # default value: false
+		environment								 String
+		force											 true, false # default value: false
+		https_for_ca_consumer			 true, false # default value: false
+		install_katello_agent			 true, false # default value: true
+		organization							 String
+		password									 String
+		satellite_host						 String
+		system_name								 String
+		username									 String
+		action										 Symbol # defaults to :register if not specified
+	end
+
+snippet rhsm_repo
+	rhsm_repo 'name' do
+		repo_name			 String # default value: 'name' unless specified
+		action				 Symbol # defaults to :enable if not specified
+	end
+
+snippet rhsm_subscription
+	rhsm_subscription 'name' do
+		pool_id			 String # default value: 'name' unless specified
+		action			 Symbol # defaults to :attach if not specified
+	end
+
+snippet route
+	route 'name' do
+		comment					String
+		device					String
+		gateway					String
+		metric					Integer
+		netmask					String
+		route_type			Symbol, String # default value: :host
+		target					String # default value: 'name' unless specified
+		action					Symbol # defaults to :add if not specified
+	end
+
+snippet rpm_package
+	rpm_package 'name' do
+		allow_downgrade			 true, false # default value: true
+		options							 String, Array
+		package_name				 String
+		source							 String
+		timeout							 String, Integer
+		version							 String
+		action							 Symbol # defaults to :install if not specified
+	end
+
+snippet ruby
+	ruby 'name' do
+		code											 String
+		creates										 String
+		cwd												 String
+		environment								 Hash
+		flags											 String
+		group											 String, Integer
+		path											 Array
+		returns										 Integer, Array
+		timeout										 Integer, Float
+		user											 String, Integer
+		umask											 String, Integer
+		action										 Symbol # defaults to :run if not specified
+	end
+
+snippet ruby_block
+	ruby_block 'name' do
+		block											 Block
+		block_name								 String # defaults to 'name' if not specified
+		action										 Symbol # defaults to :run if not specified
+	end
+
+snippet script
+	script 'name' do
+		code											 String
+		creates										 String
+		cwd												 String
+		environment								 Hash
+		flags											 String
+		group											 String, Integer
+		interpreter								 String
+		path											 Array
+		returns										 Integer, Array
+		timeout										 Integer, Float
+		user											 String
+		password									 String
+		domain										 String
+		umask											 String, Integer
+		action										 Symbol # defaults to :run if not specified
+	end
+
+snippet service
+	service 'name' do
+		init_command				 String
+		options							 Array, String
+		parameters					 Hash
+		pattern							 String
+		priority						 Integer, String, Hash
+		reload_command			 String, false
+		restart_command			 String, false
+		run_levels					 Array
+		service_name				 String # default value: 'name' unless specified
+		start_command				 String, false
+		status_command			 String, false
+		stop_command				 String, false
+		supports						 Hash # default value: {"restart"=>nil, "reload"=>nil, "status"=>nil}
+		timeout							 Integer # default value: 900
+		user								 String
+		action							 Symbol # defaults to :nothing if not specified
+	end
+
+snippet smartos_package
+	smartos_package 'name' do
+		options						String, Array
+		package_name			String
+		source						String
+		timeout						String, Integer
+		version						String
+		action						Symbol # defaults to :install if not specified
+	end
+
+snippet snap_package
+	snap_package 'name' do
+		channel						String # default value: "stable"
+		options						String, Array
+		package_name			String, Array
+		source						String
+		timeout						String, Integer
+		version						String, Array
+		action						Symbol # defaults to :install if not specified
+	end
+
+snippet solaris_package
+	solaris_package 'name' do
+		options						String, Array
+		package_name			String
+		source						String
+		timeout						String, Integer
+		version						String
+		action						Symbol # defaults to :install if not specified
+	end
+
+snippet ssh_known_hosts_entry
+	ssh_known_hosts_entry 'name' do
+		file_location			 String # default value: "/etc/ssh/ssh_known_hosts"
+		group							 String, Integer
+		hash_entries			 true, false # default value: false
+		host							 String # default value: 'name' unless specified
+		key								 String
+		key_type					 String # default value: "rsa"
+		mode							 String # default value: "0644"
+		owner							 String, Integer # default value: "root"
+		port							 Integer # default value: 22
+		timeout						 Integer # default value: 30
+		action						 Symbol # defaults to :create if not specified
+	end
+
+snippet subversion
+	subversion 'name' do
+		destination				 String # default value: 'name' unless specified
+		environment				 Hash
+		group							 String, Integer
+		repository				 String
+		revision					 String # default value: "HEAD"
+		svn_arguments			 String, false # default value: "--no-auth-cache"
+		svn_binary				 String
+		svn_info_args			 String, false # default value: "--no-auth-cache"
+		svn_password			 String
+		svn_username			 String
+		timeout						 Integer
+		user							 String, Integer
+		action						 Symbol # defaults to :sync if not specified
+	end
+
+snippet sudo
+	sudo 'name' do
+		command_aliases				 Array # default value: []
+		commands							 Array # default value: ["ALL"]
+		config_prefix					 String # default value: "Prefix values based on the node's platform"
+		defaults							 Array # default value: []
+		env_keep_add					 Array # default value: []
+		env_keep_subtract			 Array # default value: []
+		filename							 String # default value: 'name' unless specified
+		groups								 String, Array # default value: []
+		host									 String # default value: "ALL"
+		noexec								 true, false # default value: false
+		nopasswd							 true, false # default value: false
+		runas									 String # default value: "ALL"
+		setenv								 true, false # default value: false
+		template							 String
+		users									 String, Array # default value: []
+		variables							 Hash
+		visudo_binary					 String # default value: "/usr/sbin/visudo"
+		action								 Symbol # defaults to :create if not specified
+	end
+
+snippet swap_file
+	swap_file 'name' do
+		path						String # default value: 'name' unless specified
+		persist					true, false # default value: false
+		size						Integer
+		swappiness			Integer
+		timeout					Integer # default value: 600
+		action					Symbol # defaults to :create if not specified
+	end
+
+snippet sysctl
+	sysctl 'name' do
+		comment						Array, String # default value: []
+		conf_dir					String # default value: "/etc/sysctl.d"
+		ignore_error			true, false # default value: false
+		key								String # default value: 'name' unless specified
+		value							Array, String, Integer, Float
+		action						Symbol # defaults to :apply if not specified
+	end
+
+snippet systemd_unit
+	systemd_unit 'name' do
+		content							 String, Hash
+		triggers_reload			 true, false # default value: true
+		unit_name						 String # default value: 'name' unless specified
+		user								 String
+		verify							 true, false # default value: true
+		action							 Symbol # defaults to :nothing if not specified
+	end
+
+snippet template
+	template 'name' do
+		atomic_update							 true, false
+		backup										 false, Integer
+		cookbook									 String
+		force_unlink							 true, false
+		group											 String, Integer
+		helper(:method)						 Method { String } # see Helpers below
+		helpers(module)						 Module # see Helpers below
+		inherits									 true, false
+		local											 true, false
+		manage_symlink_source			 true, false
+		mode											 String, Integer
+		owner											 String, Integer
+		path											 String # defaults to 'name' if not specified
+		rights										 Hash
+		sensitive									 true, false
+		source										 String, Array
+		variables									 Hash
+		verify										 String, Block
+		action										 Symbol # defaults to :create if not specified
+	end
+
+snippet timezone
+	timezone 'name' do
+		timezone			String # default value: 'name' unless specified
+		action				Symbol # defaults to :set if not specified
+	end
+
+snippet user
+	user 'name' do
+		comment										 String
+		force											 true, false # see description
+		gid												 String, Integer
+		home											 String
+		iterations								 Integer
+		manage_home								 true, false
+		non_unique								 true, false
+		password									 String
+		salt											 String
+		shell											 String
+		system										 true, false
+		uid												 String, Integer
+		username									 String # defaults to 'name' if not specified
+		action										 Symbol # defaults to :create if not specified
+	end
+
+
+snippet user_ulimit
+	user_ulimit 'name' do
+		core_hard_limit						 String, Integer
+		core_limit								 String, Integer
+		core_soft_limit						 String, Integer
+		filehandle_hard_limit			 String, Integer
+		filehandle_limit					 String, Integer
+		filehandle_soft_limit			 String, Integer
+		filename									 String
+		memory_limit							 String, Integer
+		process_hard_limit				 String, Integer
+		process_limit							 String, Integer
+		process_soft_limit				 String, Integer
+		rtprio_hard_limit					 String, Integer
+		rtprio_limit							 String, Integer
+		rtprio_soft_limit					 String, Integer
+		stack_hard_limit					 String, Integer
+		stack_limit								 String, Integer
+		stack_soft_limit					 String, Integer
+		username									 String # default value: 'name' unless specified
+		virt_limit								 String, Integer
+		action										 Symbol # defaults to :create if not specified
+	end
+
+snippet windows_ad_join
+	windows_ad_join 'name' do
+		domain_name					 String # default value: 'name' unless specified
+		domain_password			 String
+		domain_user					 String
+		new_hostname				 String
+		ou_path							 String
+		reboot							 Symbol # default value: :immediate
+		reboot_delay				 Integer # default value: 0
+		workgroup_name			 String
+		action							 Symbol # defaults to :join if not specified
+	end
+
+snippet windows_audit_policy
+	windows_audit_policy 'name' do
+		audit_base_directories			 true, false
+		audit_base_objects					 true, false
+		crash_on_audit_fail					 true, false
+		exclude_user								 String
+		failure											 true, false
+		full_privilege_auditing			 true, false
+		include_user								 String
+		subcategory									 String, Array
+		success											 true, false
+		action											 Symbol # defaults to :set if not specified
+	end
+
+snippet windows_auto_run
+	windows_auto_run 'name' do
+		args							String
+		path							String
+		program_name			String # default value: 'name' unless specified
+		root							Symbol # default value: :machine
+		action						Symbol # defaults to :create if not specified
+	end
+
+snippet windows_certificate
+	windows_certificate 'name' do
+		cert_path						 String
+		exportable					 true, false # default value: false
+		pfx_password				 String
+		private_key_acl			 Array
+		source							 String # default value: 'name' unless specified
+		store_name					 String # default value: "MY"
+		user_store					 true, false # default value: false
+		action							 Symbol # defaults to :create if not specified
+	end
+
+snippet windows_dfs_folder
+	windows_dfs_folder 'name' do
+		description					String
+		folder_path					String # default value: 'name' unless specified
+		namespace_name			String
+		target_path					String
+		action							Symbol # defaults to :create if not specified
+	end
+
+snippet windows_dfs_namespace
+	windows_dfs_namespace 'name' do
+		change_users				Array # default value: []
+		description					String
+		full_users					Array # default value: ["BUILTIN\\administrators"]
+		namespace_name			String # default value: 'name' unless specified
+		read_users					Array # default value: []
+		root								String # default value: "C:\\DFSRoots"
+		action							Symbol # defaults to :create if not specified
+	end
+
+snippet windows_dfs_server
+	windows_dfs_server 'name' do
+		enable_site_costed_referrals			true, false # default value: false
+		ldap_timeout_secs									Integer # default value: 30
+		prefer_login_dc										true, false # default value: false
+		sync_interval_secs								Integer # default value: 3600
+		use_fqdn													true, false # default value: false
+		action														Symbol # defaults to :configure if not specified
+	end
+
+snippet windows_dns_record
+	windows_dns_record 'name' do
+		dns_server			 String # default value: "localhost"
+		record_name			 String # default value: 'name' unless specified
+		record_type			 String # default value: "ARecord"
+		target					 String
+		zone						 String
+		action					 Symbol # defaults to :create if not specified
+	end
+
+snippet windows_dns_zone
+	windows_dns_zone 'name' do
+		replication_scope			 String # default value: "Domain"
+		server_type						 String # default value: "Domain"
+		zone_name							 String # default value: 'name' unless specified
+		action								 Symbol # defaults to :create if not specified
+	end
+
+snippet windows_env
+	windows_env 'name' do
+		delim					String, false
+		key_name			String # default value: 'name' unless specified
+		user					String # default value: "<System>"
+		value					String
+		action				Symbol # defaults to :create if not specified
+	end
+
+snippet windows_feature
+	windows_feature 'name' do
+		all										true, false # default value: false
+		feature_name					Array, String # default value: 'name' unless specified
+		install_method				Symbol # default value: :windows_feature_dism
+		management_tools			true, false # default value: false
+		source								String
+		timeout								Integer # default value: 600
+		action								Symbol # defaults to :install if not specified
+	end
+
+snippet windows_feature_dism
+	windows_feature_dism 'name' do
+		all								true, false # default value: false
+		feature_name			Array, String # default value: 'name' unless specified
+		source						String
+		timeout						Integer # default value: 600
+		action						Symbol # defaults to :install if not specified
+	end
+
+snippet windows_feature_powershell
+	windows_feature_powershell 'name' do
+		all										true, false # default value: false
+		feature_name					Array, String # default value: 'name' unless specified
+		management_tools			true, false # default value: false
+		source								String
+		timeout								Integer # default value: 600
+		action								Symbol # defaults to :install if not specified
+	end
+
+snippet windows_firewall_profile
+	windows_firewall_profile 'name' do
+		allow_inbound_rules							true, false, String
+		allow_local_firewall_rules			true, false, String
+		allow_local_ipsec_rules					true, false, String
+		allow_unicast_response					true, false, String
+		allow_user_apps									true, false, String
+		allow_user_ports								true, false, String
+		default_inbound_action					String
+		default_outbound_action					String
+		display_notification						true, false, String
+		profile													String # default value: 'name' unless specified
+		action													Symbol # defaults to :enable if not specified
+	end
+
+snippet windows_firewall_rule
+	windows_firewall_rule 'name' do
+		description					 String
+		direction						 Symbol, String # default value: :inbound
+		displayname					 String # default value: The rule_name property value.
+		enabled							 true, false # default value: true
+		firewall_action			 Symbol, String # default value: :allow
+		group								 String
+		icmp_type						 String, Integer # default value: "Any"
+		interface_type			 Symbol, String # default value: :any
+		local_address				 String
+		local_port					 String, Integer, Array
+		profile							 Symbol, String, Array # default value: :any
+		program							 String
+		protocol						 String # default value: "TCP"
+		remote_address			 String
+		remote_port					 String, Integer, Array
+		rule_name						 String # default value: 'name' unless specified
+		service							 String
+		action							 Symbol # defaults to :create if not specified
+	end
+
+snippet windows_font
+	windows_font 'name' do
+		font_name			 String # default value: 'name' unless specified
+		source				 String
+		action				 Symbol # defaults to :install if not specified
+	end
+
+snippet windows_package
+	windows_package 'name' do
+		checksum										String
+		installer_type							Symbol
+		options											String
+		package_name								String
+		remote_file_attributes			Hash
+		returns											String, Integer, Array
+		source											String # default value: "The resource block's name"
+		timeout											String, Integer # default value: "600 (seconds)"
+		version											String
+		action											Symbol # defaults to :install if not specified
+	end
+
+snippet windows_pagefile
+	windows_pagefile 'name' do
+		automatic_managed			 true, false # default value: false
+		initial_size					 Integer
+		maximum_size					 Integer
+		path									 String # default value: 'name' unless specified
+		system_managed				 true, false
+		action								 Symbol # defaults to :set if not specified
+	end
+
+snippet windows_path
+	windows_path 'name' do
+		path			String # default value: 'name' unless specified
+		action		Symbol # defaults to :add if not specified
+	end
+
+snippet windows_printer
+	windows_printer 'name' do
+		comment						String
+		default						true, false # default value: false
+		device_id					String # default value: 'name' unless specified
+		driver_name				String
+		ipv4_address			String
+		location					String
+		share_name				String
+		shared						true, false # default value: false
+		action						Symbol # defaults to :create if not specified
+	end
+
+snippet windows_printer_port
+	windows_printer_port 'name' do
+		ipv4_address					String # default value: 'name' unless specified
+		port_description			String
+		port_name							String
+		port_number						Integer # default value: 9100
+		port_protocol					Integer # default value: 1
+		snmp_enabled					true, false # default value: false
+		action								Symbol # defaults to :create if not specified
+	end
+
+snippet windows_security_policy
+	windows_security_policy 'name' do
+		secoption			 String # default value: 'name' unless specified
+		secvalue			 String
+		action				 Symbol # defaults to :set if not specified
+	end
+
+snippet windows_service
+	windows_service 'name' do
+		binary_path_name			String
+		delayed_start					true, false # default value: false
+		dependencies					String, Array
+		description						String
+		desired_access				Integer # default value: 983551
+		display_name					String
+		error_control					Integer # default value: 1
+		init_command					String
+		load_order_group			String
+		pattern								String
+		reload_command				String, false
+		restart_command				String, false
+		run_as_password				String
+		run_as_user						String # default value: "LocalSystem"
+		service_name					String # default value: 'name' unless specified
+		service_type					Integer # default value: "SERVICE_WIN32_OWN_PROCESS"
+		start_command					String, false
+		startup_type					Symbol # default value: :automatic
+		status_command				String, false
+		stop_command					String, false
+		supports							Hash # default value: {"restart"=>nil, "reload"=>nil, "status"=>nil}
+		timeout								Integer
+		action								Symbol # defaults to :nothing if not specified
+	end
+
+snippet windows_share
+	windows_share 'name' do
+		ca_timeout									Integer # default value: 0
+		change_users								Array # default value: []
+		concurrent_user_limit				Integer # default value: 0
+		continuously_available			true, false # default value: false
+		description									String
+		encrypt_data								true, false # default value: false
+		full_users									Array # default value: []
+		path												String
+		read_users									Array # default value: []
+		scope_name									String # default value: "*"
+		share_name									String # default value: 'name' unless specified
+		temporary										true, false # default value: false
+		action											Symbol # defaults to :create if not specified
+	end
+
+snippet windows_shortcut
+	windows_shortcut 'name' do
+		arguments					 String
+		cwd								 String
+		description				 String
+		iconlocation			 String
+		shortcut_name			 String # default value: 'name' unless specified
+		target						 String
+		action						 Symbol # defaults to :create if not specified
+	end
+
+snippet windows_task
+	windows_task 'name' do
+		command															String
+		cwd																	String
+		day																	String, Integer
+		description													String
+		disallow_start_if_on_batteries			true, false # default value: false
+		execution_time_limit								String, Integer # default value: "PT72H (72 hours in ISO8601 duration format)"
+		force																true, false # default value: false
+		frequency														Symbol
+		frequency_modifier									Integer, String # default value: 1
+		idle_time														Integer
+		interactive_enabled									true, false # default value: false
+		minutes_duration										String, Integer
+		minutes_interval										String, Integer
+		months															String
+		password														String
+		priority														Integer # default value: 7
+		random_delay												String, Integer
+		run_level														Symbol # default value: :limited
+		start_day														String # default value: The current date.
+		start_time													String
+		start_when_available								true, false # default value: false
+		stop_if_going_on_batteries					true, false # default value: false
+		task_name														String # default value: 'name' unless specified
+		user																String # default value: The localized SYSTEM user for the node.
+		action															Symbol # defaults to :create if not specified
+	end
+
+snippet windows_uac
+	windows_uac 'name' do
+		consent_behavior_admins				Symbol # default value: :prompt_for_consent_non_windows_binaries
+		consent_behavior_users				Symbol # default value: :prompt_for_creds
+		detect_installers							true, false
+		enable_uac										true, false # default value: true
+		prompt_on_secure_desktop			true, false # default value: true
+		require_signed_binaries				true, false # default value: false
+		action												Symbol # defaults to :configure if not specified
+	end
+
+snippet windows_user_privilege
+	windows_user_privilege 'name' do
+		principal			 String # default value: 'name' unless specified
+		privilege			 Array, String
+		users					 Array, String
+		action				 Symbol # defaults to :add if not specified
+	end
+
+snippet windows_workgroup
+	windows_workgroup 'name' do
+		password						String
+		reboot							Symbol # default value: :immediate
+		user								String
+		workgroup_name			String # default value: 'name' unless specified
+		action							Symbol # defaults to :join if not specified
+	end
+
+snippet yum_package
+	yum_package 'name' do
+		allow_downgrade			 true, false # default value: true
+		arch								 String, Array
+		flush_cache					 Hash # default value: {"before"=>false, "after"=>false}
+		options							 String, Array
+		package_name				 String, Array
+		source							 String
+		timeout							 String, Integer
+		version							 String, Array
+		yum_binary					 String
+		action							 Symbol # defaults to :install if not specified
+	end
+
+snippet yum_repository
+	yum_repository 'name' do
+		baseurl										 String, Array
+		clean_metadata						 true, false # default value: true
+		cost											 String
+		description								 String # default value: "Yum Repository"
+		enabled										 true, false # default value: true
+		enablegroups							 true, false
+		exclude										 String
+		failovermethod						 String
+		fastestmirror_enabled			 true, false
+		gpgcheck									 true, false # default value: true
+		gpgkey										 String, Array
+		http_caching							 String
+		include_config						 String
+		includepkgs								 String
+		keepalive									 true, false
+		make_cache								 true, false # default value: true
+		max_retries								 String, Integer
+		metadata_expire						 String
+		metalink									 String
+		mirror_expire							 String
+		mirrorlist								 String
+		mirrorlist_expire					 String
+		mode											 String, Integer # default value: "0644"
+		options										 Hash
+		password									 String
+		priority									 String
+		proxy											 String
+		proxy_password						 String
+		proxy_username						 String
+		repo_gpgcheck							 true, false
+		report_instanceid					 true, false
+		reposdir									 String # default value: "/etc/yum.repos.d/"
+		repositoryid							 String # default value: 'name' unless specified
+		skip_if_unavailable				 true, false
+		source										 String
+		sslcacert									 String
+		sslclientcert							 String
+		sslclientkey							 String
+		sslverify									 true, false
+		throttle									 String, Integer
+		timeout										 String
+		username									 String
+		action										 Symbol # defaults to :create if not specified
+	end
+
+snippet zypper_package
+	zypper_package 'name' do
+		allow_downgrade			 true, false # default value: true
+		global_options			 String, Array
+		gpg_check						 true, false # default value: "true"
+		options							 String, Array
+		package_name				 String, Array
+		source							 String
+		timeout							 String, Integer
+		version							 String, Array
+		action							 Symbol # defaults to :install if not specified
+	end
+
+snippet zypper_repository
+	zypper_repository 'name' do
+		autorefresh						 true, false # default value: true
+		baseurl								 String
+		cookbook							 String
+		description						 String
+		enabled								 true, false # default value: true
+		gpgautoimportkeys			 true, false # default value: true
+		gpgcheck							 true, false # default value: true
+		gpgkey								 String
+		keeppackages					 true, false # default value: false
+		mirrorlist						 String
+		mode									 String, Integer # default value: "0644"
+		path									 String
+		priority							 Integer # default value: 99
+		refresh_cache					 true, false # default value: true
+		repo_name							 String # default value: 'name' unless specified
+		source								 String
+		type									 String # default value: "NONE"
+		action								 Symbol # defaults to :create if not specified
+	end

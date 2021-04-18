@@ -1,0 +1,2872 @@
+snippet aide_conf
+	describe aide_conf('path') do
+				its('selection_lines') { should include '/sbin' }
+			end
+
+snippet apache
+	describe apache do
+				its('setting_name') { should cmp 'value' }
+			end
+
+snippet apache_conf
+	describe apache_conf('path') do
+				its('setting_name') { should eq 'value' }
+			end
+
+snippet apt
+	describe apt('path') do
+				it { should exist }
+				it { should be_enabled }
+			end
+
+snippet audit_policy
+	describe audit_policy do
+				its('parameter') { should eq 'value' }
+			end
+
+snippet auditd
+	describe auditd do
+				its('lines') { should include %r(-w /etc/ssh/sshd_config) }
+			end
+
+snippet auditd_conf
+	describe auditd_conf('path') do
+				its('keyword') { should cmp 'value' }
+			end
+
+snippet aws_alb
+	describe aws_alb('arn:aws:elasticloadbalancing') do
+				it { should exist }
+			end
+
+snippet aws_albs
+	describe aws_albs do
+				its('load_balancer_arns') { should include 'arn:aws:elasticloadbalancing' }
+			end
+
+snippet aws_auto_scaling_group
+	describe aws_auto_scaling_group('MyAutoScalingGroup') do
+				it							{ should exist }
+				its('min_size') { should be 1}
+				its('max_size') { should be 4}
+			end
+
+snippet aws_auto_scaling_groups
+	describe aws_auto_scaling_groups do
+				its('names') { should include 'group-name' }
+			end
+
+snippet aws_cloudformation_stack
+	describe aws_cloudformation_stack('stack-name') do
+				it { should exist }
+			end
+
+snippet aws_cloudtrail_trail
+	describe aws_cloudtrail_trail('trail-name') do
+				it { should exist }
+			end
+
+snippet aws_cloudtrail_trails
+	describe aws_cloudtrail_trails do
+				it { should exist }
+			end
+
+snippet aws_cloudwatch_alarm
+	describe aws_cloudwatch_alarm(metric_name: 'my-metric-name', metric_namespace: 'my-metric-namespace') do
+				its('alarm_actions') { should_not be_empty }
+			end
+
+snippet aws_cloudwatch_log_group
+	describe aws_cloudwatch_log_group('my_log_group') do
+				it { should exist }
+			end
+
+snippet aws_cloudwatch_log_metric_filter
+	describe aws_cloudwatch_log_metric_filter(filter_name: 'my-filter', log_group_name: 'my-log-group') do
+				it { should exist }
+			end
+
+snippet aws_config_delivery_channel
+	describe aws_config_delivery_channel('my_channel') do
+				it { should exist }
+			end
+
+snippet aws_config_recorder
+	describe aws_config_recorder('my-recorder') do
+				it { should exist }
+			end
+
+snippet aws_db_subnet_group
+	describe aws_db_subnet_group(db_subnet_group_name: 'subnet-group-name-12345') do
+				it { should exist }
+			end
+
+snippet aws_db_subnet_groups
+	describe aws_db_subnet_groups do
+				its('db_subnet_group_names.count') { should cmp 3 }
+			end
+
+snippet aws_dhcp_options
+	describe aws_dhcp_options('dopt-0123456789abcdefg') do
+				it { should exist }
+			end
+
+snippet aws_dynamodb_table
+	describe aws_dynamodb_table(table_name: 'table-name') do
+				it { should exist }
+			end
+
+snippet aws_ebs_volume
+	describe aws_ebs_volume('vol-01a2349e94458a507') do
+				it { should exist }
+			end
+
+snippet aws_ebs_volumes
+	describe aws_ebs_volumes do
+				its('volume_ids.count') { should cmp 3 }
+			end
+
+snippet aws_ec2_instance
+	describe aws_ec2_instance('i-01a2349e94458a507') do
+				it { should exist }
+			end
+
+snippet aws_ec2_instances
+	describe aws_ec2_instances
+				it { should exist }
+			end
+
+snippet aws_ecr
+	describe aws_ecr(repository_name: aws_ecr_name) do
+					it											 { should exist }
+					its ('repository_name')  { should eq aws_ecr_name }
+				end
+
+snippet aws_ecr_image
+	describe aws_ecr_image(repository_name: 'my-repo', image_tag: 'latest') do
+				it { should exist }
+			end
+
+snippet aws_ecr_images
+	describe aws_ecr_images(repository_name: 'my-repo') do
+				it { should exist }
+			end
+
+snippet aws_ecr_repositories
+	describe aws_ecr_repositories do
+				it { should exist }
+			end
+
+snippet aws_ecr_repository
+	describe aws_ecr_repository(repository_name: 'my-repo') do
+				it { should exist }
+			end
+
+snippet aws_ecs_cluster
+	describe aws_ecs_cluser(cluster_name: 'cluster-8') do
+				it						 { should exist }
+			end
+
+snippet aws_ecs_clusters
+	describe aws_ecs_clusters do
+				its('cluster_names') { should include 'cluster-root' }
+			end
+
+snippet aws_efs_file_system
+	describe aws_efs_file_system(file_system_id: 'fs-12345678') do
+				it												 { should be_encrypted }
+				its('size_in_bytes.value') { should cmp 6144 }
+			end
+
+snippet aws_efs_file_systems
+	describe aws_efs_file_systems
+				it { should exist }
+			end
+
+snippet aws_eks_cluster
+	describe aws_eks_cluster('my-eks') do
+				it { should exist }
+			end
+
+snippet aws_eks_clusters
+	describe aws_eks_clusters do
+				its('names.count') { should cmp 10 }
+			end
+
+snippet aws_elasticache_cluster
+	describe aws_elasticache_cluster(cache_cluster_id: 'my-cluster-123') do
+				it { should exist }
+			end
+
+snippet aws_elasticache_cluster_node
+	describe aws_elasticache_cluster_node(cache_cluster_id: 'my-cluster-123', node_id: '0001') do
+				it { should exist }
+			end
+
+snippet aws_elasticache_clusters
+	describe aws_elasticache_clusters
+				it { should exist }
+			end
+
+snippet aws_elb
+	describe aws_elb('my-elb') do
+				it { should exist }
+			end
+
+snippet aws_elbs
+	describe aws_elbs do
+				its('load_balancer_names') { should include 'elb-name' }
+			end
+
+snippet aws_flow_log
+	describe aws_flow_log(flow_log_id: 'fl-9c718cf5') do
+				it { should exist }
+			end
+
+snippet aws_hosted_zone
+	describe aws_hosted_zone('zone-name') do
+		it { should exist }
+		its ('name_servers.count') { should eq 4 }
+		its ('private_zone') { should be false }
+		its ('record_names') { should include 'sid-james.carry-on.films.com' }
+	end
+
+snippet aws_hosted_zones
+	describe aws_hosted_zones do
+		its('names') { should include ("carry-on.films.com") }
+	end
+
+snippet aws_iam_access_key
+	describe aws_iam_access_key(access_key_id: 'AKIA1111111111111111') do
+				it { should exist }
+			end
+
+snippet aws_iam_access_keys
+	describe aws_iam_access_keys do
+					it										{ should exist }
+					its('access_key_ids') { should include 'AKIA1111111111111111' }
+				end
+
+snippet aws_iam_account_alias
+	describe aws_iam_account_alias do
+				it { should exist }
+			end
+
+snippet aws_iam_group
+	describe aws_iam_group('mygroup') do
+				it { should exist }
+			end
+
+snippet aws_iam_groups
+	describe aws_iam_groups('mygroup') do
+				it { should exist }
+			end
+
+snippet aws_iam_policies
+	describe aws_iam_policies do
+				its('policy_names') { should include('test-policy-1') }
+			end
+
+snippet aws_iam_policy
+	describe aws_iam_policy('AWSSupportAccess') do
+				it { should exist }
+			end
+
+snippet aws_iam_role
+	describe aws_iam_role(role_name: 'my-role') do
+					it { should exist }
+			end
+
+snippet aws_iam_roles
+	describe aws_iam_roles do
+				it { should exist }
+			end
+
+snippet aws_iam_root_user
+	describe aws_iam_root_user do
+					it { should exist }
+			end
+
+snippet aws_iam_saml_provider
+	describe aws_iam_saml_provider('arn:aws:iam::123456789012:saml-provider/FANCY') do
+					it { should exist }
+			end
+
+snippet aws_iam_saml_providers
+	describe aws_iam_saml_providers do
+				it { should exist }
+			end
+
+snippet aws_iam_user
+	describe aws_iam_user(user_name: 'psmith') do
+				it { should exist }
+			end
+
+snippet aws_iam_users
+	describe aws_iam_users do
+				its('usernames') { should include 'payroll-admin' }
+			end
+
+snippet aws_internet_gateway
+	describe aws_internet_gateway(id: 'igw-abc0123456789deff') do
+				it { should exist }
+			end
+
+snippet aws_internet_gateways
+	describe aws_internet_gateways do
+				it { should exist }
+			end
+
+snippet aws_kms_key
+	describe aws_kms_key('arn:aws:kms:us-east-1::key/4321dcba-21io-23de-85he-ab0987654321') do
+				it { should exist }
+			end
+
+snippet aws_kms_keys
+	describe aws_kms_keys do
+				its('entries.count') { should cmp 10 }
+			end
+
+snippet aws_lambda
+	describe aws_lambda do
+		it { should exist}
+		its ('handler') { should eq 'main.on_event'}
+		its ('version') { should eq '$LATEST' }
+		its ('runtime') { should eq 'python3.7' }
+	end
+
+snippet aws_lambdas
+	describe aws_lambdas do
+		its('count') { should eq 20 }
+	end
+
+snippet aws_launch_configuration
+	describe aws_launch_configuration('my-config') do
+				it							{ should exist }
+				its('key_name') { should be 'my-key-name' }
+			end
+
+snippet aws_nat_gateway
+	describe aws_nat_gateway(id: 'nat-abc0123456789deff') do
+				it { should exist }
+			end
+
+snippet aws_nat_gateways
+	describe aws_nat_gateways do
+				it { should exist }
+			end
+
+snippet aws_organizations_member
+	describe aws_organizations_member do
+					it { should exist }
+			end
+
+snippet aws_rds_cluster
+	describe aws_rds_cluster('test-cluster-id') do
+				it { should exist }
+			end
+
+snippet aws_rds_clusters
+	describe aws_rds_clusters do
+				its('db_cluster_identifiers.count') { should cmp 3 }
+			end
+
+snippet aws_rds_instance
+	describe aws_rds_instance('test-instance-id') do
+				it { should exist }
+			end
+
+snippet aws_rds_instances
+	describe aws_rds_instances do
+				its('db_instance_identifiers.count') { should cmp 3 }
+			end
+
+snippet aws_region
+	describe aws_region('eu-west-2') do
+				it { should exist }
+			end
+
+snippet aws_regions
+	describe aws_regions.where { region_name: 'us-not-there-1' } do
+				it { should_not exist }
+			end
+
+snippet aws_route_table
+	describe aws_route_table('rtb-123abcde') do
+				it { should exist }
+			end
+
+snippet aws_route_tables
+	describe aws_route_tables do
+				it { should exist }
+			end
+
+snippet aws_s3_bucket
+	describe aws_s3_bucket(bucket_name: 'test_bucket') do
+				it { should exist }
+				it { should_not be_public }
+			end
+
+snippet aws_s3_bucket_object
+	describe aws_s3_bucket_object(bucket_name: 'test_bucket', key: 'test_object_key') do
+				it { should exist }
+				it { should_not be_public }
+			end
+
+snippet aws_s3_buckets
+	describe aws_s3_buckets do
+				it { should exist }
+			end
+
+snippet aws_security_group
+	describe aws_security_group('sg-12345678') do
+				it { should exist }
+			end
+
+snippet aws_security_groups
+	describe aws_security_groups do
+				its('entries.count') { should be > 1 }
+			end
+
+snippet aws_sns_subscription
+	describe aws_sns_subscription('arn:aws:sns:us-east-1::test-topic-01:b214aff5-a2c7-438f-a753-8494493f2ff6') do
+				it { should exist }
+			end
+
+snippet aws_sns_topic
+	describe aws_sns_topic('arn:aws:sns:*::my-topic-name') do
+				it { should exist }
+			end
+
+snippet aws_sns_topics
+	describe aws_sns_topics do
+				its('topic_arns') { should include 'arn:aws:sns:us-east-1:333344445555:MyTopic' }
+			end
+
+snippet aws_sqs_queue
+	describe aws_sqs_queue(queue_url: 'https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueue') do
+				it { should exist }
+			end
+
+snippet aws_sqs_queues
+	describe aws_sqs_queues() do
+				it { should exist }
+			end
+
+snippet aws_ssm_parameter
+	describe aws_ssm_parameter(name: 'ssm-parameter-name-1234') do
+				it { should exist }
+			end
+
+snippet aws_ssm_parameters
+	describe aws_ssm_parameters do
+				its('names.count') { should cmp 3 }
+			end
+
+snippet aws_sts_caller_identity
+	describe aws_sts_caller_identity do
+				it { should exist }
+			end
+
+snippet aws_subnet
+	describe aws_subnet(subnet_id: 'subnet-1234567') do
+				it { should exist }
+			end
+
+snippet aws_subnets
+	describe aws_subnets.where(vpc_id: 'vpc-12345678') do
+				its('subnet_ids') { should include 'subnet-12345678' }
+				its('subnet_ids') { should include 'subnet-98765432' }
+			end
+
+snippet aws_transit_gateway
+	describe aws_transit_gateway(transit_gateway_id: 'tgw-1234567') do
+				it { should exist }
+			end
+
+snippet aws_vpc
+	describe aws_vpc do
+				it { should exist }
+			end
+
+snippet aws_vpcs
+	describe aws_vpcs do
+				it { should exist }
+			end
+
+snippet azure_generic_resource
+	describe azure_generic_resource(group_name: 'MyResourceGroup', name: 'MyResource') do
+				its('property') { should eq 'value' }
+			end
+
+snippet azure_resource_group
+	describe azure_resource_group(name: 'MyResourceGroup') do
+				its('property') { should eq 'value' }
+			end
+
+snippet azure_virtual_machine
+	describe azure_virtual_machine(group_name: 'MyResourceGroup', name: 'MyVM') do
+				its('property') { should eq 'value' }
+			end
+
+snippet azure_virtual_machine_data_disk
+	describe azure_virtual_machine_data_disk(group_name: 'InSpec-Azure', name: 'MyVM') do
+				its('property') { should eq 'value' }
+			end
+
+snippet azurerm_ad_user
+	describe azurerm_ad_user(user_id: 'someUserId') do
+				it { should exist }
+			end
+
+snippet azurerm_ad_users
+	describe azurerm_ad_users do
+				...
+			end
+
+snippet azurerm_aks_cluster
+	describe azurerm_aks_cluster(resource_group: 'example', name: 'ClusterName') do
+				...
+			end
+
+snippet azurerm_aks_clusters
+	describe azurerm_aks_clusters(resource_group: 'ExampleGroup') do
+				...
+			end
+
+snippet azurerm_cosmosdb_database_account
+	describe azurerm_cosmosdb_database_account(resource_group: 'my-rg', cosmosdb_database_account 'my-cosmos-db') do
+				it { should exist }
+			end
+
+snippet azurerm_event_hub_authorization_rule
+	describe azurerm_event_hub_authorization_rule(resource_group: 'my-rg', namespace_name 'my-event-hub-ns', event_hub_name: 'myeventhub', authorization_rule_name: 'my-auth-rule') do
+				it { should exist }
+			end
+
+snippet azurerm_event_hub_event_hub
+	describe azurerm_event_hub_event_hub(resource_group: 'my-rg', namespace_name 'my-event-hub-ns', event_hub_name 'myeventhub') do
+				it { should exist }
+			end
+
+snippet azurerm_event_hub_namespace
+	describe azurerm_event_hub_namespace(resource_group: 'my-rg', namespace_name 'my-event-hub-ns') do
+				it { should exist }
+			end
+
+snippet azurerm_iothub_event_hub_consumer_group
+	describe azurerm_iothub_event_hub_consumer_group(resource_group: 'my-rg', resource_name 'my-iot-hub', event_hub_endpoint: 'myeventhub', consumer_group: 'my-consumer-group') do
+				it { should exist }
+			end
+
+snippet azurerm_iothub_event_hub_consumer_groups
+	describe azurerm_iothub_event_hub_consumer_groups(resource_group: 'my-rg', resource_name 'my-iot-hub', event_hub_endpoint: 'myeventhub') do
+				its('names') { should include "my-consumer-group"}
+				its('types') { should include 'Microsoft.Devices/IotHubs/EventHubEndpoints/ConsumerGroups' }
+			end
+
+snippet azurerm_key_vault
+	describe azurerm_key_vault(resource_group: 'inspec-resource-group', vault_name: 'vault-101') do
+				it						{ should exist }
+				its('name')		{ should eq('vault-101') }
+			end
+
+snippet azurerm_key_vault_key
+	describe azurerm_key_vault_key('vault-101', 'secret-key') do
+				its('key.kid')						{ should_not be_nil }
+				its('attributes.enabled') { should eq true }
+			end
+
+snippet azurerm_key_vault_keys
+	describe azurerm_key_vault_keys('my-vault') do
+				...
+			end
+
+snippet azurerm_key_vault_secret
+	describe azurerm_key_vault_secret('vault-101', 'secret-101') do
+					it					 { should exist }
+					its('value') { should_not be_nil }
+			end
+
+snippet azurerm_key_vault_secrets
+	describe azurerm_key_vault_secrets('my-vault') do
+				...
+			end
+
+snippet azurerm_key_vaults
+	describe azurerm_key_vaults(resource_group: 'my-rg') do
+				...
+			end
+
+snippet azurerm_load_balancer
+	describe azurerm_load_balancer(resource_group: 'inspec-resource-group-9', loadbalancer_name: 'example_lb') do
+				it { should exist }
+			end
+
+snippet azurerm_load_balancers
+	describe azurerm_load_balancer do
+				...
+			end
+
+snippet azurerm_locks
+	describe azurerm_locks(resource_group: 'rg', resource_name: 'my-vm', resource_type: 'Microsoft.Compute/virtualMachines') do
+				...
+			end
+
+snippet azurerm_management_group
+	describe azurerm_management_group(group_id: 'MyGroupId') do
+				...
+			end
+
+snippet azurerm_management_groups
+	describe azurerm_management_groups do
+				...
+			end
+
+snippet azurerm_monitor_activity_log_alert
+	describe azurerm_monitor_activity_log_alert(resource_group: 'example', name: 'AlertName') do
+				...
+			end
+
+snippet azurerm_monitor_activity_log_alerts
+	describe azurerm_monitor_activity_log_alerts do
+				...
+			end
+
+snippet azurerm_monitor_log_profile
+	describe azurerm_monitor_log_profile(name: 'default') do
+				...
+			end
+
+snippet azurerm_monitor_log_profiles
+	describe azurerm_monitor_log_profiles do
+				...
+			end
+
+snippet azurerm_mysql_database
+	describe azurerm_mysql_database(resource_group: 'inspec-rg', server_name: 'customer_server', database_name: 'order-db') do
+				it { should exist }
+			end
+
+snippet azurerm_mysql_databases
+	describe azurerm_mysql_databases(resource_group: ..., server_name: ...) do
+				...
+			end
+
+snippet azurerm_mysql_server
+	describe azurerm_mysql_server(resource_group: 'inspec-resource-group-9', server_name: 'example_server') do
+				it { should exist }
+			end
+
+snippet azurerm_mysql_servers
+	describe azurerm_mysql_servers do
+				...
+			end
+
+snippet azurerm_network_interface
+	describe azurerm_network_interface(resource_group: 'inspec-resource-group-9',name: 'example-nic-name') do
+				it { should exist }
+			end
+
+snippet azurerm_network_interfaces
+	describe azurerm_network_interfaces do
+				...
+			end
+
+snippet azurerm_network_security_group
+	describe azurerm_network_security_group(resource_group: 'example', name: 'GroupName') do
+				...
+			end
+
+snippet azurerm_network_security_groups
+	describe azurerm_network_security_groups(resource_group: 'ExampleGroup') do
+				...
+			end
+
+snippet azurerm_network_watcher
+	describe azurerm_network_watcher(resource_group: 'example', name: 'WatcherName') do
+				...
+			end
+
+snippet azurerm_network_watchers
+	describe azurerm_network_watchers(resource_group: 'example_group') do
+				...
+			end
+
+snippet azurerm_postgresql_database
+	describe azurerm_postgresql_database(resource_group: 'inspec-rg', server_name: 'customer_server', database_name: 'order-db') do
+				it { should exist }
+			end
+
+snippet azurerm_postgresql_databases
+	describe azurerm_postgresql_databases(resource_group: ..., server_name: ...) do
+				...
+			end
+
+snippet azurerm_postgresql_server
+	describe azurerm_postgresql_server(resource_group: 'inspec-resource-group-9', server_name: 'example_server') do
+				it { should exist }
+			end
+
+snippet azurerm_postgresql_servers
+	describe azurerm_postgresql_servers do
+				...
+			end
+
+snippet azurerm_resource_groups
+	describe azurerm_resource_groups do
+				...
+			end
+
+snippet azurerm_role_definition
+	describe azurerm_role_definition(name: 'some-custom-role-name') do
+				...
+			end
+
+snippet azurerm_security_center_policies
+	describe azurerm_security_center_policies do
+				...
+			end
+
+snippet azurerm_security_center_policy
+	describe azurerm_security_center_policy(name: 'default') do
+				...
+			end
+
+snippet azurerm_sql_database
+	describe azurerm_sql_database(resource_group: 'inspec-rg', server_name: 'customer_server', database_name: 'order-db') do
+				it { should exist }
+			end
+
+snippet azurerm_sql_databases
+	describe azurerm_sql_databases(resource_group: ..., server_name: ...) do
+				...
+			end
+
+snippet azurerm_sql_server
+	describe azurerm_sql_server(resource_group: 'inspec-resource-group-9', server_name: 'example_server') do
+				it { should exist }
+			end
+
+snippet azurerm_sql_servers
+	describe azurerm_sql_servers do
+				...
+			end
+
+snippet azurerm_storage_account_blob_container
+	describe azurerm_storage_account_blob_container(resource_group: 'rg', storage_account_name: 'production',
+																											blob_container_name: 'logs') do
+					...
+					...
+			end
+
+snippet azurerm_storage_account_blob_containers
+	describe azurerm_storage_account_blob_containers(resource_group: 'rg', storage_account_name: 'production') do
+					...
+			end
+
+snippet azurerm_subnet
+	describe azurerm_subnet(resource_group: 'MyResourceGroup', vnet: 'MyVnetName', name: 'MySubnetName') do
+				...
+			end
+
+snippet azurerm_subnets
+	describe azurerm_subnets(resource_group: 'MyResourceGroup', vnet: 'MyVnetName') do
+				...
+			end
+
+snippet azurerm_subscription
+	describe azurerm_subscription do
+				...
+			end
+
+snippet azurerm_virtual_machine
+	describe azurerm_virtual_machine(resource_group: 'MyResourceGroup', name: 'MyVmName') do
+				...
+			end
+
+snippet azurerm_virtual_machine_disk
+	describe azurerm_virtual_machine_disk(resource_group: 'MyResourceGroup', name: 'MyDiskName') do
+				...
+			end
+
+snippet azurerm_virtual_machine_disks
+	describe azurerm_virtual_machine_disks do
+				...
+			end
+
+snippet azurerm_virtual_machines
+	describe azurerm_virtual_machines(resource_group: 'MyResourceGroup') do
+				...
+			end
+
+snippet azurerm_virtual_network
+	describe azurerm_virtual_network(resource_group: 'MyResourceGroup', name: 'MyVnetName') do
+				...
+			end
+
+snippet azurerm_virtual_networks
+	describe azurerm_virtual_networks(resource_group: 'MyResourceGroup') do
+				...
+			end
+
+snippet azurerm_webapp
+	describe azurerm_appservice_webapp(resource_group: 'example', name: 'webapp name') do
+				...
+			end
+
+snippet azurerm_webapps
+	describe azurerm_webapps(resource_group: 'ExampleGroup') do
+				...
+			end
+
+snippet bash
+	describe bash('command') do
+				it { should exist }
+				its('property') { should eq 'expected value' }
+			end
+
+snippet bond
+	describe bond('name') do
+				it { should exist }
+			end
+
+snippet bridge
+	describe bridge('br0') do
+				it { should exist }
+				it { should have_interface 'eth0' }
+			end
+
+snippet bsd_service
+	describe bsd_service('service_name') do
+				it { should be_installed }
+				it { should be_enabled }
+				it { should be_running }
+			end
+
+snippet chocolatey_package
+	describe chocolatey_package('name') do
+				it { should be_installed }
+			end
+
+snippet command
+	describe command('command') do
+				it { should exist }
+				its('property') { should eq 'value' }
+			end
+
+snippet cpan
+	describe cpan('package_name') do
+				it { should be_installed }
+			end
+
+snippet cran
+	describe cran('package_name') do
+				it { should be_installed }
+			end
+
+snippet csv
+	describe csv('file') do
+				its('name') { should cmp 'foo' }
+			end
+
+snippet dh_params
+	describe dh_params('/path/to/file.dh_pem') do
+				it { should be_dh_params }
+				it { should be_valid }
+				its('generator') { should eq 2 }
+				its('modulus') { should eq '00:91:a0:15:89:e5:bc:38:93:12:02:fc:...' }
+				its('prime_length') { should eq 2048 }
+				its('pem') { should eq '-----BEGIN DH PARAMETERS...' }
+				its('text') { should eq 'PKCS#3 DH Parameters: (2048 bit)...' }
+			end
+
+snippet directory
+	describe directory('path') do
+				its('property') { should cmp 'value' }
+			end
+
+snippet docker
+	describe docker.containers do
+				its('images') { should_not include 'u12:latest' }
+			end
+
+snippet docker_container
+	describe docker_container('container') do
+				it { should exist }
+				it { should be_running }
+				its('id') { should_not eq '' }
+				its('image') { should eq 'busybox:latest' }
+				its('repo') { should eq 'busybox' }
+				its('tag') { should eq 'latest' }
+				its('ports') { should eq [] }
+				its('command') { should eq 'nc -ll -p 1234 -e /bin/cat' }
+			end
+
+snippet docker_plugin
+	describe docker_plugin('rexray/ebs') do
+				it { should exist }
+				its('id') { should_not eq '0ac30b93ad40' }
+				its('version') { should eq '0.11.1' }
+				it { should be_enabled }
+			end
+
+snippet docker_service
+	describe docker_service('foo') do
+				it { should exist }
+				its('id') { should eq '2ghswegspre1' }
+				its('repo') { should eq 'alpine' }
+				its('tag') { should eq 'latest' }
+			end
+
+snippet elasticsearch
+	describe elasticsearch do
+				its('property') { should cmp 'value' }
+			end
+
+snippet etc_fstab
+	describe etc_fstab.where { device_name == 'value' } do
+				its('mount_point') { should cmp 'hostname' }
+				its('file_system_type') { should cmp 'list' }
+				its('mount_options') { should cmp 'list' }
+				its('dump_options') { should cmp 'list' }
+				its('file_system_options') { should cmp 'list' }
+			end
+
+snippet etc_group
+	describe etc_group('path') do
+				its('property') { should eq 'some_value' }
+			end
+
+snippet etc_hosts
+	describe etc_hosts.where { ip_address == 'value' } do
+				its('primary_name') { should cmp 'hostname' }
+				its('all_host_names') { should cmp 'list' }
+			end
+
+snippet etc_hosts_allow
+	describe etc_hosts_allow.where { daemon == 'value' } do
+				its ('client_list') { should include ['values'] }
+				its ('options') { should include ['values'] }
+			end
+
+snippet etc_hosts_deny
+	describe etc_hosts_deny.where { daemon == 'value' } do
+				its ('client_list') { should include ['values'] }
+				its ('options') { should include ['values'] }
+			end
+
+snippet file
+	describe file('path') do
+				it { should PROPERTY 'value' }
+			end
+
+snippet firewalld
+	describe firewalld do
+				it { should be_running }
+				its('default_zone') { should eq 'public' }
+				it { should have_service_enabled_in_zone('ssh', 'public') }
+				it { should have_rule_enabled('family=ipv4 source address=192.168.0.14 accept', 'public') }
+			end
+
+snippet gem
+	describe gem('gem_package_name', 'gem_binary') do
+				it { should be_installed }
+			end
+
+snippet google_access_context_manager_access_policy
+	describe.one do
+		google_access_context_manager_access_policies(org_id: '190694428152').names.each do |policy_name|
+			describe google_access_context_manager_access_policy(name: policy_name) do
+				it { should exist }
+				its('title') { should cmp 'policytitle' }
+				its('parent') { should match '190694428152' }
+			end
+
+snippet google_access_context_manager_service_perimeter
+	describe.one do
+		google_access_context_manager_access_policies(org_id: '190694428152').names.each do |policy_name|
+			describe google_access_context_manager_service_perimeter(policy_name: policy_name, name: 'restrict_all') do
+				it { should exist }
+				its('title') { should cmp 'restrict_all' }
+				its('status.restricted_services') { should include 'storage.googleapis.com' }
+			end
+
+snippet google_access_context_manager_service_perimeters
+	describe.one do
+		google_access_context_manager_access_policies(org_id: '190694428152').names.each do |policy_name|
+			describe google_access_context_manager_service_perimeters(policy_name: policy_name) do
+				its('names') { should include 'restrict_all' }
+				its('titles') { should include 'restrict_all' }
+			end
+
+snippet google_appengine_standard_app_version
+	describe google_appengine_standard_app_version(project: 'chef-gcp-inspec', location: 'europe-west2', version_id: 'v2', service: 'default') do
+		it { should exist }
+		its('version_id') { should eq 'v2' }
+		its('runtime') { should eq 'nodejs10' }
+	end
+
+snippet google_appengine_standard_app_versions
+	describe google_appengine_standard_app_versions(project: 'chef-gcp-inspec', location: 'europe-west2',service: 'default') do
+		its('runtimes') { should include 'nodejs10' }
+	end
+
+snippet google_bigquery_dataset
+	describe google_bigquery_dataset(project: 'chef-gcp-inspec', name: 'inspec_gcp_dataset') do
+		it { should exist }
+	
+		its('friendly_name') { should eq 'A BigQuery dataset test' }
+		its('location') { should eq 'EU' }
+		its('description') { should eq 'Test BigQuery dataset description' }
+		its('name') { should eq 'inspec_gcp_dataset' }
+		its('default_table_expiration_ms') { should cmp '3600000' }
+	end
+
+snippet google_bigquery_datasets
+	describe google_bigquery_datasets(project: 'chef-gcp-inspec') do
+		its('count') { should be >= 1 }
+		its('friendly_names') { should include 'A BigQuery dataset test' }
+		its('locations') { should include 'EU' }
+	end
+
+snippet google_bigquery_table
+	describe google_bigquery_table(project: 'chef-gcp-inspec', dataset: 'inspec_gcp_dataset', name: 'inspec_gcp_bigquery_table') do
+		it { should exist }
+	
+		its('expiration_time') { should cmp '1738882264000' }
+		its('time_partitioning.type') { should eq 'DAY' }
+		its('description') { should eq 'A BigQuery table' }
+	end
+
+snippet google_bigquery_tables
+	describe.one do
+		google_bigquery_tables(project: 'chef-gcp-inspec', dataset: 'inspec_gcp_dataset').table_references.each do |table_reference|
+			describe google_bigquery_table(project: 'chef-gcp-inspec', dataset: 'inspec_gcp_dataset', name: table_reference.table_id) do
+				its('expiration_time') { should cmp '1738882264000' }
+				its('description') { should eq 'A BigQuery table' }
+			end
+
+snippet google_billing_project_billing_info
+	describe google_billing_project_billing_info(project_id: 'chef-gcp-inspec') do
+		it { should exist }
+	
+		its('billing_account_name') { should eq 'billingAccounts/012345-567890-ABCDEF' }
+		its('billing_enabled') { should eq true }
+	end
+
+snippet google_cloud_scheduler_job
+	describe google_cloud_scheduler_job(project: 'chef-gcp-inspec', region: us-central1, name: 'job-name') do
+		it { should exist }
+	
+		its('description') { should cmp 'A description' }
+		its('schedule') { should cmp '*/8 * * * *' }
+		its('time_zone') { should cmp 'America/New_York' }
+		its('http_target.http_method') { should cmp 'POST' }
+		its('http_target.uri') { should cmp 'https://example.com/ping' }
+	end
+
+snippet google_cloud_scheduler_jobs
+	describe google_cloud_scheduler_job(project: 'chef-gcp-inspec', region: us-central1, name: name) do
+			it { should exist }
+	
+			its('description') { should cmp 'A description' }
+			its('schedule') { should cmp '*/8 * * * *' }
+			its('time_zone') { should cmp 'America/New_York' }
+			its('http_target.http_method') { should cmp 'POST' }
+			its('http_target.uri') { should cmp 'https://example.com/ping' }
+		end
+
+snippet google_cloudbuild_trigger
+	describe google_cloudbuild_triggers(project: 'chef-gcp-inspec') do
+		its('count') { should eq 1 }
+	end
+
+snippet google_cloudbuild_triggers
+	describe google_cloudbuild_triggers(project: 'chef-gcp-inspec') do
+		its('count') { should eq 1 }
+	end
+
+snippet google_cloudfunctions_cloud_function
+	describe google_cloudfunctions_cloud_function(project: 'chef-gcp-inspec', location: 'europe-west1', name: 'inspec-gcp-function') do
+		it { should exist }
+		its('description') { should eq 'A description of the function' }
+		its('available_memory_mb') { should eq '128' }
+		its('https_trigger.url') { should match /\/inspec-gcp-function$/ }
+		its('entry_point') { should eq 'hello' }
+		its('environment_variables') { should include('MY_ENV_VAR' => 'val1') }
+	end
+
+snippet google_cloudfunctions_cloud_functions
+	describe google_cloudfunctions_cloud_functions(project: 'chef-gcp-inspec', location: 'europe-west1') do
+		its('descriptions') { should include 'A description of the function' }
+		its('entry_points') { should include 'hello' }
+	end
+
+snippet google_compute_address
+	describe google_compute_address(project: 'chef-gcp-inspec', location: 'europe-west2', name: 'inspec-gcp-global-address') do
+		it { should exist }
+		its('address') { should eq '10.2.0.3' }
+		its('address_type') { should eq 'INTERNAL' }
+		its('user_count') { should eq 0 }
+	end
+
+snippet google_compute_addresses
+	describe google_compute_addresses(project: 'chef-gcp-inspec', location: 'europe-west2') do
+		its('addresses') { should include '10.2.0.3' }
+		its('names') { should include 'inspec-gcp-global-address' }
+	end
+
+snippet google_compute_autoscalers
+	describe.one do
+		autoscalers.autoscaling_policies.each do |autoscaling_policy|
+			describe autoscaling_policy do
+					its('max_num_replicas') { should eq '5' }
+					its('min_num_replicas') { should eq '1' }
+					its('cool_down_period_sec') { should eq '60' }
+					its('cpu_utilization.utilization_target') { should eq '0.5' }
+			end
+
+snippet google_compute_backend_bucket
+	describe google_compute_backend_bucket(project: 'chef-gcp-inspec', name: 'inspec-gcp-backend-bucket') do
+		it { should exist }
+		its('description') { should eq 'Backend bucket example' }
+		its('enable_cdn') { should be 'true' }
+		its('bucket_name') { should eq 'gcp-inspec-storage-bucket' }
+	end
+
+snippet google_compute_backend_buckets
+	describe google_compute_backend_buckets(project: 'chef-gcp-inspec', name: 'inspec-gcp-backend-bucket') do
+		its('descriptions') { should include 'Backend bucket example' }
+		its('bucket_names') { should include 'gcp-inspec-storage-bucket' }
+	end
+
+snippet google_compute_backend_service
+	describe google_compute_backend_service(project: 'chef-gcp-inspec', name: 'inspec-gcp-backend-service') do
+		it { should exist }
+		its('description') { should eq 'A description' }
+		its('port_name') { should eq 'http' }
+		its('protocol') { should eq 'HTTP' }
+		its('timeout_sec') { should eq '10' }
+		its('enable_cdn') { should eq 'true' }
+	end
+
+snippet google_compute_backend_services
+	describe google_compute_backend_services(project: 'chef-gcp-inspec') do
+		its('count') { should be >= 1 }
+		its('names') { should include 'inspec-gcp-backend-service' }
+		its('port_names') { should include 'http' }
+		its('protocols') { should include 'HTTP' }
+		its('timeout_secs') { should include '10' }
+	end
+
+snippet google_compute_disk
+	describe google_compute_disk(project: 'chef-gcp-inspec', name: 'inspec-snapshot-disk', zone: 'zone') do
+		it { should exist }
+		# Test that the image is the most recent image for the family
+		its('source_image') { should match most_recent_image.self_link }
+		its('type') { should match 'pd-standard' }
+	end
+
+snippet google_compute_disks
+	describe google_compute_disks(project: 'chef-gcp-inspec', zone: 'zone') do
+		it { should exist }
+		its('names') { should include 'inspec-snapshot-disk' }
+		its('source_images') { should include most_recent_image.self_link }
+	end
+
+snippet google_compute_firewall
+	describe google_compute_firewall(project: 'chef-gcp-inspec', name: 'inspec-gcp-firewall') do
+		its('direction') { should cmp 'INGRESS' }
+		its('log_config_enabled?') { should be true }
+		its('source_tags') { should include 'some-tag' }
+	end
+
+snippet google_compute_firewalls
+	describe google_compute_firewalls(project: 'chef-gcp-inspec') do
+		its('count') { should be >= 1 }
+		its('firewall_names') { should include 'inspec-gcp-firewall' }
+		its('firewall_directions') { should include 'INGRESS' }
+	end
+
+snippet google_compute_forwarding_rule
+	describe google_compute_forwarding_rule(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'udp-forwarding-rule') do
+		it { should exist }
+		its('region') { should match 'europe-west2' }
+		its('creation_timestamp') { should be > Time.now - 365*60*60*24*10 }
+		its('load_balancing_scheme') { should match 'EXTERNAL' }
+		its('port_range') { should match "500-500" }
+		its('ip_protocol') { should match "UDP" }
+	end
+
+snippet google_compute_forwarding_rules
+	describe google_compute_forwarding_rules(project: 'chef-gcp-inspec', region: 'europe-west2') do
+		its('forwarding_rule_names') { should include 'udp-forwarding-rule' }
+	end
+
+snippet google_compute_global_address
+	describe google_compute_global_address(project: 'chef-gcp-inspec', name: 'inspec-gcp-global-address') do
+		it { should exist }
+		its('ip_version') { should eq 'IPV6' }
+	end
+
+snippet google_compute_global_addresses
+	describe google_compute_global_addresses(project: 'chef-gcp-inspec', name: 'inspec-gcp-global-address') do
+		its('count') { should be >= 1 }
+		its('names') { should include 'inspec-gcp-global-address' }
+		its('ip_versions') { should include 'IPV6' }
+	end
+
+snippet google_compute_global_forwarding_rule
+	describe google_compute_global_forwarding_rule(project: 'chef-gcp-inspec', name: 'inspec-gcp-global-forwarding-rule') do
+		it { should exist }
+		its('port_range') { should eq '80-80' }
+		its('target') { should	match /\/inspec-gcp-http-proxy$/ }
+	end
+
+snippet google_compute_global_forwarding_rules
+	describe google_compute_global_forwarding_rules(project: 'chef-gcp-inspec') do
+		its('count') { should be >= 1 }
+		its('port_ranges') { should include '80-80' }
+	end
+
+snippet google_compute_health_check
+	describe google_compute_health_check(project: 'chef-gcp-inspec', name: 'inspec-gcp-health-check') do
+		it { should exist }
+		its('timeout_sec') { should eq '10' }
+		its('tcp_health_check.port') { should eq '80' }
+	end
+
+snippet google_compute_health_checks
+	describe google_compute_health_checks(project: 'chef-gcp-inspec') do
+		its('names') { should include 'inspec-gcp-health-check' }
+		its('timeout_secs') { should include '10' }
+	end
+
+snippet google_compute_http_health_check
+	describe google_compute_http_health_check(project: 'chef-gcp-inspec', name: 'inspec-gcp-http-health-check') do
+		it { should exist }
+		its('timeout_sec') { should eq '20' }
+		its('request_path') { should eq '/health_check' }
+		its('check_interval_sec') { should eq '20' }
+	end
+
+snippet google_compute_https_health_check
+	describe google_compute_https_health_check(project: 'chef-gcp-inspec', name: 'inspec-gcp-https-health-check') do
+		it { should exist }
+		its('timeout_sec') { should eq '15' }
+		its('request_path') { should eq '/https_health_check' }
+		its('check_interval_sec') { should eq '15' }
+		its('unhealthy_threshold') { should eq '3' }
+	end
+
+snippet google_compute_https_health_checks
+	describe google_compute_https_health_checks(project: 'chef-gcp-inspec') do
+		its('names') { should include 'inspec-gcp-https-health-check' }
+		its('timeout_secs') { should include '15' }
+		its('check_interval_secs') { should include '15' }
+	end
+
+snippet google_compute_image
+	describe google_compute_image(project: 'chef-gcp-inspec', name: 'inspec-image') do
+		it { should exist }
+		its('disk_size_gb') { should cmp 3 }
+	end
+
+snippet google_compute_instance
+	describe google_compute_instance(project: 'chef-gcp-inspec', zone: 'zone', name: 'inspec-instance') do
+		it { should exist }
+		its('machine_type') { should match 'n1-standard-1' }
+		its('tags.items') { should include 'foo' }
+		its('tags.items') { should include 'bar' }
+		its('tag_count') { should cmp 2 }
+		its('service_account_scopes') { should include 'https://www.googleapis.com/auth/compute.readonly' }
+		its('metadata_keys') { should include '123' }
+		its('metadata_values') { should include 'asdf' }
+	end
+
+snippet google_compute_instance_group
+	describe google_compute_instance_group(project: 'chef-gcp-inspec', zone: 'zone', name: 'inspec-instance-group') do
+		it { should exist }
+		its('description') { should cmp 'My instance group for testing' }
+		its('named_ports.count') { should cmp 1 }
+		its('named_ports.first.name') { should cmp 'https' }
+		its('named_ports.first.port') { should cmp '8080' }
+	end
+
+snippet google_compute_instance_group_manager
+	describe google_compute_instance_group_manager(project: 'chef-gcp-inspec', zone: 'zone', name: 'inspec-gcp-igm') do
+		it { should exist }
+	
+		its('base_instance_name') { should eq 'igm' }
+		its('named_ports.count') { should cmp 1 }
+		its('named_ports.first.name') { should eq 'port' }
+		its('named_ports.first.port') { should eq '80' }
+	end
+
+snippet google_compute_instance_group_managers
+	describe google_compute_instance_group_managers(project: 'chef-gcp-inspec', zone: 'zone') do
+		its('base_instance_names') { should include 'igm' }
+	end
+
+snippet google_compute_instance_groups
+	describe google_compute_instance_groups(project: 'chef-gcp-inspec', zone: 'zone') do
+		its('instance_group_names') { should include 'inspec-instance-group' }
+	end
+
+snippet google_compute_instance_template
+	describe google_compute_instance_template(project: 'chef-gcp-inspec', name: 'inspec-gcp-instance-template') do
+		it { should exist }
+		its('description') { should eq 'A description of the instance template' }
+		its('properties.description') { should eq 'A description of the instance itself' }
+		its('properties.machine_type') { should eq 'f1-micro' }
+		its('properties.tags.items') { should include 'foo' }
+		its('properties.disks.count') { should eq 1 }
+		its('properties.disks.first.auto_delete') { should eq 'true' }
+		its('properties.disks.first.boot') { should eq 'true' }
+		its('properties.network_interfaces.count') { should eq 1 }
+		its('properties.service_accounts.count') { should eq 1 }
+	end
+
+snippet google_compute_instance_templates
+	describe google_compute_instance_templates(project: 'chef-gcp-inspec') do
+		its('names') { should include 'inspec-gcp-instance-template' }
+	end
+
+snippet google_compute_instances
+	describe google_compute_instances(project: 'chef-gcp-inspec', zone: 'zone') do
+		its('instance_names') { should include 'inspec-instance' }
+	end
+
+snippet google_compute_network
+	describe google_compute_network(project: 'chef-gcp-inspec', name: 'inspec-network') do
+		it { should exist }
+		its('routing_config.routing_mode') { should cmp 'REGIONAL' }
+	end
+
+snippet google_compute_network_endpoint_group
+	describe google_compute_network_endpoint_group(project: 'chef-gcp-inspec', zone: 'zone', name: 'inspec-gcp-endpoint-group') do
+		it { should exist }
+		its('default_port') { should cmp '90' }
+	end
+
+snippet google_compute_network_endpoint_groups
+	describe google_compute_network_endpoint_groups(project: 'chef-gcp-inspec', zone: 'zone') do
+		its('default_ports') { should include '90' }
+		its('names') { should include 'inspec-gcp-endpoint-group' }
+	end
+
+snippet google_compute_networks
+	describe google_compute_networks(project: 'chef-gcp-inspec') do
+		its('network_names') { should include 'inspec-network' }
+	end
+
+snippet google_compute_node_group
+	describe google_compute_node_group(project: 'chef-gcp-inspec', zone: 'zone', name: 'inspec-node-group') do
+		it { should exist }
+		its('description') { should cmp 'A description of the node group' }
+		its('size') { should cmp '0' }
+	end
+
+snippet google_compute_node_groups
+	describe google_compute_node_groups(project: 'chef-gcp-inspec', zone: 'zone') do
+		it { should exist }
+		its('descriptions') { should include 'A description of the node group' }
+		its('sizes') { should include '0' }
+		its('names') { should include 'inspec-node-group' }
+	end
+
+snippet google_compute_node_template
+	describe google_compute_node_template(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'inspec-node-template') do
+		it { should exist }
+		its('node_affinity_labels') { should include('key' => 'value') }
+	end
+
+snippet google_compute_project_info
+	describe google_compute_project_info(project: 'chef-gcp-inspec') do
+		it { should exist }
+		its('default_service_account') { should match "developer.gserviceaccount.com" }
+	end
+
+snippet google_compute_region
+	describe google_compute_region(project: 'chef-gcp-inspec', name: 'europe-west2') do
+		it { should exist }
+		it { should be_up }
+		its('zone_names') { should include "#{gcp_location}-a" }
+	end
+
+snippet google_compute_region_backend_service
+	describe google_compute_region_backend_service(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'inspec-gcp-region-backend-service') do
+		it { should exist }
+		its('description') { should eq 'A regional description' }
+		its('protocol') { should eq 'TCP' }
+		its('timeout_sec') { should eq '15' }
+	end
+
+snippet google_compute_region_backend_services
+	describe google_compute_region_backend_services(project: 'chef-gcp-inspec', region: 'europe-west2') do
+		its('count') { should be >= 1 }
+		its('names') { should include 'inspec-gcp-region-backend-service' }
+		its('protocols') { should include 'TCP' }
+		its('timeout_secs') { should include '15' }
+	end
+
+snippet google_compute_region_instance_group_manager
+	describe google_compute_region_instance_group_manager(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'inspec-rigm') do
+		it { should exist }
+		its('base_instance_name') { should eq 'rigm1' }
+		its('target_size') { should eq '1' }
+		its('named_ports.first.name') { should eq 'https' }
+		its('named_ports.first.port') { should eq '8888' }
+		its('auto_healing_policies.first.initial_delay_sec') { should eq '300' }
+	end
+
+snippet google_compute_region_instance_group_managers
+	describe google_compute_region_instance_group_managers(project: 'chef-gcp-inspec', region: 'europe-west2') do
+		its('instance_group_manager_names') { should include 'inspec-rigm' }
+		its('base_instance_names') { should include 'rigm1' }
+	end
+
+snippet google_compute_route
+	describe google_compute_route(project: 'chef-gcp-inspec', name: 'inspec-gcp-route') do
+		it { should exist }
+		its('dest_range') { should eq '15.0.0.0/24' }
+		its('network') { should match /\/gcp-inspec-network$/ }
+		its('next_hop_ip') { should eq '10.2.0.1' }
+		its('priority') { should eq '100' }
+	end
+
+snippet google_compute_router
+	describe google_compute_router(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'inspec-gcp-router') do
+		it { should exist }
+		its('bgp.asn') { should eq '64514' }
+		its('bgp.advertise_mode') { should eq 'CUSTOM' }
+		its('bgp.advertised_groups') { should include 'ALL_SUBNETS' }
+		its('bgp.advertised_ip_ranges.count') { should eq 2 }
+		its('bgp.advertised_ip_ranges.first.range') { should eq '1.2.3.4' }
+		its('bgp.advertised_ip_ranges.last.range') { should eq '1.2.3.4' }
+			its('network') { should match /\/gcp-inspec-network$/ }
+		end
+
+snippet google_compute_router_nat
+	describe google_compute_router_nat(project: 'chef-gcp-inspec', region: 'europe-west2', router: 'inspec-gcp-router', name: 'inspec-router-nat') do
+		it { should exist }
+		its('nat_ip_allocate_option') { should cmp 'AUTO_ONLY' }
+		its('source_subnetwork_ip_ranges_to_nat') { should cmp 'ALL_SUBNETWORKS_ALL_IP_RANGES' }
+		its('min_ports_per_vm') { should cmp '2' }
+		its('log_config.enable') { should cmp 'true' }
+		its('log_config.filter') { should cmp 'ERRORS_ONLY' }
+	end
+
+snippet google_compute_router_nats
+	describe google_compute_router_nats(project: 'chef-gcp-inspec', region: 'europe-west2', router: 'inspec-gcp-router') do
+		its('names') { should include 'inspec-router-nat' }
+	end
+
+snippet google_compute_routers
+	describe google_compute_routers(project: 'chef-gcp-inspec', region: 'europe-west2') do
+		its('names') { should include 'inspec-gcp-router' }
+	end
+
+snippet google_compute_routes
+	describe google_compute_routes(project: 'chef-gcp-inspec') do
+		its('count') { should be >= 1 }
+		its('dest_ranges') { should include '15.0.0.0/24' }
+		its('next_hop_ips') { should include '10.2.0.1' }
+		its('priorities') { should include '100' }
+	end
+
+snippet google_compute_security_policies
+	describe google_compute_security_policies(project: 'chef-gcp-inspec') do
+		its('count') { should be >= 1 }
+		its('names') { should include 'sec-policy' }
+	end
+
+snippet google_compute_security_policy
+	describe google_compute_security_policy(project: 'chef-gcp-inspec', name: 'sec-policy') do
+		it { should exist }
+		its('rules.size') { should cmp 2 }
+		its('rules.first.priority') { should cmp '1000' }
+		its('rules.first.match.config.src_ip_ranges.first') { should cmp '9.9.9.0/24' }
+	end
+
+snippet google_compute_snapshot
+	describe google_compute_snapshot(project: 'chef-gcp-inspec', name: 'inspec-gcp-disk-snapshot') do
+		it { should exist }
+		its('source_disk') { should match 'inspec-snapshot-disk' }
+	end
+
+snippet google_compute_snapshots
+	describe google_compute_snapshots(project: 'chef-gcp-inspec') do
+		its('count') { should be >= 1 }
+	end
+
+snippet google_compute_ssl_certificate
+	describe google_compute_ssl_certificate(project: 'chef-gcp-inspec', name: 'inspec-gcp-ssl-certificate') do
+		it { should exist }
+		its('description') { should eq 'A fake ssl certificate (DO NOT USE)' }
+		its('certificate') { should eq '-----BEGIN CERTIFICATE-----
+	MIICqjCCAk+gAwIBAgIJAIuJ+0352Kq4MAoGCCqGSM49BAMCMIGwMQswCQYDVQQG
+	EwJVUzETMBEGA1UECAwKV2FzaGluZ3RvbjERMA8GA1UEBwwIS2lya2xhbmQxFTAT
+	BgNVBAoMDEdvb2dsZSwgSW5jLjEeMBwGA1UECwwVR29vZ2xlIENsb3VkIFBsYXRm
+	b3JtMR8wHQYDVQQDDBZ3d3cubXktc2VjdXJlLXNpdGUuY29tMSEwHwYJKoZIhvcN
+	AQkBFhJuZWxzb25hQGdvb2dsZS5jb20wHhcNMTcwNjI4MDQ1NjI2WhcNMjcwNjI2
+	MDQ1NjI2WjCBsDELMAkGA1UEBhMCVVMxEzARBgNVBAgMCldhc2hpbmd0b24xETAP
+	BgNVBAcMCEtpcmtsYW5kMRUwEwYDVQQKDAxHb29nbGUsIEluYy4xHjAcBgNVBAsM
+	FUdvb2dsZSBDbG91ZCBQbGF0Zm9ybTEfMB0GA1UEAwwWd3d3Lm15LXNlY3VyZS1z
+	aXRlLmNvbTEhMB8GCSqGSIb3DQEJARYSbmVsc29uYUBnb29nbGUuY29tMFkwEwYH
+	KoZIzj0CAQYIKoZIzj0DAQcDQgAEHGzpcRJ4XzfBJCCPMQeXQpTXwlblimODQCuQ
+	4mzkzTv0dXyB750fOGN02HtkpBOZzzvUARTR10JQoSe2/5PIwaNQME4wHQYDVR0O
+	BBYEFKIQC3A2SDpxcdfn0YLKineDNq/BMB8GA1UdIwQYMBaAFKIQC3A2SDpxcdfn
+	0YLKineDNq/BMAwGA1UdEwQFMAMBAf8wCgYIKoZIzj0EAwIDSQAwRgIhALs4vy+O
+	M3jcqgA4fSW/oKw6UJxp+M6a+nGMX+UJR3YgAiEAvvl39QRVAiv84hdoCuyON0lJ
+	zqGNhIPGq2ULqXKK8BY=
+	-----END CERTIFICATE-----
+	' }
+	end
+
+snippet google_compute_ssl_certificates
+	describe google_compute_ssl_certificates(project: 'chef-gcp-inspec') do
+	
+		its('names') { should include 'inspec-gcp-ssl-certificate' }
+		its('descriptions') { should include 'A fake ssl certificate (DO NOT USE)' }
+		its('certificates') { should include '-----BEGIN CERTIFICATE-----
+	MIICqjCCAk+gAwIBAgIJAIuJ+0352Kq4MAoGCCqGSM49BAMCMIGwMQswCQYDVQQG
+	EwJVUzETMBEGA1UECAwKV2FzaGluZ3RvbjERMA8GA1UEBwwIS2lya2xhbmQxFTAT
+	BgNVBAoMDEdvb2dsZSwgSW5jLjEeMBwGA1UECwwVR29vZ2xlIENsb3VkIFBsYXRm
+	b3JtMR8wHQYDVQQDDBZ3d3cubXktc2VjdXJlLXNpdGUuY29tMSEwHwYJKoZIhvcN
+	AQkBFhJuZWxzb25hQGdvb2dsZS5jb20wHhcNMTcwNjI4MDQ1NjI2WhcNMjcwNjI2
+	MDQ1NjI2WjCBsDELMAkGA1UEBhMCVVMxEzARBgNVBAgMCldhc2hpbmd0b24xETAP
+	BgNVBAcMCEtpcmtsYW5kMRUwEwYDVQQKDAxHb29nbGUsIEluYy4xHjAcBgNVBAsM
+	FUdvb2dsZSBDbG91ZCBQbGF0Zm9ybTEfMB0GA1UEAwwWd3d3Lm15LXNlY3VyZS1z
+	aXRlLmNvbTEhMB8GCSqGSIb3DQEJARYSbmVsc29uYUBnb29nbGUuY29tMFkwEwYH
+	KoZIzj0CAQYIKoZIzj0DAQcDQgAEHGzpcRJ4XzfBJCCPMQeXQpTXwlblimODQCuQ
+	4mzkzTv0dXyB750fOGN02HtkpBOZzzvUARTR10JQoSe2/5PIwaNQME4wHQYDVR0O
+	BBYEFKIQC3A2SDpxcdfn0YLKineDNq/BMB8GA1UdIwQYMBaAFKIQC3A2SDpxcdfn
+	0YLKineDNq/BMAwGA1UdEwQFMAMBAf8wCgYIKoZIzj0EAwIDSQAwRgIhALs4vy+O
+	M3jcqgA4fSW/oKw6UJxp+M6a+nGMX+UJR3YgAiEAvvl39QRVAiv84hdoCuyON0lJ
+	zqGNhIPGq2ULqXKK8BY=
+	-----END CERTIFICATE-----
+	' }
+	end
+
+snippet google_compute_ssl_policies
+	describe google_compute_ssl_policies(project: 'chef-gcp-inspec') do
+		it { should exist }
+		its('names') { should include 'inspec-gcp-ssl-policy' }
+		its('profiles') { should include 'CUSTOM' }
+		its('count') { should eq 1 }
+	end
+
+snippet google_compute_ssl_policy
+	describe google_compute_ssl_policy(project: 'chef-gcp-inspec', name: 'inspec-gcp-ssl-policy') do
+		it { should exist }
+		its('min_tls_version') { should eq 'TLS_1_2' }
+		its('profile') { should eq 'CUSTOM' }
+		its('custom_features') { should include 'TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384' }
+		its('custom_features') { should include 'TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384' }
+	end
+
+snippet google_compute_subnetwork
+	describe google_compute_subnetwork(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'inspec-subnet') do
+		it { should exist }
+		its('ip_cidr_range') { should eq '10.2.0.0/16' }
+		its('log_config.enable') { should be true }
+		its('log_config.flow_sampling') { should cmp '0.5' }
+		its('log_config.aggregation_interval') { should cmp 'INTERVAL_10_MIN' }
+		its('log_config.metadata') { should include 'INCLUDE_ALL_METADATA' }
+	end
+
+snippet google_compute_subnetwork_iam_binding
+	describe google_compute_subnetwork_iam_binding(project: "project", region: "region", name: "name", role: "roles/editor") do
+		it { should exist }
+		its('members') { should include 'user:testuser@example.com' }
+	end
+
+snippet google_compute_subnetworks
+	describe google_compute_subnetworks(project: 'chef-gcp-inspec', region: 'europe-west2') do
+		its('ip_cidr_ranges') { should include '10.2.0.0/16' }
+		its('subnetwork_names') { should include 'inspec-subnet' }
+	end
+
+snippet google_compute_target_http_proxies
+	describe google_compute_target_http_proxies(project: 'chef-gcp-inspec') do
+		its('names') { should include 'inspec-gcp-http-proxy' }
+		its('descriptions') { should include 'A HTTP proxy' }
+	end
+
+snippet google_compute_target_http_proxy
+	describe google_compute_target_http_proxy(project: 'chef-gcp-inspec', name: 'inspec-gcp-http-proxy') do
+		it { should exist }
+		its('description') { should eq 'A HTTP proxy' }
+		its('url_map') { should  match /\/inspec-gcp-url-map$/ }
+	end
+
+snippet google_compute_target_https_proxies
+	describe google_compute_target_https_proxies(project: 'chef-gcp-inspec') do
+		its('names') { should include 'inspec-gcp-https-proxy' }
+		its('descriptions') { should include 'A HTTPS target proxy' }
+	end
+
+snippet google_compute_target_https_proxy
+	describe google_compute_target_https_proxy(project: 'chef-gcp-inspec', name: 'inspec-gcp-https-proxy') do
+		it { should exist }
+		its('url_map') { should match /\/inspec-gcp-url-map$/ }
+		its('description') { should eq 'A HTTPS target proxy' }
+	end
+
+snippet google_compute_target_pool
+	describe google_compute_target_pool(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'inspec-gcp-target-pool') do
+		it { should exist }
+		its('session_affinity') { should eq 'CLIENT_IP' }
+		it { should has_target_instance('gcp_ext_vm_name', 'zone') }
+	end
+
+snippet google_compute_target_pools
+	describe google_compute_target_pools(project: 'chef-gcp-inspec', region: 'europe-west2') do
+		its('names') { should include 'inspec-gcp-target-pool' }
+		its('session_affinities') { should include 'CLIENT_IP' }
+	end
+
+snippet google_compute_target_tcp_proxies
+	describe google_compute_target_tcp_proxies(project: 'chef-gcp-inspec') do
+		its('names') { should include 'inspec-gcp-target-tcp-proxy' }
+		its('proxy_headers') { should include 'NONE' }
+	end
+
+snippet google_compute_target_tcp_proxy
+	describe google_compute_target_tcp_proxy(project: 'chef-gcp-inspec', name: 'inspec-gcp-target-tcp-proxy') do
+		it { should exist }
+		its('proxy_header') { should eq 'NONE' }
+		its('service') { should  match /\/gcp-inspec-tcp-backend-service$/ }
+	end
+
+snippet google_compute_url_map
+	describe google_compute_url_map(project: 'chef-gcp-inspec', name: 'inspec-gcp-url-map') do
+		it { should exist }
+		its('description') { should eq 'URL map description' }
+		its('default_service') { should match /\/inspec-gcp-backend-service$/ }
+		its('host_rules.count') { should eq 1 }
+		its('host_rules.first.hosts') { should include 'site.com' }
+		its('path_matchers.count') { should eq 1 }
+		its('path_matchers.first.default_service') { should match /\/inspec-gcp-backend-service$/ }
+		its('tests.count') { should eq 1 }
+		its('tests.first.host') { should eq 'test.com' }
+		its('tests.first.path') { should eq '/home' }
+	end
+
+snippet google_compute_url_maps
+	describe google_compute_url_maps(project: 'chef-gcp-inspec') do
+		its('names') { should include 'inspec-gcp-url-map' }
+	end
+
+snippet google_compute_vpn_tunnel
+	describe google_compute_vpn_tunnel(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'inspec-vpn-tunnel') do
+		it { should exist }
+		its('peer_ip') { should eq '15.0.0.120' }
+	end
+
+snippet google_compute_vpn_tunnels
+	describe google_compute_vpn_tunnels(project: 'chef-gcp-inspec', region: 'europe-west2') do
+		its('vpn_tunnel_names') { should include 'inspec-vpn-tunnel' }
+		its('peer_ips') { should include '15.0.0.120' }
+	end
+
+snippet google_compute_zone
+	describe google_compute_zone(project: 'chef-gcp-inspec', name: "us-central1-a") do
+		it { should exist }
+		it { should be_up }
+	end
+
+snippet google_compute_zones
+	describe google_compute_zone(project: 'chef-gcp-inspec', name: zone_name) do
+			it { should exist }
+			it { should be_up }
+		end
+
+snippet google_container_cluster
+	describe google_container_cluster(project: 'chef-gcp-inspec', location: 'europe-west2-a', name: 'gcp-inspec-kube-cluster') do
+		it { should exist }
+		its('locations.sort'){ should cmp [ 'europe-west2-a', 'europe-west2-b', 'europe-west2-c' ].sort }
+	
+		its('master_auth.username') { should eq 'gcp-inspec-kube-admin' }
+	end
+
+snippet google_container_clusters
+	describe google_container_clusters(project: 'chef-gcp-inspec', location: 'europe-west2-a') do
+		its('cluster_names') { should include 'gcp-inspec-kube-cluster' }
+	end
+
+snippet google_container_node_pools
+	describe google_container_node_pools(project: 'chef-gcp-inspec', location: 'europe-west2-a', cluster_name: 'gcp-inspec-kube-cluster') do
+		its('initial_node_counts') { should include '1'}
+	end
+
+snippet google_container_regional_cluster
+	describe google_container_regional_cluster(project: 'chef-gcp-inspec', location: 'europe-west2', name: 'inspec-gcp-regional-cluster') do
+		it { should exist }
+		its('initial_node_count') { should eq '1'}
+		its('location') { should eq 'europe-west2'}
+	end
+
+snippet google_container_regional_clusters
+	describe google_container_regional_clusters(project: 'chef-gcp-inspec', location: 'europe-west2') do
+		its('count') { should be >= 1 }
+		its('names') { should include 'inspec-gcp-regional-cluster' }
+		its('initial_node_counts') { should include '1'}
+	end
+
+snippet google_container_regional_node_pool
+	describe google_container_regional_node_pool(project: 'chef-gcp-inspec', location: 'europe-west2', cluster: 'inspec-gcp-regional-cluster', name: 'inspec-gcp-regional-node-pool') do
+		it { should exist }
+		its('initial_node_count') { should eq '1'}
+	end
+
+snippet google_container_regional_node_pools
+	describe google_container_regional_node_pools(project: 'chef-gcp-inspec', location: 'europe-west2', cluster: 'inspec-gcp-regional-cluster') do
+		its('initial_node_counts') { should include '1'}
+	end
+
+snippet google_dataproc_cluster
+	describe google_dataproc_cluster(project: 'chef-gcp-inspec', region: 'europe-west2', cluster_name: 'inspec-dataproc-cluster') do
+		it { should exist }
+		its('labels') { should include('label' => 'value') }
+		its('config.master_config.num_instances') { should cmp '1' }
+		its('config.worker_config.num_instances') { should cmp '2' }
+		its('config.master_config.machine_type_uri') { should match 'n1-standard-1' }
+		its('config.worker_config.machine_type_uri') { should match 'n1-standard-1' }
+		its('config.software_config.properties') { should include('dataproc:dataproc.allow.zero.workers' => 'true') }
+	end
+
+snippet google_dataproc_clusters
+	describe google_dataproc_clusters(project: 'chef-gcp-inspec', region: 'europe-west2') do
+		its('count') { should be >= 1 }
+		its('cluster_names') { should include 'inspec-dataproc-cluster' }
+	end
+
+snippet google_dns_managed_zone
+	describe google_dns_managed_zone(project: 'chef-gcp-inspec', zone: 'example-zone') do
+		it { should exist }
+		its('dns_name') { should cmp 'dns-zone-name.com.' }
+	
+		its('description') { should cmp 'example description' }
+		its('zone_signing_key_algorithm') { should cmp 'rsasha256' }
+		its('key_signing_key_algorithm') { should cmp 'rsasha512' }
+	end
+
+snippet google_dns_managed_zones
+	describe google_dns_managed_zones(project: 'chef-gcp-inspec') do
+		it { should exist }
+		its('zone_names') { should include 'example-zone' }
+		its('zone_dns_names') { should include 'dns-zone-name.com.' }
+	end
+
+snippet google_dns_resource_record_set
+	describe google_dns_resource_record_set(project: 'chef-gcp-inspec', name: 'backend.my.domain.com.', type: 'A', managed_zone: 'inspec-gcp-managed-zone') do
+		it { should exist }
+		its('type') { should eq 'A' }
+		its('ttl') { should eq '300' }
+		its('target') { should include '8.8.8.8' }
+		its('target') { should include '8.8.4.4' }
+	end
+
+snippet google_dns_resource_record_sets
+	describe google_dns_resource_record_sets(project: 'chef-gcp-inspec', name: 'backend.my.domain.com.', managed_zone: 'inspec-gcp-managed-zone') do
+		its('count') { should eq 3 }
+		its('types') { should include 'A' }
+		its('ttls') { should include '300' }
+		its('targets.flatten') { should include '8.8.8.8' }
+		its('targets.flatten') { should include '8.8.4.4' }
+	end
+
+snippet google_filestore_instance
+	describe google_filestore_instance(project: 'chef-gcp-inspec', zone: 'us-central1-b', name: 'inspecgcp') do
+		it { should exist }
+		its('tier') { should cmp 'PREMIUM' }
+		its('file_shares.count') { should cmp 1 }
+		its('file_shares.first.capacity_gb') { should cmp '2660' }
+		its('file_shares.first.name') { should cmp 'inspecgcp' }
+		its('networks.count') { should cmp 1 }
+		its('networks.first.network') { should cmp 'default' }
+		its('networks.first.modes') { should include 'MODE_IPV4' }
+	end
+
+snippet google_filestore_instances
+	describe google_filestore_instances(project: 'chef-gcp-inspec', zone: 'us-central1-b') do
+		its('tiers') { should include 'PREMIUM' }
+	end
+
+snippet google_iam_custom_roles
+	describe google_iam_custom_roles(project: 'chef-gcp-inspec') do
+		its('names') { should include "projects/project-id/roles/role-id" }
+	end
+
+snippet google_iam_organization_custom_role
+	describe google_iam_organization_custom_role(org_id: '12345', name: 'org-role') do
+		it { should exist }
+		its('stage') { should eq 'GA' }
+		its('included_permissions') { should eq ["iam.roles.list"] }
+	end
+
+snippet google_iam_organization_custom_roles
+	describe google_iam_organization_custom_roles(org_id: '190694428152') do
+		its('names') { should include "organizations/123456/roles/role-id" }
+	end
+
+snippet google_iam_service_account
+	describe google_iam_service_account(project: 'chef-gcp-inspec', name: "display-name@project-id.iam.gserviceaccount.com") do
+		it { should exist }
+		its('display_name') { should cmp '' }
+	end
+
+snippet google_iam_service_account_key
+	describe
+	end
+
+snippet google_iam_service_account_keys
+	describe google_iam_service_account_keys(project: 'chef-gcp-inspec', service_account: "display-name@project-id.iam.gserviceaccount.com") do
+		its('count') { should be <= 1000 }
+	end
+
+snippet google_iam_service_accounts
+	describe google_iam_service_accounts(project: 'chef-gcp-inspec', name: "display-name@project-id.iam.gserviceaccount.com") do
+		its('service_account_emails') { should include "display-name@project-id.iam.gserviceaccount.com" }
+		its('count') { should be <= 1000 }
+	end
+
+snippet google_kms_crypto_key
+	describe google_kms_crypto_key(project: 'chef-gcp-inspec', location: 'europe-west2', key_ring_name: 'kms-key-ring', name: 'kms-key') do
+		it { should exist }
+		its('crypto_key_name') { should cmp 'kms-key' }
+		its('primary_state') { should eq "ENABLED" }
+		its('purpose') { should eq "ENCRYPT_DECRYPT" }
+		its('next_rotation_time') { should be > Time.now - 100000 }
+		its('create_time') { should be > Time.now - 365*60*60*24*10 }
+	end
+
+snippet google_kms_crypto_key_iam_binding
+	describe google_kms_crypto_key_iam_binding(project: "project", location: "location", key_ring_name: "key_ring_name", crypto_key_name: "crypto_key_name", role: "roles/editor") do
+		it { should exist }
+		its('members') { should include 'user:testuser@example.com' }
+	end
+
+snippet google_kms_crypto_key_iam_bindings
+	describe google_kms_crypto_key_iam_bindings(crypto_key_url: 'projects/project/locations/europe-west2/keyRings/key-ring/cryptoKeys/key-name') do
+				it { should exist }
+			end
+
+snippet google_kms_crypto_key_iam_policy
+	describe google_kms_crypto_key_iam_policy(project: "project", location: "location", key_ring_name: "key_ring_name", crypto_key_name: "crypto_key_name") do
+		it { should exist }
+	end
+
+snippet google_kms_key_ring
+	describe google_kms_key_ring(project: 'chef-gcp-inspec', location: 'europe-west2', name: 'kms-key-ring') do
+		it { should exist }
+		its('create_time') { should be > Time.now - 365*60*60*24*10 }
+		its('key_ring_name'){ should eq 'kms-key-ring' }
+		its('key_ring_url'){ should match 'kms-key-ring' }
+	end
+
+snippet google_kms_key_ring_iam_binding
+	describe google_kms_key_ring_iam_binding(project: "project", location: "location", key_ring_name: "key_ring_name", role: "roles/editor") do
+		it { should exist }
+		its('members') { should include 'user:testuser@example.com' }
+	end
+
+snippet google_kms_key_ring_iam_bindings
+	describe google_kms_key_ring_iam_bindings(key_ring_url: 'projects/project/locations/europe-west2/keyRings/key-ring') do
+				it { should exist }
+			end
+
+snippet google_kms_key_ring_iam_policy
+	describe google_kms_key_ring_iam_policy(project: "project", location: "location", key_ring_name: "key_ring_name") do
+		it { should exist }
+	end
+
+snippet google_kms_key_rings
+	describe google_kms_key_rings(project: 'chef-gcp-inspec', location: 'europe-west2') do
+		its('key_ring_names'){ should include 'kms-key-ring' }
+	end
+
+snippet google_logging_folder_exclusions
+	describe.one do
+		google_resourcemanager_folders(parent: 'organizations/12345').names.each do |name|
+			# name on a folder is in the form `folders/12345`
+			describe google_logging_folder_exclusions(folder: name.split('/')[1]) do
+				its('names'){ should include 'inspec-folder-exclusion' }
+				its('descriptions'){ should include 'My folder exclusion description' }
+				its('filters'){ should include 'resource.type = gce_instance AND severity <= DEBUG' }
+			end
+
+snippet google_logging_folder_log_sink
+	describe.one do
+		google_resourcemanager_folders(parent: 'organizations/12345').names.each do |folder_name|
+			# name on a folder is in the form `folders/12345`
+			describe google_logging_folder_log_sink(folder: folder_name.split('/')[1], name: 'inspec-gcp-folder-sink') do
+				it { should exist }
+				its('filter') { should cmp 'resource.type = gce_instance AND severity >= ERROR' }
+			end
+
+snippet google_logging_folder_log_sinks
+	describe.one do
+		google_resourcemanager_folders(parent: 'organizations/12345').names.each do |folder_name|
+			# name on a folder is in the form `folders/12345`
+			describe google_logging_folder_log_sinks(folder: folder_name.split('/')[1]) do
+				its('names') { should include 'inspec-gcp-folder-sink' }
+				its('filters') { should include 'resource.type = gce_instance AND severity >= ERROR' }
+			end
+
+snippet google_logging_organization_log_sink
+	describe google_logging_organization_log_sink(organization: '190694428152', name: 'inspec-gcp-org-sink') do
+		it { should exist }
+		its('filter') { should cmp 'resource.type = gce_instance' }
+	end
+
+snippet google_logging_organization_log_sinks
+	describe google_logging_organization_log_sinks(organization: '190694428152') do
+		its('names') { should include 'inspec-gcp-org-sink' }
+	end
+
+snippet google_logging_project_exclusion
+	describe google_logging_project_exclusion(project: 'chef-gcp-inspec', name: 'inspec-project-exclusion') do
+		it { should exist }
+		its('description'){ should cmp 'My project exclusion description' }
+		its('filter'){ should cmp 'resource.type = gce_instance AND severity <= DEBUG' }
+	end
+
+snippet google_logging_project_exclusions
+	describe google_logging_project_exclusions(project: 'chef-gcp-inspec') do
+		its('names'){ should include 'inspec-folder-exclusion' }
+	end
+
+snippet google_logging_project_sink
+	describe google_logging_project_sink(project: 'chef-gcp-inspec', name: 'inspec-gcp-org-sink') do
+		it { should exist }
+		its('filter') { should cmp 'resource.type = gce_instance AND severity = DEBUG' }
+	end
+
+snippet google_logging_project_sinks
+	describe google_logging_project_sinks(project: 'chef-gcp-inspec') do
+		its('names') { should include 'inspec-gcp-org-sink' }
+	end
+
+snippet google_ml_engine_model
+	describe google_ml_engine_model(project: 'chef-gcp-inspec', name: 'ml_model') do
+		it { should exist }
+		its('description') { should cmp 'My awesome ML model' }
+		its('regions') { should include 'us-central1' }
+		its('online_prediction_logging') { should cmp 'true' }
+		its('online_prediction_console_logging') { should cmp 'true' }
+	end
+
+snippet google_ml_engine_models
+	describe google_ml_engine_models(project: 'chef-gcp-inspec') do
+		its('descriptions') { should include 'My awesome ML model' }
+		its('online_prediction_loggings') { should include 'true' }
+		its('online_prediction_console_loggings') { should include 'true' }
+	end
+
+snippet google_organization
+	describe google_organization(name: "organizations/123456") do
+		its('name') { should eq "organizations/123456" }
+		its('lifecycle_state') { should cmp 'ACTIVE' }
+	end
+
+snippet google_organization_iam_binding
+	describe google_organization_iam_binding(name: "name", role: "roles/editor") do
+		it { should exist }
+		its('members') { should include 'user:testuser@example.com' }
+	end
+
+snippet google_organization_iam_policy
+	describe google_organization_iam_policy(name: "name") do
+		it { should exist }
+	end
+
+snippet google_organization_policy
+	describe google_organization_policy(name: 'organizations/123456', constraint: 'constraints/compute.disableGuestAttributesAccess') do
+				it { should exist }
+				its('boolean_policy.enforced') { should be true }
+			end
+
+snippet google_organizations
+	describe google_organizations do
+		its('names') { should include "organizations/123456" }
+	end
+
+snippet google_project
+	describe google_project(project: 'chef-gcp-inspec') do
+		it { should exist }
+		its('project_id') { should cmp 'chef-gcp-inspec' }
+		its('lifecycle_state') { should cmp 'ACTIVE' }
+	end
+
+snippet google_project_alert_policies
+	describe google_project_alert_policies(project: 'chef-gcp-inspec') do
+		it { should exist }
+		its('policy_display_names') { should include 'Display'}
+		its('combiners') { should include 'OR'}
+	end
+
+snippet google_project_alert_policy
+	describe.one do
+		google_project_alert_policies(project: 'chef-gcp-inspec').policy_names do |policy_name|
+			describe google_project_alert_policy(project: 'chef-gcp-inspec', name: policy_name) do
+				it { should exist }
+				its('display_name') { should cmp 'Display'}
+				its('combiner') { should cmp 'OR'}
+				it { should be_enabled }
+			end
+
+snippet google_project_alert_policy_condition
+	describe google_project_alert_policy_condition(name: 'projects/spaterson-project/alertPolicies/9271751234503117449', filter 'project=\"spaterson-project\"') do
+				it { should exist }
+			end
+
+snippet google_project_iam_binding
+	describe google_project_iam_binding(project: "project", role: "roles/editor") do
+		it { should exist }
+		its('members') { should include 'user:testuser@example.com' }
+	end
+
+snippet google_project_iam_bindings
+	describe google_project_iam_bindings(project: 'chef-inspec-gcp') do
+				it { should exist }
+			end
+
+snippet google_project_iam_custom_role
+	describe google_project_iam_custom_role(project: 'chef-gcp-inspec', name: 'admin-role') do
+		it { should exist }
+		its('stage') { should eq 'GA' }
+		its('included_permissions') { should eq ["iam.roles.list"] }
+	end
+
+snippet google_project_iam_custom_roles
+	describe google_project_iam_custom_roles(project: 'chef-gcp-inspec') do
+		its('names') { should include "projects/project-id/roles/role-id" }
+	end
+
+snippet google_project_iam_policy
+	describe google_project_iam_policy(project: "project") do
+		it { should exist }
+	end
+
+snippet google_project_logging_audit_config
+	describe google_project_logging_audit_config(project: 'chef-inspec-gcp') do
+				it { should exist }
+			end
+
+snippet google_project_metric
+	describe google_project_metric(project: 'chef-gcp-inspec', name: 'some/metric') do
+		it { should exist }
+		its('filter') { should cmp 'resource.type=gae_app AND severity>=ERROR' }
+		its('metric_descriptor.metric_kind') { should cmp 'DELTA' }
+		its('metric_descriptor.value_type') { should cmp 'INT64' }
+	end
+
+snippet google_project_metrics
+	describe google_project_metrics(project: 'chef-gcp-inspec') do
+		it { should exist }
+		its('metric_filters') { should include 'resource.type=gae_app AND severity>=ERROR' }
+		its('metric_names') { should include 'some/metric' }
+	end
+
+snippet google_project_service
+	describe google_project_service(project: 'chef-gcp-inspec', name: 'maps-android-backend.googleapis.com') do
+		it { should exist }
+		its('state') { should cmp "ENABLED" }
+	end
+
+snippet google_project_services
+	describe.one do
+		google_project_services(project: 'chef-gcp-inspec').names.each do |name|
+			describe name do
+				it { should match 'maps-android-backend.googleapis.com' }
+			end
+
+snippet google_projects
+	describe google_projects() do
+		its('count') { should be >= 1 }
+		its('project_ids') { should include 'chef-gcp-inspec' }
+		its('lifecycle_states') { should include 'ACTIVE' }
+	end
+
+snippet google_pubsub_subscription
+	describe google_pubsub_subscription(project: 'chef-gcp-inspec', name: 'inspec-gcp-subscription') do
+		it { should exist }
+	end
+
+snippet google_pubsub_subscription_iam_binding
+	describe google_pubsub_subscription_iam_binding(project: "project", name: "name", role: "roles/editor") do
+		it { should exist }
+		its('members') { should include 'user:testuser@example.com' }
+	end
+
+snippet google_pubsub_subscription_iam_policy
+	describe google_pubsub_subscription_iam_policy(project: "project", name: "name") do
+		it { should exist }
+	end
+
+snippet google_pubsub_subscriptions
+	describe google_pubsub_subscriptions(project: 'chef-gcp-inspec') do
+		its('count') { should be >= 1 }
+	end
+
+snippet google_pubsub_topic
+	describe google_pubsub_topic(project: 'chef-gcp-inspec', name: 'inspec-gcp-topic') do
+		it { should exist }
+	end
+
+snippet google_pubsub_topic_iam_binding
+	describe google_pubsub_topic_iam_binding(project: "project", name: "name", role: "roles/editor") do
+		it { should exist }
+		its('members') { should include 'user:testuser@example.com' }
+	end
+
+snippet google_pubsub_topic_iam_policy
+	describe google_pubsub_topic_iam_policy(project: "project", name: "name") do
+		it { should exist }
+	end
+
+snippet google_pubsub_topics
+	describe google_pubsub_topics(project: 'chef-gcp-inspec') do
+		it { should exist }
+		its('names') { should include 'inspec-gcp-topic' }
+		its('count') { should be >=1 }
+	end
+
+snippet google_redis_instance
+	describe google_redis_instance(project: 'chef-gcp-inspec', region: 'us-central1', name: 'my-redis-cache') do
+		it { should exist }
+		its('tier') { should cmp 'STANDARD_HA' }
+		its('memory_size_gb') { should cmp '1' }
+		its('alternative_location_id') { should cmp 'us-central1-f' }
+		its('redis_version') { should cmp 'REDIS_3_2' }
+		its('display_name') { should cmp 'InSpec test instance' }
+		its('reserved_ip_range') { should cmp '192.168.0.0/29' }
+		its('labels') { should include('key' => 'value') }
+	end
+
+snippet google_redis_instances
+	describe google_redis_instances(project: 'chef-gcp-inspec', region: 'us-central1') do
+		its('tiers') { should include 'STANDARD_HA' }
+		its('memory_size_gbs') { should include '1' }
+		its('alternative_location_ids') { should include 'us-central1-f' }
+		its('redis_versions') { should include 'REDIS_3_2' }
+		its('display_names') { should include 'InSpec test instance' }
+		its('reserved_ip_ranges') { should include '192.168.0.0/29' }
+	end
+
+snippet google_resourcemanager_folder
+	describe.one do
+		google_resourcemanager_folders(parent: 'organizations/12345').names.each do |name|
+			describe google_resourcemanager_folder(name: name) do
+				it { should exist }
+				its('display_name') { should eq 'inspec-gcp-folder' }
+			end
+
+snippet google_resourcemanager_folder_iam_binding
+	describe google_resourcemanager_folder_iam_binding(name: "name", role: "roles/editor") do
+		it { should exist }
+		its('members') { should include 'user:testuser@example.com' }
+	end
+
+snippet google_resourcemanager_folder_iam_policy
+	describe google_resourcemanager_folder_iam_policy(name: "name") do
+		it { should exist }
+	end
+
+snippet google_resourcemanager_folders
+	describe.one do
+		google_resourcemanager_folders(parent: 'organizations/12345').display_names.each do |display_name|
+			describe display_name do
+				it { should eq 'inspec-gcp-folder' }
+			end
+
+snippet google_resourcemanager_organization_policy
+	describe google_resourcemanager_organization_policy(organization_name: "organizations/123456789", constraint: "constraints/compute.disableSerialPortAccess") do
+		it { should exist }
+		its('constraint') { should eq 'constraints/compute.disableSerialPortAccess' }
+		its('boolean_policy.enforced') { should be true }
+	end
+
+snippet google_resourcemanager_project_iam_binding
+	describe google_resourcemanager_project_iam_binding(project_id: "projectId", role: "roles/editor") do
+		it { should exist }
+		its('members') { should include 'user:testuser@example.com' }
+	end
+
+snippet google_resourcemanager_project_iam_policy
+	describe google_resourcemanager_project_iam_policy(project_id: "projectId") do
+		it { should exist }
+	end
+
+snippet google_runtime_config_config
+	describe google_runtime_config_config(project: 'chef-gcp-inspec', name: 'inspec-gcp-runtime-config') do
+		it { should exist }
+		its('description') { should cmp 'My runtime configurations' }
+	end
+
+snippet google_runtime_config_config_iam_binding
+	describe google_runtime_config_config_iam_binding(project: "project", name: "name", role: "roles/editor") do
+		it { should exist }
+		its('members') { should include 'user:testuser@example.com' }
+	end
+
+snippet google_runtime_config_config_iam_policy
+	describe google_runtime_config_config_iam_policy(project: "project", name: "name") do
+		it { should exist }
+	end
+
+snippet google_runtime_config_configs
+	describe google_runtime_config_configs(project: 'chef-gcp-inspec') do
+		its('descriptions') { should include 'My runtime configurations' }
+	end
+
+snippet google_runtime_config_variable
+	describe google_runtime_config_variable(project: 'chef-gcp-inspec', config: 'inspec-gcp-runtime-config', name: 'prod-variables/hostname') do
+		it { should exist }
+		its('text') { should cmp 'example.com' }
+	end
+
+snippet google_runtime_config_variables
+	describe google_runtime_config_variables(project: 'chef-gcp-inspec', config: 'inspec-gcp-runtime-config') do
+		its('texts') { should include 'example.com' }
+	end
+
+snippet google_service_account
+	describe google_service_account(project: 'chef-gcp-inspec', name: "display-name@project-id.iam.gserviceaccount.com") do
+		it { should exist }
+		its('display_name') { should cmp '' }
+	end
+
+snippet google_service_account_key
+	describe google_service_account_key(project: 'chef-gcp-inspec', service_account: "display-name@project-id.iam.gserviceaccount.com", name: sa_key_name.split('/').last) do
+			it { should exist }
+			its('key_type') { should_not cmp 'USER_MANAGED' }
+		end
+
+snippet google_service_account_keys
+	describe google_service_account_keys(project: 'chef-gcp-inspec', service_account: "display-name@project-id.iam.gserviceaccount.com") do
+		its('count') { should be <= 1000 }
+		its('key_types') { should_not include 'USER_MANAGED' }
+	end
+
+snippet google_service_accounts
+	describe google_service_accounts(project: 'chef-gcp-inspec', name: "display-name@project-id.iam.gserviceaccount.com") do
+		its('service_account_emails') { should include "display-name@project-id.iam.gserviceaccount.com" }
+		its('count') { should be <= 1000 }
+	end
+
+snippet google_sourcerepo_repositories
+	describe.one do
+		google_sourcerepo_repositories(project: 'chef-gcp-inspec').names.each do |name|
+			describe name do
+				it { should match /\/repos\/#{repo_name}$/ }
+			end
+
+snippet google_sourcerepo_repository
+	describe google_sourcerepo_repository(project: 'chef-gcp-inspec', name: 'inspec-gcp-repository') do
+		it { should exist }
+	end
+
+snippet google_spanner_database
+	describe google_spanner_database(project: 'chef-gcp-inspec', instance: 'spinstance', name: 'spdatabase') do
+		it { should exist }
+		its('name') { should match 'spdatabase' }
+	end
+
+snippet google_spanner_databases
+	describe.one do
+		google_spanner_databases(project: 'chef-gcp-inspec', instance: 'spinstance').names.each do |name|
+			describe name do
+				it { should match 'spdatabase' }
+			end
+
+snippet google_spanner_instance
+	describe google_spanner_instance(project: 'chef-gcp-inspec', name: 'spinstance', config: 'regional-us-east1') do
+		it { should exist }
+		its('config') { should match 'regional-us-east1' }
+		its('name') { should match 'spinstance' }
+		its('display_name') { should eq 'inspectest' }
+		its('node_count') { should eq '1' }
+		its('labels') { should include('env' => 'test') }
+	end
+
+snippet google_spanner_instance_iam_binding
+	describe google_spanner_instance_iam_binding(project: "project", name: "name", role: "roles/editor") do
+		it { should exist }
+		its('members') { should include 'user:testuser@example.com' }
+	end
+
+snippet google_spanner_instance_iam_policy
+	describe google_spanner_instance_iam_policy(project: "project", name: "name") do
+		it { should exist }
+	end
+
+snippet google_spanner_instances
+	describe.one do
+		google_spanner_instances(project: 'chef-gcp-inspec', config: 'regional-us-east1').configs.each do |config|
+			describe config do
+				it { should match 'regional-us-east1' }
+			end
+
+snippet google_sql_database_instance
+	describe google_sql_database_instance(project: 'chef-gcp-inspec', database: 'my-database') do
+		it { should exist }
+		its('state') { should eq 'RUNNABLE' }
+		its('backend_type') { should eq 'SECOND_GEN' }
+		its('database_version') { should eq 'MYSQL_5_7' }
+	end
+
+snippet google_sql_database_instances
+	describe google_sql_database_instances(project: 'chef-gcp-inspec') do
+		its('instance_states') { should include 'RUNNABLE' }
+		its('instance_names') { should include 'my-database' }
+	end
+
+snippet google_sql_user
+	describe google_sql_user(project: 'chef-gcp-inspec', database: 'my-database', name: 'user-name', host: "example.com") do
+		it { should exist }
+		its('name') { should cmp 'user-name' }
+		its('instance') { should cmp 'my-database' }
+	end
+
+snippet google_sql_users
+	describe google_sql_users(project: 'chef-gcp-inspec', database: 'my-database') do
+		its('user_names') { should include 'user-name' }
+	end
+
+snippet google_storage_bucket_acl
+	describe google_storage_bucket_acl(bucket: 'storage-bucket-name', entity: user-email) do
+		it { should exist }
+		its('role') { should cmp "OWNER" }
+	
+		its('bucket') { should eq 'storage-bucket-name' }
+		its('email') { should include entity-email.com }
+	end
+
+snippet google_storage_bucket_iam_binding
+	describe google_storage_bucket_iam_binding(bucket: "bucket", role: "roles/editor") do
+		it { should exist }
+		its('members') { should include 'user:testuser@example.com' }
+	end
+
+snippet google_storage_bucket_iam_bindings
+	describe google_storage_bucket_iam_bindings(bucket: 'bucket-buvsjjcndqz') do
+				it { should exist }
+			end
+
+snippet google_storage_bucket_iam_policy
+	describe google_storage_bucket_iam_policy(bucket: "bucket") do
+		it { should exist }
+	end
+
+snippet google_storage_bucket_object
+	describe google_storage_bucket_object(bucket: 'bucket-with-object', object: 'image1') do
+		it { should exist }
+		its('size.to_i') { should be > 0 }
+	
+		its('time_created') { should be > Time.now - 60*60*24*10 }
+		its('time_updated') { should be > Time.now - 60*60*24*10 }
+	end
+
+snippet google_storage_bucket_objects
+	describe google_storage_bucket_objects(bucket: 'bucket-with-object') do
+		its('object_names') { should include 'image1' }
+		its('count') { should be <= 10 }
+	end
+
+snippet google_storage_buckets
+	describe google_storage_buckets(project: 'chef-gcp-inspec') do
+		its('bucket_names') { should include bucket-name }
+	end
+
+snippet google_storage_default_object_acl
+	describe google_storage_default_object_acl(bucket: 'gcp-inspec-storage-bucket', entity: user-email) do
+		it { should exist }
+		its('role') { should cmp "OWNER" }
+	
+		its('bucket') { should eq 'gcp-inspec-storage-bucket' }
+		its('email') { should include entity-email.com }
+	end
+
+snippet google_storage_object_acl
+	describe google_storage_object_acl(bucket: 'bucket-with-object', object: 'image1', entity: user-email) do
+		it { should exist }
+		its('role') { should cmp "OWNER" }
+	
+		its('bucket') { should eq 'bucket-with-object' }
+		its('email') { should include entity-email.com }
+	end
+
+snippet google_user
+	describe google_user(user_key: 'principal_email_address@domain.com') do
+				it { should exist }
+			end
+
+snippet google_users
+	describe google_users(customer: 'my_customer') do
+				it { should exist }
+			end
+
+snippet group
+	describe group('group_name') do
+				it { should exist }
+				its('gid') { should eq 0 }
+			end
+
+
+snippet groups
+	describe groups do
+				its('names') { should eq ['wheel', 'daemon', 'sys', 'adm'] }
+				its('names') { should include 'wheel' }
+			end
+
+snippet grub_conf
+	describe grub_conf('path', 'kernel') do
+				its('setting') { should eq 'value' }
+			end
+
+snippet habitat_package
+	describe habitat_package(origin: 'core', name: 'httpd') do
+		it						 { should exist }
+		its('version') { should eq '2.4.35'}
+		its('release') { should eq '20190307151146'}
+	end
+
+snippet habitat_packages
+	describe habitat_packages do
+		its('names') { should include 'httpd' }
+		its('names') { should include 'memcached' }
+	end
+
+snippet habitat_service
+	describe habitat_service(origin: 'core', name: 'httpd') do
+		it										 { should exist }
+		its('version')				 { should eq '2.4.35'}
+		its('topology')				 { should eq 'standalone' }
+		its('update_strategy') { should eq 'none' }
+	end
+
+snippet habitat_services
+	describe habitat_services do
+		its('count') { should cmp 2 }
+		its('names') { should include 'httpd' }
+		its('names') { should include 'memcached' }
+	end
+
+snippet host
+	describe host('example.com', port: 80, protocol: 'tcp') do
+				it { should be_reachable }
+				it { should be_resolvable }
+				its('ipaddress') { should include '12.34.56.78' }
+			end
+
+snippet http
+	describe http('url', auth: {user: 'user', pass: 'test'}, params: {params}, method: 'method', headers: {headers}, data: data, open_timeout: 60, read_timeout: 60, ssl_verify: true, max_redirects: 3) do
+				its('status') { should eq number }
+				its('body') { should eq 'body' }
+				its('headers.name') { should eq 'header' }
+			end
+
+snippet iis_app
+	describe iis_app('application_path', 'site_name') do
+				it { should exist }
+				it { should have_application_pool('application_pool') }
+				it { should have_protocol('protocol') }
+				it { should have_site_name('site') }
+				it { should have_physical_path('physical_path') }
+				it { should have_path('application_path') }
+			end
+
+snippet iis_site
+	describe iis_site('site_name') do
+				it { should exist }
+				it { should be_running }
+				it { should have_app_pool('app_pool_name') }
+				it { should have_binding('binding_details') }
+				it { should have_path('path_to_site') }
+			end
+
+snippet inetd_conf
+	describe inetd_conf('path') do
+				its('service_name') { should eq 'value' }
+			end
+
+snippet ini
+	describe ini('path') do
+				its('setting_name') { should eq 'value' }
+			end
+
+snippet interface
+	describe interface('eth0') do
+				it { should be_up }
+				its('speed') { should eq 1000 }
+				its('name') { should eq eth0 }
+				its('ipv4_addresses') { should include '10.0.0.5' }
+			end
+
+snippet interfaces
+	describe interfaces do
+				its('names') { should include 'eth0' }
+			end
+
+snippet ip6tables
+	describe ip6tables(rule:'name', table:'name', chain: 'name') do
+				it { should have_rule('RULE') }
+			end
+
+snippet iptables
+	describe iptables(rule:'name', table:'name', chain: 'name') do
+				it { should have_rule('RULE') }
+			end
+
+snippet json
+	describe json('/path/to/name.json') do
+				its('name') { should eq 'hello' }
+				its(['meta','creator']) { should eq 'John Doe' }
+				its(['array', 1]) { should eq 'one' }
+			end
+
+snippet kernel_module
+	describe kernel_module('module_name') do
+				it { should be_loaded }
+				it { should_not be_disabled }
+				it { should_not be_blacklisted }
+			end
+
+snippet kernel_parameter
+	describe kernel_parameter('path.to.parameter') do
+				its('value') { should eq 0 }
+			end
+
+snippet key_rsa
+	describe key_rsa('mycertificate.key') do
+				it { should be_private }
+				it { should be_public }
+				its('public_key') { should match "-----BEGIN PUBLIC KEY-----\n3597459df9f3982" }
+				its('key_length') { should eq 2048 }
+			end
+
+snippet launchd_service
+	describe launchd_service('service_name') do
+				it { should be_installed }
+				it { should be_enabled }
+				it { should be_running }
+			end
+
+snippet limits_conf
+	describe limits_conf('path') do
+				its('domain') { should include ['type', 'item', 'value'] }
+				its('domain') { should eq ['type', 'item', 'value'] }
+			end
+
+snippet login_defs
+	describe login_defs do
+				its('name') { should include('foo') }
+			end
+
+snippet mount
+	describe mount('path') do
+				it { should MATCHER 'value' }
+			end
+
+snippet mssql_session
+	describe mssql_session(user: 'username', password: 'password').query('QUERY').row(0).column('result') do
+				its('value') { should eq('') }
+			end
+
+snippet mysql_conf
+	describe mysql_conf('path') do
+				its('setting') { should eq 'value' }
+			end
+
+snippet mysql_session
+	describe mysql_session('username', 'password').query('QUERY') do
+				its('output') { should match(/expected-result/) }
+			end
+
+snippet nginx
+	describe nginx do
+				its('attribute') { should eq 'value' }
+			end
+
+snippet npm
+	describe npm('npm_package_name') do
+				it { should be_installed }
+			end
+
+snippet oneget
+	describe oneget('name') do
+				it { should be_installed }
+			end
+
+snippet oracledb_session
+	describe oracledb_session(user: 'username', password: 'password', service: 'ORCL.localdomain').query('QUERY').row(0).column('result') do
+				its('value') { should eq('') }
+			end
+
+snippet os
+	describe os.family do
+				it { should eq 'platform_family_name' }
+			end
+
+snippet os_env
+	describe os_env('VARIABLE') do
+				its('property') { should eq 1 }
+			end
+
+snippet package
+	describe package('name') do
+				it { should be_installed }
+			end
+
+snippet packages
+	describe packages(/name/) do
+				its('statuses') { should cmp 'installed' }
+			end
+
+snippet parse_config
+	describe parse_config(output, { data_config_option: value } ) do
+				its('setting') { should eq 1 }
+			end
+
+snippet parse_config_file
+	describe parse_config_file('/path/to/file', { data_config_option: value } ) do
+				its('setting') { should eq 1 }
+			end
+
+snippet passwd
+	describe passwd do
+				its('users') { should_not include 'forbidden_user' }
+			end
+
+snippet pip
+	describe pip('package_name') do
+				it { should be_installed }
+			end
+
+snippet port
+	describe port(514) do
+				it { should be_listening }
+				its('processes') {should include 'syslog'}
+			end
+
+snippet postfix_conf
+	describe postfix_conf do
+				its('setting_name') { should cmp 'value' }
+			end
+
+snippet postgres_conf
+	describe postgres_conf('path') do
+				its('setting') { should eq 'value' }
+			end
+
+snippet postgres_hba_conf
+	describe postgres_hba_conf.where { type == 'local' } do
+			 its('auth_method') { should eq ['peer'] }
+			end
+
+snippet postgres_ident_conf
+	describe postgres_ident_conf.where { pg_username == 'filter_value' } do
+				its('attribute') { should eq ['value'] }
+			end
+
+snippet powershell
+	describe powershell(script) do
+				its('property') { should eq 'output' }
+			end
+
+snippet processes
+	describe processes('process_name') do
+				its('property_name') { should eq ['property_value'] }
+			end
+
+snippet rabbitmq_config
+	describe rabbitmq_config.params('rabbit', 'ssl_listeners') do
+				it { should cmp 5671 }
+			end
+
+snippet registry_key
+	describe registry_key('Task Scheduler','HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Schedule') do
+				its('Start') { should eq 2 }
+			end
+
+snippet runit_service
+	describe runit_service('service_name') do
+				it { should be_installed }
+				it { should be_enabled }
+				it { should be_running }
+			end
+
+snippet security_identifier
+	describe security_identifier(group: 'Everyone') do
+				its('sid') { should eq 'S-1-1-0' }
+			end
+
+snippet security_policy
+	describe security_policy do
+				its('policy_name') { should eq 'value' }
+			end
+
+snippet service
+	describe service('service_name') do
+				it { should be_installed }
+				it { should be_enabled }
+				it { should be_running }
+			end
+
+snippet shadow
+	describe shadow do
+				its('count') { should eq 32 }
+			end
+
+snippet ssh_config
+	describe ssh_config('path') do
+				its('name') { should include('foo') }
+			end
+
+snippet sshd_config
+	describe sshd_config('path') do
+				its('name') { should include('foo') }
+			end
+
+snippet ssl
+	describe ssl(port: #) do
+				it { should be_enabled }
+			end
+
+snippet sys_info
+	describe sys_info do
+				its('hostname') { should eq 'value' }
+			end
+
+snippet systemd_service
+	describe systemd_service('service_name') do
+				it { should be_installed }
+				it { should be_enabled }
+				it { should be_running }
+			end
+
+snippet sysv_service
+	describe sysv_service('service_name') do
+				it { should be_installed }
+				it { should be_enabled }
+				it { should be_running }
+			end
+
+snippet upstart_service
+	describe upstart_service('service_name') do
+				it { should be_installed }
+				it { should be_enabled }
+				it { should be_running }
+			end
+
+snippet user
+	describe user('root') do
+				it { should exist }
+				its('uid') { should eq 1234 }
+				its('gid') { should eq 1234 }
+				its('group') { should eq 'root' }
+				its('groups') { should eq ['root', 'other']}
+				its('home') { should eq '/root' }
+				its('shell') { should eq '/bin/bash' }
+				its('mindays') { should eq 0 }
+				its('maxdays') { should eq 90 }
+				its('warndays') { should eq 8 }
+				its('passwordage') { should eq 355 }
+				its('maxbadpasswords') { should eq nil } // Only valid on Windows OS
+				its('badpasswordattempts') { should eq 0 }
+				its('lastlogin') { should eq nil } // Only valid on Windows OS
+			end
+
+
+snippet users
+	describe users.where(uid: 0).entries do
+				it { should eq ['root'] }
+				its('uids') { should eq [1234] }
+				its('gids') { should eq [1234] }
+			end
+
+snippet vbscript
+	describe vbscript('script contents') do
+				its('stdout') { should eq 'output' }
+			end
+
+snippet virtualization
+	describe virtualization do
+				its('system') { should MATCHER 'value' }
+			end
+
+snippet windows_feature
+	describe windows_feature('feature_name') do
+				it { should be_installed }
+			end
+
+snippet windows_firewall
+	describe windows_firewall('name') do
+				it { should be_enabled }
+			end
+
+snippet windows_hotfix
+	describe windows_hotfix('name') do
+				it { should be_installed }
+			end
+
+snippet windows_task
+	describe windows_task('task name uri') do
+				its('parameter') { should eq 'value' }
+				it { should be_enabled }
+			end
+
+snippet wmi
+	describe wmi({
+				class: 'class_name',
+				namespace: 'path\\to\\setting',
+				filter: 'filter',
+				query: 'query'
+			}) do
+				its('setting_name') { should eq '' }
+			end
+
+snippet x509_certificate
+	describe x509_certificate('mycertificate.pem') do
+				its('validity_in_days') { should be > 30 }
+			end
+
+snippet xinetd_conf
+	describe xinetd_conf.services('service_name') do
+				it { should be_enabled } # or be_disabled
+				its('setting') { should eq 'value' }
+			end
+
+snippet xml
+	describe xml('/path/to/name.xml') do
+				its('root/name') { should eq ['hello'] }
+				its('root/meta/creator') { should eq ['John Doe'] }
+				its('root/array[2]/element') { should eq ['two'] }
+			end
+
+snippet yaml
+	describe yaml('filename.yml') do
+				its('name') { should eq 'foo' }
+				its(['array', 1]) { should eq 'one' }
+			end
+
+snippet yum
+	describe yum.repo('name') do
+				it { should exist }
+				it { should be_enabled }
+			end
+
+snippet zfs_dataset
+	describe zfs_dataset('dataset') do
+				it { should MATCHER 'value' }
+			end
+
+snippet zfs_pool
+	describe zfs_pool('pool') do
+				it { should MATCHER 'value' }
+			end

@@ -1,0 +1,14 @@
+{
+  "name" : "vim-chef-snippets",
+  "version" : "0.1",
+  "author" : "Karl Fischer (@kmf)",
+  "maintainer" : "Karl Fischer (@kmf)",
+  "repository" : {"type": "git", "url": "git://github.com/kmf/vim-chef-snippets.git"},
+  "dependencies" : {
+    "snipmate": {
+      "type": "git",
+      "url": "https://github.com/garbas/vim-snipmate.git"
+    }
+  },
+  "description" : "Vim snippets for Chef and InSpec"
+}
