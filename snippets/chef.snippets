@@ -1,7 +1,7 @@
 snippet alternatives
 	alternatives '${1:name}' do
-		link "${_:/usr/bin/LINK_NAME}"					 String # default value: "/usr/bin/LINK_NAME"
-		link_name			 String # default name unless specified
+		link "${_:/usr/bin/LINK_NAME}"					 # String, default value: "/usr/bin/LINK_NAME"
+		link_name			 # String, default name unless specified
 		path			 '${2:path}' 	 String
 		priority			 String, Integer
 		action :${3:install}				 Symbol # defaults to :install if not specified
@@ -9,103 +9,103 @@ snippet alternatives
 
 snippet apt_package
 	apt_package '${1:name}' do
-		default_release							 String
-		options											 String, Array
-		overwrite_config_files			 true, false # default value: false
-		package_name								 String, Array
-		response_file								 String
+		default_release							 # String
+		options											 # String, Array
+		overwrite_config_files	${2:false}		 true, false # default value: false
+		package_name								 # String, Array
+		response_file								 # String
 		response_file_variables			 Hash
-		timeout											 String, Integer
-		version											 String, Array
-		action :${2:install}											 Symbol # defaults to :install if not specified
+		timeout											 # String, Integer
+		version											 # String, Array
+		action :${3:install}											 Symbol # defaults to :install if not specified
 	end
 
 snippet apt_preference
 	apt_preference '${1:name}' do
-		glob							String
-		package_name			String # default name unless specified
-		pin								String
-		pin_priority			String, Integer
+		glob						# String
+		package_name			# String default name unless specified
+		pin							# String
+		pin_priority		# String, Integer
 		action :${2:add}						Symbol # defaults to :add if not specified
 	end
 
 snippet apt_repository
 	apt_repository '${1:name}' do
-		arch							 String, false
-		cache_rebuild			 true, false # default value: true
+		arch							 # String, false
+		cache_rebuild ${2:true}	 true, false # default value: true
 		components				 Array # default value: `main` if using a PPA repository.
 		cookbook					 String, false
-		deb_src						 true, false # default value: false
+		deb_src		${3:false}				 true, false # default value: false
 		distribution			 String, false # default value: The LSB codename of the node such as 'focal'.
-		key								 String, Array, false
+		key								 # String, Array, false
 		key_proxy					 String, false
 		keyserver					 String, false # default value: "keyserver.ubuntu.com"
-		repo_name					 String # default name unless specified
-		trusted						 true, false # default value: false
-		uri								 String
-		action :${2:add}						 Symbol # defaults to :add if not specified
+		repo_name					 # String default name unless specified
+		trusted		${4:false}				 true, false # default value: false
+		uri								 # String
+		action :${5:add}						 Symbol # defaults to :add if not specified
 	end
 
 snippet apt_update
 	apt_update '${1:name}' do
-		frequency			 Integer # default value: 86400
-		action :${2:periodic}				 Symbol # defaults to :periodic if not specified
+		frequency ${2:86400}			 Integer # default value: 86400
+		action :${3:periodic}				 Symbol # defaults to :periodic if not specified
 	end
 
 snippet archive_file
 	archive_file '${1:name}' do
 		destination			 String
 		group						 String
-		mode						 String, Integer # default value: "'755'"
+		mode	"'${2:755}'"					 String, Integer # default value: "'755'"
 		options					 Array, Symbol
-		overwrite				 true, false, auto # default value: false
+		overwrite ${3:false}				 true, false, auto # default value: false
 		owner						 String
-		path						 String # default name unless specified
-		action :${2:extract}					 Symbol # defaults to :extract if not specified
+		path						 # String default name unless specified
+		action :${4:extract}					 Symbol # defaults to :extract if not specified
 	end
 
 snippet bash
 	bash '${1:name}' do
-		code											 String
-		creates										 String
-		cwd												 String
+		code											 # String
+		creates										 # String
+		cwd												 # String
 		environment								 Hash
-		flags											 String
-		group											 String, Integer
+		flags											 # String
+		group											 # String, Integer
 		path											 Array
 		returns										 Integer, Array
 		timeout										 Integer, Float
-		user											 String, Integer
-		umask											 String, Integer
+		user											 # String, Integer
+		umask											 # String, Integer
 		action :${2:run}										 Symbol # defaults to :run if not specified
 	end
 
 snippet batch
 	batch '${1:name}' do
 		architecture							 Symbol
-		code											 String
-		command "${2:ls -la}"										 String, Array
-		creates										 String
-		cwd												 String
-		flags											 String
-		group											 String, Integer
+		code											 # String
+		command "${2:ls -la}"										 # String, Array
+		creates										 # String
+		cwd												 # String
+		flags											 # String
+		group											 # String, Integer
 		guard_interpreter					 Symbol
-		interpreter								 String
+		interpreter								 # String
 		returns										 Integer, Array
 		timeout										 Integer, Float
-		user											 String
-		password									 String
-		domain										 String
+		user											 # String
+		password									 # String
+		domain										 # String
 		action :${3:run}										 Symbol # defaults to :run if not specified
 	end
 
 snippet bff_package
 	bff_package '${1:name}' do
-		options						String, Array
-		package_name			String
-		source						String
-		timeout						String, Integer
-		version						String
+		options					# String, Array
+		package_name		# String
+		source					# String
+		timeout					# String, Integer
+		version					# String
 		action :${2:install}						Symbol # defaults to :install if not specified
 	end
 
@@ -116,137 +116,137 @@ snippet breakpoint
 
 snippet build_essential
 	build_essential '${1:name}' do
-		raise_if_unsupported			true, false # default value: false
-		action :${2:install}										Symbol # defaults to :install if not specified
+		raise_if_unsupported	${2:false}		true, false # default value: false
+		action :${3:install}										Symbol # defaults to :install if not specified
 	end
 
 snippet cab_package
 	cab_package '${1:name}' do
-		options						String, Array
-		package_name			String
-		source						String # default value: The package name.
-		timeout						String, Integer
-		version						String
+		options					# String, Array
+		package_name		# String
+		source						# String, default value: The package name.
+		timeout					# String, Integer
+		version					# String
 		action :${2:install}						Symbol # defaults to :install if not specified
 	end
 
 snippet chef_client_config
 	chef_client_config '${1:name}' do
-		additional_config							 String
-		chef_license									 String
-		chef_server_url								 String
-		config_directory							 String
+		additional_config							 # String
+		chef_license									 # String
+		chef_server_url								 # String
+		config_directory							 # String
 		event_loggers									 Array # default value: []
 		exception_handlers						 Array # default value: []
-		file_backup_path							 String
-		file_cache_path								 String
+		file_backup_path							 # String
+		file_cache_path								 # String
 		file_staging_uses_destdir			 String
 		formatters										 Array # default value: []
-		ftp_proxy											 String
-		group													 String
-		http_proxy										 String
-		https_proxy										 String
+		ftp_proxy											 # String
+		group													 # String
+		http_proxy										 # String
+		https_proxy										 # String
 		log_level											 Symbol
-		log_location									 String, Symbol
+		log_location									 # String, Symbol
 		minimal_ohai									 true, false
-		named_run_list								 String
-		no_proxy											 String, Array # default value: []
-		node_name											 String
+		named_run_list								 # String
+		no_proxy											 # String, Array # default value: []
+		node_name											 # String
 		ohai_disabled_plugins					 Array # default value: []
 		ohai_optional_plugins					 Array # default value: []
-		pid_file											 String
-		policy_group									 String
-		policy_name										 String
+		pid_file											 # String
+		policy_group									 # String
+		policy_name										 # String
 		report_handlers								 Array # default value: []
 		ssl_verify_mode								 Symbol, String
 		start_handlers								 Array # default value: []
-		user													 String
+		user													 # String
 		action :${2:create}												 Symbol # defaults to :create if not specified
 	end
 
 snippet chef_client_cron
 	chef_client_cron '${1:name}' do
-		accept_chef_license	'${2:false}'		 true, false # default value: false
-		append_log_file					 true, false # default value: true
-		chef_binary_path "${3:/opt/chef/bin/chef-client}"				 String # default value: "/opt/chef/bin/chef-client"
-		comment									 String
-		config_directory "${4:/etc/chef}"				 String # default value: "/etc/chef"
+		accept_chef_license	${2:false}		 true, false # default value: false
+		append_log_file	${3:true}				 true, false # default value: true
+		chef_binary_path "${4:/opt/chef/bin/chef-client}"				 # String, default value: "/opt/chef/bin/chef-client"
+		comment									 # String
+		config_directory "${5:/etc/chef}"				 # String, default value: "/etc/chef"
 		daemon_options					 Array
-		day "${5:*}"											 Integer, String # default value: "*"
+		day "${6:*}"											 Integer, # String, default value: "*"
 		environment							 Hash
-		hour "${6:*}"										 Integer, String # default value: "*"
-		job_name "${7:chef-client}"								 String # default value: "chef-client"
+		hour "${7:*}"										 Integer, # String, default value: "*"
+		job_name "${8:chef-client}"								 # String, default value: "chef-client"
 		log_directory						 String
-		log_file_name "${8:client.log}"						 String # default value: "client.log"
-		mailto									 String
-		minute "${9:0,30}"									 Integer, String # default value: "0,30"
-		month "${10:*}"										 Integer, String # default value: "*"
+		log_file_name "${9:client.log}"						 # String, default value: "client.log"
+		mailto									 # String
+		minute "${10:0,30}"									 Integer, # String, default value: "0,30"
+		month "${11:*}"										 Integer, # String, default value: "*"
 		nice										 Integer, String
-		splay										 Integer, String # default value: 300
-		user "${11:root}"										 String # default value: "root"
-		weekday "${12:*}"									 Integer, String # default value: "*"
-		action :${13:add}									 Symbol # defaults to :add if not specified
+		splay {12:300}									 Integer, # String, default value: 300
+		user "${13:root}"										 # String, default value: "root"
+		weekday "${14:*}"									 Integer, # String, default value: "*"
+		action :${15:add}									 Symbol # defaults to :add if not specified
 	end
 
 snippet chef_client_launchd
 	chef_client_launchd '${1:name}' do
-		accept_chef_license			 true, false # default value: false
-		chef_binary_path "${2:/opt/chef/bin/chef-client}"				 String # default value: "/opt/chef/bin/chef-client"
-		config_directory "${3:/etc/chef}"				 String # default value: "/etc/chef"
+		accept_chef_license	 ${2:false}		 true, false # default value: false
+		chef_binary_path "${3:/opt/chef/bin/chef-client}"				 # String, default value: "/opt/chef/bin/chef-client"
+		config_directory "${4:/etc/chef}"				 # String, default value: "/etc/chef"
 		daemon_options					 Array
 		environment							 Hash
-		interval								 Integer, String # default value: 30
-		log_directory "${4:/Library/Logs/Chef}"						 String # default value: "/Library/Logs/Chef"
-		log_file_name "${5:client.log}"						 String # default value: "client.log"
-		low_priority_io					 true, false # default value: true
+		interval								 Integer, # String, default value: 30
+		log_directory "${5:/Library/Logs/Chef}"						 # String, default value: "/Library/Logs/Chef"
+		log_file_name "${6:client.log}"						 # String, default value: "client.log"
+		low_priority_io		${7:true}			 true, false # default value: true
 		nice										 Integer, String
-		splay										 Integer, String # default value: 300
-		user "${6:root}"										 String # default value: "root"
-		working_directory "${7:/var/root}"				 String # default value: "/var/root"
-		action :${8:enable}									 Symbol # defaults to :enable if not specified
+		splay										 Integer, # String, default value: 300
+		user "${8:root}"										 # String, default value: "root"
+		working_directory "${9:/var/root}"				 # String, default value: "/var/root"
+		action :${10:enable}									 Symbol # defaults to :enable if not specified
 	end
 
 snippet chef_client_scheduled_task
 	chef_client_scheduled_task '${1:name}' do
 		accept_chef_license	 ${2:false}		 true, false # default value: false
-		chef_binary_path "${3:C:/opscode/chef/bin/chef-client}"				 String # default value: "C:/opscode/chef/bin/chef-client"
-		config_directory "${4:/etc/chef}"				 String # default value: "/etc/chef"
+		chef_binary_path "${3:C:/opscode/chef/bin/chef-client}"				 # String, default value: "C:/opscode/chef/bin/chef-client"
+		config_directory "${4:/etc/chef}"				 # String, default value: "/etc/chef"
 		daemon_options					 Array
-		frequency "${5:minute}"								 String # default value: "minute"
-		frequency_modifier "${6:30 if frequency is 'minute', 1 otherwise}"			 Integer, String # default value: "30 if frequency is 'minute', 1 otherwise"
-		log_directory "${7:CONFIG_DIRECTORY/log}"						 String # default value: "CONFIG_DIRECTORY/log"
-		log_file_name "${8:client.log}"						 String # default value: "client.log"
-		password								 String
-		run_on_battery					 true, false # default value: true
-		splay										 Integer, String # default value: 300
-		start_date							 String
-		start_time							 String
-		task_name "${9:chef-client}"								 String # default value: "chef-client"
-		user "${10:System}"										 String # default value: "System"
-		action :${11:add}									 Symbol # defaults to :add if not specified
+		frequency "${5:minute}"								 # String, default value: "minute"
+		frequency_modifier "${6:30 if frequency is 'minute', 1 otherwise}"			 Integer, # String, default value: "30 if frequency is 'minute', 1 otherwise"
+		log_directory "${7:CONFIG_DIRECTORY/log}"						 # String, default value: "CONFIG_DIRECTORY/log"
+		log_file_name "${8:client.log}"						 # String, default value: "client.log"
+		password								 # String
+		run_on_battery	${9:true}				 true, false # default value: true
+		splay	${10:300}									 Integer, # String, default value: 300
+		start_date							 # String
+		start_time							 # String
+		task_name "${11:chef-client}"								 # String, default value: "chef-client"
+		user "${12:System}"										 # String, default value: "System"
+		action :${13:add}									 Symbol # defaults to :add if not specified
 	end
 
 snippet chef_client_systemd_timer
 	chef_client_systemd_timer '${1:name}' do
 		accept_chef_license	${2:false}		 true, false # default value: false
-		chef_binary_path "${3:/opt/chef/bin/chef-client}"				 String # default value: "/opt/chef/bin/chef-client"
-		config_directory "${4:/etc/chef}"				 String # default value: "/etc/chef"
+		chef_binary_path "${3:/opt/chef/bin/chef-client}"				 # String, default value: "/opt/chef/bin/chef-client"
+		config_directory "${4:/etc/chef}"				 # String, default value: "/etc/chef"
 		cpu_quota								 Integer, String
 		daemon_options					 Array
-		delay_after_boot "${5:1min}"				 String # default value: "1min"
-		description "${6:Chef Infra Client periodic execution}"							 String # default value: "Chef Infra Client periodic execution"
+		delay_after_boot "${5:1min}"				 # String, default value: "1min"
+		description "${6:Chef Infra Client periodic execution}"							 # String, default value: "Chef Infra Client periodic execution"
 		environment							 Hash
-		interval "${7:30min}"								 String # default value: "30min"
-		job_name "${8:chef-client}"								 String # default value: "chef-client"
-		run_on_battery					 true, false # default value: true
-		splay "${9:5min}"										 String # default value: "5min"
-		user "${10:root}"										 String # default value: "root"
-		action :${11:add}									 Symbol # defaults to :add if not specified
+		interval "${7:30min}"								 # String, default value: "30min"
+		job_name "${8:chef-client}"								 # String, default value: "chef-client"
+		run_on_battery	${9:true}				 true, false # default value: true
+		splay "${10:5min}"										 # String, default value: "5min"
+		user "${11:root}"										 # String, default value: "root"
+		action :${12:add}									 Symbol # defaults to :add if not specified
 	end
 
 snippet chef_client_trusted_certificate
 	chef_client_trusted_certificate '${1:name}' do
-		cert_name				 String # default name unless specified
+		cert_name				 # String default name unless specified
 		certificate			 String
 		action :${2:add}					 Symbol # defaults to :add if not specified
 	end
@@ -254,21 +254,21 @@ snippet chef_client_trusted_certificate
 snippet chef_gem
 	chef_gem '${1:name}' do
 		clear_sources								true, false
-		gem_binary									String
+		gem_binary								# String
 		include_default_source			true, false
-		options											String, Hash, Array
-		package_name								String
-		source											String, Array
-		timeout											String, Integer
-		version											String
+		options										# String, Hash, Array
+		package_name							# String
+		source										# String, Array
+		timeout										# String, Integer
+		version										# String
 		action :${2:install}											Symbol # defaults to :install if not specified
 	end
 
 snippet chef_handler
 	chef_handler '${1:name}' do
 		arguments				Array, Hash
-		class_name			String # default name unless specified
-		source					String
+		class_name			# String default name unless specified
+		source				# String
 		type						Hash # default value: {"report"=>true, "exception"=>true}
 		action :${2:enable}					Symbol # defaults to :enable if not specified
 	end
@@ -285,139 +285,139 @@ snippet chef_vault_secret
 		clients					 String, Array
 		data_bag				 String
 		environment			 String
-		id							 String # default name unless specified
+		id							 # String default name unless specified
 		raw_data				 Hash, ChefUtils::Mash # default value: {}
-		search "${_:*:*}"					 String # default value: "*:*"
+		search "${_:*:*}"					 # String, default value: "*:*"
 		action :${2:create}					 Symbol # defaults to :create if not specified
 	end
 
 snippet chocolatey_config
 	chocolatey_config '${1:name}' do
-		config_key			String # default name unless specified
-		value						String
+		config_key			# String default name unless specified
+		value					# String
 		action :${2:set}					Symbol # defaults to :set if not specified
 	end
 
 snippet chocolatey_feature
 	chocolatey_feature '${1:name}' do
-		feature_name			String # default name unless specified
+		feature_name			# String default name unless specified
 		action :${2:enable}						Symbol # defaults to :enable if not specified
 	end
 
 snippet chocolatey_package
 	chocolatey_package '${1:name}' do
-		list_options			String
-		options						String, Array
-		package_name			String, Array
-		password					String
+		list_options		# String
+		options					# String, Array
+		package_name		# String, Array
+		password				# String
 		returns						Integer, Array # default value: [0, 2]
-		source						String
-		timeout						String, Integer
-		user							String
-		version						String, Array
+		source					# String
+		timeout					# String, Integer
+		user						# String
+		version					# String, Array
 		action :${2:install}						Symbol # defaults to :install if not specified
 	end
 
 snippet chocolatey_source
 	chocolatey_source '${1:name}' do
-		admin_only							true, false # default value: false
-		allow_self_service			true, false # default value: false
-		bypass_proxy						true, false # default value: false
+		admin_only		${2:false}					true, false # default value: false
+		allow_self_service	${3:false}		true, false # default value: false
+		bypass_proxy	${4:false}					true, false # default value: false
 		priority								Integer # default value: 0
-		source									String
-		source_name							String # default name unless specified
-		action :${2:add}									Symbol # defaults to :add if not specified
+		source								# String
+		source_name							# String default name unless specified
+		action :${5:add}									Symbol # defaults to :add if not specified
 	end
 
 snippet cookbook_file
 	cookbook_file '${1:name}' do
 		atomic_update							 true, false
 		backup										 Integer, false # default value: 5
-		cookbook									 String
-		force_unlink							 true, false # default value: false
-		group											 String, Integer
+		cookbook									 # String
+		force_unlink ${2:false}							 true, false # default value: false
+		group											 # String, Integer
 		inherits									 true, false
-		manage_symlink_source			 true, false
-		mode											 String, Integer
-		owner											 String, Integer
-		path											 String # default name unless specified
+		manage_symlink_source	${3:false}		 true, false
+		mode											 # String, Integer
+		owner											 # String, Integer
+		path											 # String default name unless specified
 		rights										 Hash
-		source										 String, Array
-		verify										 String, Block
-		action :${2:create}										 Symbol # defaults to :create if not specified
+		source										 # String, Array
+		verify										 # String, Block
+		action :${4:create}										 Symbol # defaults to :create if not specified
 	end
 
 snippet cron
 	cron '${1:name}' do
 		command "${4:ls -la}"					 String
-		day "${_:*}"							 Integer, String # default value: "*"
+		day "${_:*}"							 Integer, # String, default value: "*"
 		environment			 Hash
 		home						 String
-		hour "${_:*}"						 Integer, String # default value: "*"
+		hour "${_:*}"						 Integer, # String, default value: "*"
 		mailto					 String
-		minute "${_:*}"					 Integer, String # default value: "*"
-		month "${_:*}"						 Integer, String # default value: "*"
+		minute "${_:*}"					 Integer, # String, default value: "*"
+		month "${_:*}"						 Integer, # String, default value: "*"
 		path						 String
 		shell						 String
 		time						 Symbol
 		time_out				 Hash
-		user "${_:root}"						 String # default value: "root"
+		user "${_:root}"						 # String, default value: "root"
 		weekday					 Integer, String, Symbol # default value: "*"
 		action :${2:create}					 Symbol # defaults to :create if not specified
 	end
 
 snippet cron_access
 	cron_access '${1:name}' do
-		user			String # default name unless specified
+		user			# String default name unless specified
 		action :${2:allow}		Symbol # defaults to :allow if not specified
 	end
 
 snippet cron_d
 	cron_d '${1:name}' do
-		command "${2:ls -la}"								String
-		comment								String
-		cron_name							String # default name unless specified
-		day "${2:*}"										Integer, String # default value: "*"
+		command "${2:ls -la}"							# String
+		comment							# String
+		cron_name							# String default name unless specified
+		day "${2:*}"										Integer, # String, default value: "*"
 		environment						Hash
-		home									String
-		hour "${3:*}"									Integer, String # default value: "*"
-		mailto								String
-		minute "${4:*}"								Integer, String # default value: "*"
-		mode									String, Integer # default value: "0600"
-		month "${5:*}"									Integer, String # default value: "*"
-		path									String
-		predefined_value			String
+		home								# String
+		hour "${3:*}"									Integer, # String, default value: "*"
+		mailto							# String
+		minute "${4:*}"								Integer, # String, default value: "*"
+		mode								# String, Integer # default value: "0600"
+		month "${5:*}"									Integer, # String, default value: "*"
+		path								# String
+		predefined_value		# String
 		random_delay					Integer
-		shell									String
+		shell								# String
 		time_out							Hash
-		user "${6:root}"									String # default value: "root"
+		user "${6:root}"									# String, default value: "root"
 		weekday								Integer, String, Symbol # default value: "*"
 		action :${7:create}								Symbol # defaults to :create if not specified
 	end
 
 snippet csh
 	csh '${1:name}' do
-		code											 String
-		creates										 String
-		cwd												 String
+		code											 # String
+		creates										 # String
+		cwd												 # String
 		environment								 Hash
-		flags											 String
-		group											 String, Integer
+		flags											 # String
+		group											 # String, Integer
 		path											 Array
 		returns										 Integer, Array
 		timeout										 Integer, Float
-		user											 String, Integer
-		umask											 String, Integer
+		user											 # String, Integer
+		umask											 # String, Integer
 		action :${2:run}										 Symbol # defaults to :run if not specified
 	end
 
 snippet directory
 	directory '${1:name}' do
-		group											 String, Integer
+		group											 # String, Integer
 		inherits									 true, false
-		mode											 String, Integer
-		owner											 String, Integer
-		path											 String # defaults to '${1:name}' if not specified
+		mode											 # String, Integer
+		owner											 # String, Integer
+		path											 # String # defaults to '${1:name}' if not specified
 		recursive									 true, false
 		rights										 Hash
 		action :${2:create}										 Symbol # defaults to :create if not specified
@@ -427,48 +427,48 @@ snippet dmg_package
 	dmg_package '${1:name}' do
 		accept_eula	${2:false}				 true, false # default value: false
 		allow_untrusted	${3:false}		 true, false # default value: false
-		app									 String # default name unless specified
+		app									 # String default name unless specified
 		checksum						 String
-		destination "${4:/Applications}"					 String # default value: "/Applications"
-		dmg_name						 String # default value: The value passed for the application name.
+		destination "${4:/Applications}"					 # String, default value: "/Applications"
+		dmg_name						 # String, default value: The value passed for the application name.
 		dmg_passphrase			 String
-		file								 String
+		file								 # String
 		headers							 Hash
-		owner								 String, Integer
+		owner								 # String, Integer
 		package_id					 String
-		source							 String
-		type "${5:app}"								 String # default value: "app"
-		volumes_dir					 String # default value: The value passed for the application name.
+		source							 # String
+		type "${5:app}"								 # String, default value: "app"
+		volumes_dir					 # String, default value: The value passed for the application name.
 		action :${6:install}							 Symbol # defaults to :install if not specified
 	end
 
 snippet dnf_package
 	dnf_package '${1:name}' do
-		arch							String, Array
+		arch						# String, Array
 		flush_cache				Hash # default value: {"before"=>false, "after"=>false}
-		options						String, Array
-		package_name			String, Array
-		source						String
-		timeout						String, Integer
-		version						String, Array
+		options					# String, Array
+		package_name		# String, Array
+		source					# String
+		timeout					# String, Integer
+		version					# String, Array
 		action :${2:install}						Symbol # defaults to :install if not specified
 	end
 
 snippet dpkg_package
 	dpkg_package '${1:name}' do
-		options											 String, Array
-		package_name								 String, Array
-		response_file								 String
+		options											 # String, Array
+		package_name								 # String, Array
+		response_file								 # String
 		response_file_variables			 Hash
-		source											 String, Array
-		timeout											 String, Integer
-		version											 String, Array
+		source											 # String, Array
+		timeout											 # String, Integer
+		version											 # String, Array
 		action :${2:install}											 Symbol # defaults to :install if not specified
 	end
 
 snippet dsc_resource
 	dsc_resource '${1:name}' do
-		module_name								 String
+		module_name								 # String
 		module_version						 String
 		property									 Symbol
 		reboot_action							 Symbol # default value: :nothing
@@ -479,12 +479,12 @@ snippet dsc_resource
 
 snippet dsc_script
 	dsc_script '${1:name}' do
-		code											 String
-		command "${2:ls -la}"										 String
+		code											 # String
+		command "${2:ls -la}"										 # String
 		configuration_data				 String
 		configuration_data_script  String
 		configuration_name				 String
-		cwd												 String
+		cwd												 # String
 		environment								 Hash
 		flags											 Hash
 		imports										 Array
@@ -496,91 +496,91 @@ snippet execute
 	execute '${1:name}' do
 		command "${2:ls -la}"					 String, Array # default name unless specified
 		creates					 String
-		cwd							 String
-		default_env			 true, false # default value: false
+		cwd							 # String
+		default_env	${3:false}		 true, false # default value: false
 		domain					 String
-		elevated				 true, false # default value: false
+		elevated	${4:false}			 true, false # default value: false
 		environment			 Hash
 		group						 String, Integer
 		input						 String
-		live_stream			 true, false # default value: false
+		live_stream	${5:false}		 true, false # default value: false
 		password				 String
 		returns					 Integer, Array # default value: 0
 		sensitive				 true, false
 		timeout					 Integer, String, Float # default value: 3600
 		umask						 String, Integer
 		user						 String, Integer
-		action :${3:run}					 Symbol # defaults to :run if not specified
+		action :${6:run}					 Symbol # defaults to :run if not specified
 	end
 
 snippet file
 	file '${1:name}' do
 		atomic_update							 true, false
 		backup										 false, Integer
-		checksum									 String
-		content										 String
+		checksum									 # String
+		content										 # String
 		force_unlink							 true, false
-		group											 String, Integer
+		group											 # String, Integer
 		inherits									 true, false
 		manage_symlink_source			 true, false
-		mode											 String, Integer
-		owner											 String, Integer
-		path											 String # defaults to '${1:name}' if not specified
+		mode											 # String, Integer
+		owner											 # String, Integer
+		path											 # String # defaults to '${1:name}' if not specified
 		rights										 Hash
-		verify										 String, Block
+		verify										 # String, Block
 		action :${2:create}										 Symbol # defaults to :create if not specified
 	end
 
 snippet freebsd_package
 	freebsd_package '${1:name}' do
-		options						String
-		package_name			String
-		source						String
-		timeout						String, Integer
-		version						String
+		options					# String
+		package_name		# String
+		source					# String
+		timeout					# String, Integer
+		version					# String
 		action :${2:install}						Symbol # defaults to :install if not specified
 	end
 
 snippet gem_package
 	gem_package '${1:name}' do
 		clear_sources								true, false
-		gem_binary									String
+		gem_binary								# String
 		include_default_source			true, false
-		options											String, Hash, Array
-		package_name								String
-		source											String, Array
-		timeout											String, Integer
-		version											String
+		options										# String, Hash, Array
+		package_name							# String
+		source										# String, Array
+		timeout										# String, Integer
+		version										# String
 		action :${2:install}											Symbol # defaults to :install if not specified
 	end
 
 snippet git
 	git '${1:name}' do
 		additional_remotes			Hash
-		checkout_branch					String
+		checkout_branch				# String
 		depth										Integer
-		destination							String # default name unless specified
-		enable_checkout					true, false # default value: true
-		enable_submodules				true, false # default value: false
+		destination							# String default name unless specified
+		enable_checkout		${2:true}			true, false # default value: true
+		enable_submodules	${3:false}			true, false # default value: false
 		environment							Hash
-		group										String, Integer
-		remote "${2:origin}"									String # default value: "origin"
-		repository							String
-		revision "${3:HEAD}"								String # default value: "HEAD"
-		ssh_wrapper							String
+		group									# String, Integer
+		remote "${4:origin}"									# String, default value: "origin"
+		repository						# String
+		revision "${5:HEAD}"								# String, default value: "HEAD"
+		ssh_wrapper						# String
 		timeout									Integer
-		user										String, Integer
-		action :${4:sync}									Symbol # defaults to :sync if not specified
+		user									# String, Integer
+		action :${6:sync}									Symbol # defaults to :sync if not specified
 	end
 
 snippet homebrew_cask
 	homebrew_cask '${1:name}' do
-		cask_name					 String # default name unless specified
-		homebrew_path "${2:/usr/local/bin/brew}"			 String # default value: "/usr/local/bin/brew"
-		install_cask			 true, false # default value: true
+		cask_name					 # String default name unless specified
+		homebrew_path "${2:/usr/local/bin/brew}"			 # String, default value: "/usr/local/bin/brew"
+		install_cask ${3:true}			 true, false # default value: true
 		options						 String
-		owner							 String, Integer
-		action :${3:install}						 Symbol # defaults to :install if not specified
+		owner							 # String, Integer
+		action :${4:install}						 Symbol # defaults to :install if not specified
 	end
 
 snippet homebrew_package
@@ -596,12 +596,12 @@ snippet homebrew_package
 
 snippet homebrew_tap
 	homebrew_tap '${1:name}' do
-		full							 true, false # default value: false
-		homebrew_path "${_:/usr/local/bin/brew}"			 String # default value: "/usr/local/bin/brew"
-		owner							 String
-		tap_name					 String # default name unless specified
-		url								 String
-		action :${2:tap}						 Symbol # defaults to :tap if not specified
+		full	 ${2:false}						 true, false # default value: false
+		homebrew_path "${3:/usr/local/bin/brew}"			 # String, default value: "/usr/local/bin/brew"
+		owner							 # String
+		tap_name					 # String default name unless specified
+		url								 # String
+		action :${4:tap}						 Symbol # defaults to :tap if not specified
 	end
 
 snippet homebrew_update
@@ -613,138 +613,138 @@ snippet homebrew_update
 snippet hostname
 	hostname '${1:name}' do
 		aliases							Array
-		compile_time				true, false # default value: true
-		hostname						String # default name unless specified
-		ipaddress						String # default value: The node's IP address as determined by Ohai.
-		windows_reboot			true, false # default value: true
-		action :${2:set}							Symbol # defaults to :set if not specified
+		compile_time ${2:true}				true, false # default value: true
+		hostname						# String default name unless specified
+		ipaddress						# String, default value: The node's IP address as determined by Ohai.
+		windows_reboot	${3:true}		true, false # default value: true
+		action :${4:set}							Symbol # defaults to :set if not specified
 	end
 
 snippet http_request
 	http_request '${1:name}' do
 		headers										 Hash
 		message										 Object # defaults to '${1:name}' if not specified
-		url												 String
+		url												 # String
 		action :${2:get}										 Symbol # defaults to :get if not specified
 	end
 
 snippet ifconfig
 	ifconfig '${1:name}' do
-		bcast							String
-		bonding_opts			String
-		bootproto					String
-		bridge						String
-		device						String
-		ethtool_opts			String
-		family "${2:inet}"						String # default value: "inet"
-		gateway						String
-		hwaddr						String
-		inet_addr					String
-		mask							String
-		master						String
-		metric						String
-		mtu								String
-		network						String
-		onboot						String
-		onparent					String
-		slave							String
-		target						String # default name unless specified
-		vlan							String
+		bcast						# String
+		bonding_opts		# String
+		bootproto				# String
+		bridge					# String
+		device					# String
+		ethtool_opts		# String
+		family "${2:inet}"						# String, default value: "inet"
+		gateway					# String
+		hwaddr					# String
+		inet_addr				# String
+		mask						# String
+		master					# String
+		metric					# String
+		mtu							# String
+		network					# String
+		onboot					# String
+		onparent				# String
+		slave						# String
+		target						# String default name unless specified
+		vlan						# String
 		action :${3:add}						Symbol # defaults to :add if not specified
 	end
 
 snippet ips_package
 	ips_package '${1:name}' do
-		accept_license						 true, false # default value: false
-		options										 String
-		package_name							 String, Array
-		source										 String
-		timeout										 String, Integer
-		version										 String, Array
-		action :${2:install}										 Symbol # defaults to :install if not specified
+		accept_license	${2:false}					 true, false # default value: false
+		options										 # String
+		package_name							 # String, Array
+		source										 # String
+		timeout										 # String, Integer
+		version										 # String, Array
+		action :${3:install}										 Symbol # defaults to :install if not specified
 	end
 
 snippet kernel_module
 	kernel_module '${1:name}' do
-		load_dir "${2:/etc/modules-load.d}"				String # default value: "/etc/modules-load.d"
-		modname					String # default name unless specified
+		load_dir "${2:/etc/modules-load.d}"				# String, default value: "/etc/modules-load.d"
+		modname					# String default name unless specified
 		options					Array
-		unload_dir "${3:/etc/modprobe.d}"			String # default value: "/etc/modprobe.d"
+		unload_dir "${3:/etc/modprobe.d}"			# String, default value: "/etc/modprobe.d"
 		action :${4:install}					Symbol # defaults to :install if not specified
 	end
 
 snippet ksh
 	ksh '${1:name}' do
-		code											 String
-		creates										 String
-		cwd												 String
+		code											 # String
+		creates										 # String
+		cwd												 # String
 		environment								 Hash
-		flags											 String
-		group											 String, Integer
+		flags											 # String
+		group											 # String, Integer
 		path											 Array
 		returns										 Integer, Array
 		timeout										 Integer, Float
-		user											 String, Integer
-		umask											 String, Integer
+		user											 # String, Integer
+		umask											 # String, Integer
 		action :${2:run}										 Symbol # defaults to :run if not specified
 	end
 
 snippet launchd
 	launchd '${1:name}' do
-		abandon_process_group						true, false
+		abandon_process_group	${2:false}					true, false
 		backup													Integer, false
-		cookbook												String
-		debug														true, false
-		disabled												true, false # default value: false
+		cookbook											# String
+		debug					${3:false}									true, false
+		disabled				${4:false}								true, false # default value: false
 		enable_globbing									true, false
 		enable_transactions							true, false
 		environment_variables						Hash
 		exit_timeout										Integer
-		group														String, Integer
+		group													# String, Integer
 		hard_resource_limits						Hash
 		inetd_compatibility							Hash
 		init_groups											true, false
 		keep_alive											true, false, Hash
-		label														String # default name unless specified
+		label														# String default name unless specified
 		launch_events										Hash
 		launch_only_once								true, false
-		ld_group												String
+		ld_group											# String
 		limit_load_from_hosts						Array
 		limit_load_to_hosts							Array
 		limit_load_to_session_type			Array, String
 		low_priority_io									true, false
 		mach_services										Hash
-		mode														String, Integer
+		mode													# String, Integer
 		nice														Integer
 		on_demand												true, false
-		owner														String, Integer
-		path														String
+		owner													# String, Integer
+		path													# String
 		plist_hash											Hash
-		process_type										String
-		program													String
+		process_type									# String
+		program												# String
 		program_arguments								Array
 		queue_directories								Array
-		root_directory									String
+		root_directory								# String
 		run_at_load											true, false
-		session_type										String
+		session_type									# String
 		sockets													Hash
 		soft_resource_limits						Array
-		source													String
-		standard_error_path							String
-		standard_in_path								String
-		standard_out_path								String
+		source												# String
+		standard_error_path						# String
+		standard_in_path							# String
+		standard_out_path							# String
 		start_calendar_interval					Hash, Array
 		start_interval									Integer
 		start_on_mount									true, false
 		throttle_interval								Integer
 		time_out												Integer
-		type "${_:daemon}"														String # default value: "daemon"
+		type "${5:daemon}"														# String, default value: "daemon"
 		umask														Integer
-		username												String
+		username											# String
 		wait_for_debugger								true, false
 		watch_paths											Array
-		working_directory								String
-		action :${2:create}													Symbol # defaults to :create if not specified
+		working_directory							# String
+		action :${6:create}													Symbol # defaults to :create if not specified
 	end
 
 snippet link
@@ -753,37 +753,37 @@ snippet link
 		link_type				 String, Symbol # default value: :symbolic
 		mode						 Integer, String
 		owner						 String, Integer
-		target_file			 String # default name unless specified
-		to							 String
+		target_file			 # String default name unless specified
+		to							 # String
 		action :${2:create}					 Symbol # defaults to :create if not specified
 	end
 
 snippet locale
 	locale '${1:name}' do
-		lang				String
+		lang			# String
 		lc_env			Hash
 		action :${2:update}			Symbol # defaults to :update if not specified
 	end
 
 snippet macos_userdefaults
 	macos_userdefaults '${1:name}' do
-		domain			String # default value: NSGlobalDomain: the global domain.
-		host				String, Symbol
-		key					String
-		sudo				true, false # default value: false
-		type				String
-		user				String
+		domain			# String, default value: NSGlobalDomain: the global domain.
+		host			# String, Symbol
+		key				# String
+		sudo		${2:false}		true, false # default value: false
+		type			# String
+		user			# String
 		value				Integer, Float, String, true, false, Hash, Array
-		action :${2:write}			Symbol # defaults to :write if not specified
+		action :${3:write}			Symbol # defaults to :write if not specified
 	end
 
 snippet macports_package
 	macports_package '${1:name}' do
-		options						String
-		package_name			String
-		source						String
-		timeout						String, Integer
-		version						String
+		options					# String
+		package_name		# String
+		source					# String
+		timeout					# String, Integer
+		version					# String
 		action :${2:install}						Symbol # defaults to :install if not specified
 	end
 
@@ -794,8 +794,8 @@ snippet mdadm
 		devices					 Array # default value: []
 		layout					 String
 		level						 Integer # default value: 1
-		metadata "${2:0.90}"				 String # default value: "0.90"
-		raid_device			 String # default name unless specified
+		metadata "${2:0.90}"				 # String, default value: "0.90"
+		raid_device			 # String default name unless specified
 		action :${3:create}					 Symbol # defaults to :create if not specified
 	end
 
@@ -805,26 +805,26 @@ snippet mount
 		device_type			 String, Symbol # default value: :device
 		domain					 String
 		dump						 Integer, false # default value: 0
-		enabled					 true, false # default value: false
-		fsck_device "${2:-}"			 String # default value: "-"
-		fstype "${3:auto}"					 String # default value: "auto"
-		mount_point			 String # default name unless specified
-		options					 Array, String # default value: ["defaults"]
+		enabled ${2:false}				 true, false # default value: false
+		fsck_device "${3:-}"			 # String, default value: "-"
+		fstype "${4:auto}"					 # String, default value: "auto"
+		mount_point			 # String default name unless specified
+		options					 Array, # String, default value: ["defaults"]
 		pass						 Integer, false # default value: 2
 		password				 String
 		supports				 Array, Hash # default value: { remount: false }
 		username				 String
-		action :${4:mount}					 Symbol # defaults to :mount if not specified
+		action :${5:mount}					 Symbol # defaults to :mount if not specified
 	end
 
 snippet msu_package
 	msu_package '${1:name}' do
-		checksum					String
-		options						String
-		package_name			String
-		source						String
-		timeout						String, Integer # default value: 3600
-		action :${2:install}						Symbol # defaults to :install if not specified
+		checksum				# String
+		options					# String
+		package_name		# String
+		source					# String
+		timeout	${2:3600}				# String, Integer # default value: 3600
+		action :${3:install}						Symbol # defaults to :install if not specified
 	end
 
 snippet notify_group
@@ -834,58 +834,58 @@ snippet notify_group
 
 snippet ohai
 	ohai '${1:name}' do
-		plugin			String
+		plugin		# String
 		action :${2:reload}			Symbol # defaults to :reload if not specified
 	end
 
 snippet ohai_hint
 	ohai_hint '${1:name}' do
-		compile_time			true, false # default value: true
+		compile_time	${2:true}		true, false # default value: true
 		content						Hash
-		hint_name					String # default name unless specified
-		action :${2:create}						Symbol # defaults to :create if not specified
+		hint_name					# String default name unless specified
+		action :${3:create}						Symbol # defaults to :create if not specified
 	end
 
 snippet openbsd_package
 	openbsd_package '${1:name}' do
-		options						String
-		package_name			String
-		source						String
-		timeout						String, Integer
-		version						String, Array
+		options					# String
+		package_name		# String
+		source					# String
+		timeout					# String, Integer
+		version					# String, Array
 		action :${2:install}						Symbol # defaults to :install if not specified
 	end
 
 snippet openssl_dhparam
 	openssl_dhparam '${1:name}' do
 		generator				Integer # default value: 2
-		group						String, Integer
+		group					# String, Integer
 		key_length			Integer # default value: 2048
-		mode "${2:0640}"						Integer, String # default value: "0640"
-		owner						String, Integer
-		path						String # default name unless specified
+		mode "${2:0640}"						Integer, # String, default value: "0640"
+		owner					# String, Integer
+		path						# String default name unless specified
 		action :${3:create}					Symbol # defaults to :create if not specified
 	end
 
 snippet openssl_ec_private_key
 	openssl_ec_private_key '${1:name}' do
-		force						true, false # default value: false
-		group						String, Integer
-		key_cipher "${2:des3}"			String # default value: "des3"
-		key_curve "${3:prime256v1}"				String # default value: "prime256v1"
-		key_pass				String
-		mode "${4:0600}"						Integer, String # default value: "0600"
-		owner						String, Integer
-		path						String # default name unless specified
-		action :${5:create}					Symbol # defaults to :create if not specified
+		force		${2:false}				true, false # default value: false
+		group					# String, Integer
+		key_cipher "${3:des3}"			# String, default value: "des3"
+		key_curve "${4:prime256v1}"				# String, default value: "prime256v1"
+		key_pass			# String
+		mode "${5:0600}"						Integer, # String, default value: "0600"
+		owner					# String, Integer
+		path						# String default name unless specified
+		action :${6:create}					Symbol # defaults to :create if not specified
 	end
 
 snippet openssl_ec_public_key
 	openssl_ec_public_key '${1:name}' do
-		group										 String, Integer
-		mode "${2:0640}"										 Integer, String # default value: "0640"
-		owner										 String, Integer
-		path										 String # default name unless specified
+		group										 # String, Integer
+		mode "${2:0640}"										 Integer, # String, default value: "0640"
+		owner										 # String, Integer
+		path										 # String default name unless specified
 		private_key_content			 String
 		private_key_pass				 String
 		private_key_path				 String
@@ -894,23 +894,23 @@ snippet openssl_ec_public_key
 
 snippet openssl_rsa_private_key
 	openssl_rsa_private_key '${1:name}' do
-		force						true, false # default value: false
-		group						String, Integer
-		key_cipher "${2:des3}"			String # default value: "des3"
+		force	${2:false}					true, false # default value: false
+		group					# String, Integer
+		key_cipher "${3:des3}"			# String, default value: "des3"
 		key_length			Integer # default value: 2048
-		key_pass				String
-		mode "${3:0600}"						Integer, String # default value: "0600"
-		owner						String, Integer
-		path						String # default name unless specified
-		action :${4:create}					Symbol # defaults to :create if not specified
+		key_pass			# String
+		mode "${4:0600}"						Integer, # String, default value: "0600"
+		owner					# String, Integer
+		path						# String default name unless specified
+		action :${5:create}					Symbol # defaults to :create if not specified
 	end
 
 snippet openssl_rsa_public_key
 	openssl_rsa_public_key '${1:name}' do
-		group										 String, Integer
-		mode "${2:0640}"										 Integer, String # default value: "0640"
-		owner										 String, Integer
-		path										 String # default name unless specified
+		group										 # String, Integer
+		mode "${2:0640}"										 Integer, # String, default value: "0640"
+		owner										 # String, Integer
+		path										 # String default name unless specified
 		private_key_content			 String
 		private_key_pass				 String
 		private_key_path				 String
@@ -920,28 +920,28 @@ snippet openssl_rsa_public_key
 snippet openssl_x509_certificate
 	openssl_x509_certificate '${1:name}' do
 		ca_cert_file						 String
-		ca_key_file							 String
-		ca_key_pass							 String
-		city										 String
-		common_name							 String
-		country									 String
-		csr_file								 String
-		email										 String
+		ca_key_file							 # String
+		ca_key_pass							 # String
+		city										 # String
+		common_name							 # String
+		country									 # String
+		csr_file								 # String
+		email										 # String
 		expire									 Integer # default value: 365
 		extensions							 Hash # default value: {}
-		group										 String, Integer
-		key_curve "${2:prime256v1}"								 String # default value: "prime256v1"
-		key_file								 String
+		group										 # String, Integer
+		key_curve "${2:prime256v1}"								 # String, default value: "prime256v1"
+		key_file								 # String
 		key_length							 Integer # default value: 2048
-		key_pass								 String
-		key_type "${3:rsa}"								 String # default value: "rsa"
+		key_pass								 # String
+		key_type "${3:rsa}"								 # String, default value: "rsa"
 		mode										 Integer, String
-		org											 String
-		org_unit								 String
-		owner										 String, Integer
-		path										 String # default name unless specified
+		org											 # String
+		org_unit								 # String
+		owner										 # String, Integer
+		path										 # String default name unless specified
 		renew_before_expiry			 Integer
-		state										 String
+		state										 # String
 		subject_alt_name				 Array # default value: []
 		action :${4:create}									 Symbol # defaults to :create if not specified
 	end
@@ -952,10 +952,10 @@ snippet openssl_x509_crl
 		ca_key_file						 String
 		ca_key_pass						 String
 		expire								 Integer # default value: 8
-		group									 String, Integer
+		group									 # String, Integer
 		mode									 Integer, String
-		owner									 String, Integer
-		path									 String # default name unless specified
+		owner									 # String, Integer
+		path									 # String default name unless specified
 		renewal_threshold			 Integer # default value: 1
 		revocation_reason			 Integer # default value: 0
 		serial_to_revoke			 Integer, String
@@ -969,191 +969,191 @@ snippet openssl_x509_request
 		country					 String
 		email						 String
 		group						 String, Integer
-		key_curve "${2:prime256v1}"				 String # default value: "prime256v1"
+		key_curve "${2:prime256v1}"				 # String, default value: "prime256v1"
 		key_file				 String
 		key_length			 Integer # default value: 2048
 		key_pass				 String
-		key_type "${3:ec}"				 String # default value: "ec"
+		key_type "${3:ec}"				 # String, default value: "ec"
 		mode						 Integer, String
-		org							 String
+		org							 # String
 		org_unit				 String
 		owner						 String, Integer
-		path						 String # default name unless specified
+		path						 # String default name unless specified
 		state						 String
 		action :${4:create}					 Symbol # defaults to :create if not specified
 	end
 
 snippet osx_profile
 	osx_profile '${1:name}' do
-		identifier				String
-		profile						String, Hash
-		profile_name			String # default name unless specified
+		identifier			# String
+		profile					# String, Hash
+		profile_name			# String default name unless specified
 		action :${2:install}						Symbol # defaults to :install if not specified
 	end
 
 snippet package
 	package '${1:name}' do
 		allow_downgrade						 true, false # Yum, RPM packages only
-		arch											 String, Array # Yum packages only
+		arch											 # String, Array # Yum packages only
 		default_release						 String # Apt packages only
 		flush_cache								 Array
-		gem_binary								 String
-		homebrew_user							 String, Integer # Homebrew packages only
+		gem_binary								 # String
+		homebrew_user							 # String, Integer # Homebrew packages only
 		notifies									 # see description
-		options										 String
-		package_name							 String, Array # defaults to '${1:name}' if not specified
-		response_file							 String # Apt packages only
+		options										 # String
+		package_name							 # String, Array # defaults to '${1:name}' if not specified
+		response_file							 # String # Apt packages only
 		response_file_variables		 Hash # Apt packages only
-		source										 String
+		source										 # String
 		subscribes								 # see description
-		timeout										 String, Integer
-		version										 String, Array
+		timeout										 # String, Integer
+		version										 # String, Array
 		action :${2:install}										 Symbol # defaults to :install if not specified
 	end
 
 snippet pacman_package
 	pacman_package '${1:name}' do
-		options						String
-		package_name			String
-		source						String
-		timeout						String, Integer
-		version						String, Array
+		options					# String
+		package_name		# String
+		source					# String
+		timeout					# String, Integer
+		version					# String, Array
 		action :${2:install}						Symbol # defaults to :install if not specified
 	end
 
 snippet paludis_package
 	paludis_package '${1:name}' do
-		options						String
-		package_name			String
-		source						String
+		options					# String
+		package_name		# String
+		source					# String
 		timeout						Integer # default value: 3600
-		version						String
+		version					# String
 		action :${2:install}						Symbol # defaults to :install if not specified
 	end
 
 snippet perl
 	perl '${1:name}' do
-		code											 String
-		creates										 String
-		cwd												 String
+		code											 # String
+		creates										 # String
+		cwd												 # String
 		environment								 Hash
-		flags											 String
-		group											 String, Integer
+		flags											 # String
+		group											 # String, Integer
 		notifies									 # see description
 		path											 Array
 		returns										 Integer, Array
 		subscribes								 # see description
 		timeout										 Integer, Float
-		user											 String, Integer
-		umask											 String, Integer
+		user											 # String, Integer
+		umask											 # String, Integer
 		action :${2:run}										 Symbol # defaults to :run if not specified
 	end
 
 snippet plist
 	plist '${1:name}' do
-		encoding "${2:binary}"			String # default value: "binary"
-		entry					String
-		group "${3:wheel}"					String # default value: "wheel"
-		mode					String, Integer
-		owner "${4:root}"					String # default value: "root"
-		path					String # default name unless specified
+		encoding "${2:binary}"			# String, default value: "binary"
+		entry				# String
+		group "${3:wheel}"					# String, default value: "wheel"
+		mode				# String, Integer
+		owner "${4:root}"					# String, default value: "root"
+		path					# String default name unless specified
 		value					true, false, String, Integer, Float, Hash
 		action :${5:set}				Symbol # defaults to :set if not specified
 	end
 
 snippet portage_package
 	portage_package '${1:name}' do
-		options						String
-		package_name			String
-		source						String
-		timeout						String, Integer # default value: 3600
-		version						String
+		options					# String
+		package_name		# String
+		source					# String
+		timeout					# String, Integer # default value: 3600
+		version					# String
 		action :${2:install}						Symbol # defaults to :install if not specified
 	end
 
 snippet powershell_package_source
 	powershell_package_source '${1:name}' do
-		provider_name "${2:NuGet}"								 String # default value: "NuGet"
+		provider_name "${2:NuGet}"								 # String, default value: "NuGet"
 		publish_location						 String
 		script_publish_location			 String
 		script_source_location			 String
-		source_name									 String # default name unless specified
+		source_name									 # String default name unless specified
 		trusted											 true, false # default value: false
-		url													 String
+		url													 # String
 		action :${3:register}											 Symbol # defaults to :register if not specified
 	end
 
 snippet powershell_script
 	powershell_script '${1:name}' do
-		code												String
-		command "${2:ls -la}"											String, Array # default name unless specified
-		convert_boolean_return			true, false # default value: false
-		creates											String
-		cwd													String
-		domain											String
-		elevated										true, false # default value: false
+		code											# String
+		command "${2:ls -la}"										# String, Array # default name unless specified
+		convert_boolean_return ${3:false}			true, false # default value: false
+		creates										# String
+		cwd												# String
+		domain										# String
+		elevated ${4:false}										true, false # default value: false
 		environment									Hash
-		flags												String
-		group												String, Integer
-		input												String
-		interpreter "${3:powershell}"									String # default value: "powershell"
-		live_stream									true, false # default value: false
-		password										String
+		flags											# String
+		group											# String, Integer
+		input											# String
+		interpreter "${5:powershell}"									# String, default value: "powershell"
+		live_stream	${6:false}								true, false # default value: false
+		password									# String
 		returns											Integer, Array # default value: 0
 		sensitive										true, false
 		timeout											Integer, String, Float # default value: 3600
-		user												String, Integer
-		action :${4:run}											Symbol # defaults to :run if not specified
+		user											# String, Integer
+		action :${7:run}											Symbol # defaults to :run if not specified
 	end
 
 snippet python
 	python '${1:name}' do
 		code						 String
-		command "${2:ls -la}"					 String # default name unless specified
+		command "${2:ls -la}"					 # String default name unless specified
 		creates					 String
-		cwd							 String
-		default_env			 true, false # default value: false
+		cwd							 # String
+		default_env	${3:false}		 true, false # default value: false
 		domain					 String
-		elevated				 true, false # default value: false
+		elevated ${4:false}				 true, false # default value: false
 		environment			 Hash
 		flags						 String
 		group						 String, Integer
 		interpreter			 String
-		live_stream			 true, false # default value: false
+		live_stream ${5:false}			 true, false # default value: false
 		password				 String
 		returns					 Integer, Array # default value: 0
-		sensitive				 true, false # default value: "True if the password property is set. False otherwise."
+		sensitive ${6:false}				 true, false # default value: "True if the password property is set. False otherwise."
 		timeout					 Integer, Float
 		umask						 String, Integer
 		user						 String, Integer
-		action :${3:run}					 Symbol # defaults to :run if not specified
+		action :${7:run}					 Symbol # defaults to :run if not specified
 	end
 
 snippet reboot
 	reboot '${1:name}' do
 		delay_mins			Integer # default value: 0
-		reason "${2:Reboot by Chef Infra Client}"					String # default value: "Reboot by Chef Infra Client"
+		reason "${2:Reboot by Chef Infra Client}"					# String, default value: "Reboot by Chef Infra Client"
 		action :${3:nothing}					Symbol # defaults to :nothing if not specified
 	end
 
 snippet remote_directory
 	remote_directory '${1:name}' do
-		cookbook									 String
+		cookbook									 # String
 		files_backup							 Integer, false # default value: 5
-		files_group								 String, Integer
-		files_mode								 String, Integer # default value: 0644 on *nix systems
-		files_owner								 String, Integer
-		group											 String, Integer
+		files_group								 # String, Integer
+		files_mode								 # String, Integer # default value: 0644 on *nix systems
+		files_owner								 # String, Integer
+		group											 # String, Integer
 		inherits									 true, false
-		mode											 String, Integer
-		overwrite									 true, false # default value: true
-		owner											 String, Integer
-		path											 String # default name unless specified
+		mode											 # String, Integer
+		overwrite	${2:true}								 true, false # default value: true
+		owner											 # String, Integer
+		path											 # String default name unless specified
 		purge											 true, false
 		recursive									 true, false
 		rights										 Hash
-		source										 String
-		action :${2:create}										 Symbol # defaults to :create if not specified
+		source										 # String
+		action :${3:create}										 Symbol # defaults to :create if not specified
 	end
 
 snippet remote_file
@@ -1161,137 +1161,137 @@ snippet remote_file
 		atomic_update							 true, false
 		authentication						 # default value: remote
 		backup										 Integer, false # default value: 5
-		checksum									 String
-		content										 String, nil
-		diff											 String, nil
-		force_unlink							 true, false # default value: false
-		ftp_active_mode						 true, false # default value: false
-		group											 String, Integer
+		checksum									 # String
+		content										 # String, nil
+		diff											 # String, nil
+		force_unlink	${2:false}						 true, false # default value: false
+		ftp_active_mode	${3:false}					 true, false # default value: false
+		group											 # String, Integer
 		headers										 Hash
 		inherits									 true, false
 		manage_symlink_source			 true, false
-		mode											 String, Integer
+		mode											 # String, Integer
 		notifies									 # see description
-		owner											 String, Integer
-		path											 String # defaults to '${1:name}' if not specified
+		owner											 # String, Integer
+		path											 # String # defaults to '${1:name}' if not specified
 		rights										 Hash
-		source										 String, Array
+		source										 # String, Array
 		subscribes								 # see description
 		use_conditional_get				 true, false
-		verify										 String, Block
-		remote_domain							 String
+		verify										 # String, Block
+		remote_domain							 # String
 		remote_password						 String
-		remote_user								 String
-		show_progress							 true, false # default value: false
-		use_etag									 true, false # default value: true
-		use_last_modified					 true, false # default value: true
-		sensitive									 true, false # default value: false
+		remote_user								 # String
+		show_progress	${4:false}						 true, false # default value: false
+		use_etag		${5:true}							 true, false # default value: true
+		use_last_modified	${6:true				 true, false # default value: true
+		sensitive		${7:false}							 true, false # default value: false
 		verifications							 Array
-		action :${2:create}										 Symbol # defaults to :create if not specified
+		action :${8:create}										 Symbol # defaults to :create if not specified
 	end
 
 snippet rhsm_errata
 	rhsm_errata '${1:name}' do
-		errata_id			 String # default name unless specified
+		errata_id			 # String default name unless specified
 		action :${2:install}				 Symbol # defaults to :install if not specified
 	end
 
 snippet rhsm_errata_level
 	rhsm_errata_level '${1:name}' do
-		errata_level			String # default name unless specified
+		errata_level			# String default name unless specified
 		action :${2:install}						Symbol # defaults to :install if not specified
 	end
 
 snippet rhsm_register
 	rhsm_register '${1:name}' do
 		activation_key						 String, Array
-		auto_attach								 true, false # default value: false
-		environment								 String
+		auto_attach	${2:false}						 true, false # default value: false
+		environment								 # String
 		force											 true, false # default value: false
-		https_for_ca_consumer			 true, false # default value: false
-		install_katello_agent			 true, false # default value: true
-		organization							 String
-		password									 String
+		https_for_ca_consumer ${3:false}			 true, false # default value: false
+		install_katello_agent ${4:true}			 true, false # default value: true
+		organization							 # String
+		password									 # String
 		satellite_host						 String
-		system_name								 String
-		username									 String
-		action :${2:register}										 Symbol # defaults to :register if not specified
+		system_name								 # String
+		username									 # String
+		action :${5:register}										 Symbol # defaults to :register if not specified
 	end
 
 snippet rhsm_repo
 	rhsm_repo '${1:name}' do
-		repo_name			 String # default name unless specified
+		repo_name			 # String default name unless specified
 		action :${2:enable}				 Symbol # defaults to :enable if not specified
 	end
 
 snippet rhsm_subscription
 	rhsm_subscription '${1:name}' do
-		pool_id			 String # default name unless specified
+		pool_id			 # String default name unless specified
 		action :${2:attach}			 Symbol # defaults to :attach if not specified
 	end
 
 snippet route
 	route '${1:name}' do
-		comment					String
-		device					String
-		gateway					String
+		comment				# String
+		device				# String
+		gateway				# String
 		metric					Integer
-		netmask					String
-		route_type			Symbol, String # default value: :host
-		target					String # default name unless specified
+		netmask				# String
+		route_type			Symbol, # String, default value: :host
+		target					# String default name unless specified
 		action :${2:add}					Symbol # defaults to :add if not specified
 	end
 
 snippet rpm_package
 	rpm_package '${1:name}' do
-		allow_downgrade			 true, false # default value: true
-		options							 String, Array
+		allow_downgrade	${2:true}		 true, false # default value: true
+		options							 # String, Array
 		package_name				 String
-		source							 String
-		timeout							 String, Integer
-		version							 String
-		action :${2:install}							 Symbol # defaults to :install if not specified
+		source							 # String
+		timeout							 # String, Integer
+		version							 # String
+		action :${3:install}							 Symbol # defaults to :install if not specified
 	end
 
 snippet ruby
 	ruby '${1:name}' do
-		code											 String
-		creates										 String
-		cwd												 String
+		code											 # String
+		creates										 # String
+		cwd												 # String
 		environment								 Hash
-		flags											 String
-		group											 String, Integer
+		flags											 # String
+		group											 # String, Integer
 		path											 Array
 		returns										 Integer, Array
 		timeout										 Integer, Float
-		user											 String, Integer
-		umask											 String, Integer
+		user											 # String, Integer
+		umask											 # String, Integer
 		action :${2:run}										 Symbol # defaults to :run if not specified
 	end
 
 snippet ruby_block
 	ruby_block '${1:name}' do
 		block											 Block
-		block_name								 String # defaults to '${1:name}' if not specified
+		block_name								 # String # defaults to '${1:name}' if not specified
 		action :${2:run}										 Symbol # defaults to :run if not specified
 	end
 
 snippet script
 	script '${1:name}' do
-		code											 String
-		creates										 String
-		cwd												 String
+		code											 # String
+		creates										 # String
+		cwd												 # String
 		environment								 Hash
-		flags											 String
-		group											 String, Integer
-		interpreter								 String
+		flags											 # String
+		group											 # String, Integer
+		interpreter								 # String
 		path											 Array
 		returns										 Integer, Array
 		timeout										 Integer, Float
-		user											 String
-		password									 String
-		domain										 String
-		umask											 String, Integer
+		user											 # String
+		password									 # String
+		domain										 # String
+		umask											 # String, Integer
 		action :${2:run}										 Symbol # defaults to :run if not specified
 	end
 
@@ -1300,62 +1300,62 @@ snippet service
 		init_command				 String
 		options							 Array, String
 		parameters					 Hash
-		pattern							 String
+		pattern							 # String
 		priority						 Integer, String, Hash
 		reload_command			 String, false
 		restart_command			 String, false
 		run_levels					 Array
-		service_name				 String # default name unless specified
+		service_name				 # String default name unless specified
 		start_command				 String, false
 		status_command			 String, false
 		stop_command				 String, false
 		supports						 Hash # default value: {"restart"=>nil, "reload"=>nil, "status"=>nil}
 		timeout							 Integer # default value: 900
-		user								 String
+		user								 # String
 		action :${2:nothing}							 Symbol # defaults to :nothing if not specified
 	end
 
 snippet smartos_package
 	smartos_package '${1:name}' do
-		options						String, Array
-		package_name			String
-		source						String
-		timeout						String, Integer
-		version						String
+		options					# String, Array
+		package_name		# String
+		source					# String
+		timeout					# String, Integer
+		version					# String
 		action :${2:install}						Symbol # defaults to :install if not specified
 	end
 
 snippet snap_package
 	snap_package '${1:name}' do
-		channel "${2:stable}"						String # default value: "stable"
-		options						String, Array
-		package_name			String, Array
-		source						String
-		timeout						String, Integer
-		version						String, Array
+		channel "${2:stable}"						# String, default value: "stable"
+		options					# String, Array
+		package_name		# String, Array
+		source					# String
+		timeout					# String, Integer
+		version					# String, Array
 		action :${3:install}						Symbol # defaults to :install if not specified
 	end
 
 snippet solaris_package
 	solaris_package '${1:name}' do
-		options						String, Array
-		package_name			String
-		source						String
-		timeout						String, Integer
-		version						String
+		options					# String, Array
+		package_name		# String
+		source					# String
+		timeout					# String, Integer
+		version					# String
 		action :${2:install}						Symbol # defaults to :install if not specified
 	end
 
 snippet ssh_known_hosts_entry
 	ssh_known_hosts_entry '${1:name}' do
-		file_location "${2:/etc/ssh/ssh_known_hosts}"			 String # default value: "/etc/ssh/ssh_known_hosts"
-		group							 String, Integer
+		file_location "${2:/etc/ssh/ssh_known_hosts}"			 # String, default value: "/etc/ssh/ssh_known_hosts"
+		group							 # String, Integer
 		hash_entries			 true, false # default value: false
-		host							 String # default name unless specified
-		key								 String
-		key_type "${3:rsa}"					 String # default value: "rsa"
-		mode "${4:0644}"							 String # default value: "0644"
-		owner							 String, Integer # default value: "root"
+		host							 # String default name unless specified
+		key								 # String
+		key_type "${3:rsa}"					 # String, default value: "rsa"
+		mode "${4:0644}"							 # String, default value: "0644"
+		owner							 # String, Integer # default value: "root"
 		port							 Integer # default value: 22
 		timeout						 Integer # default value: 30
 		action :${5:create}						 Symbol # defaults to :create if not specified
@@ -1363,18 +1363,18 @@ snippet ssh_known_hosts_entry
 
 snippet subversion
 	subversion '${1:name}' do
-		destination				 String # default name unless specified
+		destination				 # String default name unless specified
 		environment				 Hash
-		group							 String, Integer
+		group							 # String, Integer
 		repository				 String
-		revision "${2:HEAD}"					 String # default value: "HEAD"
+		revision "${2:HEAD}"					 # String, default value: "HEAD"
 		svn_arguments			 String, false # default value: "--no-auth-cache"
 		svn_binary				 String
 		svn_info_args			 String, false # default value: "--no-auth-cache"
 		svn_password			 String
 		svn_username			 String
 		timeout						 Integer
-		user							 String, Integer
+		user							 # String, Integer
 		action :${3:sync}						 Symbol # defaults to :sync if not specified
 	end
 
@@ -1382,27 +1382,27 @@ snippet sudo
 	sudo '${1:name}' do
 		command_aliases "${2:[ls -la]}"				 Array # default value: []
 		commands "${3:["ALL]}"							 Array # default value: ["ALL"]
-		config_prefix "${4:Prefix values based on the node's platform}"					 String # default value: "Prefix values based on the node's platform"
+		config_prefix "${4:Prefix values based on the node's platform}"					 # String, default value: "Prefix values based on the node's platform"
 		defaults							 Array # default value: []
 		env_keep_add					 Array # default value: []
 		env_keep_subtract			 Array # default value: []
-		filename							 String # default name unless specified
-		groups								 String, Array # default value: []
-		host "${5:ALL}"									 String # default value: "ALL"
-		noexec								 true, false # default value: false
-		nopasswd							 true, false # default value: false
-		runas "${6:ALL}"									 String # default value: "ALL"
-		setenv								 true, false # default value: false
-		template							 String
-		users									 String, Array # default value: []
+		filename							 # String default name unless specified
+		groups								 # String, Array # default value: []
+		host "${5:ALL}"									 # String, default value: "ALL"
+		noexec	${6:false}							 true, false # default value: false
+		nopasswd ${7:false}							 true, false # default value: false
+		runas "${9:ALL}"									 # String, default value: "ALL"
+		setenv	${10:false}							 true, false # default value: false
+		template							 # String
+		users									 # String, Array # default value: []
 		variables							 Hash
-		visudo_binary "${7:/usr/sbin/visudo}"					 String # default value: "/usr/sbin/visudo"
-		action :${8:create}								 Symbol # defaults to :create if not specified
+		visudo_binary "${11:/usr/sbin/visudo}"					 # String, default value: "/usr/sbin/visudo"
+		action :${12:create}								 Symbol # defaults to :create if not specified
 	end
 
 snippet swap_file
 	swap_file '${1:name}' do
-		path						String # default name unless specified
+		path						# String default name unless specified
 		persist					true, false # default value: false
 		size						Integer
 		swappiness			Integer
@@ -1412,68 +1412,68 @@ snippet swap_file
 
 snippet sysctl
 	sysctl '${1:name}' do
-		comment						Array, String # default value: []
-		conf_dir "${2:/etc/sysctl.d}"					String # default value: "/etc/sysctl.d"
-		ignore_error			true, false # default value: false
-		key								String # default name unless specified
+		comment						Array, # String, default value: []
+		conf_dir "${2:/etc/sysctl.d}"					# String, default value: "/etc/sysctl.d"
+		ignore_error ${3:false}			true, false # default value: false
+		key								# String default name unless specified
 		value							Array, String, Integer, Float
-		action :${3:apply}						Symbol # defaults to :apply if not specified
+		action :${4:apply}						Symbol # defaults to :apply if not specified
 	end
 
 snippet systemd_unit
 	systemd_unit '${1:name}' do
-		content							 String, Hash
-		triggers_reload			 true, false # default value: true
-		unit_name						 String # default name unless specified
-		user								 String
-		verify							 true, false # default value: true
-		action :${2:nothing}							 Symbol # defaults to :nothing if not specified
+		content							 # String, Hash
+		triggers_reload ${2:false}			 true, false # default value: true
+		unit_name						 # String default name unless specified
+		user								 # String
+		verify ${3:false}							 true, false # default value: true
+		action :${4:nothing}							 Symbol # defaults to :nothing if not specified
 	end
 
 snippet template
 	template '${1:name}' do
 		atomic_update							 true, false
 		backup										 false, Integer
-		cookbook									 String
+		cookbook									 # String
 		force_unlink							 true, false
-		group											 String, Integer
+		group											 # String, Integer
 		helper(:method)						 Method { String } # see Helpers below
 		helpers(module)						 Module # see Helpers below
 		inherits									 true, false
 		local											 true, false
 		manage_symlink_source			 true, false
-		mode											 String, Integer
-		owner											 String, Integer
-		path											 String # defaults to '${1:name}' if not specified
+		mode											 # String, Integer
+		owner											 # String, Integer
+		path											 # String # defaults to '${1:name}' if not specified
 		rights										 Hash
 		sensitive									 true, false
-		source										 String, Array
+		source										 # String, Array
 		variables									 Hash
-		verify										 String, Block
+		verify										 # String, Block
 		action :${2:create}										 Symbol # defaults to :create if not specified
 	end
 
 snippet timezone
 	timezone '${1:name}' do
-		timezone			String # default name unless specified
+		timezone			# String default name unless specified
 		action :${2:set}				Symbol # defaults to :set if not specified
 	end
 
 snippet user
 	user '${1:name}' do
-		comment										 String
+		comment										 # String
 		force											 true, false # see description
-		gid												 String, Integer
-		home											 String
+		gid												 # String, Integer
+		home											 # String
 		iterations								 Integer
 		manage_home								 true, false
 		non_unique								 true, false
-		password									 String
-		salt											 String
-		shell											 String
+		password									 # String
+		salt											 # String
+		shell											 # String
 		system										 true, false
-		uid												 String, Integer
-		username									 String # defaults to '${1:name}' if not specified
+		uid												 # String, Integer
+		username									 # String # defaults to '${1:name}' if not specified
 		action :${2:create}										 Symbol # defaults to :create if not specified
 	end
 
@@ -1481,34 +1481,34 @@ snippet user
 snippet user_ulimit
 	user_ulimit '${1:name}' do
 		core_hard_limit						 String, Integer
-		core_limit								 String, Integer
+		core_limit								 # String, Integer
 		core_soft_limit						 String, Integer
 		filehandle_hard_limit			 String, Integer
 		filehandle_limit					 String, Integer
 		filehandle_soft_limit			 String, Integer
-		filename									 String
-		memory_limit							 String, Integer
+		filename									 # String
+		memory_limit							 # String, Integer
 		process_hard_limit				 String, Integer
-		process_limit							 String, Integer
+		process_limit							 # String, Integer
 		process_soft_limit				 String, Integer
 		rtprio_hard_limit					 String, Integer
-		rtprio_limit							 String, Integer
+		rtprio_limit							 # String, Integer
 		rtprio_soft_limit					 String, Integer
 		stack_hard_limit					 String, Integer
-		stack_limit								 String, Integer
+		stack_limit								 # String, Integer
 		stack_soft_limit					 String, Integer
-		username									 String # default name unless specified
-		virt_limit								 String, Integer
+		username									 # String default name unless specified
+		virt_limit								 # String, Integer
 		action :${2:create}										 Symbol # defaults to :create if not specified
 	end
 
 snippet windows_ad_join
 	windows_ad_join '${1:name}' do
-		domain_name					 String # default name unless specified
+		domain_name					 # String default name unless specified
 		domain_password			 String
 		domain_user					 String
 		new_hostname				 String
-		ou_path							 String
+		ou_path							 # String
 		reboot							 Symbol # default value: :immediate
 		reboot_delay				 Integer # default value: 0
 		workgroup_name			 String
@@ -1520,20 +1520,20 @@ snippet windows_audit_policy
 		audit_base_directories			 true, false
 		audit_base_objects					 true, false
 		crash_on_audit_fail					 true, false
-		exclude_user								 String
+		exclude_user								 # String
 		failure											 true, false
 		full_privilege_auditing			 true, false
-		include_user								 String
-		subcategory									 String, Array
+		include_user								 # String
+		subcategory									 # String, Array
 		success											 true, false
 		action :${2:set}											 Symbol # defaults to :set if not specified
 	end
 
 snippet windows_auto_run
 	windows_auto_run '${1:name}' do
-		args							String
-		path							String
-		program_name			String # default name unless specified
+		args						# String
+		path						# String
+		program_name			# String default name unless specified
 		root							Symbol # default value: :machine
 		action :${2:create}						Symbol # defaults to :create if not specified
 	end
@@ -1541,50 +1541,50 @@ snippet windows_auto_run
 snippet windows_certificate
 	windows_certificate '${1:name}' do
 		cert_path						 String
-		exportable					 true, false # default value: false
+		exportable ${2:false}					 true, false # default value: false
 		pfx_password				 String
 		private_key_acl			 Array
-		source							 String # default name unless specified
-		store_name "${2:MY}"					 String # default value: "MY"
-		user_store					 true, false # default value: false
-		action :${3:create}							 Symbol # defaults to :create if not specified
+		source							 # String default name unless specified
+		store_name "${3:MY}"					 # String, default value: "MY"
+		user_store	${4:false}				 true, false # default value: false
+		action :${5:create}							 Symbol # defaults to :create if not specified
 	end
 
 snippet windows_dfs_folder
 	windows_dfs_folder '${1:name}' do
-		description					String
-		folder_path					String # default name unless specified
-		namespace_name			String
-		target_path					String
+		description				# String
+		folder_path					# String default name unless specified
+		namespace_name		# String
+		target_path				# String
 		action :${2:create}							Symbol # defaults to :create if not specified
 	end
 
 snippet windows_dfs_namespace
 	windows_dfs_namespace '${1:name}' do
 		change_users				Array # default value: []
-		description					String
+		description				# String
 		full_users					Array # default value: ["BUILTIN\\administrators"]
-		namespace_name			String # default name unless specified
+		namespace_name			# String default name unless specified
 		read_users					Array # default value: []
-		root "${2:C:\\DFSRoots}"								String # default value: "C:\\DFSRoots"
+		root "${2:C:\\DFSRoots}"								# String, default value: "C:\\DFSRoots"
 		action :${3:create}							Symbol # defaults to :create if not specified
 	end
 
 snippet windows_dfs_server
 	windows_dfs_server '${1:name}' do
-		enable_site_costed_referrals			true, false # default value: false
+		enable_site_costed_referrals ${2:false}			true, false # default value: false
 		ldap_timeout_secs									Integer # default value: 30
-		prefer_login_dc										true, false # default value: false
+		prefer_login_dc	${3:false}									true, false # default value: false
 		sync_interval_secs								Integer # default value: 3600
-		use_fqdn													true, false # default value: false
-		action :${2:configure}														Symbol # defaults to :configure if not specified
+		use_fqdn ${4:false}													true, false # default value: false
+		action :${5:configure}														Symbol # defaults to :configure if not specified
 	end
 
 snippet windows_dns_record
 	windows_dns_record '${1:name}' do
-		dns_server "${2:localhost}"			 String # default value: "localhost"
-		record_name			 String # default name unless specified
-		record_type "${3:ARecord}"			 String # default value: "ARecord"
+		dns_server "${2:localhost}"			 # String, default value: "localhost"
+		record_name			 # String default name unless specified
+		record_type "${3:ARecord}"			 # String, default value: "ARecord"
 		target					 String
 		zone						 String
 		action :${4:create}					 Symbol # defaults to :create if not specified
@@ -1592,49 +1592,49 @@ snippet windows_dns_record
 
 snippet windows_dns_zone
 	windows_dns_zone '${1:name}' do
-		replication_scope "${2:Domain}"			 String # default value: "Domain"
-		server_type "${3:Domain}"						 String # default value: "Domain"
-		zone_name							 String # default name unless specified
+		replication_scope "${2:Domain}"			 # String, default value: "Domain"
+		server_type "${3:Domain}"						 # String, default value: "Domain"
+		zone_name							 # String default name unless specified
 		action :${4:create}								 Symbol # defaults to :create if not specified
 	end
 
 snippet windows_env
 	windows_env '${1:name}' do
-		delim					String, false
-		key_name			String # default name unless specified
-		user "${2:<System>}"					String # default value: "<System>"
-		value					String
+		delim				# String, false
+		key_name			# String default name unless specified
+		user "${2:<System>}"					# String, default value: "<System>"
+		value				# String
 		action :${3:create}				Symbol # defaults to :create if not specified
 	end
 
 snippet windows_feature
 	windows_feature '${1:name}' do
-		all										true, false # default value: false
-		feature_name					Array, String # default name unless specified
+		all	${2:false}									true, false # default value: false
+		feature_name					Array, # String default name unless specified
 		install_method				Symbol # default value: :windows_feature_dism
-		management_tools			true, false # default value: false
-		source								String
+		management_tools ${3:false}			true, false # default value: false
+		source							# String
 		timeout								Integer # default value: 600
-		action :${2:install}								Symbol # defaults to :install if not specified
+		action :${4:install}								Symbol # defaults to :install if not specified
 	end
 
 snippet windows_feature_dism
 	windows_feature_dism '${1:name}' do
-		all								true, false # default value: false
-		feature_name			Array, String # default name unless specified
-		source						String
+		all	${2:false}							true, false # default value: false
+		feature_name			Array, # String default name unless specified
+		source					# String
 		timeout						Integer # default value: 600
-		action :${2:install}						Symbol # defaults to :install if not specified
+		action :${3:install}						Symbol # defaults to :install if not specified
 	end
 
 snippet windows_feature_powershell
 	windows_feature_powershell '${1:name}' do
-		all										true, false # default value: false
-		feature_name					Array, String # default name unless specified
-		management_tools			true, false # default value: false
-		source								String
+		all	${2:false}									true, false # default value: false
+		feature_name					Array, # String default name unless specified
+		management_tools ${3:false}			true, false # default value: false
+		source							# String
 		timeout								Integer # default value: 600
-		action :${2:install}								Symbol # defaults to :install if not specified
+		action :${4:install}								Symbol # defaults to :install if not specified
 	end
 
 snippet windows_firewall_profile
@@ -1645,128 +1645,128 @@ snippet windows_firewall_profile
 		allow_unicast_response					true, false, String
 		allow_user_apps									true, false, String
 		allow_user_ports								true, false, String
-		default_inbound_action					String
-		default_outbound_action					String
+		default_inbound_action				# String
+		default_outbound_action				# String
 		display_notification						true, false, String
-		profile													String # default name unless specified
+		profile													# String default name unless specified
 		action :${2:enable}													Symbol # defaults to :enable if not specified
 	end
 
 snippet windows_firewall_rule
 	windows_firewall_rule '${1:name}' do
 		description					 String
-		direction						 Symbol, String # default value: :inbound
-		displayname					 String # default value: The rule_name property value.
-		enabled							 true, false # default value: true
-		firewall_action			 Symbol, String # default value: :allow
-		group								 String
+		direction						 Symbol, # String, default value: :inbound
+		displayname					 # String, default value: The rule_name property value.
+		enabled	${2:false}						 true, false # default value: true
+		firewall_action			 Symbol, # String, default value: :allow
+		group								 # String
 		icmp_type						 String, Integer # default value: "Any"
-		interface_type			 Symbol, String # default value: :any
+		interface_type			 Symbol, # String, default value: :any
 		local_address				 String
 		local_port					 String, Integer, Array
 		profile							 Symbol, String, Array # default value: :any
-		program							 String
-		protocol "${2:TCP}"						 String # default value: "TCP"
+		program							 # String
+		protocol "${3:TCP}"						 # String, default value: "TCP"
 		remote_address			 String
 		remote_port					 String, Integer, Array
-		rule_name						 String # default name unless specified
-		service							 String
-		action :${3:create}							 Symbol # defaults to :create if not specified
+		rule_name						 # String default name unless specified
+		service							 # String
+		action :${4:create}							 Symbol # defaults to :create if not specified
 	end
 
 snippet windows_font
 	windows_font '${1:name}' do
-		font_name			 String # default name unless specified
+		font_name			 # String default name unless specified
 		source				 String
 		action :${2:install}				 Symbol # defaults to :install if not specified
 	end
 
 snippet windows_package
 	windows_package '${1:name}' do
-		checksum										String
+		checksum									# String
 		installer_type							Symbol
-		options											String
-		package_name								String
+		options										# String
+		package_name							# String
 		remote_file_attributes			Hash
-		returns											String, Integer, Array
-		source "${2:The resource block's name}"											String # default value: "The resource block's name"
-		timeout											String, Integer # default value: "600 (seconds)"
-		version											String
+		returns										# String, Integer, Array
+		source "${2:The resource block's name}"											# String, default value: "The resource block's name"
+		timeout										# String, Integer # default value: "600 (seconds)"
+		version										# String
 		action :${3:install}											Symbol # defaults to :install if not specified
 	end
 
 snippet windows_pagefile
 	windows_pagefile '${1:name}' do
-		automatic_managed			 true, false # default value: false
+		automatic_managed ${2:false}			 true, false # default value: false
 		initial_size					 Integer
 		maximum_size					 Integer
-		path									 String # default name unless specified
+		path									 # String default name unless specified
 		system_managed				 true, false
-		action :${2:set}								 Symbol # defaults to :set if not specified
+		action :${3:set}								 Symbol # defaults to :set if not specified
 	end
 
 snippet windows_path
 	windows_path '${1:name}' do
-		path			String # default name unless specified
+		path			# String default name unless specified
 		action :${2:add}		Symbol # defaults to :add if not specified
 	end
 
 snippet windows_printer
 	windows_printer '${1:name}' do
-		comment						String
-		default						true, false # default value: false
-		device_id					String # default name unless specified
-		driver_name				String
-		ipv4_address			String
-		location					String
-		share_name				String
-		shared						true, false # default value: false
-		action :${2:create}						Symbol # defaults to :create if not specified
+		comment					# String
+		default		${2:false}				true, false # default value: false
+		device_id					# String default name unless specified
+		driver_name			# String
+		ipv4_address		# String
+		location				# String
+		share_name			# String
+		shared	${3:false}					true, false # default value: false
+		action :${4:create}						Symbol # defaults to :create if not specified
 	end
 
 snippet windows_printer_port
 	windows_printer_port '${1:name}' do
-		ipv4_address					String # default name unless specified
-		port_description			String
-		port_name							String
+		ipv4_address					# String default name unless specified
+		port_description		# String
+		port_name						# String
 		port_number						Integer # default value: 9100
 		port_protocol					Integer # default value: 1
-		snmp_enabled					true, false # default value: false
-		action :${2:create}								Symbol # defaults to :create if not specified
+		snmp_enabled ${2:false}					true, false # default value: false
+		action :${3:create}								Symbol # defaults to :create if not specified
 	end
 
 snippet windows_security_policy
 	windows_security_policy '${1:name}' do
-		secoption			 String # default name unless specified
+		secoption			 # String default name unless specified
 		secvalue			 String
 		action :${2:set}				 Symbol # defaults to :set if not specified
 	end
 
 snippet windows_service
 	windows_service '${1:name}' do
-		binary_path_name			String
-		delayed_start					true, false # default value: false
-		dependencies					String, Array
-		description						String
+		binary_path_name		# String
+		delayed_start ${2:false}					true, false # default value: false
+		dependencies				# String, Array
+		description					# String
 		desired_access				Integer # default value: 983551
-		display_name					String
+		display_name				# String
 		error_control					Integer # default value: 1
-		init_command					String
-		load_order_group			String
-		pattern								String
-		reload_command				String, false
-		restart_command				String, false
-		run_as_password				String
-		run_as_user "${2:LocalSystem}"						String # default value: "LocalSystem"
-		service_name					String # default name unless specified
+		init_command				# String
+		load_order_group		# String
+		pattern							# String
+		reload_command			# String, false
+		restart_command			# String, false
+		run_as_password			# String
+		run_as_user "${3:LocalSystem}"						# String, default value: "LocalSystem"
+		service_name					# String default name unless specified
 		service_type					Integer # default value: "SERVICE_WIN32_OWN_PROCESS"
-		start_command					String, false
+		start_command				# String, false
 		startup_type					Symbol # default value: :automatic
-		status_command				String, false
-		stop_command					String, false
+		status_command			# String, false
+		stop_command				# String, false
 		supports							Hash # default value: {"restart"=>nil, "reload"=>nil, "status"=>nil}
 		timeout								Integer
-		action :${3:nothing}								Symbol # defaults to :nothing if not specified
+		action :${4:nothing}								Symbol # defaults to :nothing if not specified
 	end
 
 snippet windows_share
@@ -1774,55 +1774,55 @@ snippet windows_share
 		ca_timeout									Integer # default value: 0
 		change_users								Array # default value: []
 		concurrent_user_limit				Integer # default value: 0
-		continuously_available			true, false # default value: false
-		description									String
+		continuously_available ${2:false}			true, false # default value: false
+		description								# String
 		encrypt_data								true, false # default value: false
 		full_users									Array # default value: []
-		path												String
+		path											# String
 		read_users									Array # default value: []
-		scope_name "${2:*}"									String # default value: "*"
-		share_name									String # default name unless specified
+		scope_name "${3:*}"									# String, default value: "*"
+		share_name									# String default name unless specified
 		temporary										true, false # default value: false
-		action :${3:create}											Symbol # defaults to :create if not specified
+		action :${4:create}											Symbol # defaults to :create if not specified
 	end
 
 snippet windows_shortcut
 	windows_shortcut '${1:name}' do
 		arguments					 String
-		cwd								 String
+		cwd								 # String
 		description				 String
 		iconlocation			 String
-		shortcut_name			 String # default name unless specified
+		shortcut_name			 # String default name unless specified
 		target						 String
 		action :${2:create}						 Symbol # defaults to :create if not specified
 	end
 
 snippet windows_task
 	windows_task '${1:name}' do
-		command "${2:ls -la}"															String
-		cwd																	String
-		day																	String, Integer
-		description													String
-		disallow_start_if_on_batteries			true, false # default value: false
-		execution_time_limit								String, Integer # default value: "PT72H (72 hours in ISO8601 duration format)"
-		force																true, false # default value: false
+		command "${3:ls -la}"														# String
+		cwd																# String
+		day																# String, Integer
+		description												# String
+		disallow_start_if_on_batteries ${4:false}			true, false # default value: false
+		execution_time_limit							# String, Integer # default value: "PT72H (72 hours in ISO8601 duration format)"
+		force	${5:false}															true, false # default value: false
 		frequency														Symbol
-		frequency_modifier									Integer, String # default value: 1
+		frequency_modifier									Integer, # String, default value: 1
 		idle_time														Integer
-		interactive_enabled									true, false # default value: false
-		minutes_duration										String, Integer
-		minutes_interval										String, Integer
-		months															String
-		password														String
+		interactive_enabled ${5:false}									true, false # default value: false
+		minutes_duration									# String, Integer
+		minutes_interval									# String, Integer
+		months														# String
+		password													# String
 		priority														Integer # default value: 7
-		random_delay												String, Integer
+		random_delay											# String, Integer
 		run_level														Symbol # default value: :limited
-		start_day														String # default value: The current date.
-		start_time													String
-		start_when_available								true, false # default value: false
-		stop_if_going_on_batteries					true, false # default value: false
-		task_name														String # default name unless specified
-		user																String # default value: The localized SYSTEM user for the node.
+		start_day														# String, default value: The current date.
+		start_time												# String
+		start_when_available ${6:false}								true, false # default value: false
+		stop_if_going_on_batteries ${7:false}					true, false # default value: false
+		task_name														# String default name unless specified
+		user																# String, default value: The localized SYSTEM user for the node.
 		action :${3:create}															Symbol # defaults to :create if not specified
 	end
 
@@ -1831,15 +1831,15 @@ snippet windows_uac
 		consent_behavior_admins				Symbol # default value: :prompt_for_consent_non_windows_binaries
 		consent_behavior_users				Symbol # default value: :prompt_for_creds
 		detect_installers							true, false
-		enable_uac										true, false # default value: true
-		prompt_on_secure_desktop			true, false # default value: true
-		require_signed_binaries				true, false # default value: false
-		action :${2:configure}												Symbol # defaults to :configure if not specified
+		enable_uac	${2:true}									true, false # default value: true
+		prompt_on_secure_desktop	${3:true}		true, false # default value: true
+		require_signed_binaries	${4:false}			true, false # default value: false
+		action :${5:configure}												Symbol # defaults to :configure if not specified
 	end
 
 snippet windows_user_privilege
 	windows_user_privilege '${1:name}' do
-		principal			 String # default name unless specified
+		principal			 # String default name unless specified
 		privilege			 Array, String
 		users					 Array, String
 		action :${2:add}				 Symbol # defaults to :add if not specified
@@ -1847,105 +1847,105 @@ snippet windows_user_privilege
 
 snippet windows_workgroup
 	windows_workgroup '${1:name}' do
-		password						String
+		password					# String
 		reboot							Symbol # default value: :immediate
-		user								String
-		workgroup_name			String # default name unless specified
+		user							# String
+		workgroup_name			# String default name unless specified
 		action :${2:join}							Symbol # defaults to :join if not specified
 	end
 
 snippet yum_package
 	yum_package '${1:name}' do
-		allow_downgrade			 true, false # default value: true
-		arch								 String, Array
+		allow_downgrade	${2:true}		 true, false # default value: true
+		arch								 # String, Array
 		flush_cache					 Hash # default value: {"before"=>false, "after"=>false}
-		options							 String, Array
+		options							 # String, Array
 		package_name				 String, Array
-		source							 String
-		timeout							 String, Integer
-		version							 String, Array
+		source							 # String
+		timeout							 # String, Integer
+		version							 # String, Array
 		yum_binary					 String
-		action :${2:install}							 Symbol # defaults to :install if not specified
+		action :${3:install}							 Symbol # defaults to :install if not specified
 	end
 
 snippet yum_repository
 	yum_repository '${1:name}' do
-		baseurl										 String, Array
-		clean_metadata						 true, false # default value: true
-		cost											 String
-		description "${2:Yum Repository}"								 String # default value: "Yum Repository"
-		enabled										 true, false # default value: true
+		baseurl										 # String, Array
+		clean_metadata	${2:true}					 true, false # default value: true
+		cost											 # String
+		description "${2:Yum Repository}"								 # String, default value: "Yum Repository"
+		enabled	${3:true}									 true, false # default value: true
 		enablegroups							 true, false
-		exclude										 String
+		exclude										 # String
 		failovermethod						 String
 		fastestmirror_enabled			 true, false
-		gpgcheck									 true, false # default value: true
-		gpgkey										 String, Array
-		http_caching							 String
+		gpgcheck ${4:true}									 true, false # default value: true
+		gpgkey										 # String, Array
+		http_caching							 # String
 		include_config						 String
-		includepkgs								 String
+		includepkgs								 # String
 		keepalive									 true, false
-		make_cache								 true, false # default value: true
-		max_retries								 String, Integer
+		make_cache ${5:false}							 true, false # default value: true
+		max_retries								 # String, Integer
 		metadata_expire						 String
-		metalink									 String
-		mirror_expire							 String
-		mirrorlist								 String
+		metalink									 # String
+		mirror_expire							 # String
+		mirrorlist								 # String
 		mirrorlist_expire					 String
-		mode											 String, Integer # default value: "0644"
+		mode											 # String, Integer # default value: "0644"
 		options										 Hash
-		password									 String
-		priority									 String
-		proxy											 String
+		password									 # String
+		priority									 # String
+		proxy											 # String
 		proxy_password						 String
 		proxy_username						 String
 		repo_gpgcheck							 true, false
 		report_instanceid					 true, false
-		reposdir "${3:/etc/yum.repos.d/}"									 String # default value: "/etc/yum.repos.d/"
-		repositoryid							 String # default name unless specified
+		reposdir "${6:/etc/yum.repos.d/}"									 # String, default value: "/etc/yum.repos.d/"
+		repositoryid							 # String default name unless specified
 		skip_if_unavailable				 true, false
-		source										 String
-		sslcacert									 String
-		sslclientcert							 String
-		sslclientkey							 String
+		source										 # String
+		sslcacert									 # String
+		sslclientcert							 # String
+		sslclientkey							 # String
 		sslverify									 true, false
-		throttle									 String, Integer
-		timeout										 String
-		username									 String
-		action :${4:create}										 Symbol # defaults to :create if not specified
+		throttle									 # String, Integer
+		timeout										 # String
+		username									 # String
+		action :${7:create}										 Symbol # defaults to :create if not specified
 	end
 
 snippet zypper_package
 	zypper_package '${1:name}' do
-		allow_downgrade			 true, false # default value: true
+		allow_downgrade	${2:false}		 true, false # default value: true
 		global_options			 String, Array
 		gpg_check						 true, false # default value: "true"
-		options							 String, Array
+		options							 # String, Array
 		package_name				 String, Array
-		source							 String
-		timeout							 String, Integer
-		version							 String, Array
+		source							 # String
+		timeout							 # String, Integer
+		version							 # String, Array
 		action :${2:install}							 Symbol # defaults to :install if not specified
 	end
 
 snippet zypper_repository
 	zypper_repository '${1:name}' do
-		autorefresh						 true, false # default value: true
-		baseurl								 String
-		cookbook							 String
+		autorefresh	${2:true}					 true, false # default value: true
+		baseurl								 # String
+		cookbook							 # String
 		description						 String
-		enabled								 true, false # default value: true
-		gpgautoimportkeys			 true, false # default value: true
-		gpgcheck							 true, false # default value: true
-		gpgkey								 String
-		keeppackages					 true, false # default value: false
+		enabled	${3:true}							 true, false # default value: true
+		gpgautoimportkeys ${4:true}			 true, false # default value: true
+		gpgcheck ${5:true}							 true, false # default value: true
+		gpgkey								 # String
+		keeppackages ${6:false}					 true, false # default value: false
 		mirrorlist						 String
-		mode									 String, Integer # default value: "0644"
-		path									 String
+		mode									 # String, Integer # default value: "0644"
+		path									 # String
 		priority							 Integer # default value: 99
-		refresh_cache					 true, false # default value: true
-		repo_name							 String # default name unless specified
-		source								 String
-		type "${2:NONE}"									 String # default value: "NONE"
-		action :${3:create}								 Symbol # defaults to :create if not specified
+		refresh_cache ${7:true}					 true, false # default value: true
+		repo_name							 # String default name unless specified
+		source								 # String
+		type "${8:NONE}"									 # String, default value: "NONE"
+		action :${9:create}								 Symbol # defaults to :create if not specified
 	end
