@@ -1,1951 +1,2093 @@
 snippet alternatives
+	# https://docs.chef.io/resources/alternatives
 	alternatives '${1:name}' do
-		link "${_:/usr/bin/LINK_NAME}" # String, default value: "/usr/bin/LINK_NAME"
-		link_name			                 # String, default name unless specified
-		path			 '${2:path}'         # String
-		priority	                     # String, Integer
-		action :${3:install}				   # Symbol # defaults to :install if not specified
+		link "${_:/usr/bin/LINK_NAME}" 
+		link_name                 
+		path '${2:path}'         
+		priority	                     
+		action :${3:install}	   
 	end
 
 snippet apt_package
+	# https://docs.chef.io/resources/apt_package
 	apt_package '${1:name}' do
-		default_release							 # String
-		options											 # String, Array
-		overwrite_config_files	${2:false} # true, false # default value: false
-		package_name								 # String, Array
-		response_file								 # String
-		response_file_variables			 # Hash
-		timeout											 # String, Integer
-		version											 # String, Array
-		action :${3:install}				 # Symbol # defaults to :install if not specified
+		default_release				 
+		options								 
+		overwrite_config_files	${2:false} 
+		package_name					 
+		response_file					 
+		response_file_variables 
+		timeout								 
+		version								 
+		action :${3:install}	 
 	end
 
 snippet apt_preference
+	# https://docs.chef.io/resources/apt_preference
 	apt_preference '${1:name}' do
-		glob						# String
-		package_name		# String default name unless specified
-		pin							# String
-		pin_priority		# String, Integer
-		action :${2:add} # Symbol # defaults to :add if not specified
+		glob						
+		package_name		
+		pin							
+		pin_priority		
+		action :${2:add} 
 	end
 
 snippet apt_repository
+	# https://docs.chef.io/resources/apt_repository
 	apt_repository '${1:name}' do
-		arch							 # String, false
-		cache_rebuild ${2:true}	# true, false # default value: true
-		components				 # Array # default value: `main` if using a PPA repository.
-		cookbook					 # String, false
-		deb_src		${3:false}			#	 true, false # default value: false
-		distribution			 String, false # default value: The LSB codename of the node such as 'focal'.
-		key								 # String, Array, false
-		key_proxy					 # String, false
-		keyserver					 # String, false # default value: "keyserver.ubuntu.com"
-		repo_name					 # String default name unless specified
-		trusted		${4:false} # true, false # default value: false
-		uri								 # String
-		action :${5:add}	#					 Symbol # defaults to :add if not specified
+		arch                             
+		cache_rebuild ${2:true}          
+		components                       
+		cookbook                         
+		deb_src		${3:false}             
+		distribution 
+		key                              
+		key_proxy                        
+		keyserver                        
+		repo_name                        
+		trusted		${4:false}             
+		uri                              
+		action :${5:add}                 
 	end
 
 snippet apt_update
+	# https://docs.chef.io/resources/apt_update
 	apt_update '${1:name}' do
-		frequency ${2:86400}   #			 Integer # default value: 86400
-		action :${3:periodic}	 #			 Symbol # defaults to :periodic if not specified
+		frequency ${2:86400}   
+		action :${3:periodic}	 
 	end
 
 snippet archive_file
+	# https://docs.chef.io/resources/archive_file
 	archive_file '${1:name}' do
-		destination			 # String
-		group						 # String
-		mode	"'${2:755}'"					 # String, Integer # default value: "'755'"
-		options					 # Array, Symbol
-		overwrite ${3:false} #				 true, false, auto # default value: false
-		owner						 # String
-		path						 # String default name unless specified
-		action :${4:extract}			#		 Symbol # defaults to :extract if not specified
+		destination               
+		group                     
+		mode	"'${2:755}'"        
+		options                   
+		overwrite ${3:false}      
+		owner                     
+		path                      
+		action :${4:extract}      
 	end
 
 snippet bash
+	# https://docs.chef.io/resources/bash
 	bash '${1:name}' do
-		code											 # String
-		creates										 # String
-		cwd												 # String
-		environment								 # Hash
-		flags											 # String
-		group											 # String, Integer
-		path											 # Array
-		returns										 # Integer, Array
-		timeout										 # Integer, Float
-		user											 # String, Integer
-		umask											 # String, Integer
+		code								 
+		creates							 
+		cwd									 
+		environment					 
+		flags								 
+		group								 
+		path								 
+		returns							 
+		timeout							 
+		user								 
+		umask								 
 		action :${2:run}					
 	end
 
 snippet batch
+	# https://docs.chef.io/resources/batch
 	batch '${1:name}' do
-		architecture							 # Symbol
-		code											 # String
-		command "${2:ls -la}"			 # String, Array
-		creates										 # String
-		cwd												 # String
-		flags											 # String
-		group											 # String, Integer
-		guard_interpreter					 # Symbol
-		interpreter								 # String
-		returns										 # Integer, Array
-		timeout										 # Integer, Float
-		user											 # String
-		password									 # String
-		domain										 # String
+		architecture				 
+		code								 
+		command "${2:ls -la}" 
+		creates							 
+		cwd									 
+		flags								 
+		group								 
+		guard_interpreter		 
+		interpreter					 
+		returns							 
+		timeout							 
+		user								 
+		password						 
+		domain							 
 		action :${3:run}					
 	end
 
 snippet bff_package
+	# https://docs.chef.io/resources/bff_package
 	bff_package '${1:name}' do
-		options					# String, Array
-		package_name		# String
-		source					# String
-		timeout					# String, Integer
-		version					# String
+		options					
+		package_name		
+		source					
+		timeout					
+		version					
 		action :${2:install}
 	end
 
 snippet breakpoint
+	# https://docs.chef.io/resources/breakpoint
 	breakpoint '${1:name}' do
 		action :${2:break}
 	end
 
 snippet build_essential
+	# https://docs.chef.io/resources/build_essential
 	build_essential '${1:name}' do
-		raise_if_unsupported	${2:false}		true, false # default value: false
-		action :${3:install}										Symbol # defaults to :install if not specified
+		raise_if_unsupported	${2:false}		
+		action :${3:install}								
 	end
 
 snippet cab_package
+	# https://docs.chef.io/resources/cab_package
 	cab_package '${1:name}' do
-		options					# String, Array
-		package_name		# String
-		source						# String, default value: The package name.
-		timeout					# String, Integer
-		version					# String
+		options					
+		package_name		
+		source					
+		timeout					
+		version					
 		action :${2:install}
 	end
 
 snippet chef_client_config
+	# https://docs.chef.io/resources/chef_client_config
 	chef_client_config '${1:name}' do
-		additional_config							 # String
-		chef_license									 # String
-		chef_server_url								 # String
-		config_directory							 # String
-		event_loggers								   # Array # default value: []
-		exception_handlers						 # Array # default value: []
-		file_backup_path							 # String
-		file_cache_path								 # String
-		file_staging_uses_destdir			 # String
-		formatters										 # Array # default value: []
-		ftp_proxy											 # String
-		group													 # String
-		http_proxy										 # String
-		https_proxy										 # String
-		log_level										   # Symbol
-		log_location									 # String, Symbol
-		minimal_ohai									 # true, false
-		named_run_list								 # String
-		no_proxy											 # String, Array # default value: []
-		node_name											 # String
-		ohai_disabled_plugins					 # Array # default value: []
-		ohai_optional_plugins					 # Array # default value: []
-		pid_file											 # String
-		policy_group									 # String
-		policy_name										 # String
-		report_handlers								 # Array # default value: []
-		ssl_verify_mode								 # Symbol, String
-		start_handlers								 # Array # default value: []
-		user													 # String
-		action :${2:create}						 # 				 Symbol # defaults to :create if not specified
+		additional_config				 
+		chef_license						 
+		chef_server_url					 
+		config_directory				 
+		event_loggers					   
+		exception_handlers			 
+		file_backup_path				 
+		file_cache_path					 
+		file_staging_uses_destdir 
+		formatters							 
+		ftp_proxy								 
+		group										 
+		http_proxy							 
+		https_proxy							 
+		log_level							   
+		log_location						 
+		minimal_ohai						 
+		named_run_list					 
+		no_proxy								 
+		node_name								 
+		ohai_disabled_plugins		 
+		ohai_optional_plugins		 
+		pid_file								 
+		policy_group						 
+		policy_name							 
+		report_handlers					 
+		ssl_verify_mode					 
+		start_handlers					 
+		user										 
+		action :${2:create}			 
 	end
 
 snippet chef_client_cron
+	# https://docs.chef.io/resources/chef_client_cron
 	chef_client_cron '${1:name}' do
-		accept_chef_license	${2:false}	 # true, false # default value: false
-		append_log_file	${3:true}				 # true, false # default value: true
-		chef_binary_path "${4:/opt/chef/bin/chef-client}"				 # String, default value: "/opt/chef/bin/chef-client"
-		comment									 # String
-		config_directory "${5:/etc/chef}"				 # String, default value: "/etc/chef"
-		daemon_options					 Array
-		day "${6:*}"											 # Integer, # String, default value: "*"
-		environment							 Hash
-		hour "${7:*}"										 # Integer, # String, default value: "*"
-		job_name "${8:chef-client}"								 # String, default value: "chef-client"
-		log_directory						 String
-		log_file_name "${9:client.log}"						 # String, default value: "client.log"
-		mailto									 # String
-		minute "${10:0,30}"									 # Integer, # String, default value: "0,30"
-		month "${11:*}"										 # Integer, # String, default value: "*"
-		nice										 # Integer, String
-		splay {12:300}									 # Integer, # String, default value: 300
-		user "${13:root}"										 # String, default value: "root"
-		weekday "${14:*}"									 # Integer, # String, default value: "*"
-		action :${15:add}									 # Symbol # defaults to :add if not specified
+		accept_chef_license	${2:false}	 
+		append_log_file	${3:true}	 
+		chef_binary_path "${4:/opt/chef/bin/chef-client}"	 
+		comment						 
+		config_directory "${5:/etc/chef}"	 
+		daemon_options		 
+		day "${6:*}"								 
+		environment				 
+		hour "${7:*}"							 
+		job_name "${8:chef-client}"					 
+		log_directory			 
+		log_file_name "${9:client.log}"			 
+		mailto						 
+		minute "${10:0,30}"						 
+		month "${11:*}"							 
+		nice							 
+		splay {12:300}						 
+		user "${13:root}"							 
+		weekday "${14:*}"						 
+		action :${15:add}						 
 	end
 
 snippet chef_client_launchd
+	# https://docs.chef.io/resources/chef_client_launchd
 	chef_client_launchd '${1:name}' do
-		accept_chef_license	 ${2:false}		 # true, false # default value: false
-		chef_binary_path "${3:/opt/chef/bin/chef-client}"				 # String, default value: "/opt/chef/bin/chef-client"
-		config_directory "${4:/etc/chef}"				 # String, default value: "/etc/chef"
-		daemon_options					 # Array
-		environment							 # Hash
-		interval								 # Integer, # String, default value: 30
-		log_directory "${5:/Library/Logs/Chef}"						 # String, default value: "/Library/Logs/Chef"
-		log_file_name "${6:client.log}"						 # String, default value: "client.log"
-		low_priority_io		${7:true}			 # true, false # default value: true
-		nice										# Integer, String
-		splay										# Integer, # String, default value: 300
-		user "${8:root}"										 # String, default value: "root"
-		working_directory "${9:/var/root}"				 # String, default value: "/var/root"
-		action :${10:enable}									 # Symbol # defaults to :enable if not specified
+		accept_chef_license	 ${2:false}		 
+		chef_binary_path "${3:/opt/chef/bin/chef-client}"	 
+		config_directory "${4:/etc/chef}"	 
+		daemon_options		 
+		environment				 
+		interval					 
+		log_directory "${5:/Library/Logs/Chef}"			 
+		log_file_name "${6:client.log}"			 
+		low_priority_io		${7:true} 
+		nice										
+		splay										
+		user "${8:root}"							 
+		working_directory "${9:/var/root}"	 
+		action :${10:enable}						 
 	end
 
 snippet chef_client_scheduled_task
+	# https://docs.chef.io/resources/chef_client_scheduled_task
 	chef_client_scheduled_task '${1:name}' do
-		accept_chef_license	 ${2:false}		 # true, false # default value: false
-		chef_binary_path "${3:C:/opscode/chef/bin/chef-client}"				 # String, default value: "C:/opscode/chef/bin/chef-client"
-		config_directory "${4:/etc/chef}"				 # String, default value: "/etc/chef"
-		daemon_options					 # Array
-		frequency "${5:minute}"								 # String, default value: "minute"
-		frequency_modifier "${6:30 if frequency is 'minute', 1 otherwise}"			 # Integer, # String, default value: "30 if frequency is 'minute', 1 otherwise"
-		log_directory "${7:CONFIG_DIRECTORY/log}"						 # String, default value: "CONFIG_DIRECTORY/log"
-		log_file_name "${8:client.log}"						 # String, default value: "client.log"
-		password								 # String
-		run_on_battery	${9:true}				 # true, false # default value: true
-		splay	${10:300}									 # Integer, # String, default value: 300
-		start_date							 # String
-		start_time							 # String
-		task_name "${11:chef-client}"								 # String, default value: "chef-client"
-		user "${12:System}"										 # String, default value: "System"
-		action :${13:add}									 # Symbol # defaults to :add if not specified
+		accept_chef_license	 ${2:false}		 
+		chef_binary_path "${3:C:/opscode/chef/bin/chef-client}"	 
+		config_directory "${4:/etc/chef}"	 
+		daemon_options		 
+		frequency "${5:minute}"					 
+		frequency_modifier "${6:30 if frequency is 'minute', 1 otherwise}" 
+		log_directory "${7:CONFIG_DIRECTORY/log}"			 
+		log_file_name "${8:client.log}"			 
+		password					 
+		run_on_battery	${9:true}	 
+		splay	${10:300}						 
+		start_date				 
+		start_time				 
+		task_name "${11:chef-client}"					 
+		user "${12:System}"							 
+		action :${13:add}						 
 	end
 
 snippet chef_client_systemd_timer
+	# https://docs.chef.io/resources/chef_client_systemd_timer
 	chef_client_systemd_timer '${1:name}' do
-		accept_chef_license	${2:false}		 # true, false # default value: false
-		chef_binary_path "${3:/opt/chef/bin/chef-client}"				 # String, default value: "/opt/chef/bin/chef-client"
-		config_directory "${4:/etc/chef}"				 # String, default value: "/etc/chef"
-		cpu_quota								 # Integer, String
-		daemon_options					 # Array
-		delay_after_boot "${5:1min}"				 # String, default value: "1min"
-		description "${6:Chef Infra Client periodic execution}"							 # String, default value: "Chef Infra Client periodic execution"
-		environment							 # Hash
-		interval "${7:30min}"								 # String, default value: "30min"
-		job_name "${8:chef-client}"								 # String, default value: "chef-client"
-		run_on_battery	${9:true}				 # true, false # default value: true
-		splay "${10:5min}"										 # String, default value: "5min"
-		user "${11:root}"										 # String, default value: "root"
-		action :${12:add}									 # Symbol # defaults to :add if not specified
+		accept_chef_license	${2:false}		 
+		chef_binary_path "${3:/opt/chef/bin/chef-client}"	 
+		config_directory "${4:/etc/chef}"	 
+		cpu_quota					 
+		daemon_options		 
+		delay_after_boot "${5:1min}"	 
+		description "${6:Chef Infra Client periodic execution}"				 
+		environment				 
+		interval "${7:30min}"					 
+		job_name "${8:chef-client}"					 
+		run_on_battery	${9:true}	 
+		splay "${10:5min}"							 
+		user "${11:root}"							 
+		action :${12:add}						 
 	end
 
 snippet chef_client_trusted_certificate
+	# https://docs.chef.io/resources/chef_client_trusted_certificate
 	chef_client_trusted_certificate '${1:name}' do
-		cert_name				 # String default name unless specified
-		certificate			 # String
-		action :${2:add}					#  Symbol # defaults to :add if not specified
+		cert_name	 
+		certificate 
+		action :${2:add}					
 	end
 
 snippet chef_gem
+	# https://docs.chef.io/resources/chef_gem
 	chef_gem '${1:name}' do
-		clear_sources							# 	true, false
-		gem_binary								# String
-		include_default_source		#	true, false
-		options										# String, Hash, Array
-		package_name							# String
-		source										# String, Array
-		timeout										# String, Integer
-		version										# String
-		action :${2:install}			#								Symbol # defaults to :install if not specified
+		clear_sources							
+		gem_binary								
+		include_default_source		
+		options										
+		package_name							
+		source										
+		timeout										
+		version										
+		action :${2:install}			
 	end
 
 snippet chef_handler
+	# https://docs.chef.io/resources/chef_handler
 	chef_handler '${1:name}' do
-		arguments			#	Array, Hash
-		class_name			# String default name unless specified
-		source				# String
-		type					#	Hash # default value: {"report"=>true, "exception"=>true}
-		action :${2:enable}					# Symbol # defaults to :enable if not specified
+		arguments			
+		class_name			
+		source				
+		type					
+		action :${2:enable}					
 	end
 
 snippet chef_sleep
+	# https://docs.chef.io/resources/chef_sleep
 	chef_sleep '${1:name}' do
-		seconds			 # String, Integer # default name unless specified
-		action :${2:sleep}			 # Symbol # defaults to :sleep if not specified
+		seconds 
+		action :${2:sleep} 
 	end
 
 snippet chef_vault_secret
+	# https://docs.chef.io/resources/chef_vault_secret
 	chef_vault_secret '${1:name}' do
-		admins					# String, Array
-		clients					# String, Array
-		data_bag				# String
-		environment			#  String
-		id							 # String default name unless specified
-		raw_data				#  Hash, ChefUtils::Mash # default value: {}
-		search "${_:*:*}"					 # String, default value: "*:*"
-		action :${2:create}					 Symbol # defaults to :create if not specified
+		admins					
+		clients					
+		data_bag				
+		environment			
+		id				 
+		raw_data				
+		search "${_:*:*}"		 
+		action :${2:create}		  
 	end
 
 snippet chocolatey_config
+	# https://docs.chef.io/resources/chocolatey_config
 	chocolatey_config '${1:name}' do
-		config_key			# String default name unless specified
-		value					# String
-		action :${2:set}	# 				Symbol # defaults to :set if not specified
+		config_key			
+		value					
+		action :${2:set}	
 	end
 
 snippet chocolatey_feature
+	# https://docs.chef.io/resources/chocolatey_feature
 	chocolatey_feature '${1:name}' do
-		feature_name			# String default name unless specified
-		action :${2:enable}				# 		Symbol # defaults to :enable if not specified
+		feature_name			
+		action :${2:enable}				
 	end
 
 snippet chocolatey_package
+	# https://docs.chef.io/resources/chocolatey_package
 	chocolatey_package '${1:name}' do
-		list_options		# String
-		options					# String, Array
-		package_name		# String, Array
-		password				# String
-		returns						# Integer, Array # default value: [0, 2]
-		source					# String
-		timeout					# String, Integer
-		user						# String
-		version					# String, Array
-		action :${2:install}						Symbol # defaults to :install if not specified
+		list_options		
+		options					
+		package_name		
+		password				
+		returns						
+		source					
+		timeout					
+		user						
+		version					
+		action :${2:install}			 
 	end
 
 snippet chocolatey_source
+	# https://docs.chef.io/resources/chocolatey_source
 	chocolatey_source '${1:name}' do
-		admin_only		${2:false}					# true, false # default value: false
-		allow_self_service	${3:false}		# true, false # default value: false
-		bypass_proxy	${4:false}					# true, false # default value: false
-		priority								# Integer # default value: 0
-		source								# String
-		source_name							# String default name unless specified
-		action :${5:add}				# 					Symbol # defaults to :add if not specified
+		admin_only		${2:false}					
+		allow_self_service	${3:false}		
+		bypass_proxy	${4:false}					
+		priority								
+		source								
+		source_name							
+		action :${5:add}				
 	end
 
 snippet cookbook_file
+	# https://docs.chef.io/resources/cookbook_file
 	cookbook_file '${1:name}' do
-		atomic_update							#  true, false
-		backup										#  Integer, false # default value: 5
-		cookbook									 # String
-		force_unlink ${2:false}			# 				 true, false # default value: false
-		group											 # String, Integer
-		inherits									#  true, false
-		manage_symlink_source	${3:false}		 true, false
-		mode											 # String, Integer
-		owner											 # String, Integer
-		path											 # String default name unless specified
-		rights										#  Hash
-		source										 # String, Array
-		verify										 # String, Block
-		action :${4:create}										 Symbol # defaults to :create if not specified
+		atomic_update							
+		backup										
+		cookbook						 
+		force_unlink ${2:false}			
+		group								 
+		inherits									
+		manage_symlink_source	${3:false}		 
+		mode								 
+		owner								 
+		path								 
+		rights										
+		source							 
+		verify							 
+		action :${4:create}							  
 	end
 
 snippet cron
+	# https://docs.chef.io/resources/cron
 	cron '${1:name}' do
-		command "${3:ls -la}"		# 			 String
-		day "${4:*}"						# 	 Integer, # String, default value: "*"
-		environment			#  Hash
-		home						#  String
-		hour "${5:*}"				# 		 Integer, # String, default value: "*"
-		mailto					 # String
-		minute "${6:*}"		# 			 Integer, # String, default value: "*"
-		month "${7:*}"		# 				 Integer, # String, default value: "*"
-		path						 # String
-		shell						 # String
-		time						 # Symbol
-		time_out				 # Hash
-		user "${8:root}"						 # String, default value: "root"
-		weekday					 # Integer, String, Symbol # default value: "*"
-		action :${9:create}			# 		 Symbol # defaults to :create if not specified
+		command "${3:ls -la}"		
+		day "${4:*}"						
+		environment			
+		home						
+		hour "${5:*}"				
+		mailto		 
+		minute "${6:*}"		
+		month "${7:*}"		
+		path			 
+		shell			 
+		time			 
+		time_out	 
+		user "${8:root}"			 
+		weekday		 
+		action :${9:create}			
 	end
 
 snippet cron_access
+	# https://docs.chef.io/resources/cron_access
 	cron_access '${1:name}' do
-		user			# String default name unless specified
-		action :${2:allow}		Symbol # defaults to :allow if not specified
+		user			
+		action :${2:allow}		 
 	end
 
 snippet cron_d
+	# https://docs.chef.io/resources/cron_d
 	cron_d '${1:name}' do
-		command "${2:ls -la}"							# String
-		comment							# String
-		cron_name							# String default name unless specified
-		day "${2:*}"					# 					Integer, # String, default value: "*"
-		environment						# Hash
-		home								# String
-		hour "${3:*}"									Integer, # String, default value: "*"
-		mailto							# String
-		minute "${4:*}"				# 				Integer, # String, default value: "*"
-		mode								# String, Integer # default value: "0600"
-		month "${5:*}"				# 					Integer, # String, default value: "*"
-		path								# String
-		predefined_value		# String
-		random_delay					# Integer
-		shell								# String
-		time_out							# Hash
-		user "${6:root}"									# String, default value: "root"
-		weekday								# Integer, String, Symbol # default value: "*"
-		action :${7:create}		# 						Symbol # defaults to :create if not specified
+		command "${2:ls -la}"							
+		comment							
+		cron_name							
+		day "${2:*}"					
+		environment						
+		home								
+		hour "${3:*}"									
+		mailto							
+		minute "${4:*}"				
+		mode								
+		month "${5:*}"				
+		path								
+		predefined_value		
+		random_delay					
+		shell								
+		time_out							
+		user "${6:root}"									
+		weekday								
+		action :${7:create}		
 	end
 
 snippet csh
+	# https://docs.chef.io/resources/csh
 	csh '${1:name}' do
-		code											 # String
-		creates										 # String
-		cwd												 # String
-		environment								 # Hash
-		flags											 # String
-		group											 # String, Integer
-		path											 # Array
-		returns										 # Integer, Array
-		timeout										 # Integer, Float
-		user											 # String, Integer
-		umask											 # String, Integer
-		action :${2:run}						# 				 Symbol # defaults to :run if not specified
+		code								 
+		creates							 
+		cwd									 
+		environment					 
+		flags								 
+		group								 
+		path								 
+		returns							 
+		timeout							 
+		user								 
+		umask								 
+		action :${2:run}						
 	end
 
 snippet directory
+	# https://docs.chef.io/resources/directory
 	directory '${1:name}' do
-		group											 # String, Integer
-		inherits									#  true, false
-		mode											 # String, Integer
-		owner											 # String, Integer
-		path											 # String # defaults to '${1:name}' if not specified
-		recursive									#  true, false
-		rights										#  Hash
-		action :${2:create}					# 					 Symbol # defaults to :create if not specified
+		group								 
+		inherits									
+		mode								 
+		owner								 
+		path								 
+		recursive									
+		rights										
+		action :${2:create}					
 	end
 
 snippet dmg_package
+	# https://docs.chef.io/resources/dmg_package
 	dmg_package '${1:name}' do
-		accept_eula	${2:false}			# 	 true, false # default value: false
-		allow_untrusted	${3:false}	# 	 true, false # default value: false
-		app									 # String default name unless specified
-		checksum						#  String
-		destination "${4:/Applications}"					 # String, default value: "/Applications"
-		dmg_name						 # String, default value: The value passed for the application name.
-		dmg_passphrase			#  String
-		file								 # String
-		headers							#  Hash
-		owner								 # String, Integer
-		package_id					#  String
-		source							 # String
-		type "${5:app}"								 # String, default value: "app"
-		volumes_dir					 # String, default value: The value passed for the application name.
-		action :${6:install}		# 					 Symbol # defaults to :install if not specified
+		accept_eula	${2:false}			
+		allow_untrusted	${3:false}	
+		app						 
+		checksum						
+		destination "${4:/Applications}"		 
+		dmg_name			 
+		dmg_passphrase			
+		file					 
+		headers							
+		owner					 
+		package_id					
+		source				 
+		type "${5:app}"					 
+		volumes_dir		 
+		action :${6:install}		
 	end
 
 snippet dnf_package
+	# https://docs.chef.io/resources/dnf_package
 	dnf_package '${1:name}' do
-		arch						# String, Array
-		flush_cache			# 	Hash # default value: {"before"=>false, "after"=>false}
-		options					# String, Array
-		package_name		# String, Array
-		source					# String
-		timeout					# String, Integer
-		version					# String, Array
-		action :${2:install}			# 			Symbol # defaults to :install if not specified
+		arch						
+		flush_cache			
+		options					
+		package_name		
+		source					
+		timeout					
+		version					
+		action :${2:install}			
 	end
 
 snippet dpkg_package
+	# https://docs.chef.io/resources/dpkg_package
 	dpkg_package '${1:name}' do
-		options											 # String, Array
-		package_name								 # String, Array
-		response_file								 # String
-		response_file_variables			 # Hash
-		source											 # String, Array
-		timeout											 # String, Integer
-		version											 # String, Array
-		action :${2:install}					# 						 Symbol # defaults to :install if not specified
+		options								 
+		package_name					 
+		response_file					 
+		response_file_variables 
+		source								 
+		timeout								 
+		version								 
+		action :${2:install}					
 	end
 
 snippet dsc_resource
+	# https://docs.chef.io/resources/dsc_resource
 	dsc_resource '${1:name}' do
-		module_name								 # String
-		module_version						 # String
-		property									 # Symbol
-		reboot_action							 # Symbol # default value: :nothing
-		resource									 # Symbol
-		timeout										 # Integer
-		action :${2:run}						# 				 Symbol # defaults to :run if not specified
+		module_name					 
+		module_version			 
+		property						 
+		reboot_action				 
+		resource						 
+		timeout							 
+		action :${2:run}						
 	end
 
 snippet dsc_script
+	# https://docs.chef.io/resources/dsc_script
 	dsc_script '${1:name}' do
-		code											 # String
-		command "${2:ls -la}"										 # String
-		configuration_data				 # String
-		configuration_data_script  # String
-		configuration_name				 # String
-		cwd												 # String
-		environment								 # Hash
-		flags											 # Hash
-		imports										 # Array
-		timeout										 # Integer
-		action :${3:run}						# 				 Symbol # defaults to :run if not specified
+		code								 
+		command "${2:ls -la}"							 
+		configuration_data	 
+		configuration_data_script  
+		configuration_name	 
+		cwd									 
+		environment					 
+		flags								 
+		imports							 
+		timeout							 
+		action :${3:run}						
 	end
 
 snippet execute
+	# https://docs.chef.io/resources/execute
 	execute '${1:name}' do
-		command "${2:ls -la}"				# 	 String, Array # default name unless specified
-		creates					 # String
-		cwd							 # String
-		default_env	${3:false}		#  true, false # default value: false
-		domain					 # String
-		elevated	${4:false}			#  true, false # default value: false
-		environment			 # Hash
-		group						 # String, Integer
-		input						 # String
-		live_stream	${5:false}		#  true, false # default value: false
-		password				 # String
-		returns					 # Integer, Array # default value: 0
-		sensitive				 # true, false
-		timeout					 # Integer, String, Float # default value: 3600
-		umask						 # String, Integer
-		user						 # String, Integer
-		action :${6:run}	# 				 Symbol # defaults to :run if not specified
+		command "${2:ls -la}"				
+		creates		 
+		cwd				 
+		default_env	${3:false}		
+		domain		 
+		elevated	${4:false}			
+		environment 
+		group			 
+		input			 
+		live_stream	${5:false}		
+		password	 
+		returns		 
+		sensitive	 
+		timeout		 
+		umask			 
+		user			 
+		action :${6:run}	
 	end
 
 snippet file
+	# https://docs.chef.io/resources/file
 	file '${1:name}' do
-		atomic_update							#  true, false
-		backup										#  false, Integer
-		checksum									#  String
-		content										#  String
-		force_unlink							#  true, false
-		group											#  String, Integer
-		inherits									#  true, false
-		manage_symlink_source			#  true, false
-		mode											#  String, Integer
-		owner											#  String, Integer
+		atomic_update							
+		backup										
+		checksum									
+		content										
+		force_unlink							
+		group											
+		inherits									
+		manage_symlink_source			
+		mode											
+		owner											
 		path '${2:name}' 
-		rights										#  Hash
-		verify										#  String, Block
-		action :${3:create}					# 					 Symbol # defaults to :create if not specified
+		rights										
+		verify										
+		action :${3:create}					
 	end
 
 snippet freebsd_package
+	# https://docs.chef.io/resources/freebsd_package
 	freebsd_package '${1:name}' do
-		options					# String
-		package_name		# String
-		source					# String
-		timeout					# String, Integer
-		version					# String
-		action :${2:install}		# 				Symbol # defaults to :install if not specified
+		options					
+		package_name		
+		source					
+		timeout					
+		version					
+		action :${2:install}		
 	end
 
 snippet gem_package
+	# https://docs.chef.io/resources/gem_package
 	gem_package '${1:name}' do
-		clear_sources							# 	true, false
-		gem_binary								# String
-		include_default_source		# 	true, false
-		options										# String, Hash, Array
-		package_name							# String
-		source										# String, Array
-		timeout										# String, Integer
-		version										# String
-		action :${2:install}											Symbol # defaults to :install if not specified
+		clear_sources							
+		gem_binary								
+		include_default_source		
+		options										
+		package_name							
+		source										
+		timeout										
+		version										
+		action :${2:install}								 
 	end
 
 snippet git
+	# https://docs.chef.io/resources/git
 	git '${1:name}' do
-		additional_remotes		# 	Hash
-		checkout_branch				# String
-		depth									# 	Integer
-		destination							# String default name unless specified
-		enable_checkout		${2:true}			# true, false # default value: true
-		enable_submodules	${3:false}		# 	true, false # default value: false
-		environment						# 	Hash
-		group									# String, Integer
-		remote "${4:origin}"									# String, default value: "origin"
-		repository						# String
-		revision "${5:HEAD}"								# String, default value: "HEAD"
-		ssh_wrapper						# String
-		timeout								# 	Integer
-		user									# String, Integer
-		action :${6:sync}			# 						Symbol # defaults to :sync if not specified
+		additional_remotes		
+		checkout_branch				
+		depth									
+		destination							
+		enable_checkout		${2:true}			
+		enable_submodules	${3:false}		
+		environment						
+		group									
+		remote "${4:origin}"									
+		repository						
+		revision "${5:HEAD}"								
+		ssh_wrapper						
+		timeout								
+		user									
+		action :${6:sync}			
 	end
 
 snippet homebrew_cask
+	# https://docs.chef.io/resources/homebrew_cask
 	homebrew_cask '${1:name}' do
-		cask_name					 # String default name unless specified
-		homebrew_path "${2:/usr/local/bin/brew}"			 # String, default value: "/usr/local/bin/brew"
-		install_cask ${3:true}		# 	 true, false # default value: true
-		options						 # String
-		owner							 # String, Integer
-		action :${4:install}		# 				 Symbol # defaults to :install if not specified
+		cask_name		 
+		homebrew_path "${2:/usr/local/bin/brew}" 
+		install_cask ${3:true}		
+		options			 
+		owner				 
+		action :${4:install}		
 	end
 
 snippet homebrew_package
+	# https://docs.chef.io/resources/homebrew_package
 	homebrew_package '${1:name}' do
-		homebrew_user			#  String, Integer
-		options						#  String, Array
-		package_name			#  String, Array
-		source						#  String
-		timeout						#  String, Integer
-		version						#  String, Array
-		action :${2:install}						#  Symbol # defaults to :install if not specified
+		homebrew_user			
+		options						
+		package_name			
+		source						
+		timeout						
+		version						
+		action :${2:install}						
 	end
 
 snippet homebrew_tap
+	# https://docs.chef.io/resources/homebrew_tap
 	homebrew_tap '${1:name}' do
-		full	 ${2:false}					# 	 true, false # default value: false
-		homebrew_path "${3:/usr/local/bin/brew}"			 # String, default value: "/usr/local/bin/brew"
-		owner							 # String
-		tap_name					 # String default name unless specified
-		url								 # String
-		action :${4:tap}		# 				 Symbol # defaults to :tap if not specified
+		full	 ${2:false}					
+		homebrew_path "${3:/usr/local/bin/brew}" 
+		owner				 
+		tap_name		 
+		url					 
+		action :${4:tap}		
 	end
 
 snippet homebrew_update
+	# https://docs.chef.io/resources/homebrew_update
 	homebrew_update '${1:name}' do
-		frequency	86400		#  Integer # default value: 86400
-		action :${2:periodic}				 Symbol # defaults to :periodic if not specified
+		frequency	86400		
+		action :${2:periodic}	  
 	end
 
 snippet hostname
+	# https://docs.chef.io/resources/hostname
 	hostname '${1:name}' do
-		aliases							# Array
-		compile_time ${2:true}		# 		true, false # default value: true
-		hostname						# String default name unless specified
-		ipaddress						# String, default value: The node's IP address as determined by Ohai.
-		windows_reboot	${3:true}# 		true, false # default value: true
-		action :${4:set}					# 		Symbol # defaults to :set if not specified
+		aliases							
+		compile_time ${2:true}		
+		hostname						
+		ipaddress						
+		windows_reboot	${3:true}
+		action :${4:set}					
 	end
 
 snippet http_request
+	# https://docs.chef.io/resources/http_request
 	http_request '${1:name}' do
-		headers										#  Hash
-		message										#  Object # defaults to 'name' if not specified
-		url		'${2:http://somehost}'										 # String
-		action :${3:get}						# 				 Symbol # defaults to :get if not specified
+		headers										
+		message										
+		url		'${2:http://somehost}'							 
+		action :${3:get}						
 	end
 
 snippet ifconfig
+	# https://docs.chef.io/resources/ifconfig
 	ifconfig '${1:name}' do
-		bcast						# String
-		bonding_opts		# String
-		bootproto				# String
-		bridge					# String
-		device					# String
-		ethtool_opts		# String
-		family "${2:inet}"						# String, default value: "inet"
-		gateway					# String
-		hwaddr					# String
-		inet_addr				# String
-		mask						# String
-		master					# String
-		metric					# String
-		mtu							# String
-		network					# String
-		onboot					# String
-		onparent				# String
-		slave						# String
-		target						# String default name unless specified
-		vlan						# String
-		action :${3:add}	# 					Symbol # defaults to :add if not specified
+		bcast						
+		bonding_opts		
+		bootproto				
+		bridge					
+		device					
+		ethtool_opts		
+		family "${2:inet}"						
+		gateway					
+		hwaddr					
+		inet_addr				
+		mask						
+		master					
+		metric					
+		mtu							
+		network					
+		onboot					
+		onparent				
+		slave						
+		target						
+		vlan						
+		action :${3:add}	
 	end
 
 snippet ips_package
+	# https://docs.chef.io/resources/ips_package
 	ips_package '${1:name}' do
-		accept_license	${2:false}	# 				 true, false # default value: false
-		options										 # String
-		package_name							 # String, Array
-		source										 # String
-		timeout										 # String, Integer
-		version										 # String, Array
-		action :${3:install}				# 						 Symbol # defaults to :install if not specified
+		accept_license	${2:false}	
+		options							 
+		package_name				 
+		source							 
+		timeout							 
+		version							 
+		action :${3:install}				
 	end
 
 snippet kernel_module
+	# https://docs.chef.io/resources/kernel_module
 	kernel_module '${1:name}' do
-		load_dir "${2:/etc/modules-load.d}"				# String, default value: "/etc/modules-load.d"
-		modname					# String default name unless specified
-		options					# Array
-		unload_dir "${3:/etc/modprobe.d}"			# String, default value: "/etc/modprobe.d"
-		action :${4:install}					# Symbol # defaults to :install if not specified
+		load_dir "${2:/etc/modules-load.d}"				
+		modname					
+		options					
+		unload_dir "${3:/etc/modprobe.d}"			
+		action :${4:install}					
 	end
 
 snippet ksh
+	# https://docs.chef.io/resources/ksh
 	ksh '${1:name}' do
-		code											 # String
-		creates										 # String
-		cwd												 # String
-		environment								 # Hash
-		flags											 # String
-		group											 # String, Integer
-		path											 # Array
-		returns										 # Integer, Array
-		timeout										 # Integer, Float
-		user											 # String, Integer
-		umask											 # String, Integer
-		action :${2:run}						# 				 Symbol # defaults to :run if not specified
+		code								 
+		creates							 
+		cwd									 
+		environment					 
+		flags								 
+		group								 
+		path								 
+		returns							 
+		timeout							 
+		user								 
+		umask								 
+		action :${2:run}						
 	end
 
 snippet launchd
+	# https://docs.chef.io/resources/launchd
 	launchd '${1:name}' do
-		abandon_process_group	${2:false}		# 			true, false
-		backup													# Integer, false
-		cookbook											# String
-		debug					${3:false}				# 					true, false
-		disabled				${4:false}			# 					true, false # default value: false
-		enable_globbing									# true, false
-		enable_transactions							# true, false
-		environment_variables						# Hash
-		exit_timeout										# Integer
-		group													# String, Integer
-		hard_resource_limits						# Hash
-		inetd_compatibility							# Hash
-		init_groups											# true, false
-		keep_alive											# true, false, Hash
-		label														# String default name unless specified
-		launch_events										# Hash
-		launch_only_once								# true, false
-		ld_group											# String
-		limit_load_from_hosts						# Array
-		limit_load_to_hosts							# Array
-		limit_load_to_session_type			# Array, String
-		low_priority_io									# true, false
-		mach_services										# Hash
-		mode													# String, Integer
-		nice														# Integer
-		on_demand												# true, false
-		owner													#  String, Integer
-		path													# String
-		plist_hash										# 	Hash
-		process_type									# String
-		program												# String
-		program_arguments							# 	Array
-		queue_directories							# 	Array
-		root_directory								# String
-		run_at_load										# 	true, false
-		session_type									# String
-		sockets												# 	Hash
-		soft_resource_limits					# 	Array
-		source												# String
-		standard_error_path						# String
-		standard_in_path							# String
-		standard_out_path							# String
-		start_calendar_interval				# 	Hash, Array
-		start_interval								# 	Integer
-		start_on_mount								# 	true, false
-		throttle_interval							# 	Integer
-		time_out											# 	Integer
-		type "${5:daemon}"														# String, default value: "daemon"
-		umask													# 	Integer
-		username											# String
-		wait_for_debugger							# 	true, false
-		watch_paths										# 	Array
-		working_directory							# String
-		action :${6:create}						# 							Symbol # defaults to :create if not specified
+		abandon_process_group	${2:false}		
+		backup													
+		cookbook											
+		debug					${3:false}				
+		disabled				${4:false}			
+		enable_globbing									
+		enable_transactions							
+		environment_variables						
+		exit_timeout										
+		group													
+		hard_resource_limits						
+		inetd_compatibility							
+		init_groups											
+		keep_alive											
+		label														
+		launch_events										
+		launch_only_once								
+		ld_group											
+		limit_load_from_hosts						
+		limit_load_to_hosts							
+		limit_load_to_session_type			
+		low_priority_io									
+		mach_services										
+		mode													
+		nice														
+		on_demand												
+		owner													
+		path													
+		plist_hash										
+		process_type									
+		program												
+		program_arguments							
+		queue_directories							
+		root_directory								
+		run_at_load										
+		session_type									
+		sockets												
+		soft_resource_limits					
+		source												
+		standard_error_path						
+		standard_in_path							
+		standard_out_path							
+		start_calendar_interval				
+		start_interval								
+		start_on_mount								
+		throttle_interval							
+		time_out											
+		type "${5:daemon}"														
+		umask													
+		username											
+		wait_for_debugger							
+		watch_paths										
+		working_directory							
+		action :${6:create}						
 	end
 
 snippet link
+	# https://docs.chef.io/resources/link
 	link '${1:name}' do
-		group						 # String, Integer
-		link_type				 # String, Symbol # default value: :symbolic
-		mode						 # Integer, String
-		owner						 # String, Integer
-		target_file			 # String default name unless specified
-		to							 # String
-		action :${2:create}		# 			 Symbol # defaults to :create if not specified
+		group			 
+		link_type	 
+		mode			 
+		owner			 
+		target_file 
+		to				 
+		action :${2:create}		
 	end
 
 snippet locale
+	# https://docs.chef.io/resources/locale
 	locale '${1:name}' do
-		lang			# String
-		lc_env		# 	Hash
-		action :${2:update}		# 	Symbol # defaults to :update if not specified
+		lang			
+		lc_env		
+		action :${2:update}		
 	end
 
 snippet macos_userdefaults
+	# https://docs.chef.io/resources/macos_userdefaults
 	macos_userdefaults '${1:name}' do
-		domain			# String, default value: NSGlobalDomain: the global domain.
-		host			# String, Symbol
-		key				# String
-		sudo		${2:false}		# true, false # default value: false
-		type			# String
-		user			# String
-		value				# Integer, Float, String, true, false, Hash, Array
-		action :${3:write}		# 	Symbol # defaults to :write if not specified
+		domain			
+		host			
+		key				
+		sudo		${2:false}		
+		type			
+		user			
+		value				
+		action :${3:write}		
 	end
 
 snippet macports_package
+	# https://docs.chef.io/resources/macports_package
 	macports_package '${1:name}' do
-		options					# String
-		package_name		# String
-		source					# String
-		timeout					# String, Integer
-		version					# String
-		action :${2:install}		# 				Symbol # defaults to :install if not specified
+		options					
+		package_name		
+		source					
+		timeout					
+		version					
+		action :${2:install}		
 	end
 
 snippet mdadm
+	# https://docs.chef.io/resources/mdadm
 	mdadm '${1:name}' do
-		bitmap					#  String
-		chunk						#  Integer # default value: 16
-		devices					#  Array # default value: []
-		layout					#  String
-		level						#  Integer # default value: 1
-		metadata "${2:0.90}"				 # String, default value: "0.90"
-		raid_device			 # String default name unless specified
-		action :${3:create}			# 		 Symbol # defaults to :create if not specified
+		bitmap					
+		chunk						
+		devices					
+		layout					
+		level						
+		metadata "${2:0.90}"	 
+		raid_device 
+		action :${3:create}			
 	end
 
 snippet mount
+	# https://docs.chef.io/resources/mount
 	mount '${1:name}' do
-		device					 # String
-		device_type			 # String, Symbol # default value: :device
-		domain					 # String
-		dump						 # Integer, false # default value: 0
-		enabled ${2:false}		# 		 true, false # default value: false
-		fsck_device "${3:-}"			 # String, default value: "-"
-		fstype "${4:auto}"					 # String, default value: "auto"
-		mount_point			 # String default name unless specified
-		options					 # Array, # String, default value: ["defaults"]
-		pass						 # Integer, false # default value: 2
-		password				 # String
-		supports				 # Array, Hash # default value: { remount: false }
-		username				 # String
-		action :${5:mount}					#  Symbol # defaults to :mount if not specified
+		device		 
+		device_type 
+		domain		 
+		dump			 
+		enabled ${2:false}		
+		fsck_device "${3:-}" 
+		fstype "${4:auto}"		 
+		mount_point 
+		options		 
+		pass			 
+		password	 
+		supports	 
+		username	 
+		action :${5:mount}					
 	end
 
 snippet msu_package
+	# https://docs.chef.io/resources/msu_package
 	msu_package '${1:name}' do
-		checksum				# String
-		options					# String
-		package_name		# String
-		source					# String
-		timeout	${2:3600}				# String, Integer # default value: 3600
-		action :${3:install}	# 					Symbol # defaults to :install if not specified
+		checksum				
+		options					
+		package_name		
+		source					
+		timeout	${2:3600}				
+		action :${3:install}	
 	end
 
 snippet notify_group
+	# https://docs.chef.io/resources/notify_group
 	notify_group '${1:name}' do
-		action :${2:nothing}	# 		Symbol # defaults to :nothing if not specified
+		action :${2:nothing}	
 	end
 
 snippet ohai
+	# https://docs.chef.io/resources/ohai
 	ohai '${1:name}' do
-		plugin		# String
-		action :${2:reload}			Symbol # defaults to :reload if not specified
+		plugin		
+		action :${2:reload} 
 	end
 
 snippet ohai_hint
+	# https://docs.chef.io/resources/ohai_hint
 	ohai_hint '${1:name}' do
-		compile_time	${2:true} 		# true, false # default value: true
-		content					# 	Hash
-		hint_name					# String default name unless specified
-		action :${3:create}					# 	Symbol # defaults to :create if not specified
+		compile_time	${2:true} 		
+		content					
+		hint_name					
+		action :${3:create}					
 	end
 
 snippet openbsd_package
+	# https://docs.chef.io/resources/openbsd_package
 	openbsd_package '${1:name}' do
-		options					# String
-		package_name		# String
-		source					# String
-		timeout					# String, Integer
-		version					# String, Array
-		action :${2:install}		# 				Symbol # defaults to :install if not specified
+		options					
+		package_name		
+		source					
+		timeout					
+		version					
+		action :${2:install}		
 	end
 
 snippet openssl_dhparam
+	# https://docs.chef.io/resources/openssl_dhparam
 	openssl_dhparam '${1:name}' do
-		generator			# 	Integer # default value: 2
-		group					# String, Integer
-		key_length		# 	Integer # default value: 2048
-		mode "${2:0640}"			# 			Integer, # String, default value: "0640"
-		owner					# String, Integer
-		path						# String default name unless specified
-		action :${3:create}			# 		Symbol # defaults to :create if not specified
+		generator			
+		group					
+		key_length		
+		mode "${2:0640}"			
+		owner					
+		path						
+		action :${3:create}			
 	end
 
 snippet openssl_ec_private_key
+	# https://docs.chef.io/resources/openssl_ec_private_key
 	openssl_ec_private_key '${1:name}' do
-		force		${2:false}				# true, false # default value: false
-		group					# String, Integer
-		key_cipher "${3:des3}"			# String, default value: "des3"
-		key_curve "${4:prime256v1}"				# String, default value: "prime256v1"
-		key_pass			# String
-		mode "${5:0600}"						Integer, # String, default value: "0600"
-		owner					# String, Integer
-		path						# String default name unless specified
-		action :${6:create}				# 	Symbol # defaults to :create if not specified
+		force		${2:false}				
+		group					
+		key_cipher "${3:des3}"			
+		key_curve "${4:prime256v1}"				
+		key_pass			
+		mode "${5:0600}"						
+		owner					
+		path						
+		action :${6:create}				
 	end
 
 snippet openssl_ec_public_key
+	# https://docs.chef.io/resources/openssl_ec_public_key
 	openssl_ec_public_key '${1:name}' do
-		group										 # String, Integer
-		mode "${2:0640}"					# 					 Integer, # String, default value: "0640"
-		owner										 # String, Integer
-		path										 # String default name unless specified
-		private_key_content			 # String
-		private_key_pass				 # String
-		private_key_path				 # String
-		action :${3:create}				# 					 Symbol # defaults to :create if not specified
+		group							 
+		mode "${2:0640}"					
+		owner							 
+		path							 
+		private_key_content 
+		private_key_pass	 
+		private_key_path	 
+		action :${3:create}				
 	end
 
 snippet openssl_rsa_private_key
+	# https://docs.chef.io/resources/openssl_rsa_private_key
 	openssl_rsa_private_key '${1:name}' do
-		force	${2:false}					# true, false # default value: false
-		group					# String, Integer
-		key_cipher "${3:des3}"			# String, default value: "des3"
-		key_length			Integer # default value: 2048
-		key_pass			# String
-		mode "${4:0600}"					# 	Integer, # String, default value: "0600"
-		owner					# String, Integer
-		path						# String default name unless specified
-		action :${5:create}				# 	Symbol # defaults to :create if not specified
+		force	${2:false}					
+		group					
+		key_cipher "${3:des3}"			
+		key_length			
+		key_pass			
+		mode "${4:0600}"					
+		owner					
+		path						
+		action :${5:create}				
 	end
 
 snippet openssl_rsa_public_key
+	# https://docs.chef.io/resources/openssl_rsa_public_key
 	openssl_rsa_public_key '${1:name}' do
-		group										 # String, Integer
-		mode "${2:0640}"					# 					 Integer, # String, default value: "0640"
-		owner										 # String, Integer
-		path										 # String default name unless specified
-		private_key_content			 # String
-		private_key_pass				 # String
-		private_key_path				 # String
-		action :${3:create}				# 					 Symbol # defaults to :create if not specified
+		group							 
+		mode "${2:0640}"					
+		owner							 
+		path							 
+		private_key_content 
+		private_key_pass	 
+		private_key_path	 
+		action :${3:create}				
 	end
 
 snippet openssl_x509_certificate
+	# https://docs.chef.io/resources/openssl_x509_certificate
 	openssl_x509_certificate '${1:name}' do
-		ca_cert_file						 String
-		ca_key_file							 # String
-		ca_key_pass							 # String
-		city										 # String
-		common_name							 # String
-		country									 # String
-		csr_file								 # String
-		email										 # String
-		expire									 # Integer # default value: 365
-		extensions							 # Hash # default value: {}
-		group										 # String, Integer
-		key_curve "${2:prime256v1}"								 # String, default value: "prime256v1"
-		key_file								 # String
-		key_length							 # Integer # default value: 2048
-		key_pass								 # String
-		key_type "${3:rsa}"								 # String, default value: "rsa"
-		mode										 # Integer, String
-		org											 # String
-		org_unit								 # String
-		owner										 # String, Integer
-		path										 # String default name unless specified
-		renew_before_expiry			 # Integer
-		state										 # String
-		subject_alt_name				 # Array # default value: []
-		action :${4:create}				# 					 Symbol # defaults to :create if not specified
+		ca_cert_file			 
+		ca_key_file				 
+		ca_key_pass				 
+		city							 
+		common_name				 
+		country						 
+		csr_file					 
+		email							 
+		expire						 
+		extensions				 
+		group							 
+		key_curve "${2:prime256v1}"					 
+		key_file					 
+		key_length				 
+		key_pass					 
+		key_type "${3:rsa}"					 
+		mode							 
+		org								 
+		org_unit					 
+		owner							 
+		path							 
+		renew_before_expiry 
+		state							 
+		subject_alt_name	 
+		action :${4:create}				
 	end
 
 snippet openssl_x509_crl
+	# https://docs.chef.io/resources/openssl_x509_crl
 	openssl_x509_crl '${1:name}' do
-		ca_cert_file					#  String
-		ca_key_file						#  String
-		ca_key_pass						#  String
-		expire								#  Integer # default value: 8
-		group									 # String, Integer
-		mode									#  Integer, String
-		owner									 # String, Integer
-		path									 # String default name unless specified
-		renewal_threshold			#  Integer # default value: 1
-		revocation_reason			#  Integer # default value: 0
-		serial_to_revoke			#  Integer, String
-		action :${2:create}			# 					 Symbol # defaults to :create if not specified
+		ca_cert_file					
+		ca_key_file						
+		ca_key_pass						
+		expire								
+		group						 
+		mode									
+		owner						 
+		path						 
+		renewal_threshold			
+		revocation_reason			
+		serial_to_revoke			
+		action :${2:create}			
 	end
 
 snippet openssl_x509_request
+	# https://docs.chef.io/resources/openssl_x509_request
 	openssl_x509_request '${1:name}' do
-		city						 # String
-		common_name			 # String
-		country					 # String
-		email						 # String
-		group						 # String, Integer
-		key_curve "${2:prime256v1}"				 # String, default value: "prime256v1"
-		key_file				 # String
-		key_length			 # Integer # default value: 2048
-		key_pass				 # String
-		key_type "${3:ec}"				 # String, default value: "ec"
-		mode						 # Integer, String
-		org							 # String
-		org_unit				 # String
-		owner						 # String, Integer
-		path						 # String default name unless specified
-		state						 # String
-		action :${4:create}		# 			 Symbol # defaults to :create if not specified
+		city			 
+		common_name 
+		country		 
+		email			 
+		group			 
+		key_curve "${2:prime256v1}"	 
+		key_file	 
+		key_length 
+		key_pass	 
+		key_type "${3:ec}"	 
+		mode			 
+		org				 
+		org_unit	 
+		owner			 
+		path			 
+		state			 
+		action :${4:create}		
 	end
 
 snippet osx_profile
+	# https://docs.chef.io/resources/osx_profile
 	osx_profile '${1:name}' do
-		identifier			# String
-		profile					# String, Hash
-		profile_name			# String default name unless specified
-		action :${2:install}	# 					Symbol # defaults to :install if not specified
+		identifier			
+		profile					
+		profile_name			
+		action :${2:install}	
 	end
 
 snippet package
+	# https://docs.chef.io/resources/package
 	package '${1:name}' do
-		allow_downgrade						#  true, false # Yum, RPM packages only
-		arch											 # String, Array # Yum packages only
-		default_release						#  String # Apt packages only
-		flush_cache								#  Array
-		gem_binary								 # String
-		homebrew_user							 # String, Integer # Homebrew packages only
-		notifies									 # see description
-		options										 # String
-		package_name							 # String, Array # defaults to '${1:name}' if not specified
-		response_file							 # String # Apt packages only
-		response_file_variables		#  Hash # Apt packages only
-		source										 # String
-		subscribes								 # see description
-		timeout										 # String, Integer
-		version										 # String, Array
-		action :${2:install}				# 						 Symbol # defaults to :install if not specified
+		allow_downgrade						
+		arch								 
+		default_release						
+		flush_cache								
+		gem_binary					 
+		homebrew_user				 
+		notifies						 
+		options							 
+		package_name				 
+		response_file				 
+		response_file_variables		
+		source							 
+		subscribes					 
+		timeout							 
+		version							 
+		action :${2:install}				
 	end
 
 snippet pacman_package
+	# https://docs.chef.io/resources/pacman_package
 	pacman_package '${1:name}' do
-		options					# String
-		package_name		# String
-		source					# String
-		timeout					# String, Integer
-		version					# String, Array
-		action :${2:install}				# 		Symbol # defaults to :install if not specified
+		options					
+		package_name		
+		source					
+		timeout					
+		version					
+		action :${2:install}				
 	end
 
 snippet paludis_package
+	# https://docs.chef.io/resources/paludis_package
 	paludis_package '${1:name}' do
-		options					# String
-		package_name		# String
-		source					# String
-		timeout					# 	Integer # default value: 3600
-		version					# String
-		action :${2:install}						Symbol # defaults to :install if not specified
+		options					
+		package_name		
+		source					
+		timeout					
+		version					
+		action :${2:install}			 
 	end
 
 snippet perl
+	# https://docs.chef.io/resources/perl
 	perl '${1:name}' do
-		code											 # String
-		creates										 # String
-		cwd												 # String
-		environment								#  Hash
-		flags											 # String
-		group											 # String, Integer
-		notifies									 # see description
-		path											#  Array
-		returns										#  Integer, Array
-		subscribes								#  see description
-		timeout										#  Integer, Float
-		user											 # String, Integer
-		umask											 # String, Integer
-		action :${2:run}						# 				 Symbol # defaults to :run if not specified
+		code								 
+		creates							 
+		cwd									 
+		environment								
+		flags								 
+		group								 
+		notifies						 
+		path											
+		returns										
+		subscribes								
+		timeout										
+		user								 
+		umask								 
+		action :${2:run}						
 	end
 
 snippet plist
+	# https://docs.chef.io/resources/plist
 	plist '${1:name}' do
-		encoding "${2:binary}"			# String, default value: "binary"
-		entry				# String
-		group "${3:wheel}"					# String, default value: "wheel"
-		mode				# String, Integer
-		owner "${4:root}"					# String, default value: "root"
-		path					# String default name unless specified
-		value					# true, false, String, Integer, Float, Hash
-		action :${5:set}				# Symbol # defaults to :set if not specified
+		encoding "${2:binary}"			
+		entry				
+		group "${3:wheel}"					
+		mode				
+		owner "${4:root}"					
+		path					
+		value					
+		action :${5:set}				
 	end
 
 snippet portage_package
+	# https://docs.chef.io/resources/portage_package
 	portage_package '${1:name}' do
-		options					# String
-		package_name		# String
-		source					# String
-		timeout					# String, Integer # default value: 3600
-		version					# String
-		action :${2:install}			# 			Symbol # defaults to :install if not specified
+		options					
+		package_name		
+		source					
+		timeout					
+		version					
+		action :${2:install}			
 	end
 
 snippet powershell_package_source
+	# https://docs.chef.io/resources/powershell_package_source
 	powershell_package_source '${1:name}' do
-		provider_name "${2:NuGet}"								 # String, default value: "NuGet"
-		publish_location					# 	 String
-		script_publish_location		# 	 String
-		script_source_location		# 	 String
-		source_name									 # String default name unless specified
-		trusted										# 	 true, false # default value: false
-		url													 # String
-		action :${3:register}			# 								 Symbol # defaults to :register if not specified
+		provider_name "${2:NuGet}"					 
+		publish_location					
+		script_publish_location		
+		script_source_location		
+		source_name						 
+		trusted										
+		url										 
+		action :${3:register}			
 	end
 
 snippet powershell_script
+	# https://docs.chef.io/resources/powershell_script
 	powershell_script '${1:name}' do
-		code											# String
-		command "${2:ls -la}"										# String, Array # default name unless specified
-		convert_boolean_return ${3:false}		# 	true, false # default value: false
-		creates										# String
-		cwd												# String
-		domain										# String
-		elevated ${4:false}					# 					true, false # default value: false
-		environment									# Hash
-		flags											# String
-		group											# String, Integer
-		input											# String
-		interpreter "${5:powershell}"									# String, default value: "powershell"
-		live_stream	${6:false}				# 				true, false # default value: false
-		password									# String
-		returns										# 	Integer, Array # default value: 0
-		sensitive									# 	true, false
-		timeout										# 	Integer, String, Float # default value: 3600
-		user											# String, Integer
-		action :${7:run}					# 						Symbol # defaults to :run if not specified
+		code											
+		command "${2:ls -la}"										
+		convert_boolean_return ${3:false}		
+		creates										
+		cwd												
+		domain										
+		elevated ${4:false}					
+		environment									
+		flags											
+		group											
+		input											
+		interpreter "${5:powershell}"									
+		live_stream	${6:false}				
+		password									
+		returns										
+		sensitive									
+		timeout										
+		user											
+		action :${7:run}					
 	end
 
 snippet python
+	# https://docs.chef.io/resources/python
 	python '${1:name}' do
-		code						 String
-		command "${2:ls -la}"					 # String default name unless specified
-		creates					 String
-		cwd							 # String
-		default_env	${3:false}		 true, false # default value: false
-		domain					 String
-		elevated ${4:false}				 true, false # default value: false
-		environment			 Hash
-		flags						 String
-		group						 String, Integer
-		interpreter			 String
-		live_stream ${5:false}			 true, false # default value: false
-		password				 String
-		returns					 Integer, Array # default value: 0
-		sensitive ${6:false}				 true, false # default value: "True if the password property is set. False otherwise."
-		timeout					 Integer, Float
-		umask						 String, Integer
-		user						 String, Integer
-		action :${7:run}					 Symbol # defaults to :run if not specified
+		code			 
+		command "${2:ls -la}"		 
+		creates		 
+		cwd				 
+		default_env	${3:false}		  
+		domain		 
+		elevated ${4:false}	  
+		environment 
+		flags			 
+		group			 
+		interpreter 
+		live_stream ${5:false}  
+		password	 
+		returns		 
+		sensitive ${6:false}	  
+		timeout		 
+		umask			 
+		user			 
+		action :${7:run}		  
 	end
 
 snippet reboot
+	# https://docs.chef.io/resources/reboot
 	reboot '${1:name}' do
-		delay_mins			# Integer # default value: 0
-		reason "${2:Reboot by Chef Infra Client}"					# String, default value: "Reboot by Chef Infra Client"
-		action :${3:nothing}	# 				Symbol # defaults to :nothing if not specified
+		delay_mins			
+		reason "${2:Reboot by Chef Infra Client}"					
+		action :${3:nothing}	
 	end
 
 snippet remote_directory
+	# https://docs.chef.io/resources/remote_directory
 	remote_directory '${1:name}' do
-		cookbook									 # String
-		files_backup							#  Integer, false # default value: 5
-		files_group								 # String, Integer
-		files_mode								 # String, Integer # default value: 0644 on *nix systems
-		files_owner								 # String, Integer
-		group											 # String, Integer
-		inherits									#  true, false
-		mode											 # String, Integer
-		overwrite	${2:true}					# 			 true, false # default value: true
-		owner											 # String, Integer
-		path											 # String default name unless specified
-		purge											#  true, false
-		recursive									#  true, false
-		rights										#  Hash
-		source										 # String
-		action :${3:create}					# 					 Symbol # defaults to :create if not specified
+		cookbook						 
+		files_backup							
+		files_group					 
+		files_mode					 
+		files_owner					 
+		group								 
+		inherits									
+		mode								 
+		overwrite	${2:true}					
+		owner								 
+		path								 
+		purge											
+		recursive									
+		rights										
+		source							 
+		action :${3:create}					
 	end
 
 snippet remote_file
+	# https://docs.chef.io/resources/remote_file
 	remote_file '${1:name}' do
-		atomic_update							#  true, false
-		authentication						 # default value: remote
-		backup										#  Integer, false # default value: 5
-		checksum									 # String
-		content										 # String, nil
-		diff											 # String, nil
-		force_unlink	${2:false}		# 				 true, false # default value: false
-		ftp_active_mode	${3:false}	# 				 true, false # default value: false
-		group											 # String, Integer
-		headers										#  Hash
-		inherits									#  true, false
-		manage_symlink_source			#  true, false
-		mode											 # String, Integer
-		notifies									 # see description
-		owner											 # String, Integer
-		path											 # String # defaults to '${1:name}' if not specified
-		rights										#  Hash
-		source										 # String, Array
-		subscribes								 # see description
-		use_conditional_get				#  true, false
-		verify										 # String, Block
-		remote_domain							 # String
-		remote_password						#  String
-		remote_user								 # String
-		show_progress	${4:false}		# 				 true, false # default value: false
-		use_etag		${5:true}				# 			 true, false # default value: true
-		use_last_modified	${6:true	# 			 true, false # default value: true
-		sensitive		${7:false}			# 				 true, false # default value: false
-		verifications							#  Array
-		action :${8:create}					# 					 Symbol # defaults to :create if not specified
+		atomic_update							
+		authentication			 
+		backup										
+		checksum						 
+		content							 
+		diff								 
+		force_unlink	${2:false}		
+		ftp_active_mode	${3:false}	
+		group								 
+		headers										
+		inherits									
+		manage_symlink_source			
+		mode								 
+		notifies						 
+		owner								 
+		path								 
+		rights										
+		source							 
+		subscribes					 
+		use_conditional_get				
+		verify							 
+		remote_domain				 
+		remote_password						
+		remote_user					 
+		show_progress	${4:false}		
+		use_etag		${5:true}				
+		use_last_modified	${6:true	
+		sensitive		${7:false}			
+		verifications							
+		action :${8:create}					
 	end
 
 snippet rhsm_errata
+	# https://docs.chef.io/resources/rhsm_errata
 	rhsm_errata '${1:name}' do
-		errata_id			 # String default name unless specified
-		action :${2:install}				#  Symbol # defaults to :install if not specified
+		errata_id 
+		action :${2:install}				
 	end
 
 snippet rhsm_errata_level
+	# https://docs.chef.io/resources/rhsm_errata_level
 	rhsm_errata_level '${1:name}' do
-		errata_level			# String default name unless specified
-		action :${2:install}				# 		Symbol # defaults to :install if not specified
+		errata_level			
+		action :${2:install}				
 	end
 
 snippet rhsm_register
+	# https://docs.chef.io/resources/rhsm_register
 	rhsm_register '${1:name}' do
-		activation_key						#  String, Array
-		auto_attach	${2:false}		# 				 true, false # default value: false
-		environment								 # String
-		force											#  true, false # default value: false
-		https_for_ca_consumer ${3:false}			 true, false # default value: false
-		install_katello_agent ${4:true}			 true, false # default value: true
-		organization							 # String
-		password									 # String
-		satellite_host						#  String
-		system_name								 # String
-		username									 # String
-		action :${5:register}			# 							 Symbol # defaults to :register if not specified
+		activation_key						
+		auto_attach	${2:false}		
+		environment					 
+		force											
+		https_for_ca_consumer ${3:false}  
+		install_katello_agent ${4:true}  
+		organization				 
+		password						 
+		satellite_host						
+		system_name					 
+		username						 
+		action :${5:register}			
 	end
 
 snippet rhsm_repo
+	# https://docs.chef.io/resources/rhsm_repo
 	rhsm_repo '${1:name}' do
-		repo_name			 # String default name unless specified
-		action :${2:enable}		# 		 Symbol # defaults to :enable if not specified
+		repo_name 
+		action :${2:enable}		
 	end
 
 snippet rhsm_subscription
+	# https://docs.chef.io/resources/rhsm_subscription
 	rhsm_subscription '${1:name}' do
-		pool_id			 # String default name unless specified
-		action :${2:attach}		# 	 Symbol # defaults to :attach if not specified
+		pool_id 
+		action :${2:attach}		
 	end
 
 snippet route
+	# https://docs.chef.io/resources/route
 	route '${1:name}' do
-		comment				# String
-		device				# String
-		gateway				# String
-		metric				# 	Integer
-		netmask				# String
-		route_type		# 	Symbol, # String, default value: :host
-		target					# String default name unless specified
-		action :${2:add}			# 		Symbol # defaults to :add if not specified
+		comment				
+		device				
+		gateway				
+		metric				
+		netmask				
+		route_type		
+		target					
+		action :${2:add}			
 	end
 
 snippet rpm_package
+	# https://docs.chef.io/resources/rpm_package
 	rpm_package '${1:name}' do
-		allow_downgrade	${2:true}# 		 true, false # default value: true
-		options							 # String, Array
-		package_name				 # String
-		source							 # String
-		timeout							 # String, Integer
-		version							 # String
-		action :${3:install}	# 						 Symbol # defaults to :install if not specified
+		allow_downgrade	${2:true}
+		options				 
+		package_name	 
+		source				 
+		timeout				 
+		version				 
+		action :${3:install}	
 	end
 
 snippet ruby
+	# https://docs.chef.io/resources/ruby
 	ruby '${1:name}' do
-		code											 # String
-		creates										 # String
-		cwd												 # String
-		environment								#  Hash
-		flags											 # String
-		group											 # String, Integer
-		path											#  Array
-		returns										#  Integer, Array
-		timeout										#  Integer, Float
-		user											 # String, Integer
-		umask											 # String, Integer
-		action :${2:run}					# 					 Symbol # defaults to :run if not specified
+		code								 
+		creates							 
+		cwd									 
+		environment								
+		flags								 
+		group								 
+		path											
+		returns										
+		timeout										
+		user								 
+		umask								 
+		action :${2:run}					
 	end
 
 snippet ruby_block
+	# https://docs.chef.io/resources/ruby_block
 	ruby_block '${1:name}' do
-		block											#  Block
-		block_name								 # String # defaults to '${1:name}' if not specified
-		action :${2:run}					# 					 Symbol # defaults to :run if not specified
+		block											
+		block_name					 
+		action :${2:run}					
 	end
 
 snippet script
+	# https://docs.chef.io/resources/script
 	script '${1:name}' do
-		code											 # String
-		creates										 # String
-		cwd												 # String
-		environment								#  Hash
-		flags											 # String
-		group											 # String, Integer
-		interpreter								 # String
-		path											#  Array
-		returns										#  Integer, Array
-		timeout										#  Integer, Float
-		user											 # String
-		password									 # String
-		domain										 # String
-		umask											 # String, Integer
-		action :${2:run}					# 					 Symbol # defaults to :run if not specified
+		code								 
+		creates							 
+		cwd									 
+		environment								
+		flags								 
+		group								 
+		interpreter					 
+		path											
+		returns										
+		timeout										
+		user								 
+		password						 
+		domain							 
+		umask								 
+		action :${2:run}					
 	end
 
 snippet service
+	# https://docs.chef.io/resources/service
 	service '${1:name}' do
-		init_command				 # String
-		options							 # Array, String
-		parameters					 # Hash
-		pattern							 # String
-		priority						 # Integer, String, Hash
-		reload_command			 # String, false
-		restart_command			 # String, false
-		run_levels					 # Array
-		service_name				 # String default name unless specified
-		start_command				 # String, false
-		status_command			 # String, false
-		stop_command				 # String, false
-		supports						 # Hash # default value: {"restart"=>nil, "reload"=>nil, "status"=>nil}
-		timeout							 # Integer # default value: 900
-		user								 # String
-		action :${2:nothing}	# 						 Symbol # defaults to :nothing if not specified
+		init_command	 
+		options				 
+		parameters		 
+		pattern				 
+		priority			 
+		reload_command 
+		restart_command 
+		run_levels		 
+		service_name	 
+		start_command	 
+		status_command 
+		stop_command	 
+		supports			 
+		timeout				 
+		user					 
+		action :${2:nothing}	
 	end
 
 snippet smartos_package
+	# https://docs.chef.io/resources/smartos_package
 	smartos_package '${1:name}' do
-		options					# String, Array
-		package_name		# String
-		source					# String
-		timeout					# String, Integer
-		version					# String
-		action :${2:install}						Symbol # defaults to :install if not specified
+		options					
+		package_name		
+		source					
+		timeout					
+		version					
+		action :${2:install}			 
 	end
 
 snippet snap_package
+	# https://docs.chef.io/resources/snap_package
 	snap_package '${1:name}' do
-		channel "${2:stable}"						# String, default value: "stable"
-		options					# String, Array
-		package_name		# String, Array
-		source					# String
-		timeout					# String, Integer
-		version					# String, Array
-		action :${3:install}			# 			Symbol # defaults to :install if not specified
+		channel "${2:stable}"						
+		options					
+		package_name		
+		source					
+		timeout					
+		version					
+		action :${3:install}			
 	end
 
 snippet solaris_package
+	# https://docs.chef.io/resources/solaris_package
 	solaris_package '${1:name}' do
-		options					# String, Array
-		package_name		# String
-		source					# String
-		timeout					# String, Integer
-		version					# String
-		action :${2:install}			# 			Symbol # defaults to :install if not specified
+		options					
+		package_name		
+		source					
+		timeout					
+		version					
+		action :${2:install}			
 	end
 
 snippet ssh_known_hosts_entry
+	# https://docs.chef.io/resources/ssh_known_hosts_entry
 	ssh_known_hosts_entry '${1:name}' do
-		file_location "${2:/etc/ssh/ssh_known_hosts}"			 # String, default value: "/etc/ssh/ssh_known_hosts"
-		group							 # String, Integer
-		hash_entries			 # true, false # default value: false
-		host							 # String default name unless specified
-		key								 # String
-		key_type "${3:rsa}"					 # String, default value: "rsa"
-		mode "${4:0644}"							 # String, default value: "0644"
-		owner							 # String, Integer # default value: "root"
-		port							 # Integer # default value: 22
-		timeout						 # Integer # default value: 30
-		action :${5:create}		# 				 Symbol # defaults to :create if not specified
+		file_location "${2:/etc/ssh/ssh_known_hosts}" 
+		group				 
+		hash_entries 
+		host				 
+		key					 
+		key_type "${3:rsa}"		 
+		mode "${4:0644}"				 
+		owner				 
+		port				 
+		timeout			 
+		action :${5:create}		
 	end
 
 snippet subversion
+	# https://docs.chef.io/resources/subversion
 	subversion '${1:name}' do
-		destination				 # String default name unless specified
-		environment				 # Hash
-		group							 # String, Integer
-		repository				 # String
-		revision "${2:HEAD}"					 # String, default value: "HEAD"
-		svn_arguments			 # String, false # default value: "--no-auth-cache"
-		svn_binary				 # String
-		svn_info_args			 # String, false # default value: "--no-auth-cache"
-		svn_password			 # String
-		svn_username			 # String
-		timeout						 # Integer
-		user							 # String, Integer
-		action :${3:sync}		# 				 Symbol # defaults to :sync if not specified
+		destination	 
+		environment	 
+		group				 
+		repository	 
+		revision "${2:HEAD}"		 
+		svn_arguments 
+		svn_binary	 
+		svn_info_args 
+		svn_password 
+		svn_username 
+		timeout			 
+		user				 
+		action :${3:sync}		
 	end
 
 snippet sudo
+	# https://docs.chef.io/resources/sudo
 	sudo '${1:name}' do
-		command_aliases "${2:[ls -la]}"				 Array # default value: []
-		commands "${3:["ALL]}"							 Array # default value: ["ALL"]
-		config_prefix "${4:Prefix values based on the node's platform}"					 # String, default value: "Prefix values based on the node's platform"
-		defaults							 Array # default value: []
-		env_keep_add					 Array # default value: []
-		env_keep_subtract			 Array # default value: []
-		filename							 # String default name unless specified
-		groups								 # String, Array # default value: []
-		host "${5:ALL}"									 # String, default value: "ALL"
-		noexec	${6:false}							 true, false # default value: false
-		nopasswd ${7:false}							 true, false # default value: false
-		runas "${9:ALL}"									 # String, default value: "ALL"
-		setenv	${10:false}							 true, false # default value: false
-		template							 # String
-		users									 # String, Array # default value: []
-		variables							 Hash
-		visudo_binary "${11:/usr/sbin/visudo}"					 # String, default value: "/usr/sbin/visudo"
-		action :${12:create}								 Symbol # defaults to :create if not specified
+		command_aliases "${2:[ls -la]}"	  
+		commands "${3:["ALL]}"				  
+		config_prefix "${4:Prefix values based on the node's platform}"		 
+		defaults				  
+		env_keep_add		  
+		env_keep_subtract  
+		filename				 
+		groups					 
+		host "${5:ALL}"						 
+		noexec	${6:false}				  
+		nopasswd ${7:false}				  
+		runas "${9:ALL}"						 
+		setenv	${10:false}				  
+		template				 
+		users						 
+		variables				 
+		visudo_binary "${11:/usr/sbin/visudo}"		 
+		action :${12:create}					  
 	end
 
 snippet swap_file
+	# https://docs.chef.io/resources/swap_file
 	swap_file '${1:name}' do
-		path						# String default name unless specified
-		persist					# true, false # default value: false
-		size						# Integer
-		swappiness			# Integer
-		timeout					# Integer # default value: 600
-		action :${2:create}		# 			Symbol # defaults to :create if not specified
+		path						
+		persist					
+		size						
+		swappiness			
+		timeout					
+		action :${2:create}		
 	end
 
 snippet sysctl
+	# https://docs.chef.io/resources/sysctl
 	sysctl '${1:name}' do
-		comment						# Array, # String, default value: []
-		conf_dir "${2:/etc/sysctl.d}"					# String, default value: "/etc/sysctl.d"
-		ignore_error ${3:false}			# true, false # default value: false
-		key								# String default name unless specified
-		value							# Array, String, Integer, Float
-		action :${4:apply}	# 					Symbol # defaults to :apply if not specified
+		comment						
+		conf_dir "${2:/etc/sysctl.d}"					
+		ignore_error ${3:false}			
+		key								
+		value							
+		action :${4:apply}	
 	end
 
 snippet systemd_unit
+	# https://docs.chef.io/resources/systemd_unit
 	systemd_unit '${1:name}' do
-		content							 # String, Hash
-		triggers_reload ${2:false}			#  true, false # default value: true
-		unit_name						 # String default name unless specified
-		user								 # String
-		verify ${3:false}							 # true, false # default value: true
-		action :${4:nothing}						# 	 Symbol # defaults to :nothing if not specified
+		content				 
+		triggers_reload ${2:false}			
+		unit_name			 
+		user					 
+		verify ${3:false}				 
+		action :${4:nothing}						
 	end
 
 snippet template
+	# https://docs.chef.io/resources/template
 	template '${1:name}' do
-		atomic_update							#  true, false
-		backup										#  false, Integer
-		cookbook									 # String
-		force_unlink							#  true, false
-		group											 # String, Integer
-		helper(:method)						#  Method { String } # see Helpers below
-		helpers(module)						#  Module # see Helpers below
-		inherits									#  true, false
-		local											#  true, false
-		manage_symlink_source			#  true, false
-		mode											 # String, Integer
-		owner											 # String, Integer
-		path											 # String # defaults to '${1:name}' if not specified
-		rights										#  Hash
-		sensitive									#  true, false
-		source										 # String, Array
-		variables									#  Hash
-		verify										 # String, Block
-		action :${2:create}					# 					 Symbol # defaults to :create if not specified
+		atomic_update							
+		backup										
+		cookbook						 
+		force_unlink							
+		group								 
+		helper(:method)						
+		helpers(module)						
+		inherits									
+		local											
+		manage_symlink_source			
+		mode								 
+		owner								 
+		path								 
+		rights										
+		sensitive									
+		source							 
+		variables									
+		verify							 
+		action :${2:create}					
 	end
 
 snippet timezone
+	# https://docs.chef.io/resources/timezone
 	timezone '${1:name}' do
-		timezone			# String default name unless specified
-		action :${2:set}				# Symbol # defaults to :set if not specified
+		timezone			
+		action :${2:set}				
 	end
 
 snippet user
+	# https://docs.chef.io/resources/user
 	user '${1:name}' do
-		comment										 # String
-		force											#  true, false # see description
-		gid												 # String, Integer
-		home											 # String
-		iterations								#  Integer
-		manage_home								#  true, false
-		non_unique								#  true, false
-		password									 # String
-		salt											 # String
-		shell											 # String
-		system										#  true, false
-		uid												#  String, Integer
-		username									 # String # defaults to '${1:name}' if not specified
-		action :${2:create}					# 					 Symbol # defaults to :create if not specified
+		comment							 
+		force											
+		gid									 
+		home								 
+		iterations								
+		manage_home								
+		non_unique								
+		password						 
+		salt								 
+		shell								 
+		system										
+		uid												
+		username						 
+		action :${2:create}					
 	end
 
 
 snippet user_ulimit
+	# https://docs.chef.io/resources/user_ulimit
 	user_ulimit '${1:name}' do
-		core_hard_limit						#  String, Integer
-		core_limit								 # String, Integer
-		core_soft_limit						#  String, Integer
-		filehandle_hard_limit			#  String, Integer
-		filehandle_limit					#  String, Integer
-		filehandle_soft_limit			#  String, Integer
-		filename									 # String
-		memory_limit							 # String, Integer
-		process_hard_limit				#  String, Integer
-		process_limit							 # String, Integer
-		process_soft_limit				#  String, Integer
-		rtprio_hard_limit					#  String, Integer
-		rtprio_limit							 # String, Integer
-		rtprio_soft_limit					#  String, Integer
-		stack_hard_limit					#  String, Integer
-		stack_limit								 # String, Integer
-		stack_soft_limit					#  String, Integer
-		username									 # String default name unless specified
-		virt_limit								 # String, Integer
-		action :${2:create}					# 					 Symbol # defaults to :create if not specified
+		core_hard_limit						
+		core_limit					 
+		core_soft_limit						
+		filehandle_hard_limit			
+		filehandle_limit					
+		filehandle_soft_limit			
+		filename						 
+		memory_limit				 
+		process_hard_limit				
+		process_limit				 
+		process_soft_limit				
+		rtprio_hard_limit					
+		rtprio_limit				 
+		rtprio_soft_limit					
+		stack_hard_limit					
+		stack_limit					 
+		stack_soft_limit					
+		username						 
+		virt_limit					 
+		action :${2:create}					
 	end
 
 snippet windows_ad_join
+	# https://docs.chef.io/resources/windows_ad_join
 	windows_ad_join '${1:name}' do
-		domain_name					 # String default name unless specified
-		domain_password			 # String
-		domain_user					 # String
-		new_hostname				 # String
-		ou_path							 # String
-		reboot							 # Symbol # default value: :immediate
-		reboot_delay				 # Integer # default value: 0
-		workgroup_name			 # String
-		action :${2:join}			# 				 Symbol # defaults to :join if not specified
+		domain_name		 
+		domain_password 
+		domain_user		 
+		new_hostname	 
+		ou_path				 
+		reboot				 
+		reboot_delay	 
+		workgroup_name 
+		action :${2:join}			
 	end
 
 snippet windows_audit_policy
+	# https://docs.chef.io/resources/windows_audit_policy
 	windows_audit_policy '${1:name}' do
-		audit_base_directories			 # true, false
-		audit_base_objects					 # true, false
-		crash_on_audit_fail					 # true, false
-		exclude_user								 # String
-		failure											 # true, false
-		full_privilege_auditing			 # true, false
-		include_user								 # String
-		subcategory									 # String, Array
-		success											 # true, false
-		action :${2:set}							# 				 Symbol # defaults to :set if not specified
+		audit_base_directories 
+		audit_base_objects		 
+		crash_on_audit_fail		 
+		exclude_user					 
+		failure								 
+		full_privilege_auditing 
+		include_user					 
+		subcategory						 
+		success								 
+		action :${2:set}							
 	end
 
 snippet windows_auto_run
+	# https://docs.chef.io/resources/windows_auto_run
 	windows_auto_run '${1:name}' do
-		args						# String
-		path						# String
-		program_name			# String default name unless specified
-		root							# Symbol # default value: :machine
-		action :${2:create}			# 			Symbol # defaults to :create if not specified
+		args						
+		path						
+		program_name			
+		root							
+		action :${2:create}			
 	end
 
 snippet windows_certificate
+	# https://docs.chef.io/resources/windows_certificate
 	windows_certificate '${1:name}' do
-		cert_path						 # String
-		exportable ${2:false}			# 		 true, false # default value: false
-		pfx_password				 # String
-		private_key_acl			 # Array
-		source							 # String default name unless specified
-		store_name "${3:MY}"					 # String, default value: "MY"
-		user_store	${4:false}				 # true, false # default value: false
-		action :${5:create}							#  Symbol # defaults to :create if not specified
+		cert_path			 
+		exportable ${2:false}			
+		pfx_password	 
+		private_key_acl 
+		source				 
+		store_name "${3:MY}"		 
+		user_store	${4:false}	 
+		action :${5:create}							
 	end
 
 snippet windows_dfs_folder
+	# https://docs.chef.io/resources/windows_dfs_folder
 	windows_dfs_folder '${1:name}' do
-		description				# String
-		folder_path					# String default name unless specified
-		namespace_name		# String
-		target_path				# String
-		action :${2:create}				# 			Symbol # defaults to :create if not specified
+		description				
+		folder_path					
+		namespace_name		
+		target_path				
+		action :${2:create}				
 	end
 
 snippet windows_dfs_namespace
+	# https://docs.chef.io/resources/windows_dfs_namespace
 	windows_dfs_namespace '${1:name}' do
-		change_users			# 	Array # default value: []
-		description				# String
-		full_users				# 	Array # default value: ["BUILTIN\\administrators"]
-		namespace_name		# 	String default name unless specified
-		read_users				# 	Array # default value: []
-		root "${2:C:\\DFSRoots}"								# String, default value: "C:\\DFSRoots"
-		action :${3:create}				# 			Symbol # defaults to :create if not specified
+		change_users			
+		description				
+		full_users				
+		namespace_name		
+		read_users				
+		root "${2:C:\\DFSRoots}"								
+		action :${3:create}				
 	end
 
 snippet windows_dfs_server
+	# https://docs.chef.io/resources/windows_dfs_server
 	windows_dfs_server '${1:name}' do
-		enable_site_costed_referrals ${2:false}			# true, false # default value: false
-		ldap_timeout_secs									# Integer # default value: 30
-		prefer_login_dc	${3:false}					# 				true, false # default value: false
-		sync_interval_secs								# Integer # default value: 3600
-		use_fqdn ${4:false}													# true, false # default value: false
-		action :${5:configure}											# 			Symbol # defaults to :configure if not specified
+		enable_site_costed_referrals ${2:false}			
+		ldap_timeout_secs									
+		prefer_login_dc	${3:false}					
+		sync_interval_secs								
+		use_fqdn ${4:false}													
+		action :${5:configure}											
 	end
 
 snippet windows_dns_record
+	# https://docs.chef.io/resources/windows_dns_record
 	windows_dns_record '${1:name}' do
-		dns_server "${2:localhost}"			 # String, default value: "localhost"
-		record_name			 # String default name unless specified
-		record_type "${3:ARecord}"			 # String, default value: "ARecord"
-		target					 # String
-		zone						 # String
-		action :${4:create}					 # Symbol # defaults to :create if not specified
+		dns_server "${2:localhost}" 
+		record_name 
+		record_type "${3:ARecord}" 
+		target		 
+		zone			 
+		action :${4:create}		 
 	end
 
 snippet windows_dns_zone
+	# https://docs.chef.io/resources/windows_dns_zone
 	windows_dns_zone '${1:name}' do
-		replication_scope "${2:Domain}"			 # String, default value: "Domain"
-		server_type "${3:Domain}"						 # String, default value: "Domain"
-		zone_name							 # String default name unless specified
-		action :${4:create}						# 		 Symbol # defaults to :create if not specified
+		replication_scope "${2:Domain}" 
+		server_type "${3:Domain}"			 
+		zone_name				 
+		action :${4:create}						
 	end
 
 snippet windows_env
+	# https://docs.chef.io/resources/windows_env
 	windows_env '${1:name}' do
-		delim				# String, false
-		key_name			# String default name unless specified
-		user "${2:<System>}"					# String, default value: "<System>"
-		value				# String
-		action :${3:create}				# Symbol # defaults to :create if not specified
+		delim				
+		key_name			
+		user "${2:<System>}"					
+		value				
+		action :${3:create}				
 	end
 
 snippet windows_feature
+	# https://docs.chef.io/resources/windows_feature
 	windows_feature '${1:name}' do
-		all	${2:false}							# 		true, false # default value: false
-		feature_name					# Array, # String default name unless specified
-		install_method				# Symbol # default value: :windows_feature_dism
-		management_tools ${3:false}			# true, false # default value: false
-		source							# String
-		timeout							# 	Integer # default value: 600
-		action :${4:install}		# 						Symbol # defaults to :install if not specified
+		all	${2:false}							
+		feature_name					
+		install_method				
+		management_tools ${3:false}			
+		source							
+		timeout							
+		action :${4:install}		
 	end
 
 snippet windows_feature_dism
+	# https://docs.chef.io/resources/windows_feature_dism
 	windows_feature_dism '${1:name}' do
-		all	${2:false}				# 			true, false # default value: false
-		feature_name			# Array, # String default name unless specified
-		source					# String
-		timeout						# Integer # default value: 600
-		action :${3:install}		# 				Symbol # defaults to :install if not specified
+		all	${2:false}				
+		feature_name			
+		source					
+		timeout						
+		action :${3:install}		
 	end
 
 snippet windows_feature_powershell
+	# https://docs.chef.io/resources/windows_feature_powershell
 	windows_feature_powershell '${1:name}' do
-		all	${2:false}					# 				true, false # default value: false
-		feature_name					# Array, # String default name unless specified
-		management_tools ${3:false}			true, false # default value: false
-		source							# String
-		timeout								# Integer # default value: 600
-		action :${4:install}		# 						Symbol # defaults to :install if not specified
+		all	${2:false}					
+		feature_name					
+		management_tools ${3:false} 
+		source							
+		timeout								
+		action :${4:install}		
 	end
 
 snippet windows_firewall_profile
+	# https://docs.chef.io/resources/windows_firewall_profile
 	windows_firewall_profile '${1:name}' do
-		allow_inbound_rules						# 	true, false, String
-		allow_local_firewall_rules		# 	true, false, String
-		allow_local_ipsec_rules				# 	true, false, String
-		allow_unicast_response				# 	true, false, String
-		allow_user_apps								# 	true, false, String
-		allow_user_ports							# 	true, false, String
-		default_inbound_action				# String
-		default_outbound_action				# String
-		display_notification					# 	true, false, String
-		profile												# 	String default name unless specified
-		action :${2:enable}						# 							Symbol # defaults to :enable if not specified
+		allow_inbound_rules						
+		allow_local_firewall_rules		
+		allow_local_ipsec_rules				
+		allow_unicast_response				
+		allow_user_apps								
+		allow_user_ports							
+		default_inbound_action				
+		default_outbound_action				
+		display_notification					
+		profile												
+		action :${2:enable}						
 	end
 
 snippet windows_firewall_rule
+	# https://docs.chef.io/resources/windows_firewall_rule
 	windows_firewall_rule '${1:name}' do
-		description					#  String
-		direction						#  Symbol, # String, default value: :inbound
-		displayname					 # String, default value: The rule_name property value.
-		enabled	${2:false}		# 				 true, false # default value: true
-		firewall_action			#  Symbol, # String, default value: :allow
-		group								 # String
-		icmp_type						#  String, Integer # default value: "Any"
-		interface_type			#  Symbol, # String, default value: :any
-		local_address				#  String
-		local_port					#  String, Integer, Array
-		profile							#  Symbol, String, Array # default value: :any
-		program							 # String
-		protocol "${3:TCP}"						 # String, default value: "TCP"
-		remote_address			#  String
-		remote_port					#  String, Integer, Array
-		rule_name						 # String default name unless specified
-		service							 # String
-		action :${4:create}		# 					 Symbol # defaults to :create if not specified
+		description					
+		direction						
+		displayname		 
+		enabled	${2:false}		
+		firewall_action			
+		group					 
+		icmp_type						
+		interface_type			
+		local_address				
+		local_port					
+		profile							
+		program				 
+		protocol "${3:TCP}"			 
+		remote_address			
+		remote_port					
+		rule_name			 
+		service				 
+		action :${4:create}		
 	end
 
 snippet windows_font
+	# https://docs.chef.io/resources/windows_font
 	windows_font '${1:name}' do
-		font_name			 # String default name unless specified
-		source				 # String
-		action :${2:install}				#  Symbol # defaults to :install if not specified
+		font_name 
+		source	 
+		action :${2:install}				
 	end
 
 snippet windows_package
+	# https://docs.chef.io/resources/windows_package
 	windows_package '${1:name}' do
-		checksum									# String
-		installer_type						# 	Symbol
-		options										# String
-		package_name							# String
-		remote_file_attributes		# 	Hash
-		returns										# String, Integer, Array
-		source "${2:The resource block's name}"											# String, default value: "The resource block's name"
-		timeout										# String, Integer # default value: "600 (seconds)"
-		version										# String
-		action :${3:install}				# 							Symbol # defaults to :install if not specified
+		checksum									
+		installer_type						
+		options										
+		package_name							
+		remote_file_attributes		
+		returns										
+		source "${2:The resource block's name}"											
+		timeout										
+		version										
+		action :${3:install}				
 	end
 
 snippet windows_pagefile
+	# https://docs.chef.io/resources/windows_pagefile
 	windows_pagefile '${1:name}' do
-		automatic_managed ${2:false}		# 	 true, false # default value: false
-		initial_size					 # Integer
-		maximum_size					 # Integer
-		path									 # String default name unless specified
-		system_managed				 # true, false
-		action :${3:set}				# 				 Symbol # defaults to :set if not specified
+		automatic_managed ${2:false}		
+		initial_size		 
+		maximum_size		 
+		path						 
+		system_managed	 
+		action :${3:set}				
 	end
 
 snippet windows_path
+	# https://docs.chef.io/resources/windows_path
 	windows_path '${1:name}' do
-		path			# String default name unless specified
-		action :${2:add}		# Symbol # defaults to :add if not specified
+		path			
+		action :${2:add}		
 	end
 
 snippet windows_printer
+	# https://docs.chef.io/resources/windows_printer
 	windows_printer '${1:name}' do
-		comment					# String
-		default		${2:false}				true, false # default value: false
-		device_id					# String default name unless specified
-		driver_name			# String
-		ipv4_address		# String
-		location				# String
-		share_name			# String
-		shared	${3:false}		# 			true, false # default value: false
-		action :${4:create}		# 				Symbol # defaults to :create if not specified
+		comment					
+		default		${2:false}	 
+		device_id					
+		driver_name			
+		ipv4_address		
+		location				
+		share_name			
+		shared	${3:false}		
+		action :${4:create}		
 	end
 
 snippet windows_printer_port
+	# https://docs.chef.io/resources/windows_printer_port
 	windows_printer_port '${1:name}' do
-		ipv4_address					# String default name unless specified
-		port_description		# String
-		port_name						# String
-		port_number						# Integer # default value: 9100
-		port_protocol					# Integer # default value: 1
-		snmp_enabled ${2:false}		# 			true, false # default value: false
-		action :${3:create}				# 				Symbol # defaults to :create if not specified
+		ipv4_address					
+		port_description		
+		port_name						
+		port_number						
+		port_protocol					
+		snmp_enabled ${2:false}		
+		action :${3:create}				
 	end
 
 snippet windows_security_policy
+	# https://docs.chef.io/resources/windows_security_policy
 	windows_security_policy '${1:name}' do
-		secoption			 # String default name unless specified
-		secvalue			 # String
-		action :${2:set}				#  Symbol # defaults to :set if not specified
+		secoption 
+		secvalue 
+		action :${2:set}				
 	end
 
 snippet windows_service
+	# https://docs.chef.io/resources/windows_service
 	windows_service '${1:name}' do
-		binary_path_name		# String
-		delayed_start ${2:false}	# 				true, false # default value: false
-		dependencies				# String, Array
-		description					# String
-		desired_access			# 	Integer # default value: 983551
-		display_name				# String
-		error_control				# 	Integer # default value: 1
-		init_command				# String
-		load_order_group		# String
-		pattern							# String
-		reload_command			# String, false
-		restart_command			# String, false
-		run_as_password			# String
-		run_as_user "${3:LocalSystem}"						# String, default value: "LocalSystem"
-		service_name					# String default name unless specified
-		service_type				# 	Integer # default value: "SERVICE_WIN32_OWN_PROCESS"
-		start_command				# String, false
-		startup_type				# 	Symbol # default value: :automatic
-		status_command			# String, false
-		stop_command				# String, false
-		supports						# 	Hash # default value: {"restart"=>nil, "reload"=>nil, "status"=>nil}
-		timeout							# 	Integer
-		action :${4:nothing}	# 							Symbol # defaults to :nothing if not specified
+		binary_path_name		
+		delayed_start ${2:false}	
+		dependencies				
+		description					
+		desired_access			
+		display_name				
+		error_control				
+		init_command				
+		load_order_group		
+		pattern							
+		reload_command			
+		restart_command			
+		run_as_password			
+		run_as_user "${3:LocalSystem}"						
+		service_name					
+		service_type				
+		start_command				
+		startup_type				
+		status_command			
+		stop_command				
+		supports						
+		timeout							
+		action :${4:nothing}	
 	end
 
 snippet windows_share
+	# https://docs.chef.io/resources/windows_share
 	windows_share '${1:name}' do
-		ca_timeout						# 			Integer # default value: 0
-		change_users					# 			Array # default value: []
-		concurrent_user_limit 			# 	Integer # default value: 0
-		continuously_available ${2:false}# 			true, false # default value: false
-		description								# String
-		encrypt_data							# 	true, false # default value: false
-		full_users								# 	Array # default value: []
-		path											# String
-		read_users								# 	Array # default value: []
-		scope_name "${3:*}"									# String, default value: "*"
-		share_name									# String default name unless specified
-		temporary									# 	true, false # default value: false
-		action :${4:create}				# 							Symbol # defaults to :create if not specified
+		ca_timeout						
+		change_users					
+		concurrent_user_limit 			
+		continuously_available ${2:false}
+		description								
+		encrypt_data							
+		full_users								
+		path											
+		read_users								
+		scope_name "${3:*}"									
+		share_name									
+		temporary									
+		action :${4:create}				
 	end
 
 snippet windows_shortcut
+	# https://docs.chef.io/resources/windows_shortcut
 	windows_shortcut '${1:name}' do
-		arguments					#  String
-		cwd								 # String
-		description				#  String
-		iconlocation			#  String
-		shortcut_name			 # String default name unless specified
-		target						#  String
-		action :${2:create}			# 			 Symbol # defaults to :create if not specified
+		arguments					
+		cwd					 
+		description				
+		iconlocation			
+		shortcut_name 
+		target						
+		action :${2:create}			
 	end
 
 snippet windows_task
+	# https://docs.chef.io/resources/windows_task
 	windows_task '${1:name}' do
-		command "${3:ls -la}"														# String
-		cwd																# String
-		day																# String, Integer
-		description												# String
-		disallow_start_if_on_batteries ${4:false}			# true, false # default value: false
-		execution_time_limit							# String, Integer # default value: "PT72H (72 hours in ISO8601 duration format)"
-		force	${5:false}															# true, false # default value: false
-		frequency														# Symbol
-		frequency_modifier									# Integer, # String, default value: 1
-		idle_time														# Integer
-		interactive_enabled ${5:false}				# 					true, false # default value: false
-		minutes_duration									# String, Integer
-		minutes_interval									# String, Integer
-		months														# String
-		password													# String
-		priority														# Integer # default value: 7
-		random_delay											# String, Integer
-		run_level														# Symbol # default value: :limited
-		start_day														# String, default value: The current date.
-		start_time												# String
-		start_when_available ${6:false}					# 			true, false # default value: false
-		stop_if_going_on_batteries ${7:false}		# 			true, false # default value: false
-		task_name														# String default name unless specified
-		user																# String, default value: The localized SYSTEM user for the node.
-		action :${3:create}											# 				Symbol # defaults to :create if not specified
+		command "${3:ls -la}"														
+		cwd																
+		day																
+		description												
+		disallow_start_if_on_batteries ${4:false}			
+		execution_time_limit							
+		force	${5:false}															
+		frequency														
+		frequency_modifier									
+		idle_time														
+		interactive_enabled ${5:false}				
+		minutes_duration									
+		minutes_interval									
+		months														
+		password													
+		priority														
+		random_delay											
+		run_level														
+		start_day														
+		start_time												
+		start_when_available ${6:false}					
+		stop_if_going_on_batteries ${7:false}		
+		task_name														
+		user																
+		action :${3:create}											
 	end
 
 snippet windows_uac
+	# https://docs.chef.io/resources/windows_uac
 	windows_uac '${1:name}' do
-		consent_behavior_admins				# Symbol # default value: :prompt_for_consent_non_windows_binaries
-		consent_behavior_users				# Symbol # default value: :prompt_for_creds
-		detect_installers							# true, false
-		enable_uac	${2:true}									# true, false # default value: true
-		prompt_on_secure_desktop	${3:true}		# true, false # default value: true
-		require_signed_binaries	${4:false}			# true, false # default value: false
-		action :${5:configure}									# 			Symbol # defaults to :configure if not specified
+		consent_behavior_admins				
+		consent_behavior_users				
+		detect_installers							
+		enable_uac	${2:true}									
+		prompt_on_secure_desktop	${3:true}		
+		require_signed_binaries	${4:false}			
+		action :${5:configure}									
 	end
 
 snippet windows_user_privilege
+	# https://docs.chef.io/resources/windows_user_privilege
 	windows_user_privilege '${1:name}' do
-		principal			 # String default name unless specified
-		privilege			 # Array, String
-		users					 # Array, String
-		action :${2:add}				#  Symbol # defaults to :add if not specified
+		principal 
+		privilege 
+		users		 
+		action :${2:add}				
 	end
 
 snippet windows_workgroup
+	# https://docs.chef.io/resources/windows_workgroup
 	windows_workgroup '${1:name}' do
-		password					# String
-		reboot						# 	Symbol # default value: :immediate
-		user							# String
-		workgroup_name		# 	String default name unless specified
-		action :${2:join}				# 			Symbol # defaults to :join if not specified
+		password					
+		reboot						
+		user							
+		workgroup_name		
+		action :${2:join}				
 	end
 
 snippet yum_package
+	# https://docs.chef.io/resources/yum_package
 	yum_package '${1:name}' do
-		allow_downgrade	${2:true}		#  true, false # default value: true
-		arch								 # String, Array
-		flush_cache					 # Hash # default value: {"before"=>false, "after"=>false}
-		options							 # String, Array
-		package_name				 # String, Array
-		source							 # String
-		timeout							 # String, Integer
-		version							 # String, Array
-		yum_binary					 # String
-		action :${3:install}	# 						 Symbol # defaults to :install if not specified
+		allow_downgrade	${2:true}		
+		arch					 
+		flush_cache		 
+		options				 
+		package_name	 
+		source				 
+		timeout				 
+		version				 
+		yum_binary		 
+		action :${3:install}	
 	end
 
 snippet yum_repository
+	# https://docs.chef.io/resources/yum_repository
 	yum_repository '${1:name}' do
-		baseurl										 # String, Array
-		clean_metadata	${2:true}			# 		 true, false # default value: true
-		cost											 # String
-		description "${2:Yum Repository}"								 # String, default value: "Yum Repository"
-		enabled	${3:true}							# 		 true, false # default value: true
-		enablegroups							 true, false
-		exclude										 # String
-		failovermethod						 # String
-		fastestmirror_enabled			 # true, false
-		gpgcheck ${4:true}					# 				 true, false # default value: true
-		gpgkey										 # String, Array
-		http_caching							 # String
-		include_config						 # String
-		includepkgs								 # String
-		keepalive									 true, false
-		make_cache ${5:false}				# 			 true, false # default value: true
-		max_retries								 # String, Integer
-		metadata_expire						 # String
-		metalink									 # String
-		mirror_expire							 # String
-		mirrorlist								 # String
-		mirrorlist_expire					 # String
-		mode											 # String, Integer # default value: "0644"
-		options										 # Hash
-		password									 # String
-		priority									 # String
-		proxy											 # String
-		proxy_password						 # String
-		proxy_username						 # String
-		repo_gpgcheck							 # true, false
-		report_instanceid					 # true, false
-		reposdir "${6:/etc/yum.repos.d/}"									 # String, default value: "/etc/yum.repos.d/"
-		repositoryid							 # String default name unless specified
-		skip_if_unavailable				 # true, false
-		source										 # String
-		sslcacert									 # String
-		sslclientcert							 # String
-		sslclientkey							 # String
-		sslverify									 # true, false
-		throttle									 # String, Integer
-		timeout										 # String
-		username									 # String
-		action :${7:create}					# 					 Symbol # defaults to :create if not specified
+		baseurl							 
+		clean_metadata	${2:true}			
+		cost								 
+		description "${2:Yum Repository}"					 
+		enabled	${3:true}							
+		enablegroups				 
+		exclude							 
+		failovermethod			 
+		fastestmirror_enabled 
+		gpgcheck ${4:true}					
+		gpgkey							 
+		http_caching				 
+		include_config			 
+		includepkgs					 
+		keepalive						 
+		make_cache ${5:false}				
+		max_retries					 
+		metadata_expire			 
+		metalink						 
+		mirror_expire				 
+		mirrorlist					 
+		mirrorlist_expire		 
+		mode								 
+		options							 
+		password						 
+		priority						 
+		proxy								 
+		proxy_password			 
+		proxy_username			 
+		repo_gpgcheck				 
+		report_instanceid		 
+		reposdir "${6:/etc/yum.repos.d/}"						 
+		repositoryid				 
+		skip_if_unavailable	 
+		source							 
+		sslcacert						 
+		sslclientcert				 
+		sslclientkey				 
+		sslverify						 
+		throttle						 
+		timeout							 
+		username						 
+		action :${7:create}					
 	end
 
 snippet zypper_package
+	# https://docs.chef.io/resources/zypper_package
 	zypper_package '${1:name}' do
-		allow_downgrade	${2:false}	# 	 true, false # default value: true
-		global_options			 # String, Array
-		gpg_check						 # true, false # default value: "true"
-		options							 # String, Array
-		package_name				 # String, Array
-		source							 # String
-		timeout							 # String, Integer
-		version							 # String, Array
-		action :${2:install}	# 						 Symbol # defaults to :install if not specified
+		allow_downgrade	${2:false}	
+		global_options 
+		gpg_check			 
+		options				 
+		package_name	 
+		source				 
+		timeout				 
+		version				 
+		action :${2:install}	
 	end
 
 snippet zypper_repository
+	# https://docs.chef.io/resources/zypper_repository
 	zypper_repository '${1:name}' do
-		autorefresh	${2:true}					 true, false # default value: true
-		baseurl								 # String
-		cookbook							 # String
-		description						 String
-		enabled	${3:true}							 true, false # default value: true
-		gpgautoimportkeys ${4:true}			 true, false # default value: true
-		gpgcheck ${5:true}							 true, false # default value: true
-		gpgkey								 # String
-		keeppackages ${6:false}					 true, false # default value: false
-		mirrorlist						 String
-		mode									 # String, Integer # default value: "0644"
-		path									 # String
-		priority							 Integer # default value: 99
-		refresh_cache ${7:true}					 true, false # default value: true
-		repo_name							 # String default name unless specified
-		source								 # String
-		type "${8:NONE}"									 # String, default value: "NONE"
-		action :${9:create}								 Symbol # defaults to :create if not specified
+		autorefresh	${2:true}		  
+		baseurl					 
+		cookbook				 
+		description			 
+		enabled	${3:true}				  
+		gpgautoimportkeys ${4:true}  
+		gpgcheck ${5:true}				  
+		gpgkey					 
+		keeppackages ${6:false}		  
+		mirrorlist			 
+		mode						 
+		path						 
+		priority				 
+		refresh_cache ${7:true}		  
+		repo_name				 
+		source					 
+		type "${8:NONE}"						 
+		action :${9:create}					  
 	end
