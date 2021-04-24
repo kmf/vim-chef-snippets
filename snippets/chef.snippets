@@ -196,7 +196,7 @@ snippet chef_client_cron
 		minute "${10:0,30}"						 
 		month "${11:*}"							 
 		nice							 
-		splay {12:300}						 
+		splay ${12:300}						 
 		user "${13:root}"							 
 		weekday "${14:*}"						 
 		action :${15:add}						 
