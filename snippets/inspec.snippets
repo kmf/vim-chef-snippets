@@ -1,50 +1,60 @@
 snippet aide_conf
+  # https://docs.chef.io/inspec/resources/aide_conf
 	describe aide_conf('path') do
 				its('selection_lines') { should include '/sbin' }
 			end
 
 snippet apache
+  # https://docs.chef.io/inspec/resources/apache
 	describe apache do
 				its('setting_name') { should cmp 'value' }
 			end
 
 snippet apache_conf
+  # https://docs.chef.io/inspec/resources/apache_conf
 	describe apache_conf('path') do
 				its('setting_name') { should eq 'value' }
 			end
 
 snippet apt
+  # https://docs.chef.io/inspec/resources/apt
 	describe apt('path') do
 				it { should exist }
 				it { should be_enabled }
 			end
 
 snippet audit_policy
+  # https://docs.chef.io/inspec/resources/audit_policy
 	describe audit_policy do
 				its('parameter') { should eq 'value' }
 			end
 
 snippet auditd
+  # https://docs.chef.io/inspec/resources/auditd
 	describe auditd do
 				its('lines') { should include %r(-w /etc/ssh/sshd_config) }
 			end
 
 snippet auditd_conf
+  # https://docs.chef.io/inspec/resources/auditd_conf
 	describe auditd_conf('path') do
 				its('keyword') { should cmp 'value' }
 			end
 
 snippet aws_alb
+  # https://docs.chef.io/inspec/resources/aws_alb
 	describe aws_alb('arn:aws:elasticloadbalancing') do
 				it { should exist }
 			end
 
 snippet aws_albs
+  # https://docs.chef.io/inspec/resources/aws_albs
 	describe aws_albs do
 				its('load_balancer_arns') { should include 'arn:aws:elasticloadbalancing' }
 			end
 
 snippet aws_auto_scaling_group
+  # https://docs.chef.io/inspec/resources/aws_auto_scaling_group
 	describe aws_auto_scaling_group('MyAutoScalingGroup') do
 				it							{ should exist }
 				its('min_size') { should be 1}
@@ -52,178 +62,213 @@ snippet aws_auto_scaling_group
 			end
 
 snippet aws_auto_scaling_groups
+  # https://docs.chef.io/inspec/resources/aws_auto_scaling_groups
 	describe aws_auto_scaling_groups do
 				its('names') { should include 'group-name' }
 			end
 
 snippet aws_cloudformation_stack
+  # https://docs.chef.io/inspec/resources/aws_cloudformation_stack
 	describe aws_cloudformation_stack('stack-name') do
 				it { should exist }
 			end
 
 snippet aws_cloudtrail_trail
+  # https://docs.chef.io/inspec/resources/aws_cloudtrail_trail
 	describe aws_cloudtrail_trail('trail-name') do
 				it { should exist }
 			end
 
 snippet aws_cloudtrail_trails
+  # https://docs.chef.io/inspec/resources/aws_cloudtrail_trails
 	describe aws_cloudtrail_trails do
 				it { should exist }
 			end
 
 snippet aws_cloudwatch_alarm
+  # https://docs.chef.io/inspec/resources/aws_cloudwatch_alarm
 	describe aws_cloudwatch_alarm(metric_name: 'my-metric-name', metric_namespace: 'my-metric-namespace') do
 				its('alarm_actions') { should_not be_empty }
 			end
 
 snippet aws_cloudwatch_log_group
+  # https://docs.chef.io/inspec/resources/aws_cloudwatch_log_group
 	describe aws_cloudwatch_log_group('my_log_group') do
 				it { should exist }
 			end
 
 snippet aws_cloudwatch_log_metric_filter
+  # https://docs.chef.io/inspec/resources/aws_cloudwatch_log_metric_filter
 	describe aws_cloudwatch_log_metric_filter(filter_name: 'my-filter', log_group_name: 'my-log-group') do
 				it { should exist }
 			end
 
 snippet aws_config_delivery_channel
+  # https://docs.chef.io/inspec/resources/aws_config_delivery_channel
 	describe aws_config_delivery_channel('my_channel') do
 				it { should exist }
 			end
 
 snippet aws_config_recorder
+  # https://docs.chef.io/inspec/resources/aws_config_recorder
 	describe aws_config_recorder('my-recorder') do
 				it { should exist }
 			end
 
 snippet aws_db_subnet_group
+  # https://docs.chef.io/inspec/resources/aws_db_subnet_group
 	describe aws_db_subnet_group(db_subnet_group_name: 'subnet-group-name-12345') do
 				it { should exist }
 			end
 
 snippet aws_db_subnet_groups
+  # https://docs.chef.io/inspec/resources/aws_db_subnet_groups
 	describe aws_db_subnet_groups do
 				its('db_subnet_group_names.count') { should cmp 3 }
 			end
 
 snippet aws_dhcp_options
+  # https://docs.chef.io/inspec/resources/aws_dhcp_options
 	describe aws_dhcp_options('dopt-0123456789abcdefg') do
 				it { should exist }
 			end
 
 snippet aws_dynamodb_table
+  # https://docs.chef.io/inspec/resources/aws_dynamodb_table
 	describe aws_dynamodb_table(table_name: 'table-name') do
 				it { should exist }
 			end
 
 snippet aws_ebs_volume
+  # https://docs.chef.io/inspec/resources/aws_ebs_volume
 	describe aws_ebs_volume('vol-01a2349e94458a507') do
 				it { should exist }
 			end
 
 snippet aws_ebs_volumes
+  # https://docs.chef.io/inspec/resources/aws_ebs_volumes
 	describe aws_ebs_volumes do
 				its('volume_ids.count') { should cmp 3 }
 			end
 
 snippet aws_ec2_instance
+  # https://docs.chef.io/inspec/resources/aws_ec2_instance
 	describe aws_ec2_instance('i-01a2349e94458a507') do
 				it { should exist }
 			end
 
 snippet aws_ec2_instances
+  # https://docs.chef.io/inspec/resources/aws_ec2_instances
 	describe aws_ec2_instances
 				it { should exist }
 			end
 
 snippet aws_ecr
+  # https://docs.chef.io/inspec/resources/aws_ecr
 	describe aws_ecr(repository_name: aws_ecr_name) do
 					it											 { should exist }
 					its ('repository_name')  { should eq aws_ecr_name }
 				end
 
 snippet aws_ecr_image
+  # https://docs.chef.io/inspec/resources/aws_ecr_image
 	describe aws_ecr_image(repository_name: 'my-repo', image_tag: 'latest') do
 				it { should exist }
 			end
 
 snippet aws_ecr_images
+  # https://docs.chef.io/inspec/resources/aws_ecr_images
 	describe aws_ecr_images(repository_name: 'my-repo') do
 				it { should exist }
 			end
 
 snippet aws_ecr_repositories
+  # https://docs.chef.io/inspec/resources/aws_ecr_repositories
 	describe aws_ecr_repositories do
 				it { should exist }
 			end
 
 snippet aws_ecr_repository
+  # https://docs.chef.io/inspec/resources/aws_ecr_repository
 	describe aws_ecr_repository(repository_name: 'my-repo') do
 				it { should exist }
 			end
 
 snippet aws_ecs_cluster
+  # https://docs.chef.io/inspec/resources/aws_ecs_cluster
 	describe aws_ecs_cluser(cluster_name: 'cluster-8') do
 				it						 { should exist }
 			end
 
 snippet aws_ecs_clusters
+  # https://docs.chef.io/inspec/resources/aws_ecs_clusters
 	describe aws_ecs_clusters do
 				its('cluster_names') { should include 'cluster-root' }
 			end
 
 snippet aws_efs_file_system
+  # https://docs.chef.io/inspec/resources/aws_efs_file_system
 	describe aws_efs_file_system(file_system_id: 'fs-12345678') do
 				it												 { should be_encrypted }
 				its('size_in_bytes.value') { should cmp 6144 }
 			end
 
 snippet aws_efs_file_systems
+  # https://docs.chef.io/inspec/resources/aws_efs_file_systems
 	describe aws_efs_file_systems
 				it { should exist }
 			end
 
 snippet aws_eks_cluster
+  # https://docs.chef.io/inspec/resources/aws_eks_cluster
 	describe aws_eks_cluster('my-eks') do
 				it { should exist }
 			end
 
 snippet aws_eks_clusters
+  # https://docs.chef.io/inspec/resources/aws_eks_clusters
 	describe aws_eks_clusters do
 				its('names.count') { should cmp 10 }
 			end
 
 snippet aws_elasticache_cluster
+  # https://docs.chef.io/inspec/resources/aws_elasticache_cluster
 	describe aws_elasticache_cluster(cache_cluster_id: 'my-cluster-123') do
 				it { should exist }
 			end
 
 snippet aws_elasticache_cluster_node
+  # https://docs.chef.io/inspec/resources/aws_elasticache_cluster_node
 	describe aws_elasticache_cluster_node(cache_cluster_id: 'my-cluster-123', node_id: '0001') do
 				it { should exist }
 			end
 
 snippet aws_elasticache_clusters
+  # https://docs.chef.io/inspec/resources/aws_elasticache_clusters
 	describe aws_elasticache_clusters
 				it { should exist }
 			end
 
 snippet aws_elb
+  # https://docs.chef.io/inspec/resources/aws_elb
 	describe aws_elb('my-elb') do
 				it { should exist }
 			end
 
 snippet aws_elbs
+  # https://docs.chef.io/inspec/resources/aws_elbs
 	describe aws_elbs do
 				its('load_balancer_names') { should include 'elb-name' }
 			end
 
 snippet aws_flow_log
+  # https://docs.chef.io/inspec/resources/aws_flow_log
 	describe aws_flow_log(flow_log_id: 'fl-9c718cf5') do
 				it { should exist }
 			end
 
 snippet aws_hosted_zone
+  # https://docs.chef.io/inspec/resources/aws_hosted_zone
 	describe aws_hosted_zone('zone-name') do
 		it { should exist }
 		its ('name_servers.count') { should eq 4 }
@@ -232,102 +277,122 @@ snippet aws_hosted_zone
 	end
 
 snippet aws_hosted_zones
+  # https://docs.chef.io/inspec/resources/aws_hosted_zones
 	describe aws_hosted_zones do
 		its('names') { should include ("carry-on.films.com") }
 	end
 
 snippet aws_iam_access_key
+  # https://docs.chef.io/inspec/resources/aws_iam_access_key
 	describe aws_iam_access_key(access_key_id: 'AKIA1111111111111111') do
 				it { should exist }
 			end
 
 snippet aws_iam_access_keys
+  # https://docs.chef.io/inspec/resources/aws_iam_access_keys
 	describe aws_iam_access_keys do
 					it										{ should exist }
 					its('access_key_ids') { should include 'AKIA1111111111111111' }
 				end
 
 snippet aws_iam_account_alias
+  # https://docs.chef.io/inspec/resources/aws_iam_account_alias
 	describe aws_iam_account_alias do
 				it { should exist }
 			end
 
 snippet aws_iam_group
+  # https://docs.chef.io/inspec/resources/aws_iam_group
 	describe aws_iam_group('mygroup') do
 				it { should exist }
 			end
 
 snippet aws_iam_groups
+  # https://docs.chef.io/inspec/resources/aws_iam_groups
 	describe aws_iam_groups('mygroup') do
 				it { should exist }
 			end
 
 snippet aws_iam_policies
+  # https://docs.chef.io/inspec/resources/aws_iam_policies
 	describe aws_iam_policies do
 				its('policy_names') { should include('test-policy-1') }
 			end
 
 snippet aws_iam_policy
+  # https://docs.chef.io/inspec/resources/aws_iam_policy
 	describe aws_iam_policy('AWSSupportAccess') do
 				it { should exist }
 			end
 
 snippet aws_iam_role
+  # https://docs.chef.io/inspec/resources/aws_iam_role
 	describe aws_iam_role(role_name: 'my-role') do
 					it { should exist }
 			end
 
 snippet aws_iam_roles
+  # https://docs.chef.io/inspec/resources/aws_iam_roles
 	describe aws_iam_roles do
 				it { should exist }
 			end
 
 snippet aws_iam_root_user
+  # https://docs.chef.io/inspec/resources/aws_iam_root_user
 	describe aws_iam_root_user do
 					it { should exist }
 			end
 
 snippet aws_iam_saml_provider
+  # https://docs.chef.io/inspec/resources/aws_iam_saml_provider
 	describe aws_iam_saml_provider('arn:aws:iam::123456789012:saml-provider/FANCY') do
 					it { should exist }
 			end
 
 snippet aws_iam_saml_providers
+  # https://docs.chef.io/inspec/resources/aws_iam_saml_providers
 	describe aws_iam_saml_providers do
 				it { should exist }
 			end
 
 snippet aws_iam_user
+  # https://docs.chef.io/inspec/resources/aws_iam_user
 	describe aws_iam_user(user_name: 'psmith') do
 				it { should exist }
 			end
 
 snippet aws_iam_users
+  # https://docs.chef.io/inspec/resources/aws_iam_users
 	describe aws_iam_users do
 				its('usernames') { should include 'payroll-admin' }
 			end
 
 snippet aws_internet_gateway
+  # https://docs.chef.io/inspec/resources/aws_internet_gateway
 	describe aws_internet_gateway(id: 'igw-abc0123456789deff') do
 				it { should exist }
 			end
 
 snippet aws_internet_gateways
+  # https://docs.chef.io/inspec/resources/aws_internet_gateways
 	describe aws_internet_gateways do
 				it { should exist }
 			end
 
 snippet aws_kms_key
+  # https://docs.chef.io/inspec/resources/aws_kms_key
 	describe aws_kms_key('arn:aws:kms:us-east-1::key/4321dcba-21io-23de-85he-ab0987654321') do
 				it { should exist }
 			end
 
 snippet aws_kms_keys
+  # https://docs.chef.io/inspec/resources/aws_kms_keys
 	describe aws_kms_keys do
 				its('entries.count') { should cmp 10 }
 			end
 
 snippet aws_lambda
+  # https://docs.chef.io/inspec/resources/aws_lambda
 	describe aws_lambda do
 		it { should exist}
 		its ('handler') { should eq 'main.on_event'}
@@ -336,424 +401,507 @@ snippet aws_lambda
 	end
 
 snippet aws_lambdas
+  # https://docs.chef.io/inspec/resources/aws_lambdas
 	describe aws_lambdas do
 		its('count') { should eq 20 }
 	end
 
 snippet aws_launch_configuration
+  # https://docs.chef.io/inspec/resources/aws_launch_configuration
 	describe aws_launch_configuration('my-config') do
 				it							{ should exist }
 				its('key_name') { should be 'my-key-name' }
 			end
 
 snippet aws_nat_gateway
+  # https://docs.chef.io/inspec/resources/aws_nat_gateway
 	describe aws_nat_gateway(id: 'nat-abc0123456789deff') do
 				it { should exist }
 			end
 
 snippet aws_nat_gateways
+  # https://docs.chef.io/inspec/resources/aws_nat_gateways
 	describe aws_nat_gateways do
 				it { should exist }
 			end
 
 snippet aws_organizations_member
+  # https://docs.chef.io/inspec/resources/aws_organizations_member
 	describe aws_organizations_member do
 					it { should exist }
 			end
 
 snippet aws_rds_cluster
+  # https://docs.chef.io/inspec/resources/aws_rds_cluster
 	describe aws_rds_cluster('test-cluster-id') do
 				it { should exist }
 			end
 
 snippet aws_rds_clusters
+  # https://docs.chef.io/inspec/resources/aws_rds_clusters
 	describe aws_rds_clusters do
 				its('db_cluster_identifiers.count') { should cmp 3 }
 			end
 
 snippet aws_rds_instance
+  # https://docs.chef.io/inspec/resources/aws_rds_instance
 	describe aws_rds_instance('test-instance-id') do
 				it { should exist }
 			end
 
 snippet aws_rds_instances
+  # https://docs.chef.io/inspec/resources/aws_rds_instances
 	describe aws_rds_instances do
 				its('db_instance_identifiers.count') { should cmp 3 }
 			end
 
 snippet aws_region
+  # https://docs.chef.io/inspec/resources/aws_region
 	describe aws_region('eu-west-2') do
 				it { should exist }
 			end
 
 snippet aws_regions
+  # https://docs.chef.io/inspec/resources/aws_regions
 	describe aws_regions.where { region_name: 'us-not-there-1' } do
 				it { should_not exist }
 			end
 
 snippet aws_route_table
+  # https://docs.chef.io/inspec/resources/aws_route_table
 	describe aws_route_table('rtb-123abcde') do
 				it { should exist }
 			end
 
 snippet aws_route_tables
+  # https://docs.chef.io/inspec/resources/aws_route_tables
 	describe aws_route_tables do
 				it { should exist }
 			end
 
 snippet aws_s3_bucket
+  # https://docs.chef.io/inspec/resources/aws_s3_bucket
 	describe aws_s3_bucket(bucket_name: 'test_bucket') do
 				it { should exist }
 				it { should_not be_public }
 			end
 
 snippet aws_s3_bucket_object
+  # https://docs.chef.io/inspec/resources/aws_s3_bucket_object
 	describe aws_s3_bucket_object(bucket_name: 'test_bucket', key: 'test_object_key') do
 				it { should exist }
 				it { should_not be_public }
 			end
 
 snippet aws_s3_buckets
+  # https://docs.chef.io/inspec/resources/aws_s3_buckets
 	describe aws_s3_buckets do
 				it { should exist }
 			end
 
 snippet aws_security_group
+  # https://docs.chef.io/inspec/resources/aws_security_group
 	describe aws_security_group('sg-12345678') do
 				it { should exist }
 			end
 
 snippet aws_security_groups
+  # https://docs.chef.io/inspec/resources/aws_security_groups
 	describe aws_security_groups do
 				its('entries.count') { should be > 1 }
 			end
 
 snippet aws_sns_subscription
+  # https://docs.chef.io/inspec/resources/aws_sns_subscription
 	describe aws_sns_subscription('arn:aws:sns:us-east-1::test-topic-01:b214aff5-a2c7-438f-a753-8494493f2ff6') do
 				it { should exist }
 			end
 
 snippet aws_sns_topic
+  # https://docs.chef.io/inspec/resources/aws_sns_topic
 	describe aws_sns_topic('arn:aws:sns:*::my-topic-name') do
 				it { should exist }
 			end
 
 snippet aws_sns_topics
+  # https://docs.chef.io/inspec/resources/aws_sns_topics
 	describe aws_sns_topics do
 				its('topic_arns') { should include 'arn:aws:sns:us-east-1:333344445555:MyTopic' }
 			end
 
 snippet aws_sqs_queue
+  # https://docs.chef.io/inspec/resources/aws_sqs_queue
 	describe aws_sqs_queue(queue_url: 'https://sqs.ap-southeast-2.amazonaws.com/1212121/MyQueue') do
 				it { should exist }
 			end
 
 snippet aws_sqs_queues
+  # https://docs.chef.io/inspec/resources/aws_sqs_queues
 	describe aws_sqs_queues() do
 				it { should exist }
 			end
 
 snippet aws_ssm_parameter
+  # https://docs.chef.io/inspec/resources/aws_ssm_parameter
 	describe aws_ssm_parameter(name: 'ssm-parameter-name-1234') do
 				it { should exist }
 			end
 
 snippet aws_ssm_parameters
+  # https://docs.chef.io/inspec/resources/aws_ssm_parameters
 	describe aws_ssm_parameters do
 				its('names.count') { should cmp 3 }
 			end
 
 snippet aws_sts_caller_identity
+  # https://docs.chef.io/inspec/resources/aws_sts_caller_identity
 	describe aws_sts_caller_identity do
 				it { should exist }
 			end
 
 snippet aws_subnet
+  # https://docs.chef.io/inspec/resources/aws_subnet
 	describe aws_subnet(subnet_id: 'subnet-1234567') do
 				it { should exist }
 			end
 
 snippet aws_subnets
+  # https://docs.chef.io/inspec/resources/aws_subnets
 	describe aws_subnets.where(vpc_id: 'vpc-12345678') do
 				its('subnet_ids') { should include 'subnet-12345678' }
 				its('subnet_ids') { should include 'subnet-98765432' }
 			end
 
 snippet aws_transit_gateway
+  # https://docs.chef.io/inspec/resources/aws_transit_gateway
 	describe aws_transit_gateway(transit_gateway_id: 'tgw-1234567') do
 				it { should exist }
 			end
 
 snippet aws_vpc
+  # https://docs.chef.io/inspec/resources/aws_vpc
 	describe aws_vpc do
 				it { should exist }
 			end
 
 snippet aws_vpcs
+  # https://docs.chef.io/inspec/resources/aws_vpcs
 	describe aws_vpcs do
 				it { should exist }
 			end
 
 snippet azure_generic_resource
+  # https://docs.chef.io/inspec/resources/azure_generic_resource
 	describe azure_generic_resource(group_name: 'MyResourceGroup', name: 'MyResource') do
 				its('property') { should eq 'value' }
 			end
 
 snippet azure_resource_group
+  # https://docs.chef.io/inspec/resources/azure_resource_group
 	describe azure_resource_group(name: 'MyResourceGroup') do
 				its('property') { should eq 'value' }
 			end
 
 snippet azure_virtual_machine
+  # https://docs.chef.io/inspec/resources/azure_virtual_machine
 	describe azure_virtual_machine(group_name: 'MyResourceGroup', name: 'MyVM') do
 				its('property') { should eq 'value' }
 			end
 
 snippet azure_virtual_machine_data_disk
+  # https://docs.chef.io/inspec/resources/azure_virtual_machine_data_disk
 	describe azure_virtual_machine_data_disk(group_name: 'InSpec-Azure', name: 'MyVM') do
 				its('property') { should eq 'value' }
 			end
 
 snippet azurerm_ad_user
+  # https://docs.chef.io/inspec/resources/azurerm_ad_user
 	describe azurerm_ad_user(user_id: 'someUserId') do
 				it { should exist }
 			end
 
 snippet azurerm_ad_users
+  # https://docs.chef.io/inspec/resources/azurerm_ad_users
 	describe azurerm_ad_users do
 				...
 			end
 
 snippet azurerm_aks_cluster
+  # https://docs.chef.io/inspec/resources/azurerm_aks_cluster
 	describe azurerm_aks_cluster(resource_group: 'example', name: 'ClusterName') do
 				...
 			end
 
 snippet azurerm_aks_clusters
+  # https://docs.chef.io/inspec/resources/azurerm_aks_clusters
 	describe azurerm_aks_clusters(resource_group: 'ExampleGroup') do
 				...
 			end
 
 snippet azurerm_cosmosdb_database_account
+  # https://docs.chef.io/inspec/resources/azurerm_cosmosdb_database_account
 	describe azurerm_cosmosdb_database_account(resource_group: 'my-rg', cosmosdb_database_account 'my-cosmos-db') do
 				it { should exist }
 			end
 
 snippet azurerm_event_hub_authorization_rule
+  # https://docs.chef.io/inspec/resources/azurerm_event_hub_authorization_rule
 	describe azurerm_event_hub_authorization_rule(resource_group: 'my-rg', namespace_name 'my-event-hub-ns', event_hub_name: 'myeventhub', authorization_rule_name: 'my-auth-rule') do
 				it { should exist }
 			end
 
 snippet azurerm_event_hub_event_hub
+  # https://docs.chef.io/inspec/resources/azurerm_event_hub_event_hub
 	describe azurerm_event_hub_event_hub(resource_group: 'my-rg', namespace_name 'my-event-hub-ns', event_hub_name 'myeventhub') do
 				it { should exist }
 			end
 
 snippet azurerm_event_hub_namespace
+  # https://docs.chef.io/inspec/resources/azurerm_event_hub_namespace
 	describe azurerm_event_hub_namespace(resource_group: 'my-rg', namespace_name 'my-event-hub-ns') do
 				it { should exist }
 			end
 
 snippet azurerm_iothub_event_hub_consumer_group
+  # https://docs.chef.io/inspec/resources/azurerm_iothub_event_hub_consumer_group
 	describe azurerm_iothub_event_hub_consumer_group(resource_group: 'my-rg', resource_name 'my-iot-hub', event_hub_endpoint: 'myeventhub', consumer_group: 'my-consumer-group') do
 				it { should exist }
 			end
 
 snippet azurerm_iothub_event_hub_consumer_groups
+  # https://docs.chef.io/inspec/resources/azurerm_iothub_event_hub_consumer_groups
 	describe azurerm_iothub_event_hub_consumer_groups(resource_group: 'my-rg', resource_name 'my-iot-hub', event_hub_endpoint: 'myeventhub') do
 				its('names') { should include "my-consumer-group"}
 				its('types') { should include 'Microsoft.Devices/IotHubs/EventHubEndpoints/ConsumerGroups' }
 			end
 
 snippet azurerm_key_vault
+  # https://docs.chef.io/inspec/resources/azurerm_key_vault
 	describe azurerm_key_vault(resource_group: 'inspec-resource-group', vault_name: 'vault-101') do
 				it						{ should exist }
 				its('name')		{ should eq('vault-101') }
 			end
 
 snippet azurerm_key_vault_key
+  # https://docs.chef.io/inspec/resources/azurerm_key_vault_key
 	describe azurerm_key_vault_key('vault-101', 'secret-key') do
 				its('key.kid')						{ should_not be_nil }
 				its('attributes.enabled') { should eq true }
 			end
 
 snippet azurerm_key_vault_keys
+  # https://docs.chef.io/inspec/resources/azurerm_key_vault_keys
 	describe azurerm_key_vault_keys('my-vault') do
 				...
 			end
 
 snippet azurerm_key_vault_secret
+  # https://docs.chef.io/inspec/resources/azurerm_key_vault_secret
 	describe azurerm_key_vault_secret('vault-101', 'secret-101') do
 					it					 { should exist }
 					its('value') { should_not be_nil }
 			end
 
 snippet azurerm_key_vault_secrets
+  # https://docs.chef.io/inspec/resources/azurerm_key_vault_secrets
 	describe azurerm_key_vault_secrets('my-vault') do
 				...
 			end
 
 snippet azurerm_key_vaults
+  # https://docs.chef.io/inspec/resources/azurerm_key_vaults
 	describe azurerm_key_vaults(resource_group: 'my-rg') do
 				...
 			end
 
 snippet azurerm_load_balancer
+  # https://docs.chef.io/inspec/resources/azurerm_load_balancer
 	describe azurerm_load_balancer(resource_group: 'inspec-resource-group-9', loadbalancer_name: 'example_lb') do
 				it { should exist }
 			end
 
 snippet azurerm_load_balancers
+  # https://docs.chef.io/inspec/resources/azurerm_load_balancers
 	describe azurerm_load_balancer do
 				...
 			end
 
 snippet azurerm_locks
+  # https://docs.chef.io/inspec/resources/azurerm_locks
 	describe azurerm_locks(resource_group: 'rg', resource_name: 'my-vm', resource_type: 'Microsoft.Compute/virtualMachines') do
 				...
 			end
 
 snippet azurerm_management_group
+  # https://docs.chef.io/inspec/resources/azurerm_management_group
 	describe azurerm_management_group(group_id: 'MyGroupId') do
 				...
 			end
 
 snippet azurerm_management_groups
+  # https://docs.chef.io/inspec/resources/azurerm_management_groups
 	describe azurerm_management_groups do
 				...
 			end
 
 snippet azurerm_monitor_activity_log_alert
+  # https://docs.chef.io/inspec/resources/azurerm_monitor_activity_log_alert
 	describe azurerm_monitor_activity_log_alert(resource_group: 'example', name: 'AlertName') do
 				...
 			end
 
 snippet azurerm_monitor_activity_log_alerts
+  # https://docs.chef.io/inspec/resources/azurerm_monitor_activity_log_alerts
 	describe azurerm_monitor_activity_log_alerts do
 				...
 			end
 
 snippet azurerm_monitor_log_profile
+  # https://docs.chef.io/inspec/resources/azurerm_monitor_log_profile
 	describe azurerm_monitor_log_profile(name: 'default') do
 				...
 			end
 
 snippet azurerm_monitor_log_profiles
+  # https://docs.chef.io/inspec/resources/azurerm_monitor_log_profiles
 	describe azurerm_monitor_log_profiles do
 				...
 			end
 
 snippet azurerm_mysql_database
+  # https://docs.chef.io/inspec/resources/azurerm_mysql_database
 	describe azurerm_mysql_database(resource_group: 'inspec-rg', server_name: 'customer_server', database_name: 'order-db') do
 				it { should exist }
 			end
 
 snippet azurerm_mysql_databases
+  # https://docs.chef.io/inspec/resources/azurerm_mysql_databases
 	describe azurerm_mysql_databases(resource_group: ..., server_name: ...) do
 				...
 			end
 
 snippet azurerm_mysql_server
+  # https://docs.chef.io/inspec/resources/azurerm_mysql_server
 	describe azurerm_mysql_server(resource_group: 'inspec-resource-group-9', server_name: 'example_server') do
 				it { should exist }
 			end
 
 snippet azurerm_mysql_servers
+  # https://docs.chef.io/inspec/resources/azurerm_mysql_servers
 	describe azurerm_mysql_servers do
 				...
 			end
 
 snippet azurerm_network_interface
+  # https://docs.chef.io/inspec/resources/azurerm_network_interface
 	describe azurerm_network_interface(resource_group: 'inspec-resource-group-9',name: 'example-nic-name') do
 				it { should exist }
 			end
 
 snippet azurerm_network_interfaces
+  # https://docs.chef.io/inspec/resources/azurerm_network_interfaces
 	describe azurerm_network_interfaces do
 				...
 			end
 
 snippet azurerm_network_security_group
+  # https://docs.chef.io/inspec/resources/azurerm_network_security_group
 	describe azurerm_network_security_group(resource_group: 'example', name: 'GroupName') do
 				...
 			end
 
 snippet azurerm_network_security_groups
+  # https://docs.chef.io/inspec/resources/azurerm_network_security_groups
 	describe azurerm_network_security_groups(resource_group: 'ExampleGroup') do
 				...
 			end
 
 snippet azurerm_network_watcher
+  # https://docs.chef.io/inspec/resources/azurerm_network_watcher
 	describe azurerm_network_watcher(resource_group: 'example', name: 'WatcherName') do
 				...
 			end
 
 snippet azurerm_network_watchers
+  # https://docs.chef.io/inspec/resources/azurerm_network_watchers
 	describe azurerm_network_watchers(resource_group: 'example_group') do
 				...
 			end
 
 snippet azurerm_postgresql_database
+  # https://docs.chef.io/inspec/resources/azurerm_postgresql_database
 	describe azurerm_postgresql_database(resource_group: 'inspec-rg', server_name: 'customer_server', database_name: 'order-db') do
 				it { should exist }
 			end
 
 snippet azurerm_postgresql_databases
+  # https://docs.chef.io/inspec/resources/azurerm_postgresql_databases
 	describe azurerm_postgresql_databases(resource_group: ..., server_name: ...) do
 				...
 			end
 
 snippet azurerm_postgresql_server
+  # https://docs.chef.io/inspec/resources/azurerm_postgresql_server
 	describe azurerm_postgresql_server(resource_group: 'inspec-resource-group-9', server_name: 'example_server') do
 				it { should exist }
 			end
 
 snippet azurerm_postgresql_servers
+  # https://docs.chef.io/inspec/resources/azurerm_postgresql_servers
 	describe azurerm_postgresql_servers do
 				...
 			end
 
 snippet azurerm_resource_groups
+  # https://docs.chef.io/inspec/resources/azurerm_resource_groups
 	describe azurerm_resource_groups do
 				...
 			end
 
 snippet azurerm_role_definition
+  # https://docs.chef.io/inspec/resources/azurerm_role_definition
 	describe azurerm_role_definition(name: 'some-custom-role-name') do
 				...
 			end
 
 snippet azurerm_security_center_policies
+  # https://docs.chef.io/inspec/resources/azurerm_security_center_policies
 	describe azurerm_security_center_policies do
 				...
 			end
 
 snippet azurerm_security_center_policy
+  # https://docs.chef.io/inspec/resources/azurerm_security_center_policy
 	describe azurerm_security_center_policy(name: 'default') do
 				...
 			end
 
 snippet azurerm_sql_database
+  # https://docs.chef.io/inspec/resources/azurerm_sql_database
 	describe azurerm_sql_database(resource_group: 'inspec-rg', server_name: 'customer_server', database_name: 'order-db') do
 				it { should exist }
 			end
 
 snippet azurerm_sql_databases
+  # https://docs.chef.io/inspec/resources/azurerm_sql_databases
 	describe azurerm_sql_databases(resource_group: ..., server_name: ...) do
 				...
 			end
 
 snippet azurerm_sql_server
+  # https://docs.chef.io/inspec/resources/azurerm_sql_server
 	describe azurerm_sql_server(resource_group: 'inspec-resource-group-9', server_name: 'example_server') do
 				it { should exist }
 			end
 
 snippet azurerm_sql_servers
+  # https://docs.chef.io/inspec/resources/azurerm_sql_servers
 	describe azurerm_sql_servers do
 				...
 			end
 
 snippet azurerm_storage_account_blob_container
+  # https://docs.chef.io/inspec/resources/azurerm_storage_account_blob_container
 	describe azurerm_storage_account_blob_container(resource_group: 'rg', storage_account_name: 'production',
 																											blob_container_name: 'logs') do
 					...
@@ -761,83 +909,99 @@ snippet azurerm_storage_account_blob_container
 			end
 
 snippet azurerm_storage_account_blob_containers
+  # https://docs.chef.io/inspec/resources/azurerm_storage_account_blob_containers
 	describe azurerm_storage_account_blob_containers(resource_group: 'rg', storage_account_name: 'production') do
 					...
 			end
 
 snippet azurerm_subnet
+  # https://docs.chef.io/inspec/resources/azurerm_subnet
 	describe azurerm_subnet(resource_group: 'MyResourceGroup', vnet: 'MyVnetName', name: 'MySubnetName') do
 				...
 			end
 
 snippet azurerm_subnets
+  # https://docs.chef.io/inspec/resources/azurerm_subnets
 	describe azurerm_subnets(resource_group: 'MyResourceGroup', vnet: 'MyVnetName') do
 				...
 			end
 
 snippet azurerm_subscription
+  # https://docs.chef.io/inspec/resources/azurerm_subscription
 	describe azurerm_subscription do
 				...
 			end
 
 snippet azurerm_virtual_machine
+  # https://docs.chef.io/inspec/resources/azurerm_virtual_machine
 	describe azurerm_virtual_machine(resource_group: 'MyResourceGroup', name: 'MyVmName') do
 				...
 			end
 
 snippet azurerm_virtual_machine_disk
+  # https://docs.chef.io/inspec/resources/azurerm_virtual_machine_disk
 	describe azurerm_virtual_machine_disk(resource_group: 'MyResourceGroup', name: 'MyDiskName') do
 				...
 			end
 
 snippet azurerm_virtual_machine_disks
+  # https://docs.chef.io/inspec/resources/azurerm_virtual_machine_disks
 	describe azurerm_virtual_machine_disks do
 				...
 			end
 
 snippet azurerm_virtual_machines
+  # https://docs.chef.io/inspec/resources/azurerm_virtual_machines
 	describe azurerm_virtual_machines(resource_group: 'MyResourceGroup') do
 				...
 			end
 
 snippet azurerm_virtual_network
+  # https://docs.chef.io/inspec/resources/azurerm_virtual_network
 	describe azurerm_virtual_network(resource_group: 'MyResourceGroup', name: 'MyVnetName') do
 				...
 			end
 
 snippet azurerm_virtual_networks
+  # https://docs.chef.io/inspec/resources/azurerm_virtual_networks
 	describe azurerm_virtual_networks(resource_group: 'MyResourceGroup') do
 				...
 			end
 
 snippet azurerm_webapp
+  # https://docs.chef.io/inspec/resources/azurerm_webapp
 	describe azurerm_appservice_webapp(resource_group: 'example', name: 'webapp name') do
 				...
 			end
 
 snippet azurerm_webapps
+  # https://docs.chef.io/inspec/resources/azurerm_webapps
 	describe azurerm_webapps(resource_group: 'ExampleGroup') do
 				...
 			end
 
 snippet bash
+  # https://docs.chef.io/inspec/resources/bash
 	describe bash('command') do
 				it { should exist }
 				its('property') { should eq 'expected value' }
 			end
 
 snippet bond
+  # https://docs.chef.io/inspec/resources/bond
 	describe bond('name') do
 				it { should exist }
 			end
 
 snippet bridge
+  # https://docs.chef.io/inspec/resources/bridge
 	describe bridge('br0') do
 				it { should exist }
 				it { should have_interface 'eth0' }
 			end
 
 snippet bsd_service
+  # https://docs.chef.io/inspec/resources/bsd_service
 	describe bsd_service('service_name') do
 				it { should be_installed }
 				it { should be_enabled }
@@ -845,32 +1009,38 @@ snippet bsd_service
 			end
 
 snippet chocolatey_package
+  # https://docs.chef.io/inspec/resources/chocolatey_package
 	describe chocolatey_package('name') do
 				it { should be_installed }
 			end
 
 snippet command
+  # https://docs.chef.io/inspec/resources/command
 	describe command('command') do
 				it { should exist }
 				its('property') { should eq 'value' }
 			end
 
 snippet cpan
+  # https://docs.chef.io/inspec/resources/cpan
 	describe cpan('package_name') do
 				it { should be_installed }
 			end
 
 snippet cran
+  # https://docs.chef.io/inspec/resources/cran
 	describe cran('package_name') do
 				it { should be_installed }
 			end
 
 snippet csv
+  # https://docs.chef.io/inspec/resources/csv
 	describe csv('file') do
 				its('name') { should cmp 'foo' }
 			end
 
 snippet dh_params
+  # https://docs.chef.io/inspec/resources/dh_params
 	describe dh_params('/path/to/file.dh_pem') do
 				it { should be_dh_params }
 				it { should be_valid }
@@ -882,16 +1052,19 @@ snippet dh_params
 			end
 
 snippet directory
+  # https://docs.chef.io/inspec/resources/directory
 	describe directory('path') do
 				its('property') { should cmp 'value' }
 			end
 
 snippet docker
+  # https://docs.chef.io/inspec/resources/docker
 	describe docker.containers do
 				its('images') { should_not include 'u12:latest' }
 			end
 
 snippet docker_container
+  # https://docs.chef.io/inspec/resources/docker_container
 	describe docker_container('container') do
 				it { should exist }
 				it { should be_running }
@@ -904,6 +1077,7 @@ snippet docker_container
 			end
 
 snippet docker_plugin
+  # https://docs.chef.io/inspec/resources/docker_plugin
 	describe docker_plugin('rexray/ebs') do
 				it { should exist }
 				its('id') { should_not eq '0ac30b93ad40' }
@@ -912,6 +1086,7 @@ snippet docker_plugin
 			end
 
 snippet docker_service
+  # https://docs.chef.io/inspec/resources/docker_service
 	describe docker_service('foo') do
 				it { should exist }
 				its('id') { should eq '2ghswegspre1' }
@@ -920,11 +1095,13 @@ snippet docker_service
 			end
 
 snippet elasticsearch
+  # https://docs.chef.io/inspec/resources/elasticsearch
 	describe elasticsearch do
 				its('property') { should cmp 'value' }
 			end
 
 snippet etc_fstab
+  # https://docs.chef.io/inspec/resources/etc_fstab
 	describe etc_fstab.where { device_name == 'value' } do
 				its('mount_point') { should cmp 'hostname' }
 				its('file_system_type') { should cmp 'list' }
@@ -934,34 +1111,40 @@ snippet etc_fstab
 			end
 
 snippet etc_group
+  # https://docs.chef.io/inspec/resources/etc_group
 	describe etc_group('path') do
 				its('property') { should eq 'some_value' }
 			end
 
 snippet etc_hosts
+  # https://docs.chef.io/inspec/resources/etc_hosts
 	describe etc_hosts.where { ip_address == 'value' } do
 				its('primary_name') { should cmp 'hostname' }
 				its('all_host_names') { should cmp 'list' }
 			end
 
 snippet etc_hosts_allow
+  # https://docs.chef.io/inspec/resources/etc_hosts_allow
 	describe etc_hosts_allow.where { daemon == 'value' } do
 				its ('client_list') { should include ['values'] }
 				its ('options') { should include ['values'] }
 			end
 
 snippet etc_hosts_deny
+  # https://docs.chef.io/inspec/resources/etc_hosts_deny
 	describe etc_hosts_deny.where { daemon == 'value' } do
 				its ('client_list') { should include ['values'] }
 				its ('options') { should include ['values'] }
 			end
 
 snippet file
+  # https://docs.chef.io/inspec/resources/file
 	describe file('path') do
 				it { should PROPERTY 'value' }
 			end
 
 snippet firewalld
+  # https://docs.chef.io/inspec/resources/firewalld
 	describe firewalld do
 				it { should be_running }
 				its('default_zone') { should eq 'public' }
@@ -970,11 +1153,13 @@ snippet firewalld
 			end
 
 snippet gem
+  # https://docs.chef.io/inspec/resources/gem
 	describe gem('gem_package_name', 'gem_binary') do
 				it { should be_installed }
 			end
 
 snippet google_access_context_manager_access_policy
+  # https://docs.chef.io/inspec/resources/google_access_context_manager_access_policy
 	describe.one do
 		google_access_context_manager_access_policies(org_id: '190694428152').names.each do |policy_name|
 			describe google_access_context_manager_access_policy(name: policy_name) do
@@ -984,6 +1169,7 @@ snippet google_access_context_manager_access_policy
 			end
 
 snippet google_access_context_manager_service_perimeter
+  # https://docs.chef.io/inspec/resources/google_access_context_manager_service_perimeter
 	describe.one do
 		google_access_context_manager_access_policies(org_id: '190694428152').names.each do |policy_name|
 			describe google_access_context_manager_service_perimeter(policy_name: policy_name, name: 'restrict_all') do
@@ -993,6 +1179,7 @@ snippet google_access_context_manager_service_perimeter
 			end
 
 snippet google_access_context_manager_service_perimeters
+  # https://docs.chef.io/inspec/resources/google_access_context_manager_service_perimeters
 	describe.one do
 		google_access_context_manager_access_policies(org_id: '190694428152').names.each do |policy_name|
 			describe google_access_context_manager_service_perimeters(policy_name: policy_name) do
@@ -1001,6 +1188,7 @@ snippet google_access_context_manager_service_perimeters
 			end
 
 snippet google_appengine_standard_app_version
+  # https://docs.chef.io/inspec/resources/google_appengine_standard_app_version
 	describe google_appengine_standard_app_version(project: 'chef-gcp-inspec', location: 'europe-west2', version_id: 'v2', service: 'default') do
 		it { should exist }
 		its('version_id') { should eq 'v2' }
@@ -1008,11 +1196,13 @@ snippet google_appengine_standard_app_version
 	end
 
 snippet google_appengine_standard_app_versions
+  # https://docs.chef.io/inspec/resources/google_appengine_standard_app_versions
 	describe google_appengine_standard_app_versions(project: 'chef-gcp-inspec', location: 'europe-west2',service: 'default') do
 		its('runtimes') { should include 'nodejs10' }
 	end
 
 snippet google_bigquery_dataset
+  # https://docs.chef.io/inspec/resources/google_bigquery_dataset
 	describe google_bigquery_dataset(project: 'chef-gcp-inspec', name: 'inspec_gcp_dataset') do
 		it { should exist }
 	
@@ -1024,6 +1214,7 @@ snippet google_bigquery_dataset
 	end
 
 snippet google_bigquery_datasets
+  # https://docs.chef.io/inspec/resources/google_bigquery_datasets
 	describe google_bigquery_datasets(project: 'chef-gcp-inspec') do
 		its('count') { should be >= 1 }
 		its('friendly_names') { should include 'A BigQuery dataset test' }
@@ -1031,6 +1222,7 @@ snippet google_bigquery_datasets
 	end
 
 snippet google_bigquery_table
+  # https://docs.chef.io/inspec/resources/google_bigquery_table
 	describe google_bigquery_table(project: 'chef-gcp-inspec', dataset: 'inspec_gcp_dataset', name: 'inspec_gcp_bigquery_table') do
 		it { should exist }
 	
@@ -1040,6 +1232,7 @@ snippet google_bigquery_table
 	end
 
 snippet google_bigquery_tables
+  # https://docs.chef.io/inspec/resources/google_bigquery_tables
 	describe.one do
 		google_bigquery_tables(project: 'chef-gcp-inspec', dataset: 'inspec_gcp_dataset').table_references.each do |table_reference|
 			describe google_bigquery_table(project: 'chef-gcp-inspec', dataset: 'inspec_gcp_dataset', name: table_reference.table_id) do
@@ -1048,6 +1241,7 @@ snippet google_bigquery_tables
 			end
 
 snippet google_billing_project_billing_info
+  # https://docs.chef.io/inspec/resources/google_billing_project_billing_info
 	describe google_billing_project_billing_info(project_id: 'chef-gcp-inspec') do
 		it { should exist }
 	
@@ -1056,6 +1250,7 @@ snippet google_billing_project_billing_info
 	end
 
 snippet google_cloud_scheduler_job
+  # https://docs.chef.io/inspec/resources/google_cloud_scheduler_job
 	describe google_cloud_scheduler_job(project: 'chef-gcp-inspec', region: us-central1, name: 'job-name') do
 		it { should exist }
 	
@@ -1067,6 +1262,7 @@ snippet google_cloud_scheduler_job
 	end
 
 snippet google_cloud_scheduler_jobs
+  # https://docs.chef.io/inspec/resources/google_cloud_scheduler_jobs
 	describe google_cloud_scheduler_job(project: 'chef-gcp-inspec', region: us-central1, name: name) do
 			it { should exist }
 	
@@ -1078,16 +1274,19 @@ snippet google_cloud_scheduler_jobs
 		end
 
 snippet google_cloudbuild_trigger
+  # https://docs.chef.io/inspec/resources/google_cloudbuild_trigger
 	describe google_cloudbuild_triggers(project: 'chef-gcp-inspec') do
 		its('count') { should eq 1 }
 	end
 
 snippet google_cloudbuild_triggers
+  # https://docs.chef.io/inspec/resources/google_cloudbuild_triggers
 	describe google_cloudbuild_triggers(project: 'chef-gcp-inspec') do
 		its('count') { should eq 1 }
 	end
 
 snippet google_cloudfunctions_cloud_function
+  # https://docs.chef.io/inspec/resources/google_cloudfunctions_cloud_function
 	describe google_cloudfunctions_cloud_function(project: 'chef-gcp-inspec', location: 'europe-west1', name: 'inspec-gcp-function') do
 		it { should exist }
 		its('description') { should eq 'A description of the function' }
@@ -1098,12 +1297,14 @@ snippet google_cloudfunctions_cloud_function
 	end
 
 snippet google_cloudfunctions_cloud_functions
+  # https://docs.chef.io/inspec/resources/google_cloudfunctions_cloud_functions
 	describe google_cloudfunctions_cloud_functions(project: 'chef-gcp-inspec', location: 'europe-west1') do
 		its('descriptions') { should include 'A description of the function' }
 		its('entry_points') { should include 'hello' }
 	end
 
 snippet google_compute_address
+  # https://docs.chef.io/inspec/resources/google_compute_address
 	describe google_compute_address(project: 'chef-gcp-inspec', location: 'europe-west2', name: 'inspec-gcp-global-address') do
 		it { should exist }
 		its('address') { should eq '10.2.0.3' }
@@ -1112,12 +1313,14 @@ snippet google_compute_address
 	end
 
 snippet google_compute_addresses
+  # https://docs.chef.io/inspec/resources/google_compute_addresses
 	describe google_compute_addresses(project: 'chef-gcp-inspec', location: 'europe-west2') do
 		its('addresses') { should include '10.2.0.3' }
 		its('names') { should include 'inspec-gcp-global-address' }
 	end
 
 snippet google_compute_autoscalers
+  # https://docs.chef.io/inspec/resources/google_compute_autoscalers
 	describe.one do
 		autoscalers.autoscaling_policies.each do |autoscaling_policy|
 			describe autoscaling_policy do
@@ -1128,6 +1331,7 @@ snippet google_compute_autoscalers
 			end
 
 snippet google_compute_backend_bucket
+  # https://docs.chef.io/inspec/resources/google_compute_backend_bucket
 	describe google_compute_backend_bucket(project: 'chef-gcp-inspec', name: 'inspec-gcp-backend-bucket') do
 		it { should exist }
 		its('description') { should eq 'Backend bucket example' }
@@ -1136,12 +1340,14 @@ snippet google_compute_backend_bucket
 	end
 
 snippet google_compute_backend_buckets
+  # https://docs.chef.io/inspec/resources/google_compute_backend_buckets
 	describe google_compute_backend_buckets(project: 'chef-gcp-inspec', name: 'inspec-gcp-backend-bucket') do
 		its('descriptions') { should include 'Backend bucket example' }
 		its('bucket_names') { should include 'gcp-inspec-storage-bucket' }
 	end
 
 snippet google_compute_backend_service
+  # https://docs.chef.io/inspec/resources/google_compute_backend_service
 	describe google_compute_backend_service(project: 'chef-gcp-inspec', name: 'inspec-gcp-backend-service') do
 		it { should exist }
 		its('description') { should eq 'A description' }
@@ -1152,6 +1358,7 @@ snippet google_compute_backend_service
 	end
 
 snippet google_compute_backend_services
+  # https://docs.chef.io/inspec/resources/google_compute_backend_services
 	describe google_compute_backend_services(project: 'chef-gcp-inspec') do
 		its('count') { should be >= 1 }
 		its('names') { should include 'inspec-gcp-backend-service' }
@@ -1161,6 +1368,7 @@ snippet google_compute_backend_services
 	end
 
 snippet google_compute_disk
+  # https://docs.chef.io/inspec/resources/google_compute_disk
 	describe google_compute_disk(project: 'chef-gcp-inspec', name: 'inspec-snapshot-disk', zone: 'zone') do
 		it { should exist }
 		# Test that the image is the most recent image for the family
@@ -1169,6 +1377,7 @@ snippet google_compute_disk
 	end
 
 snippet google_compute_disks
+  # https://docs.chef.io/inspec/resources/google_compute_disks
 	describe google_compute_disks(project: 'chef-gcp-inspec', zone: 'zone') do
 		it { should exist }
 		its('names') { should include 'inspec-snapshot-disk' }
@@ -1176,6 +1385,7 @@ snippet google_compute_disks
 	end
 
 snippet google_compute_firewall
+  # https://docs.chef.io/inspec/resources/google_compute_firewall
 	describe google_compute_firewall(project: 'chef-gcp-inspec', name: 'inspec-gcp-firewall') do
 		its('direction') { should cmp 'INGRESS' }
 		its('log_config_enabled?') { should be true }
@@ -1183,6 +1393,7 @@ snippet google_compute_firewall
 	end
 
 snippet google_compute_firewalls
+  # https://docs.chef.io/inspec/resources/google_compute_firewalls
 	describe google_compute_firewalls(project: 'chef-gcp-inspec') do
 		its('count') { should be >= 1 }
 		its('firewall_names') { should include 'inspec-gcp-firewall' }
@@ -1190,6 +1401,7 @@ snippet google_compute_firewalls
 	end
 
 snippet google_compute_forwarding_rule
+  # https://docs.chef.io/inspec/resources/google_compute_forwarding_rule
 	describe google_compute_forwarding_rule(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'udp-forwarding-rule') do
 		it { should exist }
 		its('region') { should match 'europe-west2' }
@@ -1200,17 +1412,20 @@ snippet google_compute_forwarding_rule
 	end
 
 snippet google_compute_forwarding_rules
+  # https://docs.chef.io/inspec/resources/google_compute_forwarding_rules
 	describe google_compute_forwarding_rules(project: 'chef-gcp-inspec', region: 'europe-west2') do
 		its('forwarding_rule_names') { should include 'udp-forwarding-rule' }
 	end
 
 snippet google_compute_global_address
+  # https://docs.chef.io/inspec/resources/google_compute_global_address
 	describe google_compute_global_address(project: 'chef-gcp-inspec', name: 'inspec-gcp-global-address') do
 		it { should exist }
 		its('ip_version') { should eq 'IPV6' }
 	end
 
 snippet google_compute_global_addresses
+  # https://docs.chef.io/inspec/resources/google_compute_global_addresses
 	describe google_compute_global_addresses(project: 'chef-gcp-inspec', name: 'inspec-gcp-global-address') do
 		its('count') { should be >= 1 }
 		its('names') { should include 'inspec-gcp-global-address' }
@@ -1218,6 +1433,7 @@ snippet google_compute_global_addresses
 	end
 
 snippet google_compute_global_forwarding_rule
+  # https://docs.chef.io/inspec/resources/google_compute_global_forwarding_rule
 	describe google_compute_global_forwarding_rule(project: 'chef-gcp-inspec', name: 'inspec-gcp-global-forwarding-rule') do
 		it { should exist }
 		its('port_range') { should eq '80-80' }
@@ -1225,12 +1441,14 @@ snippet google_compute_global_forwarding_rule
 	end
 
 snippet google_compute_global_forwarding_rules
+  # https://docs.chef.io/inspec/resources/google_compute_global_forwarding_rules
 	describe google_compute_global_forwarding_rules(project: 'chef-gcp-inspec') do
 		its('count') { should be >= 1 }
 		its('port_ranges') { should include '80-80' }
 	end
 
 snippet google_compute_health_check
+  # https://docs.chef.io/inspec/resources/google_compute_health_check
 	describe google_compute_health_check(project: 'chef-gcp-inspec', name: 'inspec-gcp-health-check') do
 		it { should exist }
 		its('timeout_sec') { should eq '10' }
@@ -1238,12 +1456,14 @@ snippet google_compute_health_check
 	end
 
 snippet google_compute_health_checks
+  # https://docs.chef.io/inspec/resources/google_compute_health_checks
 	describe google_compute_health_checks(project: 'chef-gcp-inspec') do
 		its('names') { should include 'inspec-gcp-health-check' }
 		its('timeout_secs') { should include '10' }
 	end
 
 snippet google_compute_http_health_check
+  # https://docs.chef.io/inspec/resources/google_compute_http_health_check
 	describe google_compute_http_health_check(project: 'chef-gcp-inspec', name: 'inspec-gcp-http-health-check') do
 		it { should exist }
 		its('timeout_sec') { should eq '20' }
@@ -1252,6 +1472,7 @@ snippet google_compute_http_health_check
 	end
 
 snippet google_compute_https_health_check
+  # https://docs.chef.io/inspec/resources/google_compute_https_health_check
 	describe google_compute_https_health_check(project: 'chef-gcp-inspec', name: 'inspec-gcp-https-health-check') do
 		it { should exist }
 		its('timeout_sec') { should eq '15' }
@@ -1261,6 +1482,7 @@ snippet google_compute_https_health_check
 	end
 
 snippet google_compute_https_health_checks
+  # https://docs.chef.io/inspec/resources/google_compute_https_health_checks
 	describe google_compute_https_health_checks(project: 'chef-gcp-inspec') do
 		its('names') { should include 'inspec-gcp-https-health-check' }
 		its('timeout_secs') { should include '15' }
@@ -1268,12 +1490,14 @@ snippet google_compute_https_health_checks
 	end
 
 snippet google_compute_image
+  # https://docs.chef.io/inspec/resources/google_compute_image
 	describe google_compute_image(project: 'chef-gcp-inspec', name: 'inspec-image') do
 		it { should exist }
 		its('disk_size_gb') { should cmp 3 }
 	end
 
 snippet google_compute_instance
+  # https://docs.chef.io/inspec/resources/google_compute_instance
 	describe google_compute_instance(project: 'chef-gcp-inspec', zone: 'zone', name: 'inspec-instance') do
 		it { should exist }
 		its('machine_type') { should match 'n1-standard-1' }
@@ -1286,6 +1510,7 @@ snippet google_compute_instance
 	end
 
 snippet google_compute_instance_group
+  # https://docs.chef.io/inspec/resources/google_compute_instance_group
 	describe google_compute_instance_group(project: 'chef-gcp-inspec', zone: 'zone', name: 'inspec-instance-group') do
 		it { should exist }
 		its('description') { should cmp 'My instance group for testing' }
@@ -1295,6 +1520,7 @@ snippet google_compute_instance_group
 	end
 
 snippet google_compute_instance_group_manager
+  # https://docs.chef.io/inspec/resources/google_compute_instance_group_manager
 	describe google_compute_instance_group_manager(project: 'chef-gcp-inspec', zone: 'zone', name: 'inspec-gcp-igm') do
 		it { should exist }
 	
@@ -1305,16 +1531,19 @@ snippet google_compute_instance_group_manager
 	end
 
 snippet google_compute_instance_group_managers
+  # https://docs.chef.io/inspec/resources/google_compute_instance_group_managers
 	describe google_compute_instance_group_managers(project: 'chef-gcp-inspec', zone: 'zone') do
 		its('base_instance_names') { should include 'igm' }
 	end
 
 snippet google_compute_instance_groups
+  # https://docs.chef.io/inspec/resources/google_compute_instance_groups
 	describe google_compute_instance_groups(project: 'chef-gcp-inspec', zone: 'zone') do
 		its('instance_group_names') { should include 'inspec-instance-group' }
 	end
 
 snippet google_compute_instance_template
+  # https://docs.chef.io/inspec/resources/google_compute_instance_template
 	describe google_compute_instance_template(project: 'chef-gcp-inspec', name: 'inspec-gcp-instance-template') do
 		it { should exist }
 		its('description') { should eq 'A description of the instance template' }
@@ -1329,39 +1558,46 @@ snippet google_compute_instance_template
 	end
 
 snippet google_compute_instance_templates
+  # https://docs.chef.io/inspec/resources/google_compute_instance_templates
 	describe google_compute_instance_templates(project: 'chef-gcp-inspec') do
 		its('names') { should include 'inspec-gcp-instance-template' }
 	end
 
 snippet google_compute_instances
+  # https://docs.chef.io/inspec/resources/google_compute_instances
 	describe google_compute_instances(project: 'chef-gcp-inspec', zone: 'zone') do
 		its('instance_names') { should include 'inspec-instance' }
 	end
 
 snippet google_compute_network
+  # https://docs.chef.io/inspec/resources/google_compute_network
 	describe google_compute_network(project: 'chef-gcp-inspec', name: 'inspec-network') do
 		it { should exist }
 		its('routing_config.routing_mode') { should cmp 'REGIONAL' }
 	end
 
 snippet google_compute_network_endpoint_group
+  # https://docs.chef.io/inspec/resources/google_compute_network_endpoint_group
 	describe google_compute_network_endpoint_group(project: 'chef-gcp-inspec', zone: 'zone', name: 'inspec-gcp-endpoint-group') do
 		it { should exist }
 		its('default_port') { should cmp '90' }
 	end
 
 snippet google_compute_network_endpoint_groups
+  # https://docs.chef.io/inspec/resources/google_compute_network_endpoint_groups
 	describe google_compute_network_endpoint_groups(project: 'chef-gcp-inspec', zone: 'zone') do
 		its('default_ports') { should include '90' }
 		its('names') { should include 'inspec-gcp-endpoint-group' }
 	end
 
 snippet google_compute_networks
+  # https://docs.chef.io/inspec/resources/google_compute_networks
 	describe google_compute_networks(project: 'chef-gcp-inspec') do
 		its('network_names') { should include 'inspec-network' }
 	end
 
 snippet google_compute_node_group
+  # https://docs.chef.io/inspec/resources/google_compute_node_group
 	describe google_compute_node_group(project: 'chef-gcp-inspec', zone: 'zone', name: 'inspec-node-group') do
 		it { should exist }
 		its('description') { should cmp 'A description of the node group' }
@@ -1369,6 +1605,7 @@ snippet google_compute_node_group
 	end
 
 snippet google_compute_node_groups
+  # https://docs.chef.io/inspec/resources/google_compute_node_groups
 	describe google_compute_node_groups(project: 'chef-gcp-inspec', zone: 'zone') do
 		it { should exist }
 		its('descriptions') { should include 'A description of the node group' }
@@ -1377,18 +1614,21 @@ snippet google_compute_node_groups
 	end
 
 snippet google_compute_node_template
+  # https://docs.chef.io/inspec/resources/google_compute_node_template
 	describe google_compute_node_template(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'inspec-node-template') do
 		it { should exist }
 		its('node_affinity_labels') { should include('key' => 'value') }
 	end
 
 snippet google_compute_project_info
+  # https://docs.chef.io/inspec/resources/google_compute_project_info
 	describe google_compute_project_info(project: 'chef-gcp-inspec') do
 		it { should exist }
 		its('default_service_account') { should match "developer.gserviceaccount.com" }
 	end
 
 snippet google_compute_region
+  # https://docs.chef.io/inspec/resources/google_compute_region
 	describe google_compute_region(project: 'chef-gcp-inspec', name: 'europe-west2') do
 		it { should exist }
 		it { should be_up }
@@ -1396,6 +1636,7 @@ snippet google_compute_region
 	end
 
 snippet google_compute_region_backend_service
+  # https://docs.chef.io/inspec/resources/google_compute_region_backend_service
 	describe google_compute_region_backend_service(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'inspec-gcp-region-backend-service') do
 		it { should exist }
 		its('description') { should eq 'A regional description' }
@@ -1404,6 +1645,7 @@ snippet google_compute_region_backend_service
 	end
 
 snippet google_compute_region_backend_services
+  # https://docs.chef.io/inspec/resources/google_compute_region_backend_services
 	describe google_compute_region_backend_services(project: 'chef-gcp-inspec', region: 'europe-west2') do
 		its('count') { should be >= 1 }
 		its('names') { should include 'inspec-gcp-region-backend-service' }
@@ -1412,6 +1654,7 @@ snippet google_compute_region_backend_services
 	end
 
 snippet google_compute_region_instance_group_manager
+  # https://docs.chef.io/inspec/resources/google_compute_region_instance_group_manager
 	describe google_compute_region_instance_group_manager(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'inspec-rigm') do
 		it { should exist }
 		its('base_instance_name') { should eq 'rigm1' }
@@ -1422,12 +1665,14 @@ snippet google_compute_region_instance_group_manager
 	end
 
 snippet google_compute_region_instance_group_managers
+  # https://docs.chef.io/inspec/resources/google_compute_region_instance_group_managers
 	describe google_compute_region_instance_group_managers(project: 'chef-gcp-inspec', region: 'europe-west2') do
 		its('instance_group_manager_names') { should include 'inspec-rigm' }
 		its('base_instance_names') { should include 'rigm1' }
 	end
 
 snippet google_compute_route
+  # https://docs.chef.io/inspec/resources/google_compute_route
 	describe google_compute_route(project: 'chef-gcp-inspec', name: 'inspec-gcp-route') do
 		it { should exist }
 		its('dest_range') { should eq '15.0.0.0/24' }
@@ -1437,6 +1682,7 @@ snippet google_compute_route
 	end
 
 snippet google_compute_router
+  # https://docs.chef.io/inspec/resources/google_compute_router
 	describe google_compute_router(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'inspec-gcp-router') do
 		it { should exist }
 		its('bgp.asn') { should eq '64514' }
@@ -1449,6 +1695,7 @@ snippet google_compute_router
 		end
 
 snippet google_compute_router_nat
+  # https://docs.chef.io/inspec/resources/google_compute_router_nat
 	describe google_compute_router_nat(project: 'chef-gcp-inspec', region: 'europe-west2', router: 'inspec-gcp-router', name: 'inspec-router-nat') do
 		it { should exist }
 		its('nat_ip_allocate_option') { should cmp 'AUTO_ONLY' }
@@ -1459,16 +1706,19 @@ snippet google_compute_router_nat
 	end
 
 snippet google_compute_router_nats
+  # https://docs.chef.io/inspec/resources/google_compute_router_nats
 	describe google_compute_router_nats(project: 'chef-gcp-inspec', region: 'europe-west2', router: 'inspec-gcp-router') do
 		its('names') { should include 'inspec-router-nat' }
 	end
 
 snippet google_compute_routers
+  # https://docs.chef.io/inspec/resources/google_compute_routers
 	describe google_compute_routers(project: 'chef-gcp-inspec', region: 'europe-west2') do
 		its('names') { should include 'inspec-gcp-router' }
 	end
 
 snippet google_compute_routes
+  # https://docs.chef.io/inspec/resources/google_compute_routes
 	describe google_compute_routes(project: 'chef-gcp-inspec') do
 		its('count') { should be >= 1 }
 		its('dest_ranges') { should include '15.0.0.0/24' }
@@ -1477,12 +1727,14 @@ snippet google_compute_routes
 	end
 
 snippet google_compute_security_policies
+  # https://docs.chef.io/inspec/resources/google_compute_security_policies
 	describe google_compute_security_policies(project: 'chef-gcp-inspec') do
 		its('count') { should be >= 1 }
 		its('names') { should include 'sec-policy' }
 	end
 
 snippet google_compute_security_policy
+  # https://docs.chef.io/inspec/resources/google_compute_security_policy
 	describe google_compute_security_policy(project: 'chef-gcp-inspec', name: 'sec-policy') do
 		it { should exist }
 		its('rules.size') { should cmp 2 }
@@ -1491,17 +1743,20 @@ snippet google_compute_security_policy
 	end
 
 snippet google_compute_snapshot
+  # https://docs.chef.io/inspec/resources/google_compute_snapshot
 	describe google_compute_snapshot(project: 'chef-gcp-inspec', name: 'inspec-gcp-disk-snapshot') do
 		it { should exist }
 		its('source_disk') { should match 'inspec-snapshot-disk' }
 	end
 
 snippet google_compute_snapshots
+  # https://docs.chef.io/inspec/resources/google_compute_snapshots
 	describe google_compute_snapshots(project: 'chef-gcp-inspec') do
 		its('count') { should be >= 1 }
 	end
 
 snippet google_compute_ssl_certificate
+  # https://docs.chef.io/inspec/resources/google_compute_ssl_certificate
 	describe google_compute_ssl_certificate(project: 'chef-gcp-inspec', name: 'inspec-gcp-ssl-certificate') do
 		it { should exist }
 		its('description') { should eq 'A fake ssl certificate (DO NOT USE)' }
@@ -1526,6 +1781,7 @@ snippet google_compute_ssl_certificate
 	end
 
 snippet google_compute_ssl_certificates
+  # https://docs.chef.io/inspec/resources/google_compute_ssl_certificates
 	describe google_compute_ssl_certificates(project: 'chef-gcp-inspec') do
 	
 		its('names') { should include 'inspec-gcp-ssl-certificate' }
@@ -1551,6 +1807,7 @@ snippet google_compute_ssl_certificates
 	end
 
 snippet google_compute_ssl_policies
+  # https://docs.chef.io/inspec/resources/google_compute_ssl_policies
 	describe google_compute_ssl_policies(project: 'chef-gcp-inspec') do
 		it { should exist }
 		its('names') { should include 'inspec-gcp-ssl-policy' }
@@ -1559,6 +1816,7 @@ snippet google_compute_ssl_policies
 	end
 
 snippet google_compute_ssl_policy
+  # https://docs.chef.io/inspec/resources/google_compute_ssl_policy
 	describe google_compute_ssl_policy(project: 'chef-gcp-inspec', name: 'inspec-gcp-ssl-policy') do
 		it { should exist }
 		its('min_tls_version') { should eq 'TLS_1_2' }
@@ -1568,6 +1826,7 @@ snippet google_compute_ssl_policy
 	end
 
 snippet google_compute_subnetwork
+  # https://docs.chef.io/inspec/resources/google_compute_subnetwork
 	describe google_compute_subnetwork(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'inspec-subnet') do
 		it { should exist }
 		its('ip_cidr_range') { should eq '10.2.0.0/16' }
@@ -1578,24 +1837,28 @@ snippet google_compute_subnetwork
 	end
 
 snippet google_compute_subnetwork_iam_binding
+  # https://docs.chef.io/inspec/resources/google_compute_subnetwork_iam_binding
 	describe google_compute_subnetwork_iam_binding(project: "project", region: "region", name: "name", role: "roles/editor") do
 		it { should exist }
 		its('members') { should include 'user:testuser@example.com' }
 	end
 
 snippet google_compute_subnetworks
+  # https://docs.chef.io/inspec/resources/google_compute_subnetworks
 	describe google_compute_subnetworks(project: 'chef-gcp-inspec', region: 'europe-west2') do
 		its('ip_cidr_ranges') { should include '10.2.0.0/16' }
 		its('subnetwork_names') { should include 'inspec-subnet' }
 	end
 
 snippet google_compute_target_http_proxies
+  # https://docs.chef.io/inspec/resources/google_compute_target_http_proxies
 	describe google_compute_target_http_proxies(project: 'chef-gcp-inspec') do
 		its('names') { should include 'inspec-gcp-http-proxy' }
 		its('descriptions') { should include 'A HTTP proxy' }
 	end
 
 snippet google_compute_target_http_proxy
+  # https://docs.chef.io/inspec/resources/google_compute_target_http_proxy
 	describe google_compute_target_http_proxy(project: 'chef-gcp-inspec', name: 'inspec-gcp-http-proxy') do
 		it { should exist }
 		its('description') { should eq 'A HTTP proxy' }
@@ -1603,12 +1866,14 @@ snippet google_compute_target_http_proxy
 	end
 
 snippet google_compute_target_https_proxies
+  # https://docs.chef.io/inspec/resources/google_compute_target_https_proxies
 	describe google_compute_target_https_proxies(project: 'chef-gcp-inspec') do
 		its('names') { should include 'inspec-gcp-https-proxy' }
 		its('descriptions') { should include 'A HTTPS target proxy' }
 	end
 
 snippet google_compute_target_https_proxy
+  # https://docs.chef.io/inspec/resources/google_compute_target_https_proxy
 	describe google_compute_target_https_proxy(project: 'chef-gcp-inspec', name: 'inspec-gcp-https-proxy') do
 		it { should exist }
 		its('url_map') { should match /\/inspec-gcp-url-map$/ }
@@ -1616,6 +1881,7 @@ snippet google_compute_target_https_proxy
 	end
 
 snippet google_compute_target_pool
+  # https://docs.chef.io/inspec/resources/google_compute_target_pool
 	describe google_compute_target_pool(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'inspec-gcp-target-pool') do
 		it { should exist }
 		its('session_affinity') { should eq 'CLIENT_IP' }
@@ -1623,18 +1889,21 @@ snippet google_compute_target_pool
 	end
 
 snippet google_compute_target_pools
+  # https://docs.chef.io/inspec/resources/google_compute_target_pools
 	describe google_compute_target_pools(project: 'chef-gcp-inspec', region: 'europe-west2') do
 		its('names') { should include 'inspec-gcp-target-pool' }
 		its('session_affinities') { should include 'CLIENT_IP' }
 	end
 
 snippet google_compute_target_tcp_proxies
+  # https://docs.chef.io/inspec/resources/google_compute_target_tcp_proxies
 	describe google_compute_target_tcp_proxies(project: 'chef-gcp-inspec') do
 		its('names') { should include 'inspec-gcp-target-tcp-proxy' }
 		its('proxy_headers') { should include 'NONE' }
 	end
 
 snippet google_compute_target_tcp_proxy
+  # https://docs.chef.io/inspec/resources/google_compute_target_tcp_proxy
 	describe google_compute_target_tcp_proxy(project: 'chef-gcp-inspec', name: 'inspec-gcp-target-tcp-proxy') do
 		it { should exist }
 		its('proxy_header') { should eq 'NONE' }
@@ -1642,6 +1911,7 @@ snippet google_compute_target_tcp_proxy
 	end
 
 snippet google_compute_url_map
+  # https://docs.chef.io/inspec/resources/google_compute_url_map
 	describe google_compute_url_map(project: 'chef-gcp-inspec', name: 'inspec-gcp-url-map') do
 		it { should exist }
 		its('description') { should eq 'URL map description' }
@@ -1656,35 +1926,41 @@ snippet google_compute_url_map
 	end
 
 snippet google_compute_url_maps
+  # https://docs.chef.io/inspec/resources/google_compute_url_maps
 	describe google_compute_url_maps(project: 'chef-gcp-inspec') do
 		its('names') { should include 'inspec-gcp-url-map' }
 	end
 
 snippet google_compute_vpn_tunnel
+  # https://docs.chef.io/inspec/resources/google_compute_vpn_tunnel
 	describe google_compute_vpn_tunnel(project: 'chef-gcp-inspec', region: 'europe-west2', name: 'inspec-vpn-tunnel') do
 		it { should exist }
 		its('peer_ip') { should eq '15.0.0.120' }
 	end
 
 snippet google_compute_vpn_tunnels
+  # https://docs.chef.io/inspec/resources/google_compute_vpn_tunnels
 	describe google_compute_vpn_tunnels(project: 'chef-gcp-inspec', region: 'europe-west2') do
 		its('vpn_tunnel_names') { should include 'inspec-vpn-tunnel' }
 		its('peer_ips') { should include '15.0.0.120' }
 	end
 
 snippet google_compute_zone
+  # https://docs.chef.io/inspec/resources/google_compute_zone
 	describe google_compute_zone(project: 'chef-gcp-inspec', name: "us-central1-a") do
 		it { should exist }
 		it { should be_up }
 	end
 
 snippet google_compute_zones
+  # https://docs.chef.io/inspec/resources/google_compute_zones
 	describe google_compute_zone(project: 'chef-gcp-inspec', name: zone_name) do
 			it { should exist }
 			it { should be_up }
 		end
 
 snippet google_container_cluster
+  # https://docs.chef.io/inspec/resources/google_container_cluster
 	describe google_container_cluster(project: 'chef-gcp-inspec', location: 'europe-west2-a', name: 'gcp-inspec-kube-cluster') do
 		it { should exist }
 		its('locations.sort'){ should cmp [ 'europe-west2-a', 'europe-west2-b', 'europe-west2-c' ].sort }
@@ -1693,16 +1969,19 @@ snippet google_container_cluster
 	end
 
 snippet google_container_clusters
+  # https://docs.chef.io/inspec/resources/google_container_clusters
 	describe google_container_clusters(project: 'chef-gcp-inspec', location: 'europe-west2-a') do
 		its('cluster_names') { should include 'gcp-inspec-kube-cluster' }
 	end
 
 snippet google_container_node_pools
+  # https://docs.chef.io/inspec/resources/google_container_node_pools
 	describe google_container_node_pools(project: 'chef-gcp-inspec', location: 'europe-west2-a', cluster_name: 'gcp-inspec-kube-cluster') do
 		its('initial_node_counts') { should include '1'}
 	end
 
 snippet google_container_regional_cluster
+  # https://docs.chef.io/inspec/resources/google_container_regional_cluster
 	describe google_container_regional_cluster(project: 'chef-gcp-inspec', location: 'europe-west2', name: 'inspec-gcp-regional-cluster') do
 		it { should exist }
 		its('initial_node_count') { should eq '1'}
@@ -1710,6 +1989,7 @@ snippet google_container_regional_cluster
 	end
 
 snippet google_container_regional_clusters
+  # https://docs.chef.io/inspec/resources/google_container_regional_clusters
 	describe google_container_regional_clusters(project: 'chef-gcp-inspec', location: 'europe-west2') do
 		its('count') { should be >= 1 }
 		its('names') { should include 'inspec-gcp-regional-cluster' }
@@ -1717,17 +1997,20 @@ snippet google_container_regional_clusters
 	end
 
 snippet google_container_regional_node_pool
+  # https://docs.chef.io/inspec/resources/google_container_regional_node_pool
 	describe google_container_regional_node_pool(project: 'chef-gcp-inspec', location: 'europe-west2', cluster: 'inspec-gcp-regional-cluster', name: 'inspec-gcp-regional-node-pool') do
 		it { should exist }
 		its('initial_node_count') { should eq '1'}
 	end
 
 snippet google_container_regional_node_pools
+  # https://docs.chef.io/inspec/resources/google_container_regional_node_pools
 	describe google_container_regional_node_pools(project: 'chef-gcp-inspec', location: 'europe-west2', cluster: 'inspec-gcp-regional-cluster') do
 		its('initial_node_counts') { should include '1'}
 	end
 
 snippet google_dataproc_cluster
+  # https://docs.chef.io/inspec/resources/google_dataproc_cluster
 	describe google_dataproc_cluster(project: 'chef-gcp-inspec', region: 'europe-west2', cluster_name: 'inspec-dataproc-cluster') do
 		it { should exist }
 		its('labels') { should include('label' => 'value') }
@@ -1739,12 +2022,14 @@ snippet google_dataproc_cluster
 	end
 
 snippet google_dataproc_clusters
+  # https://docs.chef.io/inspec/resources/google_dataproc_clusters
 	describe google_dataproc_clusters(project: 'chef-gcp-inspec', region: 'europe-west2') do
 		its('count') { should be >= 1 }
 		its('cluster_names') { should include 'inspec-dataproc-cluster' }
 	end
 
 snippet google_dns_managed_zone
+  # https://docs.chef.io/inspec/resources/google_dns_managed_zone
 	describe google_dns_managed_zone(project: 'chef-gcp-inspec', zone: 'example-zone') do
 		it { should exist }
 		its('dns_name') { should cmp 'dns-zone-name.com.' }
@@ -1755,6 +2040,7 @@ snippet google_dns_managed_zone
 	end
 
 snippet google_dns_managed_zones
+  # https://docs.chef.io/inspec/resources/google_dns_managed_zones
 	describe google_dns_managed_zones(project: 'chef-gcp-inspec') do
 		it { should exist }
 		its('zone_names') { should include 'example-zone' }
@@ -1762,6 +2048,7 @@ snippet google_dns_managed_zones
 	end
 
 snippet google_dns_resource_record_set
+  # https://docs.chef.io/inspec/resources/google_dns_resource_record_set
 	describe google_dns_resource_record_set(project: 'chef-gcp-inspec', name: 'backend.my.domain.com.', type: 'A', managed_zone: 'inspec-gcp-managed-zone') do
 		it { should exist }
 		its('type') { should eq 'A' }
@@ -1771,6 +2058,7 @@ snippet google_dns_resource_record_set
 	end
 
 snippet google_dns_resource_record_sets
+  # https://docs.chef.io/inspec/resources/google_dns_resource_record_sets
 	describe google_dns_resource_record_sets(project: 'chef-gcp-inspec', name: 'backend.my.domain.com.', managed_zone: 'inspec-gcp-managed-zone') do
 		its('count') { should eq 3 }
 		its('types') { should include 'A' }
@@ -1780,6 +2068,7 @@ snippet google_dns_resource_record_sets
 	end
 
 snippet google_filestore_instance
+  # https://docs.chef.io/inspec/resources/google_filestore_instance
 	describe google_filestore_instance(project: 'chef-gcp-inspec', zone: 'us-central1-b', name: 'inspecgcp') do
 		it { should exist }
 		its('tier') { should cmp 'PREMIUM' }
@@ -1792,16 +2081,19 @@ snippet google_filestore_instance
 	end
 
 snippet google_filestore_instances
+  # https://docs.chef.io/inspec/resources/google_filestore_instances
 	describe google_filestore_instances(project: 'chef-gcp-inspec', zone: 'us-central1-b') do
 		its('tiers') { should include 'PREMIUM' }
 	end
 
 snippet google_iam_custom_roles
+  # https://docs.chef.io/inspec/resources/google_iam_custom_roles
 	describe google_iam_custom_roles(project: 'chef-gcp-inspec') do
 		its('names') { should include "projects/project-id/roles/role-id" }
 	end
 
 snippet google_iam_organization_custom_role
+  # https://docs.chef.io/inspec/resources/google_iam_organization_custom_role
 	describe google_iam_organization_custom_role(org_id: '12345', name: 'org-role') do
 		it { should exist }
 		its('stage') { should eq 'GA' }
@@ -1809,32 +2101,38 @@ snippet google_iam_organization_custom_role
 	end
 
 snippet google_iam_organization_custom_roles
+  # https://docs.chef.io/inspec/resources/google_iam_organization_custom_roles
 	describe google_iam_organization_custom_roles(org_id: '190694428152') do
 		its('names') { should include "organizations/123456/roles/role-id" }
 	end
 
 snippet google_iam_service_account
+  # https://docs.chef.io/inspec/resources/google_iam_service_account
 	describe google_iam_service_account(project: 'chef-gcp-inspec', name: "display-name@project-id.iam.gserviceaccount.com") do
 		it { should exist }
 		its('display_name') { should cmp '' }
 	end
 
 snippet google_iam_service_account_key
+  # https://docs.chef.io/inspec/resources/google_iam_service_account_key
 	describe
 	end
 
 snippet google_iam_service_account_keys
+  # https://docs.chef.io/inspec/resources/google_iam_service_account_keys
 	describe google_iam_service_account_keys(project: 'chef-gcp-inspec', service_account: "display-name@project-id.iam.gserviceaccount.com") do
 		its('count') { should be <= 1000 }
 	end
 
 snippet google_iam_service_accounts
+  # https://docs.chef.io/inspec/resources/google_iam_service_accounts
 	describe google_iam_service_accounts(project: 'chef-gcp-inspec', name: "display-name@project-id.iam.gserviceaccount.com") do
 		its('service_account_emails') { should include "display-name@project-id.iam.gserviceaccount.com" }
 		its('count') { should be <= 1000 }
 	end
 
 snippet google_kms_crypto_key
+  # https://docs.chef.io/inspec/resources/google_kms_crypto_key
 	describe google_kms_crypto_key(project: 'chef-gcp-inspec', location: 'europe-west2', key_ring_name: 'kms-key-ring', name: 'kms-key') do
 		it { should exist }
 		its('crypto_key_name') { should cmp 'kms-key' }
@@ -1845,22 +2143,26 @@ snippet google_kms_crypto_key
 	end
 
 snippet google_kms_crypto_key_iam_binding
+  # https://docs.chef.io/inspec/resources/google_kms_crypto_key_iam_binding
 	describe google_kms_crypto_key_iam_binding(project: "project", location: "location", key_ring_name: "key_ring_name", crypto_key_name: "crypto_key_name", role: "roles/editor") do
 		it { should exist }
 		its('members') { should include 'user:testuser@example.com' }
 	end
 
 snippet google_kms_crypto_key_iam_bindings
+  # https://docs.chef.io/inspec/resources/google_kms_crypto_key_iam_bindings
 	describe google_kms_crypto_key_iam_bindings(crypto_key_url: 'projects/project/locations/europe-west2/keyRings/key-ring/cryptoKeys/key-name') do
 				it { should exist }
 			end
 
 snippet google_kms_crypto_key_iam_policy
+  # https://docs.chef.io/inspec/resources/google_kms_crypto_key_iam_policy
 	describe google_kms_crypto_key_iam_policy(project: "project", location: "location", key_ring_name: "key_ring_name", crypto_key_name: "crypto_key_name") do
 		it { should exist }
 	end
 
 snippet google_kms_key_ring
+  # https://docs.chef.io/inspec/resources/google_kms_key_ring
 	describe google_kms_key_ring(project: 'chef-gcp-inspec', location: 'europe-west2', name: 'kms-key-ring') do
 		it { should exist }
 		its('create_time') { should be > Time.now - 365*60*60*24*10 }
@@ -1869,27 +2171,32 @@ snippet google_kms_key_ring
 	end
 
 snippet google_kms_key_ring_iam_binding
+  # https://docs.chef.io/inspec/resources/google_kms_key_ring_iam_binding
 	describe google_kms_key_ring_iam_binding(project: "project", location: "location", key_ring_name: "key_ring_name", role: "roles/editor") do
 		it { should exist }
 		its('members') { should include 'user:testuser@example.com' }
 	end
 
 snippet google_kms_key_ring_iam_bindings
+  # https://docs.chef.io/inspec/resources/google_kms_key_ring_iam_bindings
 	describe google_kms_key_ring_iam_bindings(key_ring_url: 'projects/project/locations/europe-west2/keyRings/key-ring') do
 				it { should exist }
 			end
 
 snippet google_kms_key_ring_iam_policy
+  # https://docs.chef.io/inspec/resources/google_kms_key_ring_iam_policy
 	describe google_kms_key_ring_iam_policy(project: "project", location: "location", key_ring_name: "key_ring_name") do
 		it { should exist }
 	end
 
 snippet google_kms_key_rings
+  # https://docs.chef.io/inspec/resources/google_kms_key_rings
 	describe google_kms_key_rings(project: 'chef-gcp-inspec', location: 'europe-west2') do
 		its('key_ring_names'){ should include 'kms-key-ring' }
 	end
 
 snippet google_logging_folder_exclusions
+  # https://docs.chef.io/inspec/resources/google_logging_folder_exclusions
 	describe.one do
 		google_resourcemanager_folders(parent: 'organizations/12345').names.each do |name|
 			# name on a folder is in the form `folders/12345`
@@ -1900,6 +2207,7 @@ snippet google_logging_folder_exclusions
 			end
 
 snippet google_logging_folder_log_sink
+  # https://docs.chef.io/inspec/resources/google_logging_folder_log_sink
 	describe.one do
 		google_resourcemanager_folders(parent: 'organizations/12345').names.each do |folder_name|
 			# name on a folder is in the form `folders/12345`
@@ -1909,6 +2217,7 @@ snippet google_logging_folder_log_sink
 			end
 
 snippet google_logging_folder_log_sinks
+  # https://docs.chef.io/inspec/resources/google_logging_folder_log_sinks
 	describe.one do
 		google_resourcemanager_folders(parent: 'organizations/12345').names.each do |folder_name|
 			# name on a folder is in the form `folders/12345`
@@ -1918,17 +2227,20 @@ snippet google_logging_folder_log_sinks
 			end
 
 snippet google_logging_organization_log_sink
+  # https://docs.chef.io/inspec/resources/google_logging_organization_log_sink
 	describe google_logging_organization_log_sink(organization: '190694428152', name: 'inspec-gcp-org-sink') do
 		it { should exist }
 		its('filter') { should cmp 'resource.type = gce_instance' }
 	end
 
 snippet google_logging_organization_log_sinks
+  # https://docs.chef.io/inspec/resources/google_logging_organization_log_sinks
 	describe google_logging_organization_log_sinks(organization: '190694428152') do
 		its('names') { should include 'inspec-gcp-org-sink' }
 	end
 
 snippet google_logging_project_exclusion
+  # https://docs.chef.io/inspec/resources/google_logging_project_exclusion
 	describe google_logging_project_exclusion(project: 'chef-gcp-inspec', name: 'inspec-project-exclusion') do
 		it { should exist }
 		its('description'){ should cmp 'My project exclusion description' }
@@ -1936,22 +2248,26 @@ snippet google_logging_project_exclusion
 	end
 
 snippet google_logging_project_exclusions
+  # https://docs.chef.io/inspec/resources/google_logging_project_exclusions
 	describe google_logging_project_exclusions(project: 'chef-gcp-inspec') do
 		its('names'){ should include 'inspec-folder-exclusion' }
 	end
 
 snippet google_logging_project_sink
+  # https://docs.chef.io/inspec/resources/google_logging_project_sink
 	describe google_logging_project_sink(project: 'chef-gcp-inspec', name: 'inspec-gcp-org-sink') do
 		it { should exist }
 		its('filter') { should cmp 'resource.type = gce_instance AND severity = DEBUG' }
 	end
 
 snippet google_logging_project_sinks
+  # https://docs.chef.io/inspec/resources/google_logging_project_sinks
 	describe google_logging_project_sinks(project: 'chef-gcp-inspec') do
 		its('names') { should include 'inspec-gcp-org-sink' }
 	end
 
 snippet google_ml_engine_model
+  # https://docs.chef.io/inspec/resources/google_ml_engine_model
 	describe google_ml_engine_model(project: 'chef-gcp-inspec', name: 'ml_model') do
 		it { should exist }
 		its('description') { should cmp 'My awesome ML model' }
@@ -1961,6 +2277,7 @@ snippet google_ml_engine_model
 	end
 
 snippet google_ml_engine_models
+  # https://docs.chef.io/inspec/resources/google_ml_engine_models
 	describe google_ml_engine_models(project: 'chef-gcp-inspec') do
 		its('descriptions') { should include 'My awesome ML model' }
 		its('online_prediction_loggings') { should include 'true' }
@@ -1968,34 +2285,40 @@ snippet google_ml_engine_models
 	end
 
 snippet google_organization
+  # https://docs.chef.io/inspec/resources/google_organization
 	describe google_organization(name: "organizations/123456") do
 		its('name') { should eq "organizations/123456" }
 		its('lifecycle_state') { should cmp 'ACTIVE' }
 	end
 
 snippet google_organization_iam_binding
+  # https://docs.chef.io/inspec/resources/google_organization_iam_binding
 	describe google_organization_iam_binding(name: "name", role: "roles/editor") do
 		it { should exist }
 		its('members') { should include 'user:testuser@example.com' }
 	end
 
 snippet google_organization_iam_policy
+  # https://docs.chef.io/inspec/resources/google_organization_iam_policy
 	describe google_organization_iam_policy(name: "name") do
 		it { should exist }
 	end
 
 snippet google_organization_policy
+  # https://docs.chef.io/inspec/resources/google_organization_policy
 	describe google_organization_policy(name: 'organizations/123456', constraint: 'constraints/compute.disableGuestAttributesAccess') do
 				it { should exist }
 				its('boolean_policy.enforced') { should be true }
 			end
 
 snippet google_organizations
+  # https://docs.chef.io/inspec/resources/google_organizations
 	describe google_organizations do
 		its('names') { should include "organizations/123456" }
 	end
 
 snippet google_project
+  # https://docs.chef.io/inspec/resources/google_project
 	describe google_project(project: 'chef-gcp-inspec') do
 		it { should exist }
 		its('project_id') { should cmp 'chef-gcp-inspec' }
@@ -2003,6 +2326,7 @@ snippet google_project
 	end
 
 snippet google_project_alert_policies
+  # https://docs.chef.io/inspec/resources/google_project_alert_policies
 	describe google_project_alert_policies(project: 'chef-gcp-inspec') do
 		it { should exist }
 		its('policy_display_names') { should include 'Display'}
@@ -2010,6 +2334,7 @@ snippet google_project_alert_policies
 	end
 
 snippet google_project_alert_policy
+  # https://docs.chef.io/inspec/resources/google_project_alert_policy
 	describe.one do
 		google_project_alert_policies(project: 'chef-gcp-inspec').policy_names do |policy_name|
 			describe google_project_alert_policy(project: 'chef-gcp-inspec', name: policy_name) do
@@ -2020,22 +2345,26 @@ snippet google_project_alert_policy
 			end
 
 snippet google_project_alert_policy_condition
+  # https://docs.chef.io/inspec/resources/google_project_alert_policy_condition
 	describe google_project_alert_policy_condition(name: 'projects/spaterson-project/alertPolicies/9271751234503117449', filter 'project=\"spaterson-project\"') do
 				it { should exist }
 			end
 
 snippet google_project_iam_binding
+  # https://docs.chef.io/inspec/resources/google_project_iam_binding
 	describe google_project_iam_binding(project: "project", role: "roles/editor") do
 		it { should exist }
 		its('members') { should include 'user:testuser@example.com' }
 	end
 
 snippet google_project_iam_bindings
+  # https://docs.chef.io/inspec/resources/google_project_iam_bindings
 	describe google_project_iam_bindings(project: 'chef-inspec-gcp') do
 				it { should exist }
 			end
 
 snippet google_project_iam_custom_role
+  # https://docs.chef.io/inspec/resources/google_project_iam_custom_role
 	describe google_project_iam_custom_role(project: 'chef-gcp-inspec', name: 'admin-role') do
 		it { should exist }
 		its('stage') { should eq 'GA' }
@@ -2043,21 +2372,25 @@ snippet google_project_iam_custom_role
 	end
 
 snippet google_project_iam_custom_roles
+  # https://docs.chef.io/inspec/resources/google_project_iam_custom_roles
 	describe google_project_iam_custom_roles(project: 'chef-gcp-inspec') do
 		its('names') { should include "projects/project-id/roles/role-id" }
 	end
 
 snippet google_project_iam_policy
+  # https://docs.chef.io/inspec/resources/google_project_iam_policy
 	describe google_project_iam_policy(project: "project") do
 		it { should exist }
 	end
 
 snippet google_project_logging_audit_config
+  # https://docs.chef.io/inspec/resources/google_project_logging_audit_config
 	describe google_project_logging_audit_config(project: 'chef-inspec-gcp') do
 				it { should exist }
 			end
 
 snippet google_project_metric
+  # https://docs.chef.io/inspec/resources/google_project_metric
 	describe google_project_metric(project: 'chef-gcp-inspec', name: 'some/metric') do
 		it { should exist }
 		its('filter') { should cmp 'resource.type=gae_app AND severity>=ERROR' }
@@ -2066,6 +2399,7 @@ snippet google_project_metric
 	end
 
 snippet google_project_metrics
+  # https://docs.chef.io/inspec/resources/google_project_metrics
 	describe google_project_metrics(project: 'chef-gcp-inspec') do
 		it { should exist }
 		its('metric_filters') { should include 'resource.type=gae_app AND severity>=ERROR' }
@@ -2073,12 +2407,14 @@ snippet google_project_metrics
 	end
 
 snippet google_project_service
+  # https://docs.chef.io/inspec/resources/google_project_service
 	describe google_project_service(project: 'chef-gcp-inspec', name: 'maps-android-backend.googleapis.com') do
 		it { should exist }
 		its('state') { should cmp "ENABLED" }
 	end
 
 snippet google_project_services
+  # https://docs.chef.io/inspec/resources/google_project_services
 	describe.one do
 		google_project_services(project: 'chef-gcp-inspec').names.each do |name|
 			describe name do
@@ -2086,6 +2422,7 @@ snippet google_project_services
 			end
 
 snippet google_projects
+  # https://docs.chef.io/inspec/resources/google_projects
 	describe google_projects() do
 		its('count') { should be >= 1 }
 		its('project_ids') { should include 'chef-gcp-inspec' }
@@ -2093,43 +2430,51 @@ snippet google_projects
 	end
 
 snippet google_pubsub_subscription
+  # https://docs.chef.io/inspec/resources/google_pubsub_subscription
 	describe google_pubsub_subscription(project: 'chef-gcp-inspec', name: 'inspec-gcp-subscription') do
 		it { should exist }
 	end
 
 snippet google_pubsub_subscription_iam_binding
+  # https://docs.chef.io/inspec/resources/google_pubsub_subscription_iam_binding
 	describe google_pubsub_subscription_iam_binding(project: "project", name: "name", role: "roles/editor") do
 		it { should exist }
 		its('members') { should include 'user:testuser@example.com' }
 	end
 
 snippet google_pubsub_subscription_iam_policy
+  # https://docs.chef.io/inspec/resources/google_pubsub_subscription_iam_policy
 	describe google_pubsub_subscription_iam_policy(project: "project", name: "name") do
 		it { should exist }
 	end
 
 snippet google_pubsub_subscriptions
+  # https://docs.chef.io/inspec/resources/google_pubsub_subscriptions
 	describe google_pubsub_subscriptions(project: 'chef-gcp-inspec') do
 		its('count') { should be >= 1 }
 	end
 
 snippet google_pubsub_topic
+  # https://docs.chef.io/inspec/resources/google_pubsub_topic
 	describe google_pubsub_topic(project: 'chef-gcp-inspec', name: 'inspec-gcp-topic') do
 		it { should exist }
 	end
 
 snippet google_pubsub_topic_iam_binding
+  # https://docs.chef.io/inspec/resources/google_pubsub_topic_iam_binding
 	describe google_pubsub_topic_iam_binding(project: "project", name: "name", role: "roles/editor") do
 		it { should exist }
 		its('members') { should include 'user:testuser@example.com' }
 	end
 
 snippet google_pubsub_topic_iam_policy
+  # https://docs.chef.io/inspec/resources/google_pubsub_topic_iam_policy
 	describe google_pubsub_topic_iam_policy(project: "project", name: "name") do
 		it { should exist }
 	end
 
 snippet google_pubsub_topics
+  # https://docs.chef.io/inspec/resources/google_pubsub_topics
 	describe google_pubsub_topics(project: 'chef-gcp-inspec') do
 		it { should exist }
 		its('names') { should include 'inspec-gcp-topic' }
@@ -2137,6 +2482,7 @@ snippet google_pubsub_topics
 	end
 
 snippet google_redis_instance
+  # https://docs.chef.io/inspec/resources/google_redis_instance
 	describe google_redis_instance(project: 'chef-gcp-inspec', region: 'us-central1', name: 'my-redis-cache') do
 		it { should exist }
 		its('tier') { should cmp 'STANDARD_HA' }
@@ -2149,6 +2495,7 @@ snippet google_redis_instance
 	end
 
 snippet google_redis_instances
+  # https://docs.chef.io/inspec/resources/google_redis_instances
 	describe google_redis_instances(project: 'chef-gcp-inspec', region: 'us-central1') do
 		its('tiers') { should include 'STANDARD_HA' }
 		its('memory_size_gbs') { should include '1' }
@@ -2159,6 +2506,7 @@ snippet google_redis_instances
 	end
 
 snippet google_resourcemanager_folder
+  # https://docs.chef.io/inspec/resources/google_resourcemanager_folder
 	describe.one do
 		google_resourcemanager_folders(parent: 'organizations/12345').names.each do |name|
 			describe google_resourcemanager_folder(name: name) do
@@ -2167,17 +2515,20 @@ snippet google_resourcemanager_folder
 			end
 
 snippet google_resourcemanager_folder_iam_binding
+  # https://docs.chef.io/inspec/resources/google_resourcemanager_folder_iam_binding
 	describe google_resourcemanager_folder_iam_binding(name: "name", role: "roles/editor") do
 		it { should exist }
 		its('members') { should include 'user:testuser@example.com' }
 	end
 
 snippet google_resourcemanager_folder_iam_policy
+  # https://docs.chef.io/inspec/resources/google_resourcemanager_folder_iam_policy
 	describe google_resourcemanager_folder_iam_policy(name: "name") do
 		it { should exist }
 	end
 
 snippet google_resourcemanager_folders
+  # https://docs.chef.io/inspec/resources/google_resourcemanager_folders
 	describe.one do
 		google_resourcemanager_folders(parent: 'organizations/12345').display_names.each do |display_name|
 			describe display_name do
@@ -2185,6 +2536,7 @@ snippet google_resourcemanager_folders
 			end
 
 snippet google_resourcemanager_organization_policy
+  # https://docs.chef.io/inspec/resources/google_resourcemanager_organization_policy
 	describe google_resourcemanager_organization_policy(organization_name: "organizations/123456789", constraint: "constraints/compute.disableSerialPortAccess") do
 		it { should exist }
 		its('constraint') { should eq 'constraints/compute.disableSerialPortAccess' }
@@ -2192,74 +2544,87 @@ snippet google_resourcemanager_organization_policy
 	end
 
 snippet google_resourcemanager_project_iam_binding
+  # https://docs.chef.io/inspec/resources/google_resourcemanager_project_iam_binding
 	describe google_resourcemanager_project_iam_binding(project_id: "projectId", role: "roles/editor") do
 		it { should exist }
 		its('members') { should include 'user:testuser@example.com' }
 	end
 
 snippet google_resourcemanager_project_iam_policy
+  # https://docs.chef.io/inspec/resources/google_resourcemanager_project_iam_policy
 	describe google_resourcemanager_project_iam_policy(project_id: "projectId") do
 		it { should exist }
 	end
 
 snippet google_runtime_config_config
+  # https://docs.chef.io/inspec/resources/google_runtime_config_config
 	describe google_runtime_config_config(project: 'chef-gcp-inspec', name: 'inspec-gcp-runtime-config') do
 		it { should exist }
 		its('description') { should cmp 'My runtime configurations' }
 	end
 
 snippet google_runtime_config_config_iam_binding
+  # https://docs.chef.io/inspec/resources/google_runtime_config_config_iam_binding
 	describe google_runtime_config_config_iam_binding(project: "project", name: "name", role: "roles/editor") do
 		it { should exist }
 		its('members') { should include 'user:testuser@example.com' }
 	end
 
 snippet google_runtime_config_config_iam_policy
+  # https://docs.chef.io/inspec/resources/google_runtime_config_config_iam_policy
 	describe google_runtime_config_config_iam_policy(project: "project", name: "name") do
 		it { should exist }
 	end
 
 snippet google_runtime_config_configs
+  # https://docs.chef.io/inspec/resources/google_runtime_config_configs
 	describe google_runtime_config_configs(project: 'chef-gcp-inspec') do
 		its('descriptions') { should include 'My runtime configurations' }
 	end
 
 snippet google_runtime_config_variable
+  # https://docs.chef.io/inspec/resources/google_runtime_config_variable
 	describe google_runtime_config_variable(project: 'chef-gcp-inspec', config: 'inspec-gcp-runtime-config', name: 'prod-variables/hostname') do
 		it { should exist }
 		its('text') { should cmp 'example.com' }
 	end
 
 snippet google_runtime_config_variables
+  # https://docs.chef.io/inspec/resources/google_runtime_config_variables
 	describe google_runtime_config_variables(project: 'chef-gcp-inspec', config: 'inspec-gcp-runtime-config') do
 		its('texts') { should include 'example.com' }
 	end
 
 snippet google_service_account
+  # https://docs.chef.io/inspec/resources/google_service_account
 	describe google_service_account(project: 'chef-gcp-inspec', name: "display-name@project-id.iam.gserviceaccount.com") do
 		it { should exist }
 		its('display_name') { should cmp '' }
 	end
 
 snippet google_service_account_key
+  # https://docs.chef.io/inspec/resources/google_service_account_key
 	describe google_service_account_key(project: 'chef-gcp-inspec', service_account: "display-name@project-id.iam.gserviceaccount.com", name: sa_key_name.split('/').last) do
 			it { should exist }
 			its('key_type') { should_not cmp 'USER_MANAGED' }
 		end
 
 snippet google_service_account_keys
+  # https://docs.chef.io/inspec/resources/google_service_account_keys
 	describe google_service_account_keys(project: 'chef-gcp-inspec', service_account: "display-name@project-id.iam.gserviceaccount.com") do
 		its('count') { should be <= 1000 }
 		its('key_types') { should_not include 'USER_MANAGED' }
 	end
 
 snippet google_service_accounts
+  # https://docs.chef.io/inspec/resources/google_service_accounts
 	describe google_service_accounts(project: 'chef-gcp-inspec', name: "display-name@project-id.iam.gserviceaccount.com") do
 		its('service_account_emails') { should include "display-name@project-id.iam.gserviceaccount.com" }
 		its('count') { should be <= 1000 }
 	end
 
 snippet google_sourcerepo_repositories
+  # https://docs.chef.io/inspec/resources/google_sourcerepo_repositories
 	describe.one do
 		google_sourcerepo_repositories(project: 'chef-gcp-inspec').names.each do |name|
 			describe name do
@@ -2267,17 +2632,20 @@ snippet google_sourcerepo_repositories
 			end
 
 snippet google_sourcerepo_repository
+  # https://docs.chef.io/inspec/resources/google_sourcerepo_repository
 	describe google_sourcerepo_repository(project: 'chef-gcp-inspec', name: 'inspec-gcp-repository') do
 		it { should exist }
 	end
 
 snippet google_spanner_database
+  # https://docs.chef.io/inspec/resources/google_spanner_database
 	describe google_spanner_database(project: 'chef-gcp-inspec', instance: 'spinstance', name: 'spdatabase') do
 		it { should exist }
 		its('name') { should match 'spdatabase' }
 	end
 
 snippet google_spanner_databases
+  # https://docs.chef.io/inspec/resources/google_spanner_databases
 	describe.one do
 		google_spanner_databases(project: 'chef-gcp-inspec', instance: 'spinstance').names.each do |name|
 			describe name do
@@ -2285,6 +2653,7 @@ snippet google_spanner_databases
 			end
 
 snippet google_spanner_instance
+  # https://docs.chef.io/inspec/resources/google_spanner_instance
 	describe google_spanner_instance(project: 'chef-gcp-inspec', name: 'spinstance', config: 'regional-us-east1') do
 		it { should exist }
 		its('config') { should match 'regional-us-east1' }
@@ -2295,17 +2664,20 @@ snippet google_spanner_instance
 	end
 
 snippet google_spanner_instance_iam_binding
+  # https://docs.chef.io/inspec/resources/google_spanner_instance_iam_binding
 	describe google_spanner_instance_iam_binding(project: "project", name: "name", role: "roles/editor") do
 		it { should exist }
 		its('members') { should include 'user:testuser@example.com' }
 	end
 
 snippet google_spanner_instance_iam_policy
+  # https://docs.chef.io/inspec/resources/google_spanner_instance_iam_policy
 	describe google_spanner_instance_iam_policy(project: "project", name: "name") do
 		it { should exist }
 	end
 
 snippet google_spanner_instances
+  # https://docs.chef.io/inspec/resources/google_spanner_instances
 	describe.one do
 		google_spanner_instances(project: 'chef-gcp-inspec', config: 'regional-us-east1').configs.each do |config|
 			describe config do
@@ -2313,6 +2685,7 @@ snippet google_spanner_instances
 			end
 
 snippet google_sql_database_instance
+  # https://docs.chef.io/inspec/resources/google_sql_database_instance
 	describe google_sql_database_instance(project: 'chef-gcp-inspec', database: 'my-database') do
 		it { should exist }
 		its('state') { should eq 'RUNNABLE' }
@@ -2321,12 +2694,14 @@ snippet google_sql_database_instance
 	end
 
 snippet google_sql_database_instances
+  # https://docs.chef.io/inspec/resources/google_sql_database_instances
 	describe google_sql_database_instances(project: 'chef-gcp-inspec') do
 		its('instance_states') { should include 'RUNNABLE' }
 		its('instance_names') { should include 'my-database' }
 	end
 
 snippet google_sql_user
+  # https://docs.chef.io/inspec/resources/google_sql_user
 	describe google_sql_user(project: 'chef-gcp-inspec', database: 'my-database', name: 'user-name', host: "example.com") do
 		it { should exist }
 		its('name') { should cmp 'user-name' }
@@ -2334,11 +2709,13 @@ snippet google_sql_user
 	end
 
 snippet google_sql_users
+  # https://docs.chef.io/inspec/resources/google_sql_users
 	describe google_sql_users(project: 'chef-gcp-inspec', database: 'my-database') do
 		its('user_names') { should include 'user-name' }
 	end
 
 snippet google_storage_bucket_acl
+  # https://docs.chef.io/inspec/resources/google_storage_bucket_acl
 	describe google_storage_bucket_acl(bucket: 'storage-bucket-name', entity: user-email) do
 		it { should exist }
 		its('role') { should cmp "OWNER" }
@@ -2348,22 +2725,26 @@ snippet google_storage_bucket_acl
 	end
 
 snippet google_storage_bucket_iam_binding
+  # https://docs.chef.io/inspec/resources/google_storage_bucket_iam_binding
 	describe google_storage_bucket_iam_binding(bucket: "bucket", role: "roles/editor") do
 		it { should exist }
 		its('members') { should include 'user:testuser@example.com' }
 	end
 
 snippet google_storage_bucket_iam_bindings
+  # https://docs.chef.io/inspec/resources/google_storage_bucket_iam_bindings
 	describe google_storage_bucket_iam_bindings(bucket: 'bucket-buvsjjcndqz') do
 				it { should exist }
 			end
 
 snippet google_storage_bucket_iam_policy
+  # https://docs.chef.io/inspec/resources/google_storage_bucket_iam_policy
 	describe google_storage_bucket_iam_policy(bucket: "bucket") do
 		it { should exist }
 	end
 
 snippet google_storage_bucket_object
+  # https://docs.chef.io/inspec/resources/google_storage_bucket_object
 	describe google_storage_bucket_object(bucket: 'bucket-with-object', object: 'image1') do
 		it { should exist }
 		its('size.to_i') { should be > 0 }
@@ -2373,17 +2754,20 @@ snippet google_storage_bucket_object
 	end
 
 snippet google_storage_bucket_objects
+  # https://docs.chef.io/inspec/resources/google_storage_bucket_objects
 	describe google_storage_bucket_objects(bucket: 'bucket-with-object') do
 		its('object_names') { should include 'image1' }
 		its('count') { should be <= 10 }
 	end
 
 snippet google_storage_buckets
+  # https://docs.chef.io/inspec/resources/google_storage_buckets
 	describe google_storage_buckets(project: 'chef-gcp-inspec') do
 		its('bucket_names') { should include bucket-name }
 	end
 
 snippet google_storage_default_object_acl
+  # https://docs.chef.io/inspec/resources/google_storage_default_object_acl
 	describe google_storage_default_object_acl(bucket: 'gcp-inspec-storage-bucket', entity: user-email) do
 		it { should exist }
 		its('role') { should cmp "OWNER" }
@@ -2393,6 +2777,7 @@ snippet google_storage_default_object_acl
 	end
 
 snippet google_storage_object_acl
+  # https://docs.chef.io/inspec/resources/google_storage_object_acl
 	describe google_storage_object_acl(bucket: 'bucket-with-object', object: 'image1', entity: user-email) do
 		it { should exist }
 		its('role') { should cmp "OWNER" }
@@ -2402,16 +2787,19 @@ snippet google_storage_object_acl
 	end
 
 snippet google_user
+  # https://docs.chef.io/inspec/resources/google_user
 	describe google_user(user_key: 'principal_email_address@domain.com') do
 				it { should exist }
 			end
 
 snippet google_users
+  # https://docs.chef.io/inspec/resources/google_users
 	describe google_users(customer: 'my_customer') do
 				it { should exist }
 			end
 
 snippet group
+  # https://docs.chef.io/inspec/resources/group
 	describe group('group_name') do
 				it { should exist }
 				its('gid') { should eq 0 }
@@ -2419,17 +2807,20 @@ snippet group
 
 
 snippet groups
+  # https://docs.chef.io/inspec/resources/groups
 	describe groups do
 				its('names') { should eq ['wheel', 'daemon', 'sys', 'adm'] }
 				its('names') { should include 'wheel' }
 			end
 
 snippet grub_conf
+  # https://docs.chef.io/inspec/resources/grub_conf
 	describe grub_conf('path', 'kernel') do
 				its('setting') { should eq 'value' }
 			end
 
 snippet habitat_package
+  # https://docs.chef.io/inspec/resources/habitat_package
 	describe habitat_package(origin: 'core', name: 'httpd') do
 		it						 { should exist }
 		its('version') { should eq '2.4.35'}
@@ -2437,12 +2828,14 @@ snippet habitat_package
 	end
 
 snippet habitat_packages
+  # https://docs.chef.io/inspec/resources/habitat_packages
 	describe habitat_packages do
 		its('names') { should include 'httpd' }
 		its('names') { should include 'memcached' }
 	end
 
 snippet habitat_service
+  # https://docs.chef.io/inspec/resources/habitat_service
 	describe habitat_service(origin: 'core', name: 'httpd') do
 		it										 { should exist }
 		its('version')				 { should eq '2.4.35'}
@@ -2451,6 +2844,7 @@ snippet habitat_service
 	end
 
 snippet habitat_services
+  # https://docs.chef.io/inspec/resources/habitat_services
 	describe habitat_services do
 		its('count') { should cmp 2 }
 		its('names') { should include 'httpd' }
@@ -2458,6 +2852,7 @@ snippet habitat_services
 	end
 
 snippet host
+  # https://docs.chef.io/inspec/resources/host
 	describe host('example.com', port: 80, protocol: 'tcp') do
 				it { should be_reachable }
 				it { should be_resolvable }
@@ -2465,6 +2860,7 @@ snippet host
 			end
 
 snippet http
+  # https://docs.chef.io/inspec/resources/http
 	describe http('url', auth: {user: 'user', pass: 'test'}, params: {params}, method: 'method', headers: {headers}, data: data, open_timeout: 60, read_timeout: 60, ssl_verify: true, max_redirects: 3) do
 				its('status') { should eq number }
 				its('body') { should eq 'body' }
@@ -2472,6 +2868,7 @@ snippet http
 			end
 
 snippet iis_app
+  # https://docs.chef.io/inspec/resources/iis_app
 	describe iis_app('application_path', 'site_name') do
 				it { should exist }
 				it { should have_application_pool('application_pool') }
@@ -2482,6 +2879,7 @@ snippet iis_app
 			end
 
 snippet iis_site
+  # https://docs.chef.io/inspec/resources/iis_site
 	describe iis_site('site_name') do
 				it { should exist }
 				it { should be_running }
@@ -2491,16 +2889,19 @@ snippet iis_site
 			end
 
 snippet inetd_conf
+  # https://docs.chef.io/inspec/resources/inetd_conf
 	describe inetd_conf('path') do
 				its('service_name') { should eq 'value' }
 			end
 
 snippet ini
+  # https://docs.chef.io/inspec/resources/ini
 	describe ini('path') do
 				its('setting_name') { should eq 'value' }
 			end
 
 snippet interface
+  # https://docs.chef.io/inspec/resources/interface
 	describe interface('eth0') do
 				it { should be_up }
 				its('speed') { should eq 1000 }
@@ -2509,21 +2910,25 @@ snippet interface
 			end
 
 snippet interfaces
+  # https://docs.chef.io/inspec/resources/interfaces
 	describe interfaces do
 				its('names') { should include 'eth0' }
 			end
 
 snippet ip6tables
+  # https://docs.chef.io/inspec/resources/ip6tables
 	describe ip6tables(rule:'name', table:'name', chain: 'name') do
 				it { should have_rule('RULE') }
 			end
 
 snippet iptables
+  # https://docs.chef.io/inspec/resources/iptables
 	describe iptables(rule:'name', table:'name', chain: 'name') do
 				it { should have_rule('RULE') }
 			end
 
 snippet json
+  # https://docs.chef.io/inspec/resources/json
 	describe json('/path/to/name.json') do
 				its('name') { should eq 'hello' }
 				its(['meta','creator']) { should eq 'John Doe' }
@@ -2531,6 +2936,7 @@ snippet json
 			end
 
 snippet kernel_module
+  # https://docs.chef.io/inspec/resources/kernel_module
 	describe kernel_module('module_name') do
 				it { should be_loaded }
 				it { should_not be_disabled }
@@ -2538,11 +2944,13 @@ snippet kernel_module
 			end
 
 snippet kernel_parameter
+  # https://docs.chef.io/inspec/resources/kernel_parameter
 	describe kernel_parameter('path.to.parameter') do
 				its('value') { should eq 0 }
 			end
 
 snippet key_rsa
+  # https://docs.chef.io/inspec/resources/key_rsa
 	describe key_rsa('mycertificate.key') do
 				it { should be_private }
 				it { should be_public }
@@ -2551,6 +2959,7 @@ snippet key_rsa
 			end
 
 snippet launchd_service
+  # https://docs.chef.io/inspec/resources/launchd_service
 	describe launchd_service('service_name') do
 				it { should be_installed }
 				it { should be_enabled }
@@ -2558,143 +2967,171 @@ snippet launchd_service
 			end
 
 snippet limits_conf
+  # https://docs.chef.io/inspec/resources/limits_conf
 	describe limits_conf('path') do
 				its('domain') { should include ['type', 'item', 'value'] }
 				its('domain') { should eq ['type', 'item', 'value'] }
 			end
 
 snippet login_defs
+  # https://docs.chef.io/inspec/resources/login_defs
 	describe login_defs do
 				its('name') { should include('foo') }
 			end
 
 snippet mount
+  # https://docs.chef.io/inspec/resources/mount
 	describe mount('path') do
 				it { should MATCHER 'value' }
 			end
 
 snippet mssql_session
+  # https://docs.chef.io/inspec/resources/mssql_session
 	describe mssql_session(user: 'username', password: 'password').query('QUERY').row(0).column('result') do
 				its('value') { should eq('') }
 			end
 
 snippet mysql_conf
+  # https://docs.chef.io/inspec/resources/mysql_conf
 	describe mysql_conf('path') do
 				its('setting') { should eq 'value' }
 			end
 
 snippet mysql_session
+  # https://docs.chef.io/inspec/resources/mysql_session
 	describe mysql_session('username', 'password').query('QUERY') do
 				its('output') { should match(/expected-result/) }
 			end
 
 snippet nginx
+  # https://docs.chef.io/inspec/resources/nginx
 	describe nginx do
 				its('attribute') { should eq 'value' }
 			end
 
 snippet npm
+  # https://docs.chef.io/inspec/resources/npm
 	describe npm('npm_package_name') do
 				it { should be_installed }
 			end
 
 snippet oneget
+  # https://docs.chef.io/inspec/resources/oneget
 	describe oneget('name') do
 				it { should be_installed }
 			end
 
 snippet oracledb_session
+  # https://docs.chef.io/inspec/resources/oracledb_session
 	describe oracledb_session(user: 'username', password: 'password', service: 'ORCL.localdomain').query('QUERY').row(0).column('result') do
 				its('value') { should eq('') }
 			end
 
 snippet os
+  # https://docs.chef.io/inspec/resources/os
 	describe os.family do
 				it { should eq 'platform_family_name' }
 			end
 
 snippet os_env
+  # https://docs.chef.io/inspec/resources/os_env
 	describe os_env('VARIABLE') do
 				its('property') { should eq 1 }
 			end
 
 snippet package
+  # https://docs.chef.io/inspec/resources/package
 	describe package('name') do
 				it { should be_installed }
 			end
 
 snippet packages
+  # https://docs.chef.io/inspec/resources/packages
 	describe packages(/name/) do
 				its('statuses') { should cmp 'installed' }
 			end
 
 snippet parse_config
+  # https://docs.chef.io/inspec/resources/parse_config
 	describe parse_config(output, { data_config_option: value } ) do
 				its('setting') { should eq 1 }
 			end
 
 snippet parse_config_file
+  # https://docs.chef.io/inspec/resources/parse_config_file
 	describe parse_config_file('/path/to/file', { data_config_option: value } ) do
 				its('setting') { should eq 1 }
 			end
 
 snippet passwd
+  # https://docs.chef.io/inspec/resources/passwd
 	describe passwd do
 				its('users') { should_not include 'forbidden_user' }
 			end
 
 snippet pip
+  # https://docs.chef.io/inspec/resources/pip
 	describe pip('package_name') do
 				it { should be_installed }
 			end
 
 snippet port
+  # https://docs.chef.io/inspec/resources/port
 	describe port(514) do
 				it { should be_listening }
 				its('processes') {should include 'syslog'}
 			end
 
 snippet postfix_conf
+  # https://docs.chef.io/inspec/resources/postfix_conf
 	describe postfix_conf do
 				its('setting_name') { should cmp 'value' }
 			end
 
 snippet postgres_conf
+  # https://docs.chef.io/inspec/resources/postgres_conf
 	describe postgres_conf('path') do
 				its('setting') { should eq 'value' }
 			end
 
 snippet postgres_hba_conf
+  # https://docs.chef.io/inspec/resources/postgres_hba_conf
 	describe postgres_hba_conf.where { type == 'local' } do
 			 its('auth_method') { should eq ['peer'] }
 			end
 
 snippet postgres_ident_conf
+  # https://docs.chef.io/inspec/resources/postgres_ident_conf
 	describe postgres_ident_conf.where { pg_username == 'filter_value' } do
 				its('attribute') { should eq ['value'] }
 			end
 
 snippet powershell
+  # https://docs.chef.io/inspec/resources/powershell
 	describe powershell(script) do
 				its('property') { should eq 'output' }
 			end
 
 snippet processes
+  # https://docs.chef.io/inspec/resources/processes
 	describe processes('process_name') do
 				its('property_name') { should eq ['property_value'] }
 			end
 
 snippet rabbitmq_config
+  # https://docs.chef.io/inspec/resources/rabbitmq_config
 	describe rabbitmq_config.params('rabbit', 'ssl_listeners') do
 				it { should cmp 5671 }
 			end
 
 snippet registry_key
+  # https://docs.chef.io/inspec/resources/registry_key
 	describe registry_key('Task Scheduler','HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Schedule') do
 				its('Start') { should eq 2 }
 			end
 
 snippet runit_service
+  # https://docs.chef.io/inspec/resources/runit_service
 	describe runit_service('service_name') do
 				it { should be_installed }
 				it { should be_enabled }
@@ -2702,16 +3139,19 @@ snippet runit_service
 			end
 
 snippet security_identifier
+  # https://docs.chef.io/inspec/resources/security_identifier
 	describe security_identifier(group: 'Everyone') do
 				its('sid') { should eq 'S-1-1-0' }
 			end
 
 snippet security_policy
+  # https://docs.chef.io/inspec/resources/security_policy
 	describe security_policy do
 				its('policy_name') { should eq 'value' }
 			end
 
 snippet service
+  # https://docs.chef.io/inspec/resources/service
 	describe service('service_name') do
 				it { should be_installed }
 				it { should be_enabled }
@@ -2719,31 +3159,37 @@ snippet service
 			end
 
 snippet shadow
+  # https://docs.chef.io/inspec/resources/shadow
 	describe shadow do
 				its('count') { should eq 32 }
 			end
 
 snippet ssh_config
+  # https://docs.chef.io/inspec/resources/ssh_config
 	describe ssh_config('path') do
 				its('name') { should include('foo') }
 			end
 
 snippet sshd_config
+  # https://docs.chef.io/inspec/resources/sshd_config
 	describe sshd_config('path') do
 				its('name') { should include('foo') }
 			end
 
 snippet ssl
+  # https://docs.chef.io/inspec/resources/ssl
 	describe ssl(port: #) do
 				it { should be_enabled }
 			end
 
 snippet sys_info
+  # https://docs.chef.io/inspec/resources/sys_info
 	describe sys_info do
 				its('hostname') { should eq 'value' }
 			end
 
 snippet systemd_service
+  # https://docs.chef.io/inspec/resources/systemd_service
 	describe systemd_service('service_name') do
 				it { should be_installed }
 				it { should be_enabled }
@@ -2751,6 +3197,7 @@ snippet systemd_service
 			end
 
 snippet sysv_service
+  # https://docs.chef.io/inspec/resources/sysv_service
 	describe sysv_service('service_name') do
 				it { should be_installed }
 				it { should be_enabled }
@@ -2758,6 +3205,7 @@ snippet sysv_service
 			end
 
 snippet upstart_service
+  # https://docs.chef.io/inspec/resources/upstart_service
 	describe upstart_service('service_name') do
 				it { should be_installed }
 				it { should be_enabled }
@@ -2765,6 +3213,7 @@ snippet upstart_service
 			end
 
 snippet user
+  # https://docs.chef.io/inspec/resources/user
 	describe user('root') do
 				it { should exist }
 				its('uid') { should eq 1234 }
@@ -2784,6 +3233,7 @@ snippet user
 
 
 snippet users
+  # https://docs.chef.io/inspec/resources/users
 	describe users.where(uid: 0).entries do
 				it { should eq ['root'] }
 				its('uids') { should eq [1234] }
@@ -2791,37 +3241,44 @@ snippet users
 			end
 
 snippet vbscript
+  # https://docs.chef.io/inspec/resources/vbscript
 	describe vbscript('script contents') do
 				its('stdout') { should eq 'output' }
 			end
 
 snippet virtualization
+  # https://docs.chef.io/inspec/resources/virtualization
 	describe virtualization do
 				its('system') { should MATCHER 'value' }
 			end
 
 snippet windows_feature
+  # https://docs.chef.io/inspec/resources/windows_feature
 	describe windows_feature('feature_name') do
 				it { should be_installed }
 			end
 
 snippet windows_firewall
+  # https://docs.chef.io/inspec/resources/windows_firewall
 	describe windows_firewall('name') do
 				it { should be_enabled }
 			end
 
 snippet windows_hotfix
+  # https://docs.chef.io/inspec/resources/windows_hotfix
 	describe windows_hotfix('name') do
 				it { should be_installed }
 			end
 
 snippet windows_task
+  # https://docs.chef.io/inspec/resources/windows_task
 	describe windows_task('task name uri') do
 				its('parameter') { should eq 'value' }
 				it { should be_enabled }
 			end
 
 snippet wmi
+  # https://docs.chef.io/inspec/resources/wmi
 	describe wmi({
 				class: 'class_name',
 				namespace: 'path\\to\\setting',
@@ -2832,17 +3289,20 @@ snippet wmi
 			end
 
 snippet x509_certificate
+  # https://docs.chef.io/inspec/resources/x509_certificate
 	describe x509_certificate('mycertificate.pem') do
 				its('validity_in_days') { should be > 30 }
 			end
 
 snippet xinetd_conf
+  # https://docs.chef.io/inspec/resources/xinetd_conf
 	describe xinetd_conf.services('service_name') do
 				it { should be_enabled } # or be_disabled
 				its('setting') { should eq 'value' }
 			end
 
 snippet xml
+  # https://docs.chef.io/inspec/resources/xml
 	describe xml('/path/to/name.xml') do
 				its('root/name') { should eq ['hello'] }
 				its('root/meta/creator') { should eq ['John Doe'] }
@@ -2850,23 +3310,27 @@ snippet xml
 			end
 
 snippet yaml
+  # https://docs.chef.io/inspec/resources/yaml
 	describe yaml('filename.yml') do
 				its('name') { should eq 'foo' }
 				its(['array', 1]) { should eq 'one' }
 			end
 
 snippet yum
+  # https://docs.chef.io/inspec/resources/yum
 	describe yum.repo('name') do
 				it { should exist }
 				it { should be_enabled }
 			end
 
 snippet zfs_dataset
+  # https://docs.chef.io/inspec/resources/zfs_dataset
 	describe zfs_dataset('dataset') do
 				it { should MATCHER 'value' }
 			end
 
 snippet zfs_pool
+  # https://docs.chef.io/inspec/resources/zfs_pool
 	describe zfs_pool('pool') do
 				it { should MATCHER 'value' }
 			end
