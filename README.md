@@ -1,7 +1,16 @@
-vim-chef-snippets
+### Look at these, rather use these methods it's more sustainable.
+
+|![vim_vscode_chef_snippets](https://user-images.githubusercontent.com/78700/118138738-f6e5f080-b406-11eb-9c5d-a7e07ecbee52.gif)|![Cookstyle_linting_in_Vim](https://user-images.githubusercontent.com/78700/118148458-e0449700-b410-11eb-9817-cbfb9a90797c.gif)|
+|-|-|
+|[Confguring Vim to use VSCode Snippets for Chef](Confguring_Vim_to_use_VSCode_Snippets_for_Chef.md)|[Using Cookstyle in Vim, powered by ALE](Using_Cookstyle_in_Vim.md)|
+
+-----
+
+Rather not use vim-chef-snippets
 ====================
 
 This repository contains snippets files for Chef and InSpec for the [vim-snipmate](https://github.com/garbas/vim-snipmate.git) plugin for Vim.
+
 
 How to install
 -------------
