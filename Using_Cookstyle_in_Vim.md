@@ -1,4 +1,4 @@
-# Using Cookstyle in Vim, powered by ALE
+# Configuring VIM to use Cookstyle for better Chef Cookbook Development, powered by ALE
 ![Cookstyle_linting_in_Vim](https://user-images.githubusercontent.com/78700/118148458-e0449700-b410-11eb-9817-cbfb9a90797c.gif)
 
 
